@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Smellyriver.TankInspector.Pro.StatsInspector" GeneratedClassName="StatsInspectorSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LastTemplateFilename" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Templates/Default.xaml</Value>
+    </Setting>
+    <Setting Name="StatDocumentViewingMode" Type="System.Windows.Controls.FlowDocumentReaderViewingMode" Scope="User">
+      <Value Profile="(Default)">Page</Value>
+    </Setting>
+    <Setting Name="StatValueMode" Type="Smellyriver.TankInspector.Pro.Data.Stats.StatValueMode" Scope="User">
+      <Value Profile="(Default)">Instance</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

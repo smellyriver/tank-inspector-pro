@@ -1,0 +1,23 @@
+<Stats xmlns="http://schemas.smellyriver.com/stipro/stats" xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <a:string>penetration_100m</a:string>
+  <a:string>damage_armor</a:string>
+  <a:string>damagePerMinute</a:string>
+  <a:string>gunAccuracy</a:string>
+  <a:string>gunAimTime</a:string>
+  <a:string>gunElevation</a:string>
+  <a:string>gunDepression</a:string>
+  <a:string>turretRotationSpeed</a:string>
+  <a:string>chassisRotationSpeed</a:string>
+  <a:string>aimCircleDispersion_turretFullSpeedRotation</a:string>
+  <a:string>aimCircleDispersion_vehicleFullSpeedMovement</a:string>
+  <a:string>aimCircleDispersion_vehicleFullSpeedRotation</a:string>
+  <a:string>aimCircleDispersion_afterShot</a:string>
+  <a:string>enginePower</a:string>
+  <a:string>specificPower</a:string>
+  <a:string>speedLimits_forward</a:string>
+  <a:string>terrainResistance_hard</a:string>
+  <a:string>terrainResistance_medium</a:string>
+  <a:string>terrainResistance_soft</a:string>
+  <a:string>maxHealth</a:string>
+  <a:string>viewRange</a:string>
+</Stats>

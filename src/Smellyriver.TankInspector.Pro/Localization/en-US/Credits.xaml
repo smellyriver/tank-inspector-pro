@@ -1,0 +1,89 @@
+﻿<FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              ColumnWidth="400" 
+              FontFamily="Georgia"
+              FontSize="12">
+
+    <Paragraph>
+        <Run>Design and crafted by</Run>
+        <Run FontStyle="Italic">hillin</Run>
+        <Run>and</Run>
+        <Run FontStyle="Italic">edward</Run>
+        <Run>.</Run>
+    </Paragraph>
+
+    <Paragraph FontWeight="Bold">SPECIAL THANKS TO</Paragraph>
+    <List>
+        <ListItem>
+            <Paragraph>
+                <Hyperlink FontWeight="Bold" 
+                           NavigateUri="http://tank.sinaapp.com/service/Redirect/jump_and_count?url=http://ftr.wot-news.com">For the Record</Hyperlink>
+                <Run> - WoT news site</Run>
+            </Paragraph>
+        </ListItem>
+        <ListItem>
+            <Paragraph>
+                <Hyperlink FontWeight="Bold" 
+                           NavigateUri="http://tank.sinaapp.com/service/Redirect/jump_and_count?url=http://www.vbaddict.net/wot.php?ref=TankInspector">VBAddict.net</Hyperlink>
+                <Run> - Livestat provider</Run>
+            </Paragraph>
+        </ListItem>
+        <ListItem>
+            <Paragraph>
+                <Hyperlink FontWeight="Bold" 
+                           NavigateUri="http://tank.sinaapp.com/service/Redirect/jump_and_count?url=http://www.wot-news.com">WoT-News</Hyperlink>
+                <Run> - Russian WoT news site</Run>
+            </Paragraph>
+        </ListItem>
+        <ListItem>
+            <Paragraph>
+                <Hyperlink FontWeight="Bold" 
+                           NavigateUri="http://tank.sinaapp.com/service/Redirect/jump_and_count?url=http://http://tieba.baidu.com/f?kw=%E5%9D%A6%E5%85%8B%E4%B8%96%E7%95%8C">Baidu WoT</Hyperlink>
+                <Run>- Most populated WoT forum in the world</Run>
+            </Paragraph>
+        </ListItem>
+        <ListItem>
+            <Paragraph>
+                <Hyperlink FontWeight="Bold" 
+                           NavigateUri="http://tank.sinaapp.com/service/Redirect/jump_and_count?url=http://xvm.garphy.com/">XVM CN</Hyperlink>
+                <Run>- WoT stats-research &amp; XVM localization team</Run>
+            </Paragraph>
+        </ListItem>
+        <ListItem>
+            <Paragraph>
+                <Run FontWeight="Bold">Jonathan "John_Messias" Previdi</Run>
+                <Run>(</Run>
+                <Hyperlink NavigateUri="http://tank.sinaapp.com/service/Redirect/jump_and_count?url=http://wot-story.blogspot.fr/">WoT story</Hyperlink>
+                <Run>)</Run>
+            </Paragraph>
+        </ListItem>
+        <ListItem>
+            <Paragraph>
+                <Run FontWeight="Bold">Ken Florian</Run>
+                <Run>(</Run>
+                <Hyperlink NavigateUri="http://tank.sinaapp.com/service/Redirect/jump_and_count?url=http://kenflorian.com/">Ken Florian Personal Website</Hyperlink>
+                <Run>)</Run>
+            </Paragraph>
+        </ListItem>
+        <ListItem>
+            <Paragraph>
+                <Run FontWeight="Bold">MadestCat</Run>
+                <Run>(</Run>
+                <Hyperlink NavigateUri="http://tank.sinaapp.com/service/Redirect/jump_and_count?url=http://777-jackpot.de/">Clan "Jackpot" Homepage</Hyperlink>
+                <Run>)</Run>
+            </Paragraph>
+        </ListItem>
+    </List>
+
+    <Paragraph FontWeight="Bold">INTERNAL TESTERS</Paragraph>
+    <Paragraph FontStyle="Italic">in alphabetic order</Paragraph>
+    <Paragraph>
+        adri1, Edrard, Jonathan "John_Messias" Previdi, Ken Florian, Silent Stalker, MadestCat, Yichen "F119" Hu
+    </Paragraph>
+
+    <Paragraph FontWeight="Bold">INDIEGOGO BACKERS</Paragraph>
+    <Paragraph FontStyle="Italic">in contribution amount and alphabetic order</Paragraph>
+    <Paragraph>
+        Jonathan Previdi, Ken Florian, madest_cat, robert.fousch, f3nix22 , Anton Sorokin, bouey , Brandon Edwards, ChuanQi Chong, Dale Haffenden, Don Low, gorreci9, jbachop, jodgipost, killerfox, kirikom9000, lou kai, lysinskiremy, mike penny, Mikko Karjalainen, ol.gosset, rayman223, rennyg1 , Rob Chapple, Rousseau , s2t2s22, sandholt58, Sergio Licardie, shkrueger, t8z5h3, Tobias Blanck, frans.mulkens, jl.ophoff , jl.ophoff , mike46615, orion, ruevb, tronicson, AKSSARAA_SEA , glad-_-gubbe, Joseph A Shrader, Ricky Chu, rusznikarz, sokada, Solomon Greenberg, MoSongyuan and other 21 anonymous backers           
+    </Paragraph>
+</FlowDocument>

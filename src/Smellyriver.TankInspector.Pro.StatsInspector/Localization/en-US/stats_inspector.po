@@ -1,0 +1,56 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Stats Inspector\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "module_name"
+msgstr "Stats Inspector"
+
+msgid "module_description"
+msgstr "Inspect tank stats"
+
+msgid "module_provider"
+msgstr "Smellyriver"
+
+msgid "inspect_stats_menu_item"
+msgstr "Inspect Stats"
+
+#. {0}=tank name
+msgid "document_title"
+msgstr "{0} [stats]"
+
+#. {0}=tank name
+#. {1}=game client version
+msgid "export_default_filename"
+msgstr "{0}-{1}-stats.ext"
+
+msgid "untitled_template_name"
+msgstr "Untitled Templated"
+
+msgid "anonymous_template_author"
+msgstr "Anonymous"
+
+msgid "missing_default_template_message_title"
+msgstr "Missing Default Template"
+
+msgid "missing_default_template_message"
+msgstr ""
+"The default template file is missing. Please try to reinstall the Stat "
+"Inspector module to fix this problem."
+
+#. {0}=template author name
+msgid "template_author_format"
+msgstr "by {0}"
+
+msgid "status_analysing"
+msgstr "Analysing..."

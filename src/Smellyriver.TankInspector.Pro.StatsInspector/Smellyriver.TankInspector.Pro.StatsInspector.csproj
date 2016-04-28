@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7490ADF9-15D6-47DC-B688-704401233F4A}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Smellyriver.TankInspector.Pro.StatsInspector</RootNamespace>
+    <AssemblyName>Smellyriver.TankInspector.Pro.StatsInspector</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Binaries\Debug\Modules\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Binaries\Release\Modules\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Binaries\Debug\Modules\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\Libraries\log4net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\Libraries\Microsoft.Practices.Prism.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity">
+      <HintPath>..\Libraries\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.MefExtensions">
+      <HintPath>..\Libraries\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CreateDocumentResult.cs" />
+    <Compile Include="Document\Stat.cs" />
+    <Compile Include="Document\StatTemplate.cs" />
+    <Compile Include="Document\Template.cs" />
+    <Compile Include="Document\TextElementPositionInfo.cs" />
+    <Compile Include="Document\View.cs" />
+    <Compile Include="StatsDocumentPersistentInfo.cs" />
+    <Compile Include="StatsDocumentService.cs" />
+    <Compile Include="StatsDocumentView.xaml.cs">
+      <DependentUpon>StatsDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StatsDocumentVM.cs" />
+    <Compile Include="StatsInspectorModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="StatsInspectorSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>StatsInspectorSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="StatTemplate.cs" />
+    <Compile Include="StatVM.cs" />
+    <Compile Include="TemplateManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Common.Wpf\Smellyriver.TankInspector.Common.Wpf.csproj">
+      <Project>{7098a00e-1f84-48a2-a5b2-adcbee3ba880}</Project>
+      <Name>Smellyriver.TankInspector.Common.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Common\Smellyriver.TankInspector.Common.csproj">
+      <Project>{12fdeefc-91d4-4fa1-8601-4db4a87f99f3}</Project>
+      <Name>Smellyriver.TankInspector.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Core\Smellyriver.TankInspector.Core.csproj">
+      <Project>{4dce28fe-43ff-4e85-915a-1f460d86f881}</Project>
+      <Name>Smellyriver.TankInspector.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Pro.Globalization\Smellyriver.TankInspector.Pro.Globalization.csproj">
+      <Project>{9890f571-444f-4edb-8ba4-58f1c0921937}</Project>
+      <Name>Smellyriver.TankInspector.Pro.Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Pro.StatsShared\Smellyriver.TankInspector.Pro.StatsShared.csproj">
+      <Project>{22ca3224-02a2-4bd0-a727-d67b856935c3}</Project>
+      <Name>Smellyriver.TankInspector.Pro.StatsShared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Pro\Smellyriver.TankInspector.Pro.csproj">
+      <Project>{81e2be69-6cc3-4eba-8c9f-43d8c1ce254c}</Project>
+      <Name>Smellyriver.TankInspector.Pro</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Localization\en-US\stats_inspector_default_template.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\stats_inspector_default_template.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\stats_inspector.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\stats_inspector.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Smellyriver.TankInspector.Pro.StatsInspector\Templates\FTRStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Page Include="StatsDocumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <None Include="app.config" />
+    <None Include="StatsInspectorSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>StatsInspectorSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Smellyriver.TankInspector.Pro.StatsInspector\Templates\Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Template_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\InspectStats_16.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

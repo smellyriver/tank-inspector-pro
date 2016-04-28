@@ -1,0 +1,220 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Game Client Explorer\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "module_name"
+msgstr "Game Client Explorer"
+
+msgid "module_description"
+msgstr "Manage and view game client tanks, datum and files"
+
+msgid "module_provider"
+msgstr "Smellyriver"
+
+msgid "panel_title"
+msgstr "Game Client Explorer"
+
+msgid "files_folder"
+msgstr "Files"
+
+msgid "data_folder"
+msgstr "Data"
+
+msgid "tanks_folder"
+msgstr "Tanks"
+
+msgid "tanks_data_node"
+msgstr "Tanks"
+
+msgid "equipment_data_node"
+msgstr "Equipment"
+
+msgid "consumables_data_node"
+msgstr "Consumables"
+
+msgid "crews_data_node"
+msgstr "Crews"
+
+msgid "tech_tree_layouts_data_node"
+msgstr "Tech Tree Layouts "
+
+#. {0}=game client name
+msgid "tanks_data_description"
+msgstr "Unified Tank XML Data of {0}"
+
+#. {0}=game client name
+msgid "equipment_data_description"
+msgstr "Equipment XML Data of {0}"
+
+#. {0}=game client name
+msgid "consumables_data_description"
+msgstr "Consumables XML Data of {0}"
+
+#. {0}=game client name
+msgid "crews_data_description"
+msgstr "Crews XML Data of {0}"
+
+#. {0}=game client name
+msgid "tech_tree_layouts_data_description"
+msgstr "Tech Tree Layouts XML Data of {0} "
+
+msgid "manage_game_clients_button_tip"
+msgstr "Manage game clients"
+
+msgid "properties_menu_item"
+msgstr "Properties"
+
+msgid "show_in_explorer_menu_item"
+msgstr "Show in Explorer"
+
+msgid "open_menu_item"
+msgstr "Open"
+
+msgid "view_menu_item"
+msgstr "View"
+
+msgid "open_with_default_program_message_title"
+msgstr "Open with Default Program"
+
+msgid "open_with_default_program_message"
+msgstr ""
+"Tank Inspector PRO cannot open this type of file. Do you want to open it "
+"with the default program?"
+
+#. the description(tooltip) of files in package
+#.
+#. * {0}=file local path within package
+#. * {1}=package path
+msgid "package_file_description"
+msgstr ""
+"{0}\n"
+"Packed in {1}"
+
+#. context menu item for files and folders in package
+msgid "copy_to_mod_folder_menu_item"
+msgstr "Copy to Mod Folder..."
+
+#. context menu item for packages
+msgid "extract_to_mod_folder_menu_item"
+msgstr "Extract to Mod Folder..."
+
+#. context menu item for tanks
+msgid "copy_all_files_to_mod_folder_menu_item"
+msgstr "Copy All Files to Mod Folder..."
+
+#. context menu item for tank related file
+msgid "locate_in_files_menu_item"
+msgstr "Locate in Files"
+
+msgid "hull"
+msgstr "Hull"
+
+msgid "chassis"
+msgstr "Chassis"
+
+msgid "turrets"
+msgstr "Turrets"
+
+msgid "guns"
+msgstr "Guns"
+
+msgid "camouflage"
+msgstr "Camouflage"
+
+msgid "exclusive_mask"
+msgstr "Exclusive Mask"
+
+#. stands for "3D Model"
+msgid "model"
+msgstr "Model"
+
+#. stands for "Tank Visual"
+msgid "visual"
+msgstr "Visual"
+
+#. this is a computer graphics terminology, if this is translated to another language, it is suggested to append the English name in parentheses.
+#. e.g. Blah Blah Blah(Specular Map)
+msgid "specular_map"
+msgstr "Specular Map"
+
+#. this is a computer graphics terminology, if this is translated to another language, it is suggested to append the English name in parentheses.
+#. e.g. Blah Blah Blah(Specular Map)
+msgid "normal_map"
+msgstr "Normal Map"
+
+#. this is a computer graphics terminology, if this is translated to another language, it is suggested to append the English name in parentheses.
+#. e.g. Blah Blah Blah(Specular Map)
+msgid "diffuse_map"
+msgstr "Diffuse Map"
+
+#. this is a computer graphics terminology, if this is translated to another language, it is suggested to append the English name in parentheses.
+#. e.g. Blah Blah Blah(Specular Map)
+msgid "metallic_detail_map"
+msgstr "Metallic Detail Map"
+
+#. this is a computer graphics terminology, if this is translated to another language, it is suggested to append the English name in parentheses.
+#. e.g. Blah Blah Blah(Specular Map)
+msgid "metallic_gloss_map"
+msgstr "Metallic Gloss Map"
+
+#. this is a computer graphics terminology, if this is translated to another language, it is suggested to append the English name in parentheses.
+#. e.g. Blah Blah Blah(Specular Map)
+msgid "exclude_mask_map"
+msgstr "Exclude Mask Map"
+
+msgid "undamaged"
+msgstr "Undamaged"
+
+msgid "destroyed"
+msgstr "Destroyed"
+
+msgid "exploded"
+msgstr "Exploded"
+
+msgid "collision"
+msgstr "Collision"
+
+#. stands for track spline (dynamic suspension related)
+msgid "spline"
+msgstr "Spline"
+
+msgid "left_track"
+msgstr "Left Track"
+
+msgid "right_track"
+msgstr "Right Track"
+
+msgid "left_segment"
+msgstr "Left Segment"
+
+msgid "right_segment"
+msgstr "Right Segment"
+
+msgid "left_segment2"
+msgstr "Left Segment 2"
+
+msgid "right_segment2"
+msgstr "Right Segment 2"
+
+msgid "sort_tanks_by_menu_item"
+msgstr "Sort Tanks by"
+
+msgid "sort_by_class_menu_item"
+msgstr "Class"
+
+msgid "sort_by_name_menu_item"
+msgstr "Name"
+
+msgid "sort_by_tier_menu_item"
+msgstr "Tier"

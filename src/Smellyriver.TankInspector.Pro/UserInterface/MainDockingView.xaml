@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.UserInterface.MainDockingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
+             xmlns:local="clr-namespace:Smellyriver.TankInspector.Pro.UserInterface"
+             xmlns:smellyriver="http://schemas.smellyriver.com/common/wpf/"
+             xmlns:theme="clr-namespace:Smellyriver.TankInspector.Pro.Themes.Default;assembly=Smellyriver.TankInspector.Pro.Themes.Default"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" 
+			 d:DesignWidth="800" >
+    <avalonDock:DockingManager x:Name="DockingManager"
+                               AllowMixedOrientation="True"
+                               DocumentsSource="{Binding Documents}"
+                               AnchorablesSource="{Binding Panels}" 
+                               ActiveContentChanged="DockingManager_ActiveContentChanged"
+                               DocumentClosing="DockingManager_DocumentClosing">
+
+        <avalonDock:DockingManager.LayoutItemTemplate>
+            <DataTemplate>
+                <ContentPresenter Content="{Binding Content}" />
+            </DataTemplate>
+        </avalonDock:DockingManager.LayoutItemTemplate>
+        
+        <avalonDock:DockingManager.LayoutItemContainerStyleSelector>
+            <local:PanesStyleSelector>
+                <local:PanesStyleSelector.PanelStyle>
+                    <Style TargetType="{x:Type avalonDock:LayoutAnchorableItem}">
+                        <Setter Property="Title" Value="{Binding Model.Title}"/>
+                        <Setter Property="IconSource" Value="{Binding Model.IconSource}"/>
+                        <Setter Property="ContentId" Value="{Binding Model.ContentId}"/>
+                        <Setter Property="CanClose" Value="{Binding Model.CanClose}" />
+                        <Setter Property="CanHide" Value="{Binding Model.CanHide}" />
+                        <Setter Property="CanFloat" Value="{Binding Model.CanFloat}" />
+                        <Setter Property="Width" Value="{Binding Model.Width}" />
+                        <Setter Property="Height" Value="{Binding Model.Height}" />
+                        <Setter Property="ToolTip" Value="{Binding Model.Description}" />
+                        <Setter Property="Visibility" Value="{Binding Model.IsVisible, Converter={smellyriver:BoolToVisibilityConverter TrueValue=Visible, FalseValue=Hidden}, Mode=TwoWay}" />
+                    </Style>
+                </local:PanesStyleSelector.PanelStyle>
+                <local:PanesStyleSelector.DocumentStyle>
+                    <Style TargetType="{x:Type avalonDock:LayoutItem}">
+                        <Setter Property="Title" Value="{Binding Model.Title}"/>
+                        <Setter Property="IconSource" Value="{Binding Model.IconSource}"/>
+                        <Setter Property="ContentId" Value="{Binding Model.ContentId}" />
+                        <Setter Property="IsSelected" Value="{Binding Model.IsSelected, Mode=TwoWay}" />
+                        <Setter Property="ToolTip" Value="{Binding Model.Description}" />
+                        <Setter Property="Visibility" Value="{Binding Model.IsVisible, Converter={smellyriver:BoolToVisibilityConverter TrueValue=Visible, FalseValue=Hidden}, Mode=TwoWay}" />
+                    </Style>
+                </local:PanesStyleSelector.DocumentStyle>
+            </local:PanesStyleSelector>
+        </avalonDock:DockingManager.LayoutItemContainerStyleSelector>
+
+        <avalonDock:DockingManager.Theme>
+            <theme:AvalonDockTheme />
+        </avalonDock:DockingManager.Theme>
+
+        <!--<avalonDock:DockingManager.Theme>
+            <avalonDock:MetroTheme />
+        </avalonDock:DockingManager.Theme>-->
+        
+        <!--<avalonDock:DockingManager.LayoutUpdateStrategy>
+            <local:LayoutUpdateStrategy />
+        </avalonDock:DockingManager.LayoutUpdateStrategy>-->
+        
+        <avalonDock:DockingManager.DocumentHeaderTemplate>
+            <DataTemplate>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{Binding IconSource}" 
+                           Margin="0,0,2,0" />
+                    <TextBlock Text="{Binding Title}" />
+                </StackPanel>
+            </DataTemplate>
+        </avalonDock:DockingManager.DocumentHeaderTemplate>
+
+        <avalonDock:LayoutRoot>
+            <avalonDock:LayoutPanel>
+                <avalonDock:LayoutDocumentPaneGroup>
+                    <avalonDock:LayoutDocumentPane />
+                </avalonDock:LayoutDocumentPaneGroup >
+            </avalonDock:LayoutPanel>
+        </avalonDock:LayoutRoot>
+    </avalonDock:DockingManager>
+</UserControl>

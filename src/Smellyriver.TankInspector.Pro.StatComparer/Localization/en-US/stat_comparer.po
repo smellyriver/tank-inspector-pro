@@ -1,0 +1,205 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Stat Comparer\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "module_name"
+msgstr "Stat Comparer"
+
+msgid "module_description"
+msgstr "Compare stats of multiple tanks in a table view"
+
+msgid "module_provider"
+msgstr "Smellyriver"
+
+#. appears in single tank context menu
+msgid "add_to_comparison_menu_item"
+msgstr "Add to Comparison"
+
+#. appears in multiple tanks context menu
+msgid "add_tanks_to_comparison_menu_item"
+msgstr "Add to Comparison"
+
+#. appears in file menu. don't forget the ellipsis
+msgid "new_stat_comparison_menu_item"
+msgstr "New Stats Comparison..."
+
+#. appears in file menu. don't forget the ellipsis
+msgid "export_to_csv_sheet_menu_item"
+msgstr "Export to CSV Sheet..."
+
+#. appears in view menu
+msgid "configuration_panel_menu_item"
+msgstr "Configuration Panel"
+
+#. appears in view menu
+msgid "base_values_menu_item"
+msgstr "Base Values"
+
+#. appears in view menu
+msgid "instance_values_menu_item"
+msgstr "Instance Values"
+
+#. appears in view menu
+msgid "tanks_as_columns_menu_item"
+msgstr "Tanks as Columns"
+
+#. appears in view menu
+msgid "stats_as_columns_menu_item"
+msgstr "Stats as Columns"
+
+msgid "add_to_comparison_flyout_title"
+msgstr "Add to Comparison"
+
+msgid "column_mode_stats"
+msgstr "Stats"
+
+msgid "column_mode_stats_description"
+msgstr ""
+"Show stats as columns and tanks as rows, good for comparisons consisted by "
+"vast amount of tanks"
+
+msgid "column_mode_tanks"
+msgstr "Tanks"
+
+msgid "column_mode_tanks_description"
+msgstr ""
+"Show tanks as columns and stats as rows, good for comparing less than 5 tanks"
+
+msgid "new_comparison_default_title"
+msgstr "Untitled Comparison"
+
+msgid "new_comparison_title_prompt_dialog_title"
+msgstr "New Comparison"
+
+msgid "new_comparison_title_prompt_dialog_message"
+msgstr "Please pick a name for the comparison"
+
+msgid "configure_button"
+msgstr "Configure"
+
+msgid "general_tab_header"
+msgstr "General"
+
+msgid "document_title_header"
+msgstr "Title"
+
+msgid "value_mode_header"
+msgstr "Value Mode"
+
+msgid "column_mode_header"
+msgstr "Column Mode"
+
+msgid "stat_tab_header"
+msgstr "Stats"
+
+msgid "open_stat_preset_button_tooltip"
+msgstr "Open stat preset..."
+
+msgid "save_stat_preset_button_tooltip"
+msgstr "Save stat preset..."
+
+msgid "available_stats_header"
+msgstr "Available"
+
+msgid "selected_stats_header"
+msgstr "Selected"
+
+msgid "tanks_tab_header"
+msgstr "Tanks"
+
+msgid "bulk_configuration_header"
+msgstr "Bulk Configuration"
+
+msgid "bulk_configuration_tooltip"
+msgstr "Applies to all tanks in the list"
+
+msgid "elite_configurations_button"
+msgstr "Elite Configurations"
+
+msgid "full_proficiency_crews_button"
+msgstr "100% Proficiency Crews"
+
+msgid "brother_in_arms_for_all_crews_button"
+msgstr "Brother in Arms for All Crews"
+
+msgid "camouflage_for_all_crews_button"
+msgstr "Camouflage for All Crews"
+
+msgid "selected_tanks_header"
+msgstr "Selected"
+
+msgid "selected_tanks_tooltip"
+msgstr "Use Tank Museum or Game Client Explorer to add tanks."
+
+msgid "remove_tank_button"
+msgstr "Remove"
+
+msgid "set_as_benchmark_button"
+msgstr "Benchmark"
+
+#. all upper case suggested
+msgid "add_tanks_and_stats_message_title"
+msgstr "ADD SOME STATS AND TANKS"
+
+msgid "add_tanks_and_stats_message"
+msgstr ""
+"Click the Configure button on the top-right corner to open the configure "
+"panel."
+
+msgid "csv_file_type_filter"
+msgstr "CSV Table"
+
+msgid "save_as_dialog_title"
+msgstr "Save Comparison As"
+
+#. {0}=tier
+#. {1}=tank class (Light Tank, SPG etc.)
+msgid "add_same_tier_and_class_tanks_shortcut"
+msgstr "Add all tier {0} {1}s into comparison"
+
+#. {0}=tier
+msgid "add_same_tier_tanks_shortcut"
+msgstr "Add all tier {0} tanks into comparison"
+
+#. {0}=tank name
+msgid "add_tank_of_all_versions_shortcut"
+msgstr "Add {0} of all versions into comparison"
+
+msgid "load_default_stats_preset_shortcut"
+msgstr "Load default stats preset"
+
+msgid "save_stat_preset_dialog_title"
+msgstr "Save Stat Preset"
+
+msgid "open_stat_preset_dialog_title"
+msgstr "Open Stat Preset"
+
+msgid "stat_preset_file_type_filter"
+msgstr "Stats Preset"
+
+#. {0}=stat preset file
+#. {1}=error message
+msgid "load_stat_preset_failed_message"
+msgstr "failed to load stats preset from file '{0}': {1}"
+
+#. {0}=stat preset file
+#. {1}=error message
+msgid "save_stat_preset_failed_message"
+msgstr "failed to save stats preset from file '{0}': {1}"
+
+msgid "save_stat_preset_prompt_title"
+msgstr "Stat List Modified"
+
+msgid "save_stat_preset_prompt_message"
+msgstr "The stat list has been modified. Do you want to save it"

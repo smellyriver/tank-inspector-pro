@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:smellyriver="http://schemas.smellyriver.com/common/wpf/">
+    <Style TargetType="TextBlock" x:Key="ToolWindowHeader1">
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Margin" Value="0,8,0,6" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+    
+    <Style TargetType="StackPanel" x:Key="ToolWindowStackPanel">
+        <Setter Property="smellyriver:PanelService.ChildrenMargin" Value="0,0,0,8" />
+    </Style>
+    
+    <Style TargetType="GroupBox" x:Key="ToolWindowGroupBox">
+        <Setter Property="Padding" Value="5" />
+    </Style>
+
+    <Style TargetType="FrameworkElement" x:Key="ToolWindowGridItem">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+
+    <Style TargetType="FrameworkElement" x:Key="ToolWindowGridColumn2Item" BasedOn="{StaticResource ToolWindowGridItem}">
+        <Setter Property="Margin" Value="60,0,0,0" />
+    </Style>
+    
+</ResourceDictionary>

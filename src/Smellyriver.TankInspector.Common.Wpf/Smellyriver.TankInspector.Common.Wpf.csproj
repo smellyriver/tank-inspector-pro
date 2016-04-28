@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7098A00E-1F84-48A2-A5B2-ADCBEE3BA880}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Smellyriver.TankInspector.Common.Wpf</RootNamespace>
+    <AssemblyName>Smellyriver.TankInspector.Common.Wpf</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Animation\ShowHideAnimation.cs" />
+    <Compile Include="Behaviors\DragDrop\DefaultDragHandler.cs" />
+    <Compile Include="Behaviors\DragDrop\DefaultDropHandler.cs" />
+    <Compile Include="Behaviors\DragDrop\DragAdorner.cs" />
+    <Compile Include="Behaviors\DragDrop\DragDrop.cs" />
+    <Compile Include="Behaviors\DragDrop\DragInfo.cs" />
+    <Compile Include="Behaviors\DragDrop\DropInfo.cs" />
+    <Compile Include="Behaviors\DragDrop\DropTargetAdorner.cs" />
+    <Compile Include="Behaviors\DragDrop\DropTargetAdorners.cs" />
+    <Compile Include="Behaviors\DragDrop\DropTargetHighlightAdorner.cs" />
+    <Compile Include="Behaviors\DragDrop\DropTargetInsertionAdorner.cs" />
+    <Compile Include="Behaviors\DragDrop\IDragSource.cs" />
+    <Compile Include="Behaviors\DragDrop\IDropTarget.cs" />
+    <Compile Include="Behaviors\DragDrop\Utilities\ItemsControlExtensions.cs" />
+    <Compile Include="Behaviors\DragDrop\Utilities\TypeUtilities.cs" />
+    <Compile Include="Behaviors\DragDrop\Utilities\VisualTreeExtensions.cs" />
+    <Compile Include="Behaviors\TextBoxBehavior.cs" />
+    <Compile Include="Controls\ComboBoxDataTemplateSelector.cs" />
+    <Compile Include="Controls\CroppingAdorner.cs" />
+    <Compile Include="Controls\CroppingAdorner.PuncturedRect.cs" />
+    <Compile Include="Controls\DockPanelSplitter.cs" />
+    <Compile Include="Controls\PanelService.cs" />
+    <Compile Include="Converters\BoolConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\ColorToBrushConverter.cs" />
+    <Compile Include="DependencyNotificationObject.cs" />
+    <Compile Include="Effects\BrightContrastEffect.cs" />
+    <Compile Include="Effects\ProgressiveBrightnessEffect.cs" />
+    <Compile Include="Extensions\EnumSource.cs" />
+    <Compile Include="Input\RelayCommand.cs" />
+    <Compile Include="Input\RelayCommandBase.cs" />
+    <Compile Include="Mvvm\ViewModels\Menu\ContextMenuVM.cs" />
+    <Compile Include="Mvvm\ViewModels\Menu\MenuItemContainerVM.cs" />
+    <Compile Include="Mvvm\ViewModels\Menu\MenuItemVM.cs" />
+    <Compile Include="Mvvm\ViewModels\Menu\MenuItemVMBase.cs" />
+    <Compile Include="Mvvm\ViewModels\TreeView\DummyTreeNodeVM.cs" />
+    <Compile Include="Mvvm\ViewModels\TreeView\InternalLoadChildenStrategy.cs" />
+    <Compile Include="Mvvm\ViewModels\TreeView\LoadChildenStrategy.cs" />
+    <Compile Include="Mvvm\ViewModels\TreeView\LoadingChildrenTreeNodeVM.cs" />
+    <Compile Include="Mvvm\ViewModels\TreeView\TreeNodeVM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Utilities\BitmapImageEx.cs" />
+    <Compile Include="Utilities\BitmapSourceExtensions.cs" />
+    <Compile Include="Utilities\ColorEx.cs" />
+    <Compile Include="Utilities\ColorExtensions.cs" />
+    <Compile Include="Utilities\DependencyObjectExtensions.cs" />
+    <Compile Include="Utilities\DesignHelper.cs" />
+    <Compile Include="Utilities\DispatcherExtensions.cs" />
+    <Compile Include="Utilities\FlowDocumentExtensions.cs" />
+    <Compile Include="Utilities\GridHelper.cs" />
+    <Compile Include="Utilities\LogicalTreeHelperEx.cs" />
+    <Compile Include="Utilities\TextElementExtensions.cs" />
+    <Compile Include="Utilities\UIElementExtensions.cs" />
+    <Compile Include="Utilities\VisualExtensions.cs" />
+    <Compile Include="Utilities\VisualTreeHelperEx.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Shaders\BrightnessAndContrast.ps" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Common\Smellyriver.TankInspector.Common.csproj">
+      <Project>{12fdeefc-91d4-4fa1-8601-4db4a87f99f3}</Project>
+      <Name>Smellyriver.TankInspector.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\DockPanelSplitter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Move_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Shaders\BrightnessAndContrast.fx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

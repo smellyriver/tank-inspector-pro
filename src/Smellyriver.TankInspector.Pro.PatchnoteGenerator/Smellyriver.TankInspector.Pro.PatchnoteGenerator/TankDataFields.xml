@@ -1,0 +1,780 @@
+<TankDataFields xmlns="http://schemas.smellyriver.com/stipro/patchnote-generator" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_price</Name>
+    <XPath>price</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="SimpleCollection">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_tags</Name>
+    <XPath>tags/tag</XPath>
+    <ItemName>tag</ItemName>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_tier</Name>
+    <XPath>level</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_matchmaking_weight</Name>
+    <XPath>mmweight</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_maximum_speed</Name>
+    <XPath>speedLimits/forward</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <Unit>#stats:unit_kilometers_per_hour</Unit>
+    <FormatString>{0:#,0.#}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_maximum_reverse_speed</Name>
+    <XPath>speedLimits/backward</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <Unit>#stats:unit_kilometers_per_hour</Unit>
+    <FormatString>{0:#,0.#}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_repair_cost_factor</Name>
+    <XPath>repairCost</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_crew_experience_factor</Name>
+    <XPath>crewXpFactor</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_hull_weight</Name>
+    <XPath>hull/weight div 1000</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0.###}</FormatString>
+    <Unit>#stats:unit_tons</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_hull_health</Name>
+    <XPath>hull/maxHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_ammorack_health</Name>
+    <XPath>hull/ammoBayHealth/maxHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_ammorack_regenerated_health</Name>
+    <XPath>hull/ammoBayHealth/maxRegenHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_ammorack_repair_cost_factor</Name>
+    <XPath>hull/ammoBayHealth/repairCost</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_fuel_tank_health</Name>
+    <XPath>fuelTanks/fuelTank/maxHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_fuel_tank_regenerated_health</Name>
+    <XPath>fuelTanks/fuelTank/maxRegenHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_fuel_tank_repair_cost_factor</Name>
+    <XPath>fuelTanks/fuelTank/repairCost</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_fuel_tank_weight</Name>
+    <XPath>fuelTanks/fuelTank/weight div 1000</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0.###}</FormatString>
+    <Unit>#stats:unit_tons</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_fuel_tank_price</Name>
+    <XPath>fuelTanks/fuelTank/price</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="ComplexCollection">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_chassis</Name>
+    <XPath>chassis/chassis</XPath>
+    <ItemName>chassis</ItemName>
+    <OmitSingleHeader>true</OmitSingleHeader>
+  </TankDataField>
+  <TankDataField i:type="SimpleCollection">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_tags</Name>
+    <XPath>tags/tag</XPath>
+    <ItemName>tag</ItemName>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_tier</Name>
+    <XPath>level</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_price</Name>
+    <XPath>price</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_unlock_experience</Name>
+    <XPath>experience</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_maximum_climb_angle</Name>
+    <XPath>maxClimbAngle</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_degrees</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_weight</Name>
+    <XPath>weight div 1000</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0.###}</FormatString>
+    <Unit>#stats:unit_tons</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_maximum_load</Name>
+    <XPath>maxLoad div 1000</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.###}</FormatString>
+    <Unit>#stats:unit_tons</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_hard_terrain_resistance</Name>
+    <XPath>terrainResistance/hard</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+    <Unit>#stats:unit_meters_per_square_second</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_medium_terrain_resistance</Name>
+    <XPath>terrainResistance/medium</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+    <Unit>#stats:unit_meters_per_square_second</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_soft_terrain_resistance</Name>
+    <XPath>terrainResistance/soft</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+    <Unit>#stats:unit_meters_per_square_second</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_brake_force</Name>
+    <XPath>brakeForce</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+    <Unit>#stats:unit_newtons</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_can_traverse</Name>
+    <XPath>rotationIsAroundCenter</XPath>
+    <CompareStrategy>NotComparable</CompareStrategy>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_traverse_speed</Name>
+    <XPath>rotationSpeed</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+    <Unit>#stats:unit_degrees_per_second</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_aim_circle_dispersion_on_vehicle_movement</Name>
+    <XPath>shotDispersionFactors/vehicleMovement</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_aim_circle_dispersion_on_vehicle_traversing</Name>
+    <XPath>shotDispersionFactors/vehicleRotation</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_track_health</Name>
+    <XPath>maxHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_track_regenerated_health</Name>
+    <XPath>maxRegenHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>chassis</ElementName>
+    <Name>#patchnote_generator:field_track_repair_cost_factor</Name>
+    <XPath>repairCost</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="ComplexCollection">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_turrets</Name>
+    <XPath>turrets/turret</XPath>
+    <ItemName>turret</ItemName>
+    <OmitSingleHeader>true</OmitSingleHeader>
+  </TankDataField>
+  <TankDataField i:type="SimpleCollection">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_tags</Name>
+    <XPath>tags/tag</XPath>
+    <ItemName>tag</ItemName>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_tier</Name>
+    <XPath>level</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_price</Name>
+    <XPath>price</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_unlock_experience</Name>
+    <XPath>experience</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_weight</Name>
+    <XPath>weight div 1000</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0.###}</FormatString>
+    <Unit>#stats:unit_tons</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_health</Name>
+    <XPath>maxHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_traverse_speed</Name>
+    <XPath>rotationSpeed</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+    <Unit>#stats:unit_degrees_per_second</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_view_range</Name>
+    <XPath>circularVisionRadius</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_meters</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_turret_rotator_health</Name>
+    <XPath>turretRotatorHealth/maxHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_turret_rotator_regenerated_health</Name>
+    <XPath>turretRotatorHealth/maxRegenHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_turret_rotator_repair_cost_factor</Name>
+    <XPath>turretRotatorHealth/repairCost</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_surveying_device_health</Name>
+    <XPath>surveyingDeviceHealth/maxHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_surveying_device_regenerated_health</Name>
+    <XPath>surveyingDeviceHealth/maxRegenHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_surveying_device_repair_cost_factor</Name>
+    <XPath>surveyingDeviceHealth/repairCost</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="ComplexCollection">
+    <ElementName>turret</ElementName>
+    <Name>#patchnote_generator:field_guns</Name>
+    <XPath>guns/gun</XPath>
+    <ItemName>gun</ItemName>
+  </TankDataField>
+  <TankDataField i:type="SimpleCollection">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_tags</Name>
+    <XPath>tags/tag</XPath>
+    <ItemName>tag</ItemName>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_tier</Name>
+    <XPath>level</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_price</Name>
+    <XPath>price</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_unlock_experience</Name>
+    <XPath>experience</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_weight</Name>
+    <XPath>weight div 1000</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0.###}</FormatString>
+    <Unit>#stats:unit_tons</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_maximum_ammo</Name>
+    <XPath>maxAmmo</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+    <Unit>#stats:unit_count</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_elevation</Name>
+    <XPath>pitchLimits/elevation</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_degrees</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_depression</Name>
+    <XPath>pitchLimits/depression</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_degrees</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_accuracy</Name>
+    <XPath>shotDispersionRadius</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_reload_time</Name>
+    <XPath>reloadTime</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_seconds</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_aim_circle_dispersion_on_turret_traversing</Name>
+    <XPath>shotDispersionFactors/turretRotation</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_aim_circle_dispersion_after_shot</Name>
+    <XPath>shotDispersionFactors/afterShot</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_aim_circle_dispersion_while_gun_damaged</Name>
+    <XPath>shotDispersionFactors/whileGunDamaged</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_aim_time</Name>
+    <XPath>aimingTime</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_seconds</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_clip_count</Name>
+    <XPath>clip/count</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+    <Unit>#stats:unit_count</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_clip_rate</Name>
+    <XPath>clip/rate</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_count_per_minute</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_clip_reload_time</Name>
+    <XPath>clip/reloadTime</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_seconds</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_burst_count</Name>
+    <XPath>burst/count</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <Unit>#stats:unit_count</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_burst_rate</Name>
+    <XPath>burst/rate</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_count_per_minute</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_left_traverse_range</Name>
+    <XPath>turretYawLimits/left</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_degrees</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_right_traverse_range</Name>
+    <XPath>turretYawLimits/right</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_degrees</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_traverse_speed</Name>
+    <XPath>rotationSpeed</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+    <Unit>#stats:unit_degrees_per_second</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_health</Name>
+    <XPath>maxHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_regenerated_health</Name>
+    <XPath>maxRegenHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>gun</ElementName>
+    <Name>#patchnote_generator:field_repair_cost_factor</Name>
+    <XPath>repairCost</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="ComplexCollection">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_ammunition</Name>
+    <XPath>turrets/turret/guns/gun/shots/shell</XPath>
+    <ItemName>shell</ItemName>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>shell</ElementName>
+    <Name>#patchnote_generator:field_velocity</Name>
+    <XPath>speed</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+    <Unit>#stats:unit_meters_per_second</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>shell</ElementName>
+    <Name>#patchnote_generator:field_gravity</Name>
+    <XPath>gravity</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+    <Unit>#stats:unit_meters_per_square_second</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>shell</ElementName>
+    <Name>#patchnote_generator:field_maximum_distance</Name>
+    <XPath>maxDistance</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_meters</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>shell</ElementName>
+    <Name>#patchnote_generator:field_penetration_at_100m</Name>
+    <XPath>piercingPower/p100</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_millimeters</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>shell</ElementName>
+    <Name>#patchnote_generator:field_penetration_at_400m</Name>
+    <XPath>piercingPower/p400</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_millimeters</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>shell</ElementName>
+    <Name>#patchnote_generator:field_price</Name>
+    <XPath>price</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>shell</ElementName>
+    <Name>#patchnote_generator:field_caliber</Name>
+    <XPath>caliber</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+    <Unit>#stats:unit_millimeters</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>shell</ElementName>
+    <Name>#patchnote_generator:field_damage</Name>
+    <XPath>damage/armor</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>shell</ElementName>
+    <Name>#patchnote_generator:field_module_damage</Name>
+    <XPath>damage/devices</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="ComplexCollection">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_engines</Name>
+    <XPath>engines/engine</XPath>
+    <ItemName>engine</ItemName>
+  </TankDataField>
+  <TankDataField i:type="SimpleCollection">
+    <ElementName>engine</ElementName>
+    <Name>#patchnote_generator:field_tags</Name>
+    <XPath>tags/tag</XPath>
+    <ItemName>tag</ItemName>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>engine</ElementName>
+    <Name>#patchnote_generator:field_tier</Name>
+    <XPath>level</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>engine</ElementName>
+    <Name>#patchnote_generator:field_price</Name>
+    <XPath>price</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>engine</ElementName>
+    <Name>#patchnote_generator:field_unlock_experience</Name>
+    <XPath>experience</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>engine</ElementName>
+    <Name>#patchnote_generator:field_weight</Name>
+    <XPath>weight div 1000</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0.###}</FormatString>
+    <Unit>#stats:unit_tons</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>engine</ElementName>
+    <Name>#patchnote_generator:field_health</Name>
+    <XPath>maxHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>engine</ElementName>
+    <Name>#patchnote_generator:field_regenerated_health</Name>
+    <XPath>maxRegenHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>engine</ElementName>
+    <Name>#patchnote_generator:field_repair_cost_factor</Name>
+    <XPath>repairCost</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>engine</ElementName>
+    <Name>#patchnote_generator:field_power</Name>
+    <XPath>power</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0.#}</FormatString>
+    <Unit>#stats:unit_horsepowers</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>engine</ElementName>
+    <Name>#patchnote_generator:field_chance_on_fire</Name>
+    <XPath>fireStartingChance</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##%}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="ComplexCollection">
+    <ElementName>tank</ElementName>
+    <Name>#patchnote_generator:field_radios</Name>
+    <XPath>radios/radio</XPath>
+    <ItemName>radio</ItemName>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>radio</ElementName>
+    <Name>#patchnote_generator:field_tier</Name>
+    <XPath>level</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>radio</ElementName>
+    <Name>#patchnote_generator:field_price</Name>
+    <XPath>price</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>radio</ElementName>
+    <Name>#patchnote_generator:field_unlock_experience</Name>
+    <XPath>experience</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>radio</ElementName>
+    <Name>#patchnote_generator:field_weight</Name>
+    <XPath>weight div 1000</XPath>
+    <CompareStrategy>Plain</CompareStrategy>
+    <FormatString>{0:#,0.###}</FormatString>
+    <Unit>#stats:unit_tons</Unit>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>radio</ElementName>
+    <Name>#patchnote_generator:field_health</Name>
+    <XPath>maxHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>radio</ElementName>
+    <Name>#patchnote_generator:field_regenerated_health</Name>
+    <XPath>maxRegenHealth</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>radio</ElementName>
+    <Name>#patchnote_generator:field_repair_cost_factor</Name>
+    <XPath>repairCost</XPath>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <FormatString>{0:#,0.##}</FormatString>
+  </TankDataField>
+  <TankDataField i:type="Value">
+    <ElementName>radio</ElementName>
+    <Name>#patchnote_generator:field_signal_distance</Name>
+    <XPath>distance</XPath>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <FormatString>{0:#,0}</FormatString>
+    <Unit>#stats:unit_meters</Unit>
+  </TankDataField>
+</TankDataFields>

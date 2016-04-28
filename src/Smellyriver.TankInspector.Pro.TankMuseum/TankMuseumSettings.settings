@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Smellyriver.TankInspector.Pro.TankMuseum" GeneratedClassName="TankMuseumSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FilterMode" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="NationFilter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">all</Value>
+    </Setting>
+    <Setting Name="ClassFilter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">all</Value>
+    </Setting>
+    <Setting Name="TierFilter" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PremiumFilter" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="RepositoryFilter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">all</Value>
+    </Setting>
+    <Setting Name="FilterKeyword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IgnoreSpacesAndDashes" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

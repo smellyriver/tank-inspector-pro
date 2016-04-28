@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.Graphics.Controls.ModelView"
+             x:Name="Root"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fx="clr-namespace:Smellyriver.TankInspector.Pro.Graphics.Frameworks"
+             xmlns:scene="clr-namespace:Smellyriver.TankInspector.Pro.Graphics.Scene"
+             mc:Ignorable="d" 
+             SnapsToDevicePixels="True"
+             UseLayoutRounding="True"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid>
+            <fx:DXElement x:Name="DXElement">
+                <fx:DXElement.Renderer>
+                    <scene:HangarScene x:Name="HangarScene">
+                        <scene:HangarScene.Renderer>
+                            <fx:D3D9 />
+                        </scene:HangarScene.Renderer>
+                    </scene:HangarScene>
+                </fx:DXElement.Renderer>
+            </fx:DXElement>
+        </Grid>
+        <Grid x:Name="AlternativeDXElementContainer">
+            
+        </Grid>
+    </Grid>
+</UserControl>

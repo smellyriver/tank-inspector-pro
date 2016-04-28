@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: XML Tools\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "module_name"
+msgstr "XML Tools"
+
+msgid "module_description"
+msgstr "Process XML documents with XPath queries and Xslt converters"
+
+msgid "module_provider"
+msgstr "Smellyriver"
+
+msgid "panel_title"
+msgstr "XML Tools"
+
+#. {0}=error message
+msgid "xpath_error"
+msgstr "ERROR: {0}"
+
+#. shown while an XPath query yields empty result, enclosed with XML comment syntax (e.g. <!-- empty -->)
+msgid "xpath_empty_query"
+msgstr "empty"
+
+msgid "error_loading_xsl_file_message_title"
+msgstr "Error Loading XSL File"
+
+msgid "error_processing_xsl_transform_message_title"
+msgstr "Error Proceeding XSL Transform"
+
+msgid "error_opening_output_file_message_title"
+msgstr "Error Opening Output File"
+
+msgid "transform_complete_message_title"
+msgstr "Transform Complete"
+
+#. {0}=output file location
+msgid "transform_complete_message"
+msgstr "The output file is located at '{0}'"
+
+msgid "save_transform_output_as_dialog_title"
+msgstr "Save Transform Output as"
+
+msgid "open_xsl_file_dialog_title"
+msgstr "Open XSL File"
+
+msgid "xsl_file_type_filter"
+msgstr "XSL Files"
+
+msgid "xpath_tab_header"
+msgstr "XPath"
+
+msgid "xslt_tab_header"
+msgstr "XSLT"
+
+msgid "xpath_query_watermark"
+msgstr "Input XPath query..."
+
+msgid "xml_tab_header"
+msgstr "XML"
+
+msgid "grid_tab_header"
+msgstr "Grid"
+
+msgid "specify_column_header_watermark"
+msgstr "Specify column headers (XPath splitting with '|')"
+
+msgid "xsl_file_header"
+msgstr "XSL File:"
+
+msgid "output_file_header"
+msgstr "Output:"
+
+msgid "open_output_file_after_transform_header"
+msgstr "Open output file after transform"

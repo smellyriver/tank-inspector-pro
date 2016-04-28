@@ -1,0 +1,304 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.TankMuseum.TankMuseumView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:local="clr-namespace:Smellyriver.TankInspector.Pro.TankMuseum"
+             xmlns:swpf="http://schemas.smellyriver.com/common/wpf/"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" 
+			 d:DesignWidth="300"
+             Loc.CatalogName="tank_museum"
+             x:Name="Root">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/ToolWindow.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/Generic.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type local:ComboBoxItemVM}" 
+                          x:Key="CommonComboBoxItemTemplate">
+                <StackPanel Orientation="Horizontal"
+                            ToolTip="{Binding Description}">
+                    <Image Source="{Binding Icon}"
+                           Stretch="None"
+                           VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding Name}"
+                               VerticalAlignment="Center"
+                               Margin="5,0,0,0" />
+                </StackPanel>
+            </DataTemplate>
+
+            <Style TargetType="{x:Type ComboBox}" 
+                   BasedOn="{StaticResource {x:Type ComboBox}}"
+                   x:Key="CommonComboBox">
+                <Setter Property="ItemTemplate" 
+                        Value="{StaticResource CommonComboBoxItemTemplate}" />
+            </Style>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <Grid DockPanel.Dock="Top">
+                <DockPanel>
+                    <Grid DockPanel.Dock="Top"
+                          Background="{DynamicResource AccentColorBrush4}">
+                        <DockPanel VerticalAlignment="Center">
+                            <ComboBox DockPanel.Dock="Left"
+                                      Margin="0,0,3,0"
+                                      Style="{StaticResource CommonComboBox}"
+                                      ItemsSource="{Binding FilterModes}"
+                                      SelectedItem="{Binding SelectedFilterMode, Mode=TwoWay}" />
+
+                            <TextBox metro:TextboxHelper.Watermark="{Binding FilterTextBoxWatermark}" 
+                                     metro:TextboxHelper.ClearTextButton="True"
+                                     Text="{Binding FilterText, Mode=TwoWay, 
+                                                                UpdateSourceTrigger=PropertyChanged,
+                                                                NotifyOnValidationError=True,
+                                                                ValidatesOnDataErrors=True}">
+                                <TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MetroButtonTextBox}">
+                                        <Setter Property="Foreground" Value="Black" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsFilterTextInvalid}" Value="true">
+                                                <Setter Property="Foreground" Value="Red" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </DockPanel>
+
+                    </Grid>
+
+                    <Expander DockPanel.Dock="Top"
+                              Header="{Loc filters_group_header, Default=Filters}" 
+                              Margin="0,0,0,3"
+                              IsExpanded="True">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" MinWidth="72" />
+                                <ColumnDefinition Width="5*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                    <Setter Property="VerticalAlignment" Value="Center" />
+                                </Style>
+                                <Style TargetType="TextBlock" x:Key="Header" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                    <Setter Property="Margin" Value="0,0,0,2" />
+                                </Style>
+                                <Style TargetType="ComboBox" x:Key="ValueComboBox" BasedOn="{StaticResource CommonComboBox}">
+                                    <Setter Property="Margin" Value="0,0,0,2" />
+                                </Style>
+                                <Style TargetType="TextBlock" x:Key="DisableOnXPathHeader" BasedOn="{StaticResource Header}">
+                                    <Setter Property="IsEnabled" Value="{Binding IsInKeywordMode}" />
+                                </Style>
+                                <Style TargetType="ComboBox" x:Key="DisableOnXPathValueComboBox" BasedOn="{StaticResource ValueComboBox}">
+                                    <Setter Property="IsEnabled" Value="{Binding IsInKeywordMode}" />
+                                </Style>
+                            </Grid.Resources>
+
+                            <Grid Grid.ColumnSpan="2"
+                                  Margin="0,-32,0,0"
+                                  Height="24"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Top">
+                                <TextBlock VerticalAlignment="Center">
+                                    <Hyperlink Foreground="WhiteSmoke"
+                                               TextDecorations="None"
+                                               Command="{Binding ResetFiltersCommand}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.TankMuseum;component/Resources/Images/Reset_16.png"
+                                                   Stretch="None" />
+                                            <TextBlock Margin="5,0,0,0" Text="{Loc reset_filters_button, Default=Reset}" />
+                                        </StackPanel>
+                                    </Hyperlink>
+                                </TextBlock>
+                            </Grid>
+
+                            <TextBlock Grid.Row="0"
+                                       Grid.Column="0"
+                                       Style="{StaticResource Header}"
+                                       Text="{Loc game_client_filter_header, Default=Game Client}" />
+
+                            <ComboBox Grid.Row="0"
+                                      Grid.Column="1" 
+                                      Style="{StaticResource ValueComboBox}"
+                                      ItemsSource="{Binding RepositoryFilters}"
+                                      SelectedItem="{Binding SelectedRepositoryFilter, Mode=TwoWay}" />
+
+                            <TextBlock Grid.Row="1"
+                                       Grid.Column="0"
+                                       Style="{StaticResource DisableOnXPathHeader}"
+                                       Text="{Loc tank_class_filter_header, Default=Tank Class}" 
+                                       Margin="0,0,0,2" />
+
+                            <ComboBox Grid.Row="1"
+                                      Grid.Column="1"
+                                      Style="{StaticResource DisableOnXPathValueComboBox}" 
+                                      ItemsSource="{Binding ClassFilters}"
+                                      SelectedItem="{Binding SelectedClassFilter, Mode=TwoWay}"/>
+
+                            <TextBlock Grid.Row="2"
+                                       Grid.Column="0"
+                                       Style="{StaticResource DisableOnXPathHeader}"
+                                       Text="{Loc tier_filter_header, Default=Tier}" />
+
+                            <ComboBox Grid.Row="2"
+                                      Grid.Column="1"
+                                      Style="{StaticResource DisableOnXPathValueComboBox}" 
+                                      ItemsSource="{Binding TierFilters}"
+                                      SelectedItem="{Binding SelectedTierFilter, Mode=TwoWay}" />
+
+                            <TextBlock Grid.Row="3"
+                                       Grid.Column="0"
+                                       Style="{StaticResource DisableOnXPathHeader}"
+                                       Text="{Loc nation_filter_header, Default=Nation}" />
+
+                            <ComboBox Grid.Row="3"
+                                      Grid.Column="1" 
+                                      Style="{StaticResource DisableOnXPathValueComboBox}" 
+                                      ItemsSource="{Binding NationFilters}"
+                                      SelectedItem="{Binding SelectedNationFilter, Mode=TwoWay}" />
+
+                            <TextBlock Grid.Row="4"
+                                       Grid.Column="0"
+                                       Style="{StaticResource DisableOnXPathHeader}"
+                                       Text="{Loc premium_filter_header, Default=Premium}" />
+
+                            <ComboBox Grid.Row="4"
+                                      Grid.Column="1" 
+                                      Style="{StaticResource DisableOnXPathValueComboBox}" 
+                                      ItemsSource="{Binding PremiumFilters}"
+                                      SelectedItem="{Binding SelectedPremiumFilter, Mode=TwoWay}"/>
+                        </Grid>
+                    </Expander>
+
+                    <DataGrid AutoGenerateColumns="False"
+                              ItemsSource="{Binding ListedTanks}"
+                              SelectedCellsChanged="DataGrid_SelectedCellsChanged"
+                              RowHeight="31" 
+                              CanUserAddRows="False"
+                              SelectionUnit="FullRow"
+                              swpf:DragDrop.IsDragSource="True"
+                              swpf:DragDrop.DragHandler="{Binding TankListDragHandler}">
+
+                        <DataGrid.ContextMenu>
+                            <ContextMenu DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}" 
+                                         ItemsSource="{Binding ContextMenuItems}">
+                                <ContextMenu.Resources>
+                                    <!-- workaround to show all the icons -->
+                                    <Image Source="{Binding Icon}" x:Shared="false" x:Key="MenuIcon" />
+                                </ContextMenu.Resources>
+                                <ContextMenu.ItemContainerStyle>
+                                    <Style TargetType="MenuItem" BasedOn="{StaticResource {x:Type MenuItem}}">
+                                        <Setter Property="Icon" Value="{StaticResource MenuIcon}" />
+                                        <Setter Property="IsCheckable" Value="{Binding IsCheckable}" />
+                                        <Setter Property="IsChecked" Value="{Binding IsChecked}" />
+                                        <Setter Property="Header" Value="{Binding Name}" />
+                                        <!-- CAUTION: CommandParameter MUST appear BEFORE Command -->
+                                        <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
+                                        <Setter Property="Command" Value="{Binding Command}" />
+                                        <Setter Property="ItemsSource" Value="{Binding MenuItems}" />
+                                    </Style>
+                                </ContextMenu.ItemContainerStyle>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="auto" 
+                                                    CanUserResize="False"
+                                                    SortMemberPath="Repository.Version">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding Repository.Marker}"
+                                               Stretch="None"
+                                               ToolTip="{Binding Repository.Name}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="45" 
+                                                    CanUserResize="False"
+                                                    SortMemberPath="ClassSortIndex">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.TankMuseum;component/Resources/Images/ClassesColumn_27.png" 
+                                               Stretch="None" Margin="-7,0"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding ClassIcon}"
+                                               Stretch="None" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="45" 
+                                                    CanUserResize="False"
+                                                    SortMemberPath="Nation">
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.TankMuseum;component/Resources/Images/NationsColumn_27.png" 
+                                               Stretch="None" Margin="-7,0"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding NationIcon}"
+                                               Stretch="None" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="*"
+                                                    SortMemberPath="Name">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Image Source="{Binding SmallIcon}" 
+                                                   HorizontalAlignment="Left"
+                                                   Stretch="None" />
+
+                                            <local:FilteredTextBlock Margin="83,4,3,4" 
+                                                                     HorizontalAlignment="Left" 
+                                                                     VerticalAlignment="Center" 
+                                                                     Text="{Binding Name}"
+                                                                     Keyword="{Binding DataContext.FilterKeyword, ElementName=Root}">
+                                                <local:FilteredTextBlock.HighlightStyle>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="FontWeight" Value="Bold" />
+                                                        <Setter Property="Background" Value="#F6B94D" />
+                                                    </Style>
+                                                </local:FilteredTextBlock.HighlightStyle>
+                                            </local:FilteredTextBlock>
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </Grid>
+
+        </DockPanel>
+    </Grid>
+</UserControl>

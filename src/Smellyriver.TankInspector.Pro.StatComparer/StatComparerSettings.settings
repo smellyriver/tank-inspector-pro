@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Smellyriver.TankInspector.Pro.StatComparer" GeneratedClassName="StatComparerSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="StatValueMode" Type="Smellyriver.TankInspector.Pro.Data.Stats.StatValueMode" Scope="User">
+      <Value Profile="(Default)">Instance</Value>
+    </Setting>
+    <Setting Name="ColumnMode" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

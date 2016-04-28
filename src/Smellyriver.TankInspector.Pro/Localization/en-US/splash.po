@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO Main Assembly\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. e-mail title, all upper case recommended
+msgid "email_title"
+msgstr "E-MAIL"
+
+#. password title, all upper case recommended
+msgid "password_title"
+msgstr "PASSWORD"
+
+#. register button text
+msgid "register_button_text"
+msgstr "I'm new here (Register)"
+
+#. reset password button text
+msgid "reset_password_button_text"
+msgstr "Reset Password"
+
+#. agree to EULA (End User License Agreement) checkbox text
+msgid "agree_to_eula_checkbox_text"
+msgstr "I agree to the End User License Agreement"
+
+#. tell new user to use this accound to login in the future
+msgid "account_tip"
+msgstr ""
+"The e-Mail and password above will be your access to Tank Inspector Online "
+"in the future."
+
+#. warn new user not to use his/her wot account. this is bold displayed
+msgid "dont_use_wot_account_title"
+msgstr "DO NOT use your World of Tanks account."
+
+#. warn new user not to use his/her wot account.
+msgid "dont_use_wot_account_content"
+msgstr ""
+"Use another password, preferably a different e-Mail address (if your WoT "
+"account is an e-Mail address)."
+
+#. connect button text
+msgid "connect_button_text"
+msgstr "Connect"
+
+#. close EULA (End User License Agreement) page button text
+msgid "close_eula_button_text"
+msgstr "Close"
+
+#. connecting status text prefix, followed by account name
+msgid "connecting_progress_title"
+msgstr "Connecting: "
+
+msgid "status_preparing"
+msgstr "Preparing..."

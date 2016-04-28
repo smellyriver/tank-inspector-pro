@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.TurretController.TurretControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             MouseLeave="UserControl_MouseLeave"
+             d:DesignWidth="325"
+             d:DesignHeight="316"
+             SnapsToDevicePixels="False"
+             UseLayoutRounding="False"
+             >
+    <UserControl.Resources>
+        <Style TargetType="Shape" x:Key="WhiteStroke">
+            <Setter Property="Stroke" Value="Black" />
+        </Style>
+        <Style TargetType="Shape" x:Key="Border" BasedOn="{StaticResource WhiteStroke}">
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="Fill" Value="#80000000" />
+        </Style>
+        <Style TargetType="Shape" x:Key="Delimiter" BasedOn="{StaticResource WhiteStroke}">
+            <Setter Property="StrokeThickness" Value="0.5" />
+            <Setter Property="StrokeDashArray" Value="2,2" />
+        </Style>
+
+        <Style TargetType="ContentControl" x:Key="GunPointer" >
+            <Setter Property="Width" Value="10" />
+            <Setter Property="Height" Value="10" />
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid Width="10" Height="10">
+                            <Ellipse Width="10" Height="10" StrokeThickness="1" Stroke="Black" Opacity="0.8" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            <Ellipse Width="6" Height="6" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="Black" Opacity="0.7" />
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="HitTestPlaceHolder" 
+          DataContext="{Binding RelativeSource={RelativeSource AncestorType=UserControl}}" 
+          Cursor="Cross"
+          IsHitTestVisible="True" 
+          Background="Transparent"
+          MouseMove="HitTestPlaceHolder_MouseMove" 
+          MouseDown="HitTestPlaceHolder_MouseDown" 
+          MouseUp="HitTestPlaceHolder_MouseUp"
+          MouseWheel="HitTestPlaceHolder_MouseWheel">
+
+        <!--hittest placeholder-->
+        <Border IsHitTestVisible="True" 
+                Background="Transparent" />
+
+        <!--
+        <Ellipse Fill="Transparent" 
+                 Cursor="Cross"
+                 IsHitTestVisible="True"/>-->
+
+        <Viewbox>
+        <Grid x:Name="Root" Width="300"
+              Height="300">
+
+            <Grid RenderTransformOrigin="0.5,0.5" >
+                <Image x:Name="HullFigure" 
+                       Stretch="None" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       MouseEnter="TankFigure_MouseEnter" />
+
+                <Canvas x:Name="BoundaryCanvas" />
+
+                <Grid.RenderTransform>
+                    <RotateTransform Angle="{Binding VehicleYaw}" />
+                </Grid.RenderTransform>
+            </Grid>
+
+            <Image x:Name="TurretFigure" 
+                   Stretch="None"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   RenderTransformOrigin="0.5,0.5" 
+                   MouseEnter="TankFigure_MouseEnter">
+                <Image.RenderTransform>
+                    <RotateTransform x:Name="GunFigureRotateTransform"
+                                     CenterX="0" 
+                                     CenterY="0" />
+                </Image.RenderTransform>
+            </Image>
+
+            <Canvas x:Name="DynamicObjectContainer">
+                <ContentControl x:Name="GunPointer" 
+                                Style="{StaticResource GunPointer}" 
+                                Opacity="0.5" />
+
+                <ContentControl x:Name="OriginalGunPointer" 
+                                Style="{StaticResource GunPointer}" />
+
+                <Line Visibility="Hidden" 
+                      x:Name="YawDirectionLine" 
+                      RenderTransformOrigin="0,0" 
+                      Style="{StaticResource WhiteStroke}">
+                    <Line.RenderTransform>
+                        <RotateTransform CenterX="0" CenterY="0" x:Name="YawDirectionLineRotateTransform" />
+                    </Line.RenderTransform>
+                </Line>
+                <Ellipse Visibility="Hidden" 
+                         x:Name="PitchCircle" 
+                         Style="{StaticResource WhiteStroke}" />
+            </Canvas>
+
+        </Grid>
+        </Viewbox>
+    </Grid>
+</UserControl>

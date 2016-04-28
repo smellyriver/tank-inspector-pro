@@ -1,0 +1,38 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO Main Assembly\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. window title
+msgid "title"
+msgstr "About"
+
+#. app tabpage header
+msgid "app_tab_header"
+msgstr "App"
+
+#. product version header
+msgid "product_version"
+msgstr "Product Version: "
+
+#. modules groupbox header
+msgid "modules"
+msgstr "Modules"
+
+#. credits tabpage header
+msgid "credits_tab_header"
+msgstr "Credits"
+
+#. legal notices tabpage header
+msgid "legal_notices_tab_header"
+msgstr "Legal Notices"

@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4DCE28FE-43FF-4E85-915A-1F460D86F881}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Smellyriver</RootNamespace>
+    <AssemblyName>Smellyriver.TankInspector.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>6</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Smellyriver.Common\Collections\ProjectionComparer.cs" />
+    <Compile Include="Smellyriver.Common\Collections\ProjectionEqualityComparer.cs" />
+    <Compile Include="TankInspector.Pro\Repository\Versioning\AvailableFromVersionAttribute.cs" />
+    <Compile Include="TankInspector.Pro\Repository\Versioning\ObsoleteOnVersionAttribute.cs" />
+    <Compile Include="TankInspector\CoreNotificationObject.cs" />
+    <Compile Include="Smellyriver.Common\Utilities\DictionaryExtensions.cs" />
+    <Compile Include="Smellyriver.Common\Utilities\DoubleExtensions.cs" />
+    <Compile Include="Smellyriver.Common\Utilities\IListExtensions.cs" />
+    <Compile Include="Smellyriver.Common\Utilities\IntegerExtensions.cs" />
+    <Compile Include="Smellyriver.Common\Utilities\MathEx.cs" />
+    <Compile Include="Smellyriver.Common\Utilities\XContainerExtensions.cs" />
+    <Compile Include="TankInspector\ICoreSupport.cs" />
+    <Compile Include="TankInspector.Pro\Data\CachedXQueryable.cs" />
+    <Compile Include="TankInspector.Pro\Data\Comparers.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Accessory.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\ArmorGroup.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Camouflage.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\CamouflageGroup.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\CamouflageKind.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Chassis.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Component.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Consumable.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Currency.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Engine.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Equipment.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Gun.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\GunPitchLimitsComponent.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Hull.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\IArmoredObject.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\IArmoredObjectImpl.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\IInternalArmoredObject.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\IModelObject.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\IModelObjectImpl.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\IModuleUnlockTarget.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Inscription.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\IRepositoryExtensions.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\ModelType.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Module.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\NationalCustomizationDatabase.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Radio.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Shell.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\ShellType.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\ShellTypeExtensions.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Tank.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\TankClassComparer.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\TankObject.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\Turret.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\TurretYawLimits.cs" />
+    <Compile Include="TankInspector.Pro\Data\Entities\UnlockInfo.cs" />
+    <Compile Include="TankInspector.Pro\Data\IXQueryable.cs" />
+    <Compile Include="TankInspector.Pro\Data\IXQueryableExtensions.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\BenchmarkThreshold.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\BenchmarkThresholdType.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\CompareStrategy.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\IStat.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\IStatsProvider.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\Specialized\BooleanStat.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\Specialized\CurrencyStat.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\Specialized\NumberStat.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\Specialized\StringStat.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\Stat.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\StatsProviderManager.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\XPathStat.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\XPathStat.Generic.cs" />
+    <Compile Include="TankInspector.Pro\Data\Stats\XPathStatsProvider.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\BasicConfigurationAspect.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\BasicConfigurationChangedEventArgs.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\ConfigurationBase.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\ConsumableChangedEventArgs.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\CrewConfiguration.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\CrewConfigurationInfo.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\CrewInstance.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\CrewInstance.Training.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\CrewInstanceInfo.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\CustomizationConfiguration.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\CustomizationConfigurationInfo.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\ElementChangedEventArgs.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\EquipmentChangedEventArgs.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\IConfiguration.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\NationUnikey.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\AccessoryScript.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\BasicSkillScript.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\CamouflageSkillScript.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\CommanderBasicSkillScript.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\DriverBasicSkillScript.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\DuplicatedSkillPolicy.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\GunnerBasicSkillScript.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\LoaderBasicSkillScript.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\RadiomanBasicSkillScript.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\Script.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\ScriptHost.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\ScriptingContext.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\SkillScript.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\SkillScriptBase.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\SkillType.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\TankConfiguration.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\TankConfigurationInfo.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\TankInstance.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\TankInstanceConfigurationInfo.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\TankTransform.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\TankUnikey.cs" />
+    <Compile Include="TankInspector.Pro\Data\XElementExtensions.cs" />
+    <Compile Include="TankInspector.Pro\Data\XQueryable.cs" />
+    <Compile Include="TankInspector.Pro\Data\XQueryableWrapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TankInspector.Pro\Gameplay\CrewHelper.cs" />
+    <Compile Include="TankInspector.Pro\Gameplay\SkillHelper.cs" />
+    <Compile Include="TankInspector.Pro\Gameplay\TankHelper.cs" />
+    <Compile Include="TankInspector.Pro\Repository\GameVersion.cs" />
+    <Compile Include="TankInspector.Pro\Repository\IRepository.cs" />
+    <Compile Include="TankInspector.Pro\Repository\IRepositoryLocalization.cs" />
+    <Compile Include="TankInspector\Core.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

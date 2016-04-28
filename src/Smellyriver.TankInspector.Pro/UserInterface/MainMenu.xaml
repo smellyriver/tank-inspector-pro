@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.UserInterface.MainMenu"
+             x:Name="Root"
+	         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:input="clr-namespace:Smellyriver.TankInspector.Pro.Input"
+             xmlns:app="clr-namespace:Smellyriver.TankInspector.Pro"
+             xmlns:smellyriver="http://schemas.smellyriver.com/common/wpf/"
+             Loc.CatalogName="shell"
+	         mc:Ignorable="d"
+	         d:DesignWidth="640" d:DesignHeight="40">
+
+    <UserControl.Resources>
+               
+        <Style TargetType="MenuItem" 
+               x:Key="ActiveModelRelated"
+               BasedOn="{StaticResource {x:Type MenuItem}}">
+            <Setter Property="IsEnabled" Value="{Binding HasActiveModel}" />
+        </Style>
+        <Style TargetType="MenuItem" 
+               x:Key="ActiveModelRelatedSetting" 
+               BasedOn="{StaticResource ActiveModelRelated}">
+            <Setter Property="IsCheckable" Value="True" />
+        </Style>
+        <Image Source="{Binding Icon}" x:Shared="false" x:Key="MenuIcon" />
+
+        <Style TargetType="MenuItem" 
+               x:Key="FixedMenuItem"
+               BasedOn="{StaticResource {x:Type MenuItem}}" />
+        
+        <Style TargetType="MenuItem" 
+               BasedOn="{StaticResource {x:Type MenuItem}}"
+               x:Key="DynamicMenuItem">
+            <Setter Property="Icon" Value="{StaticResource MenuIcon}" />
+            <Setter Property="IsCheckable" Value="{Binding IsCheckable}" />
+            <Setter Property="IsChecked" Value="{Binding IsChecked}" />
+            <Setter Property="Header" Value="{Binding Name}" />
+            <!-- CAUTION: CommandParameter MUST appear BEFORE Command -->
+            <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
+            <Setter Property="Command" Value="{Binding Command}" />
+            <Setter Property="ItemsSource" Value="{Binding MenuItems}" />
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+        </Style>
+
+        <Style TargetType="MenuItem"
+               BasedOn="{StaticResource DynamicMenuItem}">
+            <Setter Property="ItemContainerStyle" Value="{StaticResource DynamicMenuItem}" />
+        </Style>
+
+    </UserControl.Resources>
+
+    <Menu DockPanel.Dock="Top">
+        <Menu.Resources>
+            <CompositeCollection x:Key="RootMenuItemsSource">
+
+                <MenuItem Header="{Loc menu_file, Default=_FILE}" 
+                          Style="{StaticResource FixedMenuItem}">
+                    <MenuItem.ItemsSource>
+                        <CompositeCollection>
+                            <CollectionContainer Collection="{Binding DataContext.NewMenuItems, Source={x:Reference Root}}" />
+                            <Separator Visibility="{Binding HasNewMenuItems, Converter={smellyriver:BoolToVisibilityConverter}}" />
+
+                            <MenuItem Style="{StaticResource FixedMenuItem}" 
+                                      Header="{Loc menu_file_save, Default=_Save}" 
+                                      Command="{x:Static ApplicationCommands.Save}" />
+                            <MenuItem Style="{StaticResource FixedMenuItem}" 
+                                      Header="{Loc menu_file_save_as, Default=Sa_ve}" 
+                                      Command="{x:Static ApplicationCommands.SaveAs}"
+                                      InputGestureText="Ctrl+Shift+S" />
+                            <Separator />
+                            
+                            <CollectionContainer Collection="{Binding DataContext.ExportMenuItems, Source={x:Reference Root}}" />
+                            <Separator Visibility="{Binding HasExportMenuItems, Converter={smellyriver:BoolToVisibilityConverter}}" />
+
+                            <MenuItem Header="{Loc menu_file_close, Default=Cl_ose}" 
+                                      Style="{StaticResource FixedMenuItem}"
+                                      Command="{x:Static ApplicationCommands.Close}"
+                                      InputGestureText="Ctrl+F4" />
+                            <MenuItem Header="{Loc menu_file_recent, Default=_Recent}" 
+                                      Style="{StaticResource FixedMenuItem}"
+                                      ItemsSource="{Binding RecentDocuments}" 
+                                      Visibility="{Binding HasRecentDocuments, Converter={smellyriver:BoolToVisibilityConverter}}" />
+                            <MenuItem Header="{Loc menu_file_exit, Default=E_xit}" 
+                                      Style="{StaticResource FixedMenuItem}"
+                                      Command="{x:Static input:ApplicationCommands.Exit}"
+                                      InputGestureText="Alt+X" />
+                        </CompositeCollection>
+                    </MenuItem.ItemsSource>
+                </MenuItem>
+        
+                <MenuItem Header="{Loc menu_view, Default=_VIEW}" 
+                          Style="{StaticResource FixedMenuItem}"
+                          x:Name="ViewMenu">
+                    <MenuItem.ItemsSource>
+                        <CompositeCollection>
+                            <MenuItem Header="{Loc menu_view_windows, Default=_Windows}" 
+                                      Style="{StaticResource FixedMenuItem}"
+                                      ItemsSource="{Binding Shell.MainDockingView.Panels}">
+                                <MenuItem.ItemContainerStyle>
+                                    <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
+                                        <Setter Property="Header" Value="{Binding Title}" />
+                                        <Setter Property="IsCheckable" Value="True" />
+                                        <Setter Property="Icon" Value="{StaticResource MenuIcon}" />
+                                        <Setter Property="IsChecked" Value="{Binding IsVisible, Mode=TwoWay}" />
+                                    </Style>
+                                </MenuItem.ItemContainerStyle>
+                            </MenuItem>
+                            <!--<MenuItem Header="{Loc menu_view_status_bar, Default=_Status Bar}" 
+                                      Style="{StaticResource FixedMenuItem}"
+                                      IsCheckable="True" 
+                                      IsChecked="{Binding Workspace.ApplicationSettings.ShowStatusBar, Mode=TwoWay}" />-->
+                            <Separator Visibility="{Binding HasViewMenuItems, Converter={smellyriver:BoolToVisibilityConverter}}" />
+                            <CollectionContainer Collection="{Binding DataContext.ViewMenuItems, Source={x:Reference Root}}" />
+                        </CompositeCollection>
+                    </MenuItem.ItemsSource>
+                </MenuItem>
+
+                <MenuItem Header="{Loc menu_tools, Default=_TOOLS}"
+                          Style="{StaticResource FixedMenuItem}">
+                    <MenuItem.ItemsSource>
+                        <CompositeCollection>
+                            <Separator Visibility="{Binding HasToolsMenuItems, Converter={smellyriver:BoolToVisibilityConverter}}"/>
+                            <CollectionContainer Collection="{Binding DataContext.ToolsMenuItems, Source={x:Reference Root}}" />
+                        </CompositeCollection>
+                    </MenuItem.ItemsSource>
+                </MenuItem>
+
+                <CollectionContainer Collection="{Binding DataContext.RootMenuItems, Source={x:Reference Root}}" />
+
+                <MenuItem Header="{Loc menu_help, Default=_HELP}"
+                          Style="{StaticResource FixedMenuItem}">
+                    <MenuItem.ItemsSource>
+                        <CompositeCollection>
+                            <CollectionContainer Collection="{Binding DataContext.HelpMenuItems, Source={x:Reference Root}}" />
+                            <Separator Visibility="{Binding HasHelpMenuItems, Converter={smellyriver:BoolToVisibilityConverter}}"/>
+                            <MenuItem Style="{StaticResource FixedMenuItem}" 
+                                      Header="{Loc menu_help_about, Default=_About...}" 
+                                      Command="{x:Static input:ApplicationCommands.ShowAboutDialog}" />
+                        </CompositeCollection>
+                    </MenuItem.ItemsSource>
+                </MenuItem>        
+            </CompositeCollection>
+        </Menu.Resources>
+        
+        <Menu.ItemsSource>
+            <StaticResource ResourceKey="RootMenuItemsSource" />
+        </Menu.ItemsSource>
+    </Menu>
+</UserControl>

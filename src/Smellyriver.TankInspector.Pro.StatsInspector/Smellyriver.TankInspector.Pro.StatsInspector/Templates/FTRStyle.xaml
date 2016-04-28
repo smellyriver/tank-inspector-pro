@@ -1,0 +1,132 @@
+﻿<StatTemplate xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:c="clr-namespace:System.Collections;assembly=mscorlib"
+              Template.Name="FTR Style"
+              Template.Description="FTR style tank introduction template"
+              Template.Author="Smellyriver"
+              FontSize="12"
+              ColumnWidth="360">
+
+    <StatTemplate.Resources>
+
+        <Style TargetType="Paragraph" x:Key="CategoryTitle">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Typography.Capitals" Value="SmallCaps" />
+        </Style>
+
+        <Style TargetType="Run" x:Key="StatValue">
+            <Setter Property="Text" 
+                    Value="{Binding ValueString, Mode=OneWay}" />
+            <Setter Property="ToolTip"
+                    Value="{Binding Description}" />
+        </Style>
+        
+        <c:ArrayList x:Key="StatTemplate">
+            <Run Text="{Binding ShortName, Mode=OneWay}" />
+            <Run Text=": " />
+            <Run Style="{StaticResource StatValue}" />
+            <Run Text=" " />
+            <Run Text="{Binding Unit, Mode=OneWay}" />
+        </c:ArrayList>
+
+        <Style TargetType="Paragraph" x:Key="StatParagraph">
+            <Setter Property="Stat.TemplateKey" Value="StatTemplate" />
+        </Style>
+
+
+    </StatTemplate.Resources>
+
+    <Paragraph>
+        <Run Text="Tier " />
+        <Run Stat.Key="tier" 
+             Style="{StaticResource StatValue}" />
+        <Run Text=" " />
+        <Run Stat.Key="nation"
+             Style="{StaticResource StatValue}"  />
+        <Run Text=" " />
+        <Run Stat.Key="class"
+             Style="{StaticResource StatValue}"  />
+    </Paragraph>
+    
+    <Paragraph />
+
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="totalWeight" />
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="maxHealth" />
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="viewRange" />
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="radioDistance" />
+    
+    <Paragraph />
+    
+    <Paragraph>
+        <Run Text="Hull armor: " />
+        <Run Stat.Key="hullArmor_front" 
+             Style="{StaticResource StatValue}" />
+        <Run Text="/" />
+        <Run Stat.Key="hullArmor_side" 
+             Style="{StaticResource StatValue}" />
+        <Run Text="/" />
+        <Run Stat.Key="hullArmor_rear" 
+             Style="{StaticResource StatValue}" />
+    </Paragraph>
+
+    <Paragraph>
+        <Run Text="Turret armor: " />
+        <Run Stat.Key="turretArmor_front" 
+             Style="{StaticResource StatValue}" />
+        <Run Text="/" />
+        <Run Stat.Key="turretArmor_side" 
+             Style="{StaticResource StatValue}" />
+        <Run Text="/" />
+        <Run Stat.Key="turretArmor_rear" 
+             Style="{StaticResource StatValue}" />
+    </Paragraph>
+
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="enginePower" />
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="specificPower" />
+
+    <Paragraph>
+        <Run Text="Maximum speed: " />
+        <Run Stat.Key="speedLimits_forward" 
+             Style="{StaticResource StatValue}" />
+        <Run Text="/" />
+        <Run Stat.Key="speedLimits_backward"
+             Style="{StaticResource StatValue}" />
+    </Paragraph>
+
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="chassisRotationSpeed" />
+
+    <Paragraph>
+        <Run Text="Ground resistance: " />
+        <Run Stat.Key="terrainResistance_hard" 
+             Style="{StaticResource StatValue}" />
+        <Run Text="/" />
+        <Run Stat.Key="terrainResistance_medium" 
+             Style="{StaticResource StatValue}" />
+        <Run Text="/" />
+        <Run Stat.Key="terrainResistance_soft" 
+             Style="{StaticResource StatValue}" />
+    </Paragraph>
+    
+    <Paragraph />
+    
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="caliber" />
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="penetration_100m" />
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="damage_armor" />
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="damagePerMinute" />
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="reloadTime" />
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="rateOfFire" />
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="gunAccuracy" />
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="gunAimTime" />
+
+    <Paragraph>
+        <Run Text="Elevation/Depression: " />
+        <Run Stat.Key="gunMaximumElevation" 
+             Style="{StaticResource StatValue}" />
+        <Run Text="/" />
+        <Run Stat.Key="gunMaximumDepression" 
+             Style="{StaticResource StatValue}" />
+    </Paragraph>
+
+    <Paragraph Style="{StaticResource StatParagraph}" Stat.Key="turretRotationSpeed" />
+</StatTemplate>

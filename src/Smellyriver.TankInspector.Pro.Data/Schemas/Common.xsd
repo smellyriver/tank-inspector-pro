@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Common"
+           targetNamespace="http://schemas.smellyriver.com/TankInspector/Data/Common.xsd"
+           elementFormDefault="qualified"
+           xmlns="http://schemas.smellyriver.com/TankInspector/Data/Common.xsd"
+           xmlns:common="http://schemas.smellyriver.com/TankInspector/Data/Common.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="Currency">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="credit" />
+      <xs:enumeration value="gold" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CrewRole">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="commander" />
+      <xs:enumeration value="driver" />
+      <xs:enumeration value="gunner" />
+      <xs:enumeration value="loader" />
+      <xs:enumeration value="radioman" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="Price">
+    <xs:simpleContent>
+      <xs:extension base="xs:positiveInteger">
+        <xs:attribute name="currency" type="common:Currency" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+</xs:schema>

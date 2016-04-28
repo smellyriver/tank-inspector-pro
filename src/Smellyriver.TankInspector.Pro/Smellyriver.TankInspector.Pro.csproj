@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{81E2BE69-6CC3-4EBA-8C9F-43D8C1CE254C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Smellyriver.TankInspector.Pro</RootNamespace>
+    <AssemblyName>stipro</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Binaries\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SINA</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Binaries\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Binaries\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SINA</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro">
+      <HintPath>..\Libraries\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.MefExtensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Ookii.Dialogs.Wpf">
+      <HintPath>..\Libraries\Ookii.Dialogs.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ApplicationState.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ApplicationState.settings</DependentUpon>
+    </Compile>
+    <Compile Include="CoreSupport.cs" />
+    <Compile Include="Data\Entities\AccessoryExtensions.cs" />
+    <Compile Include="Data\Entities\CamouflageExtensions.cs" />
+    <Compile Include="Data\Entities\CamouflageHelper.cs" />
+    <Compile Include="Data\Entities\NationalCustomizationDatabaseExtensions.cs" />
+    <Compile Include="Data\Entities\ShellExtensions.cs" />
+    <Compile Include="Data\Tank\TankInstanceManager.cs" />
+    <Compile Include="DebugSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>DebugSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Graphics\Camera.cs" />
+    <Compile Include="Graphics\ProjectionMode.cs" />
+    <Compile Include="Input\FlowDocumentCommands.cs" />
+    <Compile Include="InternalModules\InternalModuleCommands.cs" />
+    <Compile Include="InternalModules\RepositoryManager\PathVM.cs" />
+    <Compile Include="InternalModules\RepositoryManager\RepositoryManagerDocumentPersistentInfo.cs" />
+    <Compile Include="InternalModules\RepositoryManager\RepositoryManagerDocumentView.xaml.cs">
+      <DependentUpon>RepositoryManagerDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InternalModules\RepositoryManager\RepositoryManagerDocumentVM.cs" />
+    <Compile Include="InternalModules\RepositoryManager\RepositoryVM.cs" />
+    <Compile Include="IO\ApplicationPath.cs" />
+    <Compile Include="IO\ExtractFileInfo.cs" />
+    <Compile Include="IO\ExtractPackageContentAction.cs" />
+    <Compile Include="IO\FileSource.cs" />
+    <Compile Include="IO\FileTypeInfo.cs" />
+    <Compile Include="IO\OverwriteStrategy.cs" />
+    <Compile Include="IO\PackageManager.cs" />
+    <Compile Include="Log4NetLogger.cs" />
+    <Compile Include="Media\ApplicationImages.cs" />
+    <Compile Include="ModelSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ModelSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Modularity\CommandManagerBase.cs" />
+    <Compile Include="Modularity\CreateDocumentTask.cs" />
+    <Compile Include="Modularity\DocumentPersistentInfoProviderBase.cs" />
+    <Compile Include="Modularity\Features\FeatureEventArgs.cs" />
+    <Compile Include="Modularity\Features\ICustomizationConfigurable.cs" />
+    <Compile Include="Modularity\Features\IHasCamera.cs" />
+    <Compile Include="Modularity\Features\ICrewConfigurable.cs" />
+    <Compile Include="Modularity\Features\ITankConfigurable.cs" />
+    <Compile Include="Modularity\Features\ITurretControllable.cs" />
+    <Compile Include="Modularity\Features\IXmlViewer.cs" />
+    <Compile Include="Modularity\Features\IFeature.cs" />
+    <Compile Include="Modularity\Features\TurretControllerInfo.cs" />
+    <Compile Include="Modularity\ICreateDocumentTask.cs" />
+    <Compile Include="Modularity\Input\BulkTankCommand.cs" />
+    <Compile Include="Modularity\Input\BulkTankCommandManager.cs" />
+    <Compile Include="Modularity\Input\CommandBase.cs" />
+    <Compile Include="Modularity\Input\IBulkTankCommand.cs" />
+    <Compile Include="Modularity\Input\ICommandManager.cs" />
+    <Compile Include="Modularity\IDocumentPersistentInfoProvider.cs" />
+    <Compile Include="Modularity\Input\ICommand.cs" />
+    <Compile Include="Modularity\Input\INationCommand.cs" />
+    <Compile Include="Modularity\Input\IRepositoryCommand.cs" />
+    <Compile Include="Modularity\Input\ITankCommand.cs" />
+    <Compile Include="Modularity\Input\NationCommand.cs" />
+    <Compile Include="Modularity\Input\NationCommandManager.cs" />
+    <Compile Include="Modularity\Input\RepositoryCommand.cs" />
+    <Compile Include="Modularity\Input\RepositoryCommandManager.cs" />
+    <Compile Include="Modularity\Input\TankCommand.cs" />
+    <Compile Include="Modularity\Input\TankCommandManager.cs" />
+    <Compile Include="InternalModules\InternalDocumentService.cs" />
+    <Compile Include="InternalModules\RepositoryManager\RepositoryManagerDocumentService.cs" />
+    <Compile Include="Modularity\LoadingManager.cs" />
+    <Compile Include="Modularity\Modules\ArmorDocumentServiceBase.cs" />
+    <Compile Include="Modularity\Modules\FileDocumentService.cs" />
+    <Compile Include="Modularity\Modules\FileDocumentService.StreamInfo.cs" />
+    <Compile Include="Modularity\Modules\FlowDocumentModuleBase.cs" />
+    <Compile Include="Modularity\Modules\IFileViewerService.cs" />
+    <Compile Include="Modularity\Modules\IFileViewerServiceExtensions.cs" />
+    <Compile Include="Modularity\Modules\ModelDocumentServiceBase.cs" />
+    <Compile Include="Modularity\Modules\StatComparisonDocumentServiceBase.cs" />
+    <Compile Include="Modularity\Modules\StatsDocumentServiceBase.cs" />
+    <Compile Include="Modularity\Modules\TankDocumentServiceBase.cs" />
+    <Compile Include="Modularity\Modules\TankModuleTreeDocumentServiceBase.cs" />
+    <Compile Include="Modularity\Modules\TechTreeDocumentServiceBase.cs" />
+    <Compile Include="Modularity\Modules\XmlViewerConstants.cs" />
+    <Compile Include="Modularity\Tasks\ActionTask.cs" />
+    <Compile Include="Modularity\Tasks\CompositeTask.cs" />
+    <Compile Include="Modularity\Tasks\InternalTaskInfo.cs" />
+    <Compile Include="Modularity\Tasks\ITask.cs" />
+    <Compile Include="Modularity\Tasks\ITaskNode.cs" />
+    <Compile Include="Modularity\Tasks\Progress.cs" />
+    <Compile Include="Modularity\Tasks\TaskInfo.cs" />
+    <Compile Include="Modularity\Tasks\TaskNode.cs" />
+    <Compile Include="Modularity\Tasks\TaskManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Repository\HullDirections.cs" />
+    <Compile Include="IO\IFileLocator.cs" />
+    <Compile Include="Repository\LocalGameClientFileLocator.cs" />
+    <Compile Include="Repository\RepositoryManager.AddRepositoryTask.cs" />
+    <Compile Include="Repository\BigworldXmlPreprocessor.cs" />
+    <Compile Include="Repository\LocalGameClientCacheManager.cs" />
+    <Compile Include="Repository\LocalGameClientConfiguration.cs" />
+    <Compile Include="Repository\LocalGameClientPackageImage.cs" />
+    <Compile Include="Repository\RepositoryConfiguration.cs" />
+    <Compile Include="Repository\RepositoryHelper.cs" />
+    <Compile Include="Repository\LocalGameClient.cs" />
+    <Compile Include="Repository\BigworldXmlPreprocessor.Extensions.cs" />
+    <Compile Include="Repository\LocalGameClientLocalization.cs" />
+    <Compile Include="Repository\LocalGameClientPackageIndexer.cs" />
+    <Compile Include="Repository\LocalGameClientPath.cs" />
+    <Compile Include="Repository\RepositoryManager.LoadRepositoriesTask.cs" />
+    <Compile Include="Repository\RepositoryManager.MarkerManager.cs" />
+    <Compile Include="SafeDirectoryCatalog.cs" />
+    <Compile Include="SafeLog.cs" />
+    <Compile Include="UserInterface\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Design\RomanNumber.cs" />
+    <Compile Include="UserInterface\Design\RomanNumberService.cs" />
+    <Compile Include="UserInterface\FlowDocumentHelper.cs" />
+    <Compile Include="UserInterface\IRepositoryExtensions.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\DialogSettings.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\Flyout.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\FlyoutManager.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\FlyoutPosition.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\InputDialogSettings.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\InternalFlyoutManager.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\IProgressDialogController.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\MessageDialogResult.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\MessageDialogStyle.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\MetroProgressDialogControllerAdapter.cs" />
+    <Compile Include="Modularity\DocumentEventArgs.cs" />
+    <Compile Include="Modularity\DocumentInfo.cs" />
+    <Compile Include="UserInterface\Modularity\DockingViewManager.DocumentManager.cs" />
+    <Compile Include="Modularity\DocumentServiceManager.cs" />
+    <Compile Include="Modularity\DocumentRestorationInfo.cs" />
+    <Compile Include="Modularity\FeaturedPanelInfo.cs" />
+    <Compile Include="Modularity\IDocumentManager.cs" />
+    <Compile Include="Modularity\IDocumentService.cs" />
+    <Compile Include="Modularity\IPanelManager.cs" />
+    <Compile Include="Modularity\ModuleBase.cs" />
+    <Compile Include="Modularity\LayoutContentInfo.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\DialogManager.cs" />
+    <Compile Include="Modularity\PanelInfo.cs" />
+    <Compile Include="UserInterface\Modularity\DockingViewManager.cs" />
+    <Compile Include="Repository\RepositoryManager.cs" />
+    <Compile Include="UserInterface\Modularity\DockingViewManager.DocumentManager.OpenDocumentTask.cs" />
+    <Compile Include="UserInterface\Modularity\DockingViewManager.DocumentManager.RestoreDocumentsTask.cs" />
+    <Compile Include="UserInterface\Modularity\DockingViewManager.PanelManager.cs" />
+    <Compile Include="Modularity\Tasks\FakeProgressScope.cs" />
+    <Compile Include="Modularity\Tasks\IProgressScope.cs" />
+    <Compile Include="UserInterface\Modularity\Menus\MenuAnchor.cs" />
+    <Compile Include="UserInterface\Modularity\Menus\MenuManager.cs" />
+    <Compile Include="UserInterface\Modularity\StatusManager.cs" />
+    <Compile Include="UserInterface\PackageImage.cs" />
+    <Compile Include="Modularity\Tasks\ChildProgressScope.cs" />
+    <Compile Include="Modularity\Tasks\ProgressScope.cs" />
+    <Compile Include="Modularity\Tasks\RootProgressScope.cs" />
+    <Compile Include="UserInterface\Modularity\Popups\ProgressDialog.xaml.cs">
+      <DependentUpon>ProgressDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Modularity\Popups\ProgressDialogController.cs" />
+    <Compile Include="UserInterface\Splash.xaml.cs">
+      <DependentUpon>Splash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ViewModels\AboutVM.cs" />
+    <Compile Include="UserInterface\ViewModels\ApplicationSettingsVM.cs" />
+    <Compile Include="UserInterface\ViewModels\DocumentVM.cs" />
+    <Compile Include="UserInterface\LayoutUpdateStrategy.cs" />
+    <Compile Include="UserInterface\ViewModels\FlowDocumentVMBase.cs" />
+    <Compile Include="UserInterface\ViewModels\LayoutContentVM.cs" />
+    <Compile Include="UserInterface\ViewModels\MainDockingViewVM.cs" />
+    <Compile Include="UserInterface\ViewModels\ModelSettingsVM.cs" />
+    <Compile Include="UserInterface\ViewModels\ModuleVM.cs" />
+    <Compile Include="UserInterface\ViewModels\PanelVM.cs" />
+    <Compile Include="UserInterface\PanesStyleSelector.cs" />
+    <Compile Include="UserInterface\ViewModels\ShellVM.cs" />
+    <Compile Include="UserInterface\ViewModels\SplashViewState.cs" />
+    <Compile Include="UserInterface\ViewModels\SplashVM.cs" />
+    <Compile Include="UserInterface\ViewModels\StatusVM.cs" />
+    <Compile Include="Utilities\LogExtensions.cs" />
+    <Page Include="InternalModules\RepositoryManager\RepositoryManagerDocumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <None Include="Localization\en-US\Credits.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\EULA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Page Include="Resources\Documents\LegalNotices.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\ToolWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\MainDockingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\MainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserInterface\MainStatusBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\Modularity\Popups\ProgressDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserInterface\Shell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ApplicationSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Input\ApplicationCommands.cs" />
+    <Compile Include="Input\ModelCommands.cs" />
+    <Compile Include="Model\ModelType.cs" />
+    <Compile Include="UserInterface\MainDockingView.xaml.cs">
+      <DependentUpon>MainDockingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ViewModels\MainMenuVM.cs" />
+    <Compile Include="UserInterface\MainStatusBar.xaml.cs">
+      <DependentUpon>MainStatusBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="UserInterface\Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="ApplicationSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ApplicationSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ApplicationState.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ApplicationState.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Config\documents.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\layout.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DebugSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>DebugSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Localization\en-US\about.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\about.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\account.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\account.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\modularity.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\modularity.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\document.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\document.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\package_support.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\package_support.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\game_client_manager.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\game_client_manager.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\tank_terminologies.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\tank_terminologies.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\common.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\common.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Localization\en-US\app.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\app.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\shell.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\shell.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\splash.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\splash.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\stats.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\stats.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ModelSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ModelSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Menu\Database_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Actions\Copy_16.png" />
+    <Resource Include="Resources\Images\Actions\Paste_16.png" />
+    <Resource Include="Resources\Images\Actions\Save_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Common.Wpf\Smellyriver.TankInspector.Common.Wpf.csproj">
+      <Project>{7098a00e-1f84-48a2-a5b2-adcbee3ba880}</Project>
+      <Name>Smellyriver.TankInspector.Common.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Common\Smellyriver.TankInspector.Common.csproj">
+      <Project>{12fdeefc-91d4-4fa1-8601-4db4a87f99f3}</Project>
+      <Name>Smellyriver.TankInspector.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Core\Smellyriver.TankInspector.Core.csproj">
+      <Project>{4dce28fe-43ff-4e85-915a-1f460d86f881}</Project>
+      <Name>Smellyriver.TankInspector.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.IO\Smellyriver.TankInspector.IO.csproj">
+      <Project>{33c70321-47cb-4a97-a0ec-ca09a7cbf6e9}</Project>
+      <Name>Smellyriver.TankInspector.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Pro.Globalization\Smellyriver.TankInspector.Pro.Globalization.csproj">
+      <Project>{9890f571-444f-4edb-8ba4-58f1c0921937}</Project>
+      <Name>Smellyriver.TankInspector.Pro.Globalization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Pro.Themes.Default\Smellyriver.TankInspector.Pro.Themes.Default.csproj">
+      <Project>{95996305-e16c-4756-93e4-b615b6793f2a}</Project>
+      <Name>Smellyriver.TankInspector.Pro.Themes.Default</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Gameplay\AT-SPG_16.png" />
+    <Resource Include="Resources\Images\Gameplay\heavyTank_16.png" />
+    <Resource Include="Resources\Images\Gameplay\lightTank_16.png" />
+    <Resource Include="Resources\Images\Gameplay\mediumTank_16.png" />
+    <Resource Include="Resources\Images\Gameplay\SPG_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\General\Open_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\General\Folder_Closed_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="InternalModules\RepositoryManager\Resources\Images\ModDirectory_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\App\Logo_138.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\App\Banner_349.png" />
+    <Resource Include="Resources\Images\App\Logo_93.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Actions\RTF_16.png" />
+    <Resource Include="Resources\Images\Actions\TXT_16.png" />
+    <Resource Include="Resources\Images\Actions\XPS_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Notifications\OK_Gray_16.png" />
+    <Resource Include="Resources\Images\Notifications\OK_Green_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Notifications\Info_Blue_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Notifications\Warning_Yellow_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Actions\Reset_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Notifications\Critical_Red_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\default_states.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\stats.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

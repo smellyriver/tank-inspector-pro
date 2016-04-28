@@ -1,0 +1,141 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Model Inspector\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "module_name"
+msgstr "Model Inspector"
+
+msgid "module_description"
+msgstr "View tank models"
+
+msgid "module_provider"
+msgstr "Smellyriver"
+
+msgid "inspect_model_menu_item"
+msgstr "Inspect Model"
+
+#. {0}=tank name
+msgid "document_title"
+msgstr "{0} [model]"
+
+msgid "export_tank_mesh_menu_item"
+msgstr "Export Mesh..."
+
+msgid "export_textures_menu_item"
+msgstr "Export Textures..."
+
+msgid "export_uv_map_menu_item"
+msgstr "Export UV Map..."
+
+msgid "switch_to_undamaged_model_menu_item"
+msgstr "Undamaged Model"
+
+msgid "switch_to_destroyed_model_menu_item"
+msgstr "Destroyed Model"
+
+msgid "switch_to_normal_texture_mode_menu_item"
+msgstr "Normal Texture"
+
+msgid "switch_to_grid_texture_mode_menu_item"
+msgstr "Grid Texture"
+
+msgid "switch_to_official_texture_source_menu_item"
+msgstr "Official Texture"
+
+msgid "switch_to_mod_texture_source_menu_item"
+msgstr "Mod Texture"
+
+msgid "toggle_camouflage_menu_item"
+msgstr "Show Camouflage"
+
+msgid "capture_framerate"
+msgstr "Framerate"
+
+msgid "capture_mode_static"
+msgstr "Static"
+
+msgid "capture_mode_static_description"
+msgstr "Capture hi-resolution static picture"
+
+msgid "capture_mode_yaw_animation"
+msgstr "Yaw Animation"
+
+msgid "capture_mode_yaw_animation_description"
+msgstr "Capture an animation representing a tank rotating along its Z-axis"
+
+msgid "capture_mode_visual_change"
+msgstr "Visual Changes"
+
+msgid "capture_mode_visual_change_description"
+msgstr ""
+"Take two photos of a same tank in two different versions to unveal its "
+"visual differences"
+
+msgid "capture_rotation_speed"
+msgstr "Rotation Speed"
+
+msgid "framerate_unit"
+msgstr "fps"
+
+msgid "capturing_static_picture_title"
+msgstr "Taking Snapshot"
+
+#. {0} = tank name
+msgid "capturing_static_picture_message"
+msgstr ""
+"Tanking snapshot for {0}...\n"
+"Depending on your system performance and snapshot settings, this could take "
+"up to a minute. Reduce snapshot size could make this process faster."
+
+msgid "capture_static_picture_completed_title"
+msgstr "Completed"
+
+#. {0} = exported file name
+msgid "capture_static_picture_completed_message"
+msgstr "Snapshot successfully saved to {0}."
+
+msgid "capturing_yaw_animation_title"
+msgstr "Capturing Animation"
+
+#. {0} = tank name
+msgid "capturing_yaw_animation_message"
+msgstr ""
+"Capturing yaw animation for {0}...\n"
+"Depending on your system performance and animation settings, this could take "
+"several minutes. Increase rotation speed, reduce framerate and capture size "
+"could make this process faster."
+
+msgid "capture_yaw_animation_completed_title"
+msgstr "Completed"
+
+#. {0} = exported file name
+msgid "capture_yaw_animation_completed_message"
+msgstr "Yaw animation successfully saved to {0}."
+
+msgid "capturing_visual_change_title"
+msgstr "Capturing Visual Changes"
+
+#. {0} = tank name
+msgid "capturing_visual_change_message"
+msgstr ""
+"Capturing visual changes for {0}...\n"
+"Depending on your system performance and animation settings, this could take "
+"several minutes. Reduce capture size could make this process faster."
+
+msgid "capture_visual_change_completed_title"
+msgstr "Completed"
+
+#. {0} = exported file name
+msgid "capture_visual_change_completed_message"
+msgstr "Visual changes successfully saved to {0}."

@@ -1,0 +1,432 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.StatComparer.StatComparisonDocumentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Smellyriver.TankInspector.Pro.StatComparer"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:swpf="http://schemas.smellyriver.com/common/wpf/"
+             Loc.CatalogName="stat_comparer"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="700">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/ToolWindow.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <ComboBox x:Key="StatValueModeDropdownList"
+                      x:Shared="false"
+                      ItemsSource="{Binding StatValueModes}"
+                      SelectedItem="{Binding StatValueMode, Mode=TwoWay}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" ToolTip="{Binding Description}">
+                            <Image Source="{Binding Icon}" Stretch="None"/>
+                            <TextBlock Margin="3,0,0,0" Text="{Binding Name}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Top">
+            <ToggleButton IsChecked="{Binding IsEditPanelShown, Mode=TwoWay}"
+                          Content="{Loc configure_button, Default=Configure}" />
+            <ContentPresenter Margin="3,0,0,0"
+                              Content="{StaticResource StatValueModeDropdownList}" />
+        </StackPanel>
+        <Separator DockPanel.Dock="Top" />
+        <DockPanel>
+            <Grid DockPanel.Dock="Top" 
+                  MinHeight="240"
+                  Height="{Binding EditPanelHeight, Mode=TwoWay}"
+                  Visibility="{Binding IsEditPanelShown, Converter={swpf:BoolToVisibilityConverter}}">
+                <TabControl>
+                    <TabControl.Resources>
+                        <Style TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+                            <Setter Property="metro:ControlsHelper.HeaderFontSize" Value="14" />
+                        </Style>
+                    </TabControl.Resources>
+                    <TabItem Header="{Loc general_tab_header, Default=General}">
+                        <Grid Margin="10">
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                    <Setter Property="FontSize" Value="14" />
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0"
+                                       VerticalAlignment="Center"
+                                       Text="{Loc document_title_header, Default=Title}" />
+                            <TextBox Grid.Row="0" Grid.Column="1" 
+                                     Margin="10,0,0,0"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center"
+                                     Width="200"
+                                     Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                            <TextBlock Grid.Row="1" Grid.Column="0"
+                                       VerticalAlignment="Center"
+                                       Text="{Loc value_mode_header, Default=Value Mode}" />
+
+                            <ContentPresenter Grid.Row="1" Grid.Column="1"
+                                              Margin="10,0,0,0"
+                                              HorizontalAlignment="Left"
+                                              VerticalAlignment="Center"
+                                              Content="{StaticResource StatValueModeDropdownList}" />
+
+                            <TextBlock Grid.Row="2" Grid.Column="0"
+                                       VerticalAlignment="Center"
+                                       Text="{Loc column_mode_header, Default=Column Mode}" />
+
+                            <ComboBox Grid.Row="2" Grid.Column="1"
+                                      Margin="10,0,0,0"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      ItemsSource="{Binding ColumnModes}"
+                                      SelectedItem="{Binding ColumnMode, Mode=TwoWay}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" 
+                                                   ToolTip="{Binding Description}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="{Loc stat_tab_header, Default=Stats}">
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            
+                            <StackPanel Grid.ColumnSpan="3"
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                        Margin="0,-35,5,0">
+                                <Button Command="{Binding StatsManager.OpenStatsPresetCommand}"
+                                        ToolTip="{Loc open_stat_preset_button_tooltip, Default=Open stat preset...}">
+                                    <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.StatComparer;component/Resources/Images/Open_16.png"
+                                           Stretch="None"/>
+                                </Button>
+                                <Button Margin="5,0,0,0" Command="{Binding StatsManager.SaveStatsPresetCommand}"
+                                        ToolTip="{Loc save_stat_preset_button_tooltip, Default=Save stat preset...}">
+                                    <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.StatComparer;component/Resources/Images/Save_16.png"
+                                           Stretch="None"/>
+                                </Button>
+                            </StackPanel>
+
+                            <GroupBox Header="{Loc available_stats_header, Default=Available}"
+                                      Grid.Column="0">
+                                <TreeView x:Name="AvailableStatsTreeView"
+                                          Margin="-5"
+                                          ItemsSource="{Binding StatsManager.AvailableStatCategories}"
+                                          swpf:DragDrop.IsDragSource="True"
+                                          swpf:DragDrop.IsDropTarget="True"
+                                          swpf:DragDrop.DropHandler="{Binding StatsManager.AvailableStatsDropHandler}">
+                                    <TreeView.ItemTemplate>
+                                        <HierarchicalDataTemplate DataType="{x:Type local:StatCategoryVM}"
+                                                                  ItemsSource="{Binding Stats}">
+                                            <TextBlock Text="{Binding Name}" />
+                                            <HierarchicalDataTemplate.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Name}" />
+                                                </DataTemplate>
+                                            </HierarchicalDataTemplate.ItemTemplate>
+                                        </HierarchicalDataTemplate>
+                                    </TreeView.ItemTemplate>
+                                    <TreeView.ItemContainerStyle>
+                                        <Style TargetType="TreeViewItem" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                                            <Setter Property="Visibility" Value="{Binding Visibility}" />
+                                            <Setter Property="ToolTip" Value="{Binding Description}" />
+                                            <EventSetter Event="MouseDoubleClick" Handler="AvailableStatsTreeViewItem_MouseDoubleClick" />
+                                        </Style>
+                                    </TreeView.ItemContainerStyle>
+                                </TreeView>
+                            </GroupBox>
+                            <Grid Grid.Column="1">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                                            <Setter Property="FontFamily" Value="Marlett" />
+                                            <Setter Property="FontSize" Value="14" />
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Button Content="4"
+                                            CommandParameter="{Binding SelectedItem, ElementName=AvailableStatsTreeView}"
+                                            Command="{Binding StatsManager.AddStatCommand}" />
+                                    <Button Margin="0,5,0,0" Content="3" 
+                                            CommandParameter="{Binding SelectedItems, ElementName=SelectedStatsList}"
+                                            Command="{Binding StatsManager.RemoveStatCommand}" />
+                                    <Separator Margin="0,6" />
+                                    <Button Content="5" 
+                                            CommandParameter="{Binding SelectedItems, ElementName=SelectedStatsList}"
+                                            Command="{Binding StatsManager.StatMoveUpCommand}" />
+                                    <Button Margin="0,5,0,0" Content="6" 
+                                            CommandParameter="{Binding SelectedItems, ElementName=SelectedStatsList}"
+                                            Command="{Binding StatsManager.StatMoveDownCommand}" />
+                                </StackPanel>
+                            </Grid>
+                            <GroupBox Header="{Loc selected_stats_header, Default=Selected}"
+                                      Grid.Column="2">
+                                <ListBox x:Name="SelectedStatsList" 
+                                         Margin="-5"
+                                         ItemsSource="{Binding StatsManager.SelectedStats}"
+                                         SelectionMode="Extended"
+                                         swpf:DragDrop.IsDropTarget="True"
+                                         swpf:DragDrop.IsDragSource="True"
+                                         swpf:DragDrop.DropHandler="{Binding StatsManager.SelectedStatsDropHandler}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}" />
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                            <Setter Property="ToolTip" Value="{Binding Description}" />
+                                            <EventSetter Event="MouseDoubleClick" Handler="SelectedStatsListItem_MouseDoubleClick" />
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                </ListBox>
+                            </GroupBox>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="{Loc tanks_tab_header, Default=Tanks}">
+                        <DockPanel Margin="10">
+                            <GroupBox DockPanel.Dock="Right"
+                                      Header="{Loc bulk_configuration_header, Default=Bulk Configuration}">
+                                <Grid>
+                                    <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.StatComparer;component/Resources/Images/Info_16.png"
+                                           Stretch="None"
+                                           Grid.ColumnSpan="2"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Top"
+                                           Margin="0,-26,0,0"
+                                           ToolTip="{Loc bulk_configuration_tooltip, Default=Applies to all tanks in the list}"/>
+                                
+                                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                                                  VerticalScrollBarVisibility="Auto">
+                                        <StackPanel>
+                                            <StackPanel.Resources>
+                                                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                                                    <Setter Property="Margin" Value="0,0,0,3" />
+                                                    <Setter Property="CommandParameter"
+                                                            Value="{Binding SelectedItems, ElementName=SelectedTanksList}" />
+                                                </Style>
+                                            </StackPanel.Resources>
+
+                                            <Button Content="{Loc elite_configurations_button, Default=Elite Configurations}"
+                                                    Command="{Binding TanksManager.LoadEliteConfigurationsCommand}"/>
+                                            <Button Content="{Loc full_proficiency_crews_button, Default=100% Proficiency Crews}" 
+                                                    Command="{Binding TanksManager.LoadFullProficiencyCrewsCommand}" />
+                                            <Button Content="{Loc brother_in_arms_for_all_crews_button, Default=Brother in Arms for All Crews}"
+                                                    Command="{Binding TanksManager.LoadBrotherInArmsForAllCrewsCommand}" />
+                                            <Button Content="{Loc camouflage_for_all_crews_button, Default=Camouflage for All Crews}" 
+                                                    Command="{Binding TanksManager.LoadCamouflageForAllCrewsCommand}" />
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="{Loc selected_tanks_header, Default=Selected}" >
+                                <Grid>
+                                    <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.StatComparer;component/Resources/Images/Info_16.png"
+                                           Stretch="None"
+                                           Grid.ColumnSpan="2"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Top"
+                                           Margin="0,-26,0,0"
+                                           ToolTip="{Loc selected_tanks_tooltip, Default=Use Tank Museum or Game Client Explorer to add tanks.}"/>
+
+                                    <DockPanel>
+                                    
+                                        <Grid DockPanel.Dock="Right">
+                                            <StackPanel VerticalAlignment="Center" 
+                                                        HorizontalAlignment="Center"
+                                                        Margin="5,0,0,0">
+                                                <Button CommandParameter="{Binding SelectedItems, ElementName=SelectedTanksList}"
+                                                        Command="{Binding TanksManager.RemoveTankCommand}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.StatComparer;component/Resources/Images/Remove_16.png" />
+                                                        <TextBlock Margin="3,0,0,0"
+                                                                   Text="{Loc remove_tank_button, Default=Remove}" />
+                                                    </StackPanel>
+                                                </Button>
+                                                <ToggleButton Margin="0,5,0,0"
+                                                              CommandParameter="{Binding SelectedItems, ElementName=SelectedTanksList}"
+                                                              Command="{Binding TanksManager.ToggleBenchmarkCommand}"
+                                                              IsChecked="{Binding SelectedItem.IsBenchmark, ElementName=SelectedTanksList, Mode=OneWay}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.StatComparer;component/Resources/Images/Benchmark_16.png" />
+                                                        <TextBlock Margin="3,0,0,0"
+                                                                   Text="{Loc set_as_benchmark_button, Default=Benchmark}" />
+                                                    </StackPanel>
+                                                </ToggleButton>
+                                                <Separator Margin="0,6" />
+                                                <Button Content="5" 
+                                                        FontFamily="Marlett" FontSize="14"
+                                                        CommandParameter="{Binding SelectedItems, ElementName=SelectedTanksList}"
+                                                        Command="{Binding TanksManager.TankMoveUpCommand}" />
+                                                <Button Margin="0,5,0,0" Content="6" 
+                                                        FontFamily="Marlett" FontSize="14"
+                                                        CommandParameter="{Binding SelectedItems, ElementName=SelectedTanksList}"
+                                                        Command="{Binding TanksManager.TankMoveDownCommand}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    
+                                        <Separator DockPanel.Dock="Right" />
+
+                                        <ListBox x:Name="SelectedTanksList" 
+                                                    Margin="-5,-5,1,-5"
+                                                    ItemsSource="{Binding TanksManager.SelectedTanks}"
+                                                    SelectedItem="{Binding TanksManager.SelectedTank, Mode=TwoWay}"
+                                                    SelectionMode="Extended"
+                                                    swpf:DragDrop.IsDragSource="True"
+                                                    swpf:DragDrop.IsDropTarget="True"
+                                                    swpf:DragDrop.DropHandler="{Binding TanksManager.SelectedTanksDropHandler}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate DataType="{x:Type local:TankVM}">
+                                                    <DockPanel>
+                                                        <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.StatComparer;component/Resources/Images/Benchmark_16.png"
+                                                                DockPanel.Dock="Right"
+                                                                Margin="5,0"
+                                                                Stretch="None"
+                                                                Visibility="{Binding IsBenchmark, Converter={swpf:BoolToVisibilityConverter FalseValue=Hidden}}"/>
+
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="{Binding RepositoryMarker}" Stretch="None" />
+                                                            <Image Source="{Binding Icon}" Stretch="None" />
+                                                            <TextBlock Text="{Binding Name}" />
+                                                        </StackPanel>
+                                                    </DockPanel>
+
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                            <ListBox.ItemContainerStyle>
+                                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                                    <EventSetter Event="MouseDoubleClick" Handler="SelectedTanksListItem_MouseDoubleClick" />
+                                                </Style>
+                                            </ListBox.ItemContainerStyle>
+                                        </ListBox>
+                                    </DockPanel>
+                                </Grid>
+                            </GroupBox>
+
+                        </DockPanel>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <swpf:DockPanelSplitter DockPanel.Dock="Top" 
+                                           Background="{DynamicResource GrayBrush7}"
+                                           Visibility="{Binding IsEditPanelShown, Converter={swpf:BoolToVisibilityConverter}}"/>
+            <Grid>
+                <DataGrid x:Name="ComparisonGrid" 
+                          ItemsSource="{Binding DataRows}"
+                          AutoGenerateColumns="False" 
+                          ColumnReordered="ComparisonGrid_ColumnReordered"
+                          ColumnReordering="ComparisonGrid_ColumnReordering"
+                          swpf:DragDrop.IsDropTarget="True"
+                          swpf:DragDrop.DropHandler="{Binding DropHandler}">
+                    <DataGrid.Resources>
+
+                        <DataTemplate x:Key="StatValueTemplate" DataType="{x:Type local:StatVM}">
+                            <Grid>
+                                <DockPanel Visibility="{Binding IsLoaded, Converter={swpf:BoolToVisibilityConverter}}">
+
+                                    <Image DockPanel.Dock="Right"
+                                            Margin="3,0,0,0" 
+                                            Width="16"
+                                            Height="16"
+                                            Source="{Binding BenchmarkIcon}" 
+                                            Stretch="None" />
+
+                                    <TextBlock Text="{Binding ValueString}" TextAlignment="Right">
+                                        <TextBlock.FontWeight>
+                                            <Binding Path="IsBest">
+                                                <Binding.Converter>
+                                                    <swpf:BoolConverter TrueValue="Bold"
+                                                                               FalseValue="Normal"/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </TextBlock.FontWeight>
+                                    </TextBlock>
+                                </DockPanel>
+
+                                <metro:ProgressRing HorizontalAlignment="Right" VerticalAlignment="Center" Width="16" Height="16"
+                                                    Visibility="{Binding IsLoading, Converter={swpf:BoolToVisibilityConverter}}"/>
+                            </Grid>
+                        </DataTemplate>
+
+                        <DataTemplate x:Key="TankTemplate" DataType="{x:Type local:TankVM}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding RepositoryMarker}" Stretch="None" />
+                                <Image Source="{Binding Icon}" Stretch="None" />
+                                <TextBlock Text="{Binding Name}" />
+                                <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.StatComparer;component/Resources/Images/Benchmark_16.png"
+                                       Margin="3,0,0,0"
+                                       Stretch="None"
+                                       Visibility="{Binding IsBenchmark, Converter={swpf:BoolToVisibilityConverter}}"/>
+                            </StackPanel>
+                        </DataTemplate>
+
+                        <DataTemplate x:Key="StatInfoTemplate" DataType="{x:Type local:StatInfoVM}">
+                            <TextBlock Text="{Binding NameWithUnit}" ToolTip="{Binding Description}" />
+                        </DataTemplate>
+
+                    </DataGrid.Resources>
+
+                </DataGrid>
+
+                <Border Background="#B0000000"
+                        TextElement.Foreground="White"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Padding="10"
+                        CornerRadius="10"
+                        Visibility="{Binding IsAddStatsAndTanksTipShown, Converter={swpf:BoolToVisibilityConverter}}">
+                    <StackPanel >
+                        <TextBlock Text="{Loc add_tanks_and_stats_message_title, Default=ADD SOME STATS AND TANKS}"
+                                   FontSize="16" FontWeight="Bold"
+                                   HorizontalAlignment="Center" />
+                        <TextBlock Text="{Loc add_tanks_and_stats_message, Default=Click the Configure button on the top-right corner to open the configure panel.}"
+                                   Margin="0,5,0,0"
+                                   HorizontalAlignment="Center"/>
+                        
+                        <ItemsControl ItemsSource="{Binding AxisBuildingTasks}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="0,5,0,0">
+                                        <Hyperlink Command="{Binding Command}"
+                                                   Foreground="SkyBlue">
+                                            <TextBlock Text="{Binding Text}" />
+                                        </Hyperlink>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+
+            </Grid>
+        </DockPanel>
+
+    </DockPanel>
+</UserControl>

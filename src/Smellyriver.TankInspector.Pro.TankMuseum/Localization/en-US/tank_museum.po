@@ -1,0 +1,74 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Tank Museum\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "module_name"
+msgstr "Tank Museum"
+
+msgid "module_description"
+msgstr "Browse and search for tanks"
+
+msgid "module_provider"
+msgstr "Smellyriver"
+
+msgid "panel_title"
+msgstr "Museum"
+
+msgid "filter_mode_keyword"
+msgstr "Keyword"
+
+msgid "filter_mode_xpath"
+msgstr "XPath"
+
+msgid "filter_all_game_clients"
+msgstr "All"
+
+msgid "filter_all_tank_classes"
+msgstr "All"
+
+msgid "filter_all_nations"
+msgstr "All"
+
+msgid "filter_all_tiers"
+msgstr "All"
+
+msgid "filter_premium"
+msgstr "Premium"
+
+msgid "filter_non_premium"
+msgstr "Non-premium"
+
+msgid "filter_both_premium"
+msgstr "Both"
+
+msgid "filters_group_header"
+msgstr "Filters"
+
+msgid "reset_filters_button"
+msgstr "Reset"
+
+msgid "game_client_filter_header"
+msgstr "Game Client"
+
+msgid "tank_class_filter_header"
+msgstr "Tank Class"
+
+msgid "tier_filter_header"
+msgstr "Tier"
+
+msgid "nation_filter_header"
+msgstr "Nation"
+
+msgid "premium_filter_header"
+msgstr "Premium"

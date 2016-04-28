@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.TurretController.GunTraverseFigure"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="200">
+    <UserControl.Resources>
+        <Style TargetType="Shape" x:Key="WhiteStroke">
+            <Setter Property="Stroke" Value="White" />
+            <Setter Property="StrokeThickness" Value="1" />
+        </Style>
+
+        <Style TargetType="Shape" x:Key="ReferenceStroke">
+            <Setter Property="Stroke" Value="White" />
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="Opacity" Value="0.3" />
+        </Style>
+
+        <!-- ReSharper disable once Xaml.RedundantResource -->
+        <Style TargetType="Shape" x:Key="ThinReferenceStroke" BasedOn="{StaticResource ReferenceStroke}">
+            <Setter Property="StrokeThickness" Value="0.5" />
+        </Style>
+
+        <!-- ReSharper disable once Xaml.RedundantResource -->
+        <Style TargetType="Shape" x:Key="ThickReferenceStroke" BasedOn="{StaticResource ReferenceStroke}">
+            <Setter Property="StrokeThickness" Value="2" />
+        </Style>
+
+        <!-- ReSharper disable once Xaml.RedundantResource -->
+        <Style TargetType="Shape" x:Key="TraverseFigure">
+            <Setter Property="Stroke" Value="White" />
+            <Setter Property="StrokeThickness" Value="3" />
+        </Style>
+
+    </UserControl.Resources>
+
+    <Viewbox>
+        <Grid>
+            <Canvas x:Name="MainCanvas" Width="200" Height="200">
+                <Ellipse Width="200" Height="200" Style="{StaticResource WhiteStroke}" />
+                <Path Data="M 100,90 L 108,108 L 92,108 Z" Style="{StaticResource WhiteStroke}" Fill="White" />
+                <Canvas x:Name="CurveCanvas" Width="200" Height="200" />
+            </Canvas>
+        </Grid>
+    </Viewbox>
+</UserControl>

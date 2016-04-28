@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.PatchnoteGenerator.CreatePatchnoteFlyoutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Smellyriver.TankInspector.Pro.PatchnoteGenerator"
+             Loc.CatalogName="patchnote_generator"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel Margin="6">
+        <ListBox x:Name="RepositoryPairList"
+                 ItemsSource="{Binding RepositoryPairs}"
+                 SelectedItem="{Binding SelectedRepositoryPair, Mode=TwoWay}"
+                 SelectionMode="Single">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type local:PatchnotePairInfo}">
+                    <StackPanel Margin="10">
+                        <StackPanel Orientation="Horizontal">
+                            <Image VerticalAlignment="Center" 
+                                   Source="{Binding TargetRepositoryIcon}" />
+                            <TextBlock VerticalAlignment="Center" 
+                                       FontSize="16"
+                                       Text="{Binding TargetRepositoryName}"
+                                       Margin="5,0,0,0" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0,5,0,0"
+                                    TextElement.FontStyle="Italic">
+                            <TextBlock VerticalAlignment="Center"
+                                       Text="{Loc reference_game_client_title, Default=Reference:}" />
+                            <Image VerticalAlignment="Center" 
+                                   Margin="5,0,0,0"
+                                   Source="{Binding ReferenceRepositoryIcon}" />
+                            <TextBlock VerticalAlignment="Center" 
+                                       Text="{Binding ReferenceRepositoryName}"
+                                       Margin="5,0,0,0" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+         
+        <UniformGrid Columns="2" Margin="0,6,0,0">
+            <Button Content="{Loc ok, Catalog=common, Default=OK}" 
+                    Margin="0,0,3,0"
+                    CommandParameter="{Binding SelectedItem, Source=RepositoryPairList}"
+                    Command="{Binding OKCommand}" />
+            <Button Content="{Loc cancel, Catalog=common, Default=Cancel}" 
+                    Margin="3,0,0,0" 
+                    Command="{Binding CancelCommand}"/>
+        </UniformGrid>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,162 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.CustomizationConfigurator.CustomizationConfigView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:effects="clr-namespace:Smellyriver.TankInspector.Pro.CustomizationConfigurator.Effects"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/ToolWindow.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/Generic.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <TabControl>
+            <TabItem Header="{Loc camouflage_tab_header, Default=Camouflage}">
+                <DockPanel>
+                    <metro:ToggleSwitchButton IsChecked="{Binding IsCamouflageEnabled, Mode=TwoWay}"
+                                              DockPanel.Dock="Top"
+                                              HorizontalAlignment="Left"
+                                              Margin="0,3" />
+                    <ListView ItemsSource="{Binding Camouflages}" 
+                              IsEnabled="{Binding IsCamouflageEnabled}"
+                              SelectedItem="{Binding SelectedCamouflage, Mode=TwoWay}"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                              ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+
+                        <ListView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Expander IsExpanded="True"
+                                                              Header="{Binding Name}">
+                                                        <ItemsPresenter />
+                                                    </Expander>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
+
+                        <ListView.View>
+                            <GridView>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                                <GridViewColumn Width="72">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding PreviewImage}" 
+                                                   Width="64" Height="64" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    
+
+                        <ListView.ItemContainerStyle>
+
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="Border.BorderBrush"
+                                        Value="{DynamicResource GrayBrush1}" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                            <Border x:Name="Bd" SnapsToDevicePixels="true"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center">
+                                                <Grid Margin="0,6">
+                                                    <GridViewRowPresenter />
+                                                    <ContentPresenter x:Name="contentPresenter"
+                                                                      Visibility="Collapsed" />
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="GridView.ColumnCollection"
+                                                         Value="{x:Null}">
+                                                    <Setter TargetName="contentPresenter"
+                                                            Property="Visibility"
+                                                            Value="Visible" />
+                                                </Trigger>
+                                                <Trigger Property="IsSelected"
+                                                         Value="true">
+                                                    <Setter TargetName="Bd"
+                                                            Property="BorderBrush"
+                                                            Value="#FF143c65" />
+                                                    <Setter Property="Background"
+                                                            TargetName="Bd"
+                                                            Value="{DynamicResource AccentColorBrush}" />
+                                                    <Setter Property="Foreground"
+                                                            Value="{DynamicResource AccentSelectedColorBrush}" />
+                                                </Trigger>
+                                                <Trigger Property="IsMouseOver"
+                                                         Value="True">
+                                                    <Setter TargetName="Bd"
+                                                            Property="Background"
+                                                            Value="{DynamicResource AccentColorBrush3}" />
+                                                </Trigger>
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        <Condition Property="IsSelected"
+                                                                   Value="true" />
+                                                        <Condition Property="Selector.IsSelectionActive"
+                                                                   Value="True" />
+                                                    </MultiTrigger.Conditions>
+                                                    <Setter Property="Background"
+                                                            TargetName="Bd"
+                                                            Value="{DynamicResource AccentColorBrush2}" />
+                                                    <Setter Property="BorderBrush"
+                                                            TargetName="Bd"
+                                                            Value="#FF143c65" />
+                                                    <Setter Property="Foreground"
+                                                            Value="{DynamicResource AccentSelectedColorBrush}" />
+                                                </MultiTrigger>
+                                                <MultiTrigger>
+                                                    <MultiTrigger.Conditions>
+                                                        <Condition Property="IsEnabled"
+                                                                   Value="False" />
+                                                        <Condition Property="IsSelected"
+                                                                   Value="True" />
+                                                    </MultiTrigger.Conditions>
+                                                    <MultiTrigger.Setters>
+                                                        <Setter TargetName="Bd"
+                                                                Property="Background"
+                                                                Value="{DynamicResource GrayBrush7}" />
+                                                    </MultiTrigger.Setters>
+                                                </MultiTrigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="{Loc inscription_tab_header, Default=Inscription}">
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

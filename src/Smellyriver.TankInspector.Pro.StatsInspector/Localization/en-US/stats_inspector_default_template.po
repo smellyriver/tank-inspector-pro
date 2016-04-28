@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Stats Inspector\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "template_name"
+msgstr "Default"
+
+msgid "template_description"
+msgstr "Default template"
+
+msgid "category_livestats"
+msgstr "Live Stats"
+
+msgid "aim_circle_dispersion"
+msgstr "Aim Circle Dispersion"
+
+#. grouped under "Aim Circle Dispersion"
+msgid "on_turret_traversing"
+msgstr "on Turret Traversing"
+
+#. grouped under "Aim Circle Dispersion"
+msgid "on_vehicle_traversing"
+msgstr "on Vehicle Traversing"
+
+#. grouped under "Aim Circle Dispersion"
+msgid "on_vehicle_moving"
+msgstr "on Vehicle Moving"
+
+#. grouped under "Aim Circle Dispersion"
+msgid "on_turret_full_speed_traversing"
+msgstr "on Turret Full Speed Traversing"
+
+#. grouped under "Aim Circle Dispersion"
+msgid "on_vehicle_full_speed_traversing"
+msgstr "on Vehicle Full Speed Traversing"
+
+#. grouped under "Aim Circle Dispersion"
+msgid "on_vehicle_full_speed_moving"
+msgstr "on Vehicle Full Speed Moving"
+
+#. grouped under "Aim Circle Dispersion"
+msgid "after_shot"
+msgstr "after Shot"
+
+#. grouped under "Aim Circle Dispersion"
+msgid "while_gun_damaged"
+msgstr "while Gun Damaged"
+
+msgid "gun_traverse_range"
+msgstr "Gun Traverse Range"
+
+msgid "elevation"
+msgstr "Elevation"
+
+msgid "depression"
+msgstr "Depression"
+
+msgid "terrain_resistance"
+msgstr "Terrain Resistance"
+
+#. grouped under "Terrain Resistance"
+msgid "on_hard_terrain"
+msgstr "on Hard Terrain"
+
+#. grouped under "Terrain Resistance"
+msgid "on_medium_terrain"
+msgstr "on Medium Terrain"
+
+#. grouped under "Terrain Resistance"
+msgid "on_soft_terrain"
+msgstr "on Soft Terrain"
+
+msgid "module_health"
+msgstr "Module Health"
+
+msgid "armor"
+msgstr "Armor"
+
+msgid "view_range"
+msgstr "View Range"
+
+#. grouped under "View Range"
+msgid "view_range_still_after_3_seconds"
+msgstr "Still after 3 Seconds"
+
+#. {0}=battle count
+msgid "livestats_info"
+msgstr ""
+"* Live Stats of this tank are based on {0} battles in past 30 days. Provided "
+"by vBAddict.net."

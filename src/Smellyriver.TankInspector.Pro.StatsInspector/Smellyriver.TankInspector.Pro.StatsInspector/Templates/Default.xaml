@@ -1,0 +1,911 @@
+﻿<!-- 
+    do not use {Loc} extension in template name, description and author attribute, as
+    they are read without XAML support.
+    if you want these attributes localizable, use the composite localization key
+    syntax (e.g. #catalog:template_name)
+-->
+    
+<StatTemplate xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:c="clr-namespace:System.Collections;assembly=mscorlib"
+              Loc.CatalogName="stats_inspector_default_template"
+              Template.Name="#stats_inspector_default_template:template_name"
+              Template.Description="#stats_inspector_default_template:template_description"
+              Template.Author="Smellyriver"
+              FontSize="12"
+              ColumnWidth="360">
+
+    <StatTemplate.Resources>
+
+        <Style TargetType="TableRowGroup" x:Key="StatTableRowGroup">
+            <Setter Property="Stat.TemplateKey" Value="StatTemplate" />
+        </Style>
+        
+        <Style TargetType="TableCell" x:Key="StatCell" />
+
+        <Style TargetType="TableCell" x:Key="StatNameCell" BasedOn="{StaticResource StatCell}">
+            <Setter Property="TextAlignment" Value="Left" />
+        </Style>
+
+        <Style TargetType="TableCell" x:Key="StatValueCell" BasedOn="{StaticResource StatCell}">
+            <Setter Property="TextAlignment" Value="Right" />
+            <Setter Property="FontFamily" Value="Consolas" />
+        </Style>
+
+        <Style TargetType="TableCell" x:Key="StatUnitCell" BasedOn="{StaticResource StatCell}">
+            <Setter Property="TextAlignment" Value="Left" />
+            <Setter Property="FontFamily" Value="Consolas" />
+            <Setter Property="Padding" Value="3,0,0,0" />
+        </Style>
+
+        <Style TargetType="TableCell" x:Key="GroupedStatNameCell" BasedOn="{StaticResource StatNameCell}">
+            <Setter Property="Padding" Value="10,0,0,0" />
+            <Setter Property="FontStyle" Value="Italic" />
+        </Style>
+
+        <!-- stat templates MUST be defined in Document's Resources element -->
+        <c:ArrayList x:Key="StatTemplate">
+            <TableRow>
+                <TableCell Style="{StaticResource StatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Binding ShortName, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}">
+                    <Paragraph>
+                        <Run Text="{Binding ValueString, Mode=OneWay}"
+                             ToolTip="{Binding Description}"/>
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </c:ArrayList>
+
+        <!-- stat template items are APPENDED to target element -->
+        <c:ArrayList x:Key="CustomNameStatTemplate">
+            <TableCell Style="{StaticResource StatValueCell}">
+                <Paragraph>
+                    <Run Text="{Binding ValueString, Mode=OneWay}" />
+                </Paragraph>
+            </TableCell>
+            <TableCell Style="{StaticResource StatUnitCell}">
+                <Paragraph>
+                    <Run Text="{Binding Unit, Mode=OneWay}" />
+                </Paragraph>
+            </TableCell>
+        </c:ArrayList>
+
+        <Style TargetType="Paragraph" x:Key="CategoryTitle">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Typography.Capitals" Value="SmallCaps" />
+        </Style>
+
+        <Style TargetType="Table" x:Key="StatCategoryTable">
+            <Setter Property="CellSpacing" Value="5" />
+        </Style>
+        
+        <ResourceDictionary x:Key="StatGroupResources">
+            <Style TargetType="TableRow">
+                <Setter Property="Stat.TemplateKey" Value="CustomNameStatTemplate" />
+            </Style>
+        </ResourceDictionary>
+
+    </StatTemplate.Resources>
+
+
+    <Paragraph Style="{StaticResource CategoryTitle}">
+        <Run Text="{Loc category_firepower, Catalog=stats}" />
+    </Paragraph>
+
+    <Table Style="{StaticResource StatCategoryTable}">
+        <Table.Resources>
+            <Style TargetType="TableRowGroup" BasedOn="{StaticResource StatTableRowGroup}" />
+        </Table.Resources>
+        <Table.Columns>
+            <TableColumn />
+            <TableColumn />
+            <TableColumn Width="48" />
+        </Table.Columns>
+        <TableRowGroup Stat.Key="penetration_100m" />
+        <TableRowGroup Stat.Key="penetration_400m" />
+        <TableRowGroup Stat.Key="damage_armor" />
+        <TableRowGroup Stat.Key="damagePerMinute" />
+        <TableRowGroup Stat.Key="damage_module" />
+        <TableRowGroup Stat.Key="reloadTime" />
+        <TableRowGroup Stat.Key="rateOfFire" />
+        <TableRowGroup Stat.Key="maxAmmo" />
+        <TableRowGroup Stat.Key="clipCount" />
+        <TableRowGroup Stat.Key="clipReloadTime" />
+        <TableRowGroup Stat.Key="clipRate" />
+        <TableRowGroup Stat.Key="burstCount" />
+        <TableRowGroup Stat.Key="burstRate" />
+        <TableRowGroup Stat.Key="caliber" />
+        <TableRowGroup Stat.Key="shellMaxDistance" />
+        <TableRowGroup Stat.Key="shellVelocity" />
+        <TableRowGroup Stat.Key="shellGravity" />
+
+    </Table>
+
+    <Paragraph Style="{StaticResource CategoryTitle}">
+        <Run Text="{Loc category_maneuverability, Catalog=stats}" />
+    </Paragraph>
+
+    <Table Style="{StaticResource StatCategoryTable}">
+        <Table.Resources>
+            <Style TargetType="TableRowGroup" BasedOn="{StaticResource StatTableRowGroup}" />
+        </Table.Resources>
+        <Table.Columns>
+            <TableColumn />
+            <TableColumn Width="100" />
+            <TableColumn Width="48" />
+        </Table.Columns>
+
+        <TableRowGroup Stat.Key="gunAccuracy" />
+        <TableRowGroup Stat.Key="gunAimTime" />
+
+        <TableRowGroup Resources="{StaticResource StatGroupResources}">
+            <TableRow>
+                <TableCell Style="{StaticResource StatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc aim_circle_dispersion}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="aimCircleDispersion_turretRotation">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc on_turret_traversing}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="aimCircleDispersion_vehicleRotation">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc on_vehicle_traversing}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="aimCircleDispersion_vehicleMovement">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc on_vehicle_moving}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="aimCircleDispersion_turretFullSpeedRotation">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc on_turret_full_speed_traversing}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="aimCircleDispersion_vehicleFullSpeedRotation">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc on_vehicle_full_speed_traversing}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="aimCircleDispersion_vehicleFullSpeedMovement">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc on_vehicle_full_speed_moving}" /> 
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="aimCircleDispersion_afterShot">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc after_shot}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="aimCircleDispersion_whileGunDamaged">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc while_gun_damaged}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+
+
+
+
+
+        <TableRowGroup Stat.Key="gunMaximumElevation" />
+        <TableRowGroup Stat.Key="gunMaximumDepression" />
+        <TableRowGroup>
+            <TableRow Stat.Key="gunTraverseRange">
+                <TableCell Style="{StaticResource StatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc gun_traverse_range}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}">
+                    <Paragraph>
+                        <Run Stat.Key="gunLeftTraverseRange" 
+                             Text="{Binding ValueString, Mode=OneWay}" 
+                             ToolTip="{Binding Description}" />
+                        -
+                        <Run Stat.Key="gunRightTraverseRange" 
+                             Text="{Binding ValueString, Mode=OneWay}" 
+                             ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+        <TableRowGroup Stat.Key="turretRotationSpeed" />
+        <TableRowGroup Stat.Key="chassisRotationSpeed" />
+        <TableRowGroup Stat.Key="gunRotationSpeed" />
+
+    </Table>
+
+    <Paragraph Style="{StaticResource CategoryTitle}">
+        <Run Text="{Loc category_mobility, Catalog=stats}" />
+    </Paragraph>
+
+    <Table Style="{StaticResource StatCategoryTable}">
+        <Table.Resources>
+            <Style TargetType="TableRowGroup" BasedOn="{StaticResource StatTableRowGroup}" />
+        </Table.Resources>
+        <Table.Columns>
+            <TableColumn />
+            <TableColumn />
+            <TableColumn Width="48" />
+        </Table.Columns>
+
+        <TableRowGroup Stat.Key="enginePower" />
+        <TableRowGroup Stat.Key="specificPower" />
+        <TableRowGroup Stat.Key="speedLimits_forward" />
+        <TableRowGroup Stat.Key="speedLimits_backward" />
+        <TableRowGroup Stat.Key="chassisRotationSpeed" />
+
+        <TableRowGroup Resources="{StaticResource StatGroupResources}">
+            <TableRow>
+                <TableCell Style="{StaticResource StatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc terrain_resistance}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="terrainResistance_hard">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc on_hard_terrain}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="terrainResistance_medium">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc on_medium_terrain}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="terrainResistance_soft">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc on_soft_terrain}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+
+        <TableRowGroup Stat.Key="pivot" />
+        <TableRowGroup Stat.Key="brakeForce" />
+        <TableRowGroup Stat.Key="maxClimbAngle" />
+
+    </Table>
+
+    <Paragraph Style="{StaticResource CategoryTitle}">
+        <Run Text="{Loc category_survivability, Catalog=stats}" />
+    </Paragraph>
+
+    <Table Style="{StaticResource StatCategoryTable}">
+        <Table.Resources>
+            <Style TargetType="TableRowGroup" BasedOn="{StaticResource StatTableRowGroup}" />
+        </Table.Resources>
+        <Table.Columns>
+            <TableColumn />
+            <TableColumn />
+            <TableColumn Width="48" />
+        </Table.Columns>
+
+        <TableRowGroup Resources="{StaticResource StatGroupResources}">
+            <TableRow Stat.Key="maxHealth">
+                <TableCell Style="{StaticResource StatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Binding ShortName, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="hullMaxHealth">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc hull, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="turretMaxHealth">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc turret, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+
+        <TableRowGroup>
+            <TableRow>
+                <TableCell Style="{StaticResource StatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc module_health}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="ammoBayMaxHealth">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc ammorack, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}">
+                    <Paragraph>
+                        <Run Stat.Key="ammoBayMaxHealth" Text="{Binding ValueString, Mode=OneWay}" ToolTip="{Binding Description}" /><Run Stat.Key="ammoBayMaxRegenHealth" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="turretRotatorMaxHealth">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc turret_rotator, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}">
+                    <Paragraph>
+                        <Run Stat.Key="turretRotatorMaxHealth" Text="{Binding ValueString, Mode=OneWay}" ToolTip="{Binding Description}" /><Run Stat.Key="turretRotatorMaxRegenHealth" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+
+            <TableRow Stat.Key="fuelTankMaxHealth">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc fuel_tank, Catalog=tank_terminologies}" /> 
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}">
+                    <Paragraph>
+                        <Run Stat.Key="fuelTankMaxHealth" Text="{Binding ValueString, Mode=OneWay}" ToolTip="{Binding Description}" /><Run Stat.Key="fuelTankMaxRegenHealth" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="engineMaxHealth">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc engine, Catalog=tank_terminologies}" /> 
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}">
+                    <Paragraph>
+                        <Run Stat.Key="engineMaxHealth" Text="{Binding ValueString, Mode=OneWay}" ToolTip="{Binding Description}" /><Run Stat.Key="engineMaxRegenHealth" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="chassisMaxHealth">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc track, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}">
+                    <Paragraph>
+                        <Run Stat.Key="chassisMaxHealth" Text="{Binding ValueString, Mode=OneWay}" ToolTip="{Binding Description}" /><Run Stat.Key="chassisMaxRegenHealth" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="gunMaxHealth">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc gun, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}">
+                    <Paragraph>
+                        <Run Stat.Key="gunMaxHealth" Text="{Binding ValueString, Mode=OneWay}" ToolTip="{Binding Description}" /><Run Stat.Key="gunMaxRegenHealth" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" />                  
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="surveyingDeviceMaxHealth">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc surveying_device, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}">
+                    <Paragraph>
+                        <Run Stat.Key="surveyingDeviceMaxHealth" Text="{Binding ValueString, Mode=OneWay}" ToolTip="{Binding Description}" /><Run Stat.Key="surveyingDeviceMaxRegenHealth" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            
+            <TableRow Stat.Key="radioMaxHealth">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc radio, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}">
+                    <Paragraph>
+                        <Run Stat.Key="radioMaxHealth" Text="{Binding ValueString, Mode=OneWay}" ToolTip="{Binding Description}" /><Run Stat.Key="radioMaxRegenHealth" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+        </TableRowGroup>
+
+        <TableRowGroup Stat.Key="engineChanceOnFire" />
+        
+        <TableRowGroup>
+            <TableRow>
+                <TableCell Style="{StaticResource StatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc armor}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="hullArmor_front">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc hull, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}">
+                    <Paragraph>
+                        <Run Stat.Key="hullArmor_front" Text="{Binding ValueString, Mode=OneWay}" ToolTip="{Binding Description}" /><Run Stat.Key="hullArmor_side" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" /><Run Stat.Key="hullArmor_rear" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="turretArmor_front">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc turret, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}"
+                           ToolTip="{x:Null}">
+                    <Paragraph>
+                        <Run Stat.Key="turretArmor_front" Text="{Binding ValueString, Mode=OneWay}" ToolTip="{Binding Description}" /><Run Stat.Key="turretArmor_side" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" /><Run Stat.Key="turretArmor_rear" Text="{Binding ValueString, Mode=OneWay, StringFormat={}/{0}}" ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Text="{Binding Unit, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="gunArmor" Stat.TemplateKey="CustomNameStatTemplate">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc gun, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="trackArmor" Stat.TemplateKey="CustomNameStatTemplate">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc track_plural, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+
+    </Table>
+
+
+    <Paragraph Style="{StaticResource CategoryTitle}">
+        <Run Text="{Loc category_scoutability, Catalog=stats}" />
+    </Paragraph>
+
+    <Table Style="{StaticResource StatCategoryTable}">
+        <Table.Resources>
+            <Style TargetType="TableRowGroup" BasedOn="{StaticResource StatTableRowGroup}" />
+        </Table.Resources>
+        <Table.Columns>
+            <TableColumn />
+            <TableColumn />
+            <TableColumn Width="48" />
+        </Table.Columns>
+
+        <TableRowGroup Resources="{StaticResource StatGroupResources}">
+            <TableRow Stat.Key="viewRange">
+                <TableCell Style="{StaticResource StatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc view_range}" /> 
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="viewRange_still3s">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc view_range_still_after_3_seconds}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+
+        <TableRowGroup Stat.Key="radioDistance" />
+    </Table>
+
+    <Paragraph Style="{StaticResource CategoryTitle}">
+        <Run Text="{Loc category_economy, Catalog=stats}" />
+    </Paragraph>
+
+    <Table Style="{StaticResource StatCategoryTable}">
+        <Table.Resources>
+            <Style TargetType="TableRowGroup" BasedOn="{StaticResource StatTableRowGroup}" />
+        </Table.Resources>
+        <Table.Columns>
+            <TableColumn />
+            <TableColumn />
+            <TableColumn Width="48" />
+        </Table.Columns>
+        
+        <TableRowGroup>
+            <TableRow Stat.Key="price">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Binding ShortName, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}"
+                           ToolTip="{x:Null}">
+                    <Paragraph>
+                        <Run Text="{Binding ValueString, Mode=OneWay}"
+                             ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Stat.Key="priceCurrency"
+                             Text="{Binding ValueString, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+
+        <TableRowGroup>
+            <TableRow Stat.Key="shellPrice">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Binding ShortName, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}"
+                           ToolTip="{x:Null}">
+                    <Paragraph>
+                        <Run Text="{Binding ValueString, Mode=OneWay}"
+                             ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Stat.Key="shellPriceCurrency"
+                             Text="{Binding ValueString, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+
+        <TableRowGroup>
+            <TableRow Stat.Key="shellPricePerDamage">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Binding ShortName, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatValueCell}"
+                           ToolTip="{x:Null}">
+                    <Paragraph>
+                        <Run Text="{Binding ValueString, Mode=OneWay}"
+                             ToolTip="{Binding Description}" />
+                    </Paragraph>
+                </TableCell>
+                <TableCell Style="{StaticResource StatUnitCell}">
+                    <Paragraph>
+                        <Run Stat.Key="shellPriceCurrency"
+                             Text="{Binding ValueString, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+
+        <TableRowGroup Resources="{StaticResource StatGroupResources}">
+            <TableRow Stat.Key="maxRepairCost">
+                <TableCell Style="{StaticResource StatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Binding ShortName, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="hullMaxRepairCost">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc hull, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="turretMaxRepairCost">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc turret, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="ammoBayMaxRepairCost">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc ammorack, Catalog=tank_terminologies}" /> 
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="turretRotatorMaxRepairCost">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc turret_rotator, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="surveyingDeviceMaxRepairCost">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc surveying_device, Catalog=tank_terminologies}" /> 
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="engineMaxRepairCost">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc engine, Catalog=tank_terminologies}" /> 
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="fuelTankMaxRepairCost">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc fuel_tank, Catalog=tank_terminologies}" /> 
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="chassisMaxRepairCost">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc track_plural, Catalog=tank_terminologies}" /> 
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="gunMaxRepairCost">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc gun, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="radioMaxRepairCost">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc radio, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+        
+    </Table>
+
+    <Paragraph Style="{StaticResource CategoryTitle}">
+        <Run Text="{Loc category_miscellaneous, Catalog=stats}" />
+    </Paragraph>
+
+    <Table Style="{StaticResource StatCategoryTable}">
+        <Table.Resources>
+            <Style TargetType="TableRowGroup" BasedOn="{StaticResource StatTableRowGroup}" />
+        </Table.Resources>
+        <Table.Columns>
+            <TableColumn />
+            <TableColumn />
+            <TableColumn Width="48" />
+        </Table.Columns>
+
+        <TableRowGroup Stat.Key="maxLoad" />
+
+        <TableRowGroup Resources="{StaticResource StatGroupResources}">
+            <TableRow Stat.Key="totalWeight">
+                <TableCell Style="{StaticResource StatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Binding ShortName, Mode=OneWay}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="hullWeight">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc hull, Catalog=tank_terminologies}" /> 
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="turretWeight">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc turret, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="gunWeight">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc gun, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="chassisWeight">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc chassis, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="engineWeight">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc engine, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="radioWeight">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc radio, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="equipmentsWeight">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc equipment_plural, Catalog=tank_terminologies}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+    </Table>
+
+    
+    <!-- Livestats disabled -->
+    <!--<Paragraph Style="{StaticResource CategoryTitle}">
+        <Run Text="{Loc category_livestats}" />
+        <Run Text="*" />
+    </Paragraph>
+    
+    <Paragraph>
+        
+        --><!-- Catalog must be set in StringFormat Loc, because Binding is not part of the visual tree --><!--
+        <Run FontStyle="Italic" 
+             Stat.Key="livestat_frequencyOfOccurrence" 
+             Text="{Binding ValueString, 
+                            Mode=OneWay, 
+                            StringFormat={Loc livestats_info, Catalog=stats_inspector_default_template}}" />
+    </Paragraph>
+
+    <Table Style="{StaticResource StatCategoryTable}">
+        <Table.Resources>
+            <Style TargetType="TableRowGroup" BasedOn="{StaticResource StatTableRowGroup}" />
+        </Table.Resources>
+        <Table.Columns>
+            <TableColumn />
+            <TableColumn />
+            <TableColumn Width="48" />
+        </Table.Columns>
+
+        <TableRowGroup Stat.Key="livestat_damageDealt" />
+        <TableRowGroup Stat.Key="livestat_potentialDamageReceived" />
+        <TableRowGroup Stat.Key="livestat_damageReceived" />
+        <TableRowGroup Stat.Key="livestat_damageAssistedRadio" />
+        <TableRowGroup Stat.Key="livestat_damageAssistedTrack" />
+        <TableRowGroup Stat.Key="livestat_accuracy" />
+        <TableRowGroup Stat.Key="livestat_experience" />
+        <TableRowGroup Stat.Key="livestat_creditsb" />
+        <TableRowGroup Stat.Key="livestat_operatingCosts" />
+        <TableRowGroup Stat.Key="livestat_equipCosts" />
+        <TableRowGroup Stat.Key="livestat_ammunitionCosts" />
+        <TableRowGroup Stat.Key="livestat_repairCosts" />
+        <TableRowGroup Stat.Key="livestat_creditsn" />
+        <TableRowGroup Stat.Key="livestat_mileage" />
+        <TableRowGroup Stat.Key="livestat_spotted" />
+        <TableRowGroup Stat.Key="livestat_winrate" />
+        <TableRowGroup Stat.Key="livestat_damaged" />
+        <TableRowGroup Stat.Key="livestat_efficiency_wnx" />
+        <TableRowGroup Stat.Key="livestat_efficiency_wn7" />
+        <TableRowGroup Stat.Key="livestat_efficiency_wn8" />
+        <TableRowGroup Stat.Key="livestat_efficiency_box" />
+        <TableRowGroup Stat.Key="livestat_killed" />
+        <TableRowGroup Stat.Key="livestat_battleTime" />
+        <TableRowGroup Stat.Key="livestat_survived" />
+        <TableRowGroup Stat.Key="livestat_frequencyOfOccurrence" />
+        <TableRowGroup Stat.Key="livestat_experiencePerMinute" />
+        <TableRowGroup Stat.Key="livestat_penetrationRate" />
+        <TableRowGroup Stat.Key="livestat_noDamageShotsRatio" />
+        <TableRowGroup Stat.Key="livestat_kamikaze" />
+        <TableRowGroup Stat.Key="livestat_sleeping" />
+        <TableRowGroup Stat.Key="livestat_mmTierWeight" />
+    </Table>-->
+</StatTemplate>

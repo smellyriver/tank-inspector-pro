@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Camera Controller\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "module_name"
+msgstr "Camera Controller"
+
+msgid "module_description"
+msgstr "Config camera parameters for model views"
+
+msgid "module_provider"
+msgstr "Smellyriver"
+
+msgid "panel_title"
+msgstr "Camera"
+
+msgid "projection"
+msgstr "Projection"
+
+msgid "orthographic"
+msgstr "Orthographic"
+
+msgid "perspective"
+msgstr "Perspective"
+
+#. field of view
+msgid "fov"
+msgstr "FOV"
+
+#. equivalent focal length in 135 format film
+msgid "f_135"
+msgstr "f(135)"
+
+msgid "location"
+msgstr "Location"
+
+msgid "front"
+msgstr "Front"
+
+msgid "left"
+msgstr "Left"
+
+msgid "top"
+msgstr "Top"
+
+msgid "right"
+msgstr "Right"
+
+msgid "bottom"
+msgstr "Bottom"
+
+msgid "back"
+msgstr "Back"
+
+msgid "yaw"
+msgstr "Yaw"
+
+msgid "pitch"
+msgstr "Pitch"
+
+msgid "roll"
+msgstr "Roll"
+
+msgid "rotation"
+msgstr "Rotation"
+
+msgid "x"
+msgstr "X"
+
+msgid "y"
+msgstr "Y"
+
+msgid "z"
+msgstr "Z"
+
+msgid "panning"
+msgstr "Panning"
+
+msgid "zoom"
+msgstr "Zoom"
+
+msgid "zoom_unit"
+msgstr " x"

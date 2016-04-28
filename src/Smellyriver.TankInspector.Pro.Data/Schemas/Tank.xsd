@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Tank"
+            targetNamespace="http://schemas.smellyriver.com/TankInspector/Data/Tank.xsd"
+            elementFormDefault="qualified"
+            xmlns="http://schemas.smellyriver.com/TankInspector/Data/Tank.xsd"
+            xmlns:tank="http://schemas.smellyriver.com/TankInspector/Data/Tank.xsd"
+            xmlns:common="http://schemas.smellyriver.com/TankInspector/Data/Common.xsd"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://schemas.smellyriver.com/TankInspector/Data/Common.xsd" schemaLocation="Common.xsd" />
+
+  <xs:complexType name="crew">
+    <xs:sequence>
+      <xs:element name="secondaryRoles" minOccurs="0" maxOccurs="1">
+        <xs:simpleType>
+          <xs:list itemType="common:CrewRole" />
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="role" type="common:CrewRole" />
+  </xs:complexType>
+
+  <xs:element name="tank">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="crews">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="tank:crew" name="crew" minOccurs="1" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="key" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

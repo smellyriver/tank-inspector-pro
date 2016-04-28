@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO Main Assembly\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. $migrate: L10N_InvalidAccount
+msgid "invalid_account"
+msgstr ""
+"Either your e-Mail address or your password is incorrect. Please try again."
+
+#. $migrate: L10N_ConnectFailed
+msgid "connect_failed"
+msgstr "Failed to connect."
+
+#. $migrate: L10N_DisconnectedDueToUnknownError
+msgid "disconnected_due_to_unknown_error"
+msgstr "You are disconnected due to an unknown error."
+
+#. $migrate: L10N_AccountLoggedInElsewhere
+msgid "account_logged_in_elsewhere"
+msgstr "You are disconnected because your account is connected elsewhere."
+
+#. $migrate: L10N_ResetPasswordEMailSent
+#. {0}=email address
+msgid "reset_password_email_sent"
+msgstr ""
+"A letter with instruction of how to reset your password is sent to {0}."
+
+#. $migrate: L10N_ResetPasswordEMailSentTitle
+msgid "reset_password_email_sent_title"
+msgstr "Reset Mail Sent"
+
+#. $migrate: L10N_SendResetPasswordEMailFailed
+#. {0}=email address
+msgid "send_reset_password_email_failed"
+msgstr ""
+"Sorry but we are failed to send a reset password mail to {0}. Please try "
+"again later."
+
+#. $migrate: L10N_SendResetPasswordEMailFailedWithReason
+#. {0}=email address
+#. {1}=send reset password email failure reason
+msgid "send_reset_password_email_failed_with_reason"
+msgstr ""
+"Sorry but we are failed to send a reset password mail to {0}. Please try "
+"again later.Error message: {1}."
+
+#. $migrate: L10N_SendResetPasswordEMailFailedTitle
+msgid "send_reset_password_email_failed_title"
+msgstr "end Reset Mail Failed"
+
+#. $migrate:  L10N_InvalidAccount
+msgid "email_or_password_incorrect"
+msgstr ""
+"Either your e-mail address or your password is incorrect. Please try again."
+
+#. {0} = connection failure reason
+msgid "failed_to_connect"
+msgstr "Failed to connect: {0}"
+
+#. $migrate: L10N_CannotCreateAccount
+msgid "cannot_create_account"
+msgstr "Cannot create account. Are you from Mars?"
+
+#. $migrate: L10N_EMailOccupied
+msgid "email_occupied"
+msgstr "This e-mail is occupied by another account."
+
+#. $migrate: L10N_EMailTooLong
+msgid "email_too_long"
+msgstr "This e-mail address is too long."
+
+#. $migrate: L10N_InvalidEMail
+msgid "invalid_email"
+msgstr "This e-mail address is invalid."
+
+#. $migrate: L10N_InvalidInviteCode
+msgid "invalid_invite_code"
+msgstr "This invite code is invalid."
+
+#. $migrate: L10N_InvalidRequest
+msgid "invalid_request"
+msgstr "Error: invalid request."
+
+#. $migrate: L10N_PasswordTooLong
+msgid "password_too_long"
+msgstr "This password is too long, try a memory-friendly one."
+
+#. $migrate: L10N_UnknownRegisterError
+msgid "unknown_register_error"
+msgstr "Failed to create your account due to an unknown error."
+
+#. {0} = create account failure reason
+msgid "failed_to_create_account"
+msgstr "Failed to create account: {0}"

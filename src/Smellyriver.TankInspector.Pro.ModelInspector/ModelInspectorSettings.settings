@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Smellyriver.TankInspector.Pro.ModelInspector" GeneratedClassName="ModelInspectorSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MaximumRotationSpeed" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">360</Value>
+    </Setting>
+    <Setting Name="MinimumRotationSpeed" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="RotationSpeed" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">270</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

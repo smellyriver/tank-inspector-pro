@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO Main Assembly\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "document_title"
+msgstr "Game Clients"
+
+msgid "open_game_client_dialog_message"
+msgstr "Specify Game Client Location"
+
+msgid "game_client_existed_message_title"
+msgstr "Game Client Existed"
+
+msgid "game_client_existed_message"
+msgstr "A game client of the same path is already added to Tank Inspector PRO."
+
+msgid "add_game_client_path_dialog_message"
+msgstr "Add Game Client Path"
+
+msgid "game_client_path_existed_message_title"
+msgstr "Path Existed"
+
+msgid "game_client_path_existed_message"
+msgstr "The specified path is already existed."
+
+msgid "add_game_client_button"
+msgstr "Add"
+
+msgid "remove_game_client_button"
+msgstr "Remove"
+
+msgid "game_client_alias_header"
+msgstr "Alias"
+
+msgid "game_client_version_header"
+msgstr "Version"
+
+msgid "game_client_location_header"
+msgstr "Location"
+
+msgid "game_client_marker_color_header"
+msgstr "Marker Color"
+
+msgid "game_client_paths_header"
+msgstr "Paths"
+
+msgid "path_modifying_caution"
+msgstr ""
+"* CAUTION: Incorrect client paths configuration may lead to client launch "
+"failure."
+
+msgid "add_game_client_path_button"
+msgstr "Add"
+
+msgid "remove_game_client_path_button"
+msgstr "Remove"
+
+msgid "set_path_as_mod_directory_button"
+msgstr "Set as Mod Directory"
+
+#. appears in the tools menu
+msgid "manage_game_clients_menu_item"
+msgstr "Manage Game Clients"
+
+msgid "common_test"
+msgstr "Common Test"
+
+msgid "common_test_abbrev"
+msgstr "CT"
+
+#. {0}=version
+#. {1}=location
+msgid "game_client_description"
+msgstr "Game Client v.{0}Location: {1}"
+
+#. {0}=path
+msgid "status_loading_game_client_with_path"
+msgstr "Loading game client {0}"
+
+msgid "status_loading_game_client"
+msgstr "Loading game client..."
+
+msgid "status_loading_game_clients"
+msgstr "Loading game clients..."
+
+msgid "status_loading_game_client_configuration"
+msgstr "Loading configuration..."
+
+msgid "adding_repository_dialog_title"
+msgstr "Adding Repository"

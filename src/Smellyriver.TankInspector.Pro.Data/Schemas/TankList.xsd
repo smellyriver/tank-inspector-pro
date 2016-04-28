@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TankList"
+           targetNamespace="http://schemas.smellyriver.com/TankInspector/Data/TankList.xsd"
+           elementFormDefault="qualified"
+           xmlns="http://schemas.smellyriver.com/TankInspector/Data/TankList.xsd"
+           xmlns:tankList="http://schemas.smellyriver.com/TankInspector/Data/TankList.xsd"
+           xmlns:common="http://schemas.smellyriver.com/TankInspector/Data/Common.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://schemas.smellyriver.com/TankInspector/Data/Common.xsd" schemaLocation="Common.xsd" />
+  <xs:complexType name="TankInfo">
+    <xs:all>
+      <xs:element type="xs:positiveInteger" name="id" />
+      <xs:element type="xs:string" name="userString" />
+      <xs:element type="xs:string" name="description" />
+      <xs:element type="common:Price" name="price" />
+      <xs:element name="tags">
+        <xs:simpleType>
+          <xs:list itemType="xs:string" />
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:positiveInteger" name="level" />
+    </xs:all>
+    <xs:attribute name="key" type="xs:string" />
+  </xs:complexType>
+
+  <xs:element name="tankList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="tankList:TankInfo" name="item" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+</xs:schema>

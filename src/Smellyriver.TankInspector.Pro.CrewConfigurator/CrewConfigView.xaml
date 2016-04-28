@@ -1,0 +1,245 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.CrewConfigurator.CrewConfigView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Smellyriver.TankInspector.Pro.CrewConfigurator"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:swpf="http://schemas.smellyriver.com/common/wpf/"
+             Loc.CatalogName="crew_configurator"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/ToolWindow.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/Generic.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.Buttons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <DataTemplate x:Key="SmallIconSkillItemTemplate">
+                <StackPanel Orientation="Horizontal" ToolTip="{Binding Description}">
+                    <Image Source="{Binding SmallIcon}" Stretch="None" Margin="0,0,2,0" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" />
+                </StackPanel>
+            </DataTemplate>
+            
+            <DataTemplate x:Key="BigIconSkillItemTemplate">
+                <Grid MaxWidth="300" ToolTip="{Binding Description}">
+
+                    <Image Source="{Binding Icon}" Stretch="None"
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Top"/>
+
+                    <TextBlock Text="{Binding Name}"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               Margin="75,5,5,5" />
+
+                    <TextBlock Text="{Binding ShortDescription}"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               Margin="75,35,5,5"
+                               TextWrapping="Wrap" />
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            
+            <UniformGrid Columns="4"
+                         Background="{DynamicResource AccentColorBrush4}">
+                <UniformGrid.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                        <Setter Property="Margin" Value="2" />
+                        <Setter Property="MinWidth" Value="70" />
+                    </Style>
+                    <Style TargetType="Image">
+                        <Setter Property="Stretch" Value="None" />
+                        <Setter Property="Margin" Value="0,0,3,0" />
+                    </Style>
+                </UniformGrid.Resources>
+                <Button ToolTip="{Loc teach_all_brother_in_arms_tip, Default=Teach all the crews the Brother in Arms skill}"
+                        Command="{Binding TeachAllBrotherInArmsSkillCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding BrotherInArmsSkillIcon}" />
+                        <TextBlock Text="{Loc teach_all, Default=Teach All}" />
+                    </StackPanel>
+                </Button>
+                <Button ToolTip="{Loc teach_all_camouflage_tip, Default=Teach all the crews the Camouflage skill}"
+                        Command="{Binding TeachAllCamouflageSkillCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding CamouflageSkillIcon}" />
+                        <TextBlock Text="{Loc teach_all, Default=Teach All}" />
+                    </StackPanel>
+                </Button>
+                <Button ToolTip="{Loc teach_all_fire_fighting_tip, Default=Teach all the crews the Fire Fighting skill}"
+                        Command="{Binding TeachAllFireFightingSkillCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding FireFightingSkillIcon}" />
+                        <TextBlock Text="{Loc teach_all, Default=Teach All}" />
+                    </StackPanel>
+                </Button>
+                <Button ToolTip="{Loc teach_all_repair_tip, Default=Teach all the crews the Repair skill}"
+                        Command="{Binding TeachAllRepairSkillCommand}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding RepairSkillIcon}" />
+                        <TextBlock Text="{Loc teach_all, Default=Teach All}" />
+                    </StackPanel>
+                </Button>
+            </UniformGrid>
+            
+            <ItemsControl ItemsSource="{Binding Crews}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Expander Header="{Binding PrimaryRole}" 
+                                  IsExpanded="{Binding IsExpanded, Mode=TwoWay}">
+                            <Grid>
+                                <ItemsControl HorizontalAlignment="Right"
+                                              VerticalAlignment="Top"
+                                              Margin="0,-34,0,0"
+                                              ItemsSource="{Binding RoleIcons}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Image Width="30" 
+                                                   Height="30" 
+                                                   Source="{Binding}" 
+                                                   Margin="-3,0" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            
+                                <StackPanel>
+                                    <Grid>
+                                    
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="28" />
+                                            <RowDefinition Height="28" />
+                                        </Grid.RowDefinitions>
+                                    
+                                        <TextBlock Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   Text="{Binding Model.Rank.Value}"
+                                                   FontWeight="Bold"
+                                                   VerticalAlignment="Center"
+                                                   Margin="0,0,10,0" />
+                                    
+                                        <StackPanel Orientation="Horizontal"
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    VerticalAlignment="Center">
+                                            <TextBlock Text="{Loc experience_header, Default=Experience: }" />
+                                            <TextBlock Text="{Binding Model.Experience}"  />
+                                        </StackPanel>
+                                    
+                                        <CheckBox Grid.Row="1"
+                                                  Grid.Column="0" 
+                                                  Content="{Loc is_alive_header, Default=Alive}" 
+                                                  IsChecked="{Binding IsAlive, Mode=TwoWay}"
+                                                  VerticalAlignment="Center"
+                                                  Margin="0,0,10,0" />
+                                    
+                                        <DockPanel Grid.Row="1"
+                                                   Grid.Column="1" 
+                                                   VerticalAlignment="Center">
+                                            <TextBlock DockPanel.Dock="Left" 
+                                                       VerticalAlignment="Center"
+                                                       Text="{Loc training_level_header, Default=Training Level:}" />
+                                            <TextBlock DockPanel.Dock="Right"
+                                                       VerticalAlignment="Center"
+                                                       Text="{Binding Model.LastSkillTrainingLevel}" />
+                                            <Slider Minimum="0" 
+                                                    Maximum="100" 
+                                                    Value="{Binding Model.LastSkillTrainingLevel, Mode=TwoWay}"
+                                                    Margin="5,0"
+                                                    VerticalAlignment="Center"/>
+
+                                        </DockPanel>
+                                    </Grid>
+                                
+                                    <Separator />
+
+                                    <ItemsControl ItemsSource="{Binding LearntSkills}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <DockPanel>
+                                                    <Button DockPanel.Dock="Right" 
+                                                            Content="r" 
+                                                            FontFamily="Marlett"
+                                                            Style="{DynamicResource ChromelessButtonStyle}"
+                                                            Command="{Binding ForgetSkill}"/>
+                                                    <StackPanel Orientation="Horizontal" 
+                                                                Height="26" 
+                                                                ToolTip="{Binding Description}">
+                                                        <Image Source="{Binding SmallIcon}" Stretch="None" Margin="0,0,2,0" VerticalAlignment="Center" />
+                                                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </DockPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+
+                                    <ComboBox ItemsSource="{Binding AvailableSkills}"
+                                              SelectedItem="{Binding SkillToLearn, Mode=TwoWay}"
+                                              Visibility="{Binding HasAvailableSkills, Converter={swpf:BoolToVisibilityConverter}}">
+                                        <ComboBox.ItemTemplateSelector>
+                                            <local:AvailableSkillDropDownTemplateSelector ItemTemplate="{StaticResource BigIconSkillItemTemplate}"
+                                                                                              SelectedItemTemplate="{StaticResource SmallIconSkillItemTemplate}" >
+                                                <local:AvailableSkillDropDownTemplateSelector.SelectedEmptyItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.CrewConfigurator;component/Resources/Images/AddSkill_14.png"
+                                                                       Stretch="None" Margin="0,0,2,0" VerticalAlignment="Center" />
+                                                            <TextBlock Text="{Loc add_skill_or_perk, Default=Add a skill or perk}" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </local:AvailableSkillDropDownTemplateSelector.SelectedEmptyItemTemplate>
+                                                <local:AvailableSkillDropDownTemplateSelector.EmptyItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid>
+
+                                                            <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.CrewConfigurator;component/Resources/Images/AddSkill_52.png" 
+                                                                   Stretch="None"
+                                                                   HorizontalAlignment="Left" 
+                                                                   VerticalAlignment="Center"/>
+
+                                                            <TextBlock Text="{Loc add_skill_or_perk, Default=Add a skill or perk}"
+                                                                       FontSize="16"
+                                                                       FontWeight="Bold"
+                                                                       HorizontalAlignment="Left"
+                                                                       VerticalAlignment="Center"
+                                                                       Margin="75,5,5,5" />
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </local:AvailableSkillDropDownTemplateSelector.EmptyItemTemplate>
+                                            </local:AvailableSkillDropDownTemplateSelector>
+                                        </ComboBox.ItemTemplateSelector>
+                                    </ComboBox>
+                                </StackPanel>
+                            </Grid>
+                        </Expander>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

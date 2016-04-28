@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Model Shared Library\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "snapshot_menu_item"
+msgstr "Snapshot..."
+
+msgid "solid_mode"
+msgstr "Solid"
+
+msgid "wireframe_mode"
+msgstr "Wireframe"
+
+msgid "toggle_show_turret_menu_item"
+msgstr "Show Turret"
+
+msgid "toggle_show_gun_menu_item"
+msgstr "Show Gun"
+
+msgid "toggle_show_hull_menu_item"
+msgstr "Show Hull"
+
+msgid "toggle_show_chassis_menu_item"
+msgstr "Show Chassis"
+
+msgid "toggle_show_triangle_count_menu_item"
+msgstr "Show Triangle Count"
+
+msgid "toggle_show_fps_menu_item"
+msgstr "Show Framerate"
+
+msgid "rotation_center_hull"
+msgstr "Hull"
+
+msgid "rotation_center_hull_description"
+msgstr "Rotate around the center point of the hull"
+
+msgid "rotation_center_turret"
+msgstr "Turret"
+
+msgid "rotation_center_turret_description"
+msgstr "Rotate around the center point of the turret"
+
+#. {0} = tank name
+#. {1} = game client version
+msgid "version_tag_format"
+msgstr "{0} (Version {1})"
+
+msgid "png_file_type_filter"
+msgstr "PNG File"
+
+msgid "animated_gif_file_type_filter"
+msgstr "Animated GIF File"
+
+msgid "capture"
+msgstr "Capture"
+
+msgid "capture_size"
+msgstr "Size"
+
+msgid "size_multiply"
+msgstr "×"
+
+msgid "capture_mode"
+msgstr "Mode"
+
+msgid "capture_output_filename"
+msgstr "Output"
+
+msgid "capture_export"
+msgstr "Export"
+
+msgid "export_dialog_title"
+msgstr "Export"
+
+msgid "invalid_filename"
+msgstr "Invalid file name"
+
+msgid "capture_selected_region"
+msgstr "Selected Region"
+
+#. used in selected region display
+#. {0} = x coordinate
+#. {1} = y coordinate
+#. {2} = width
+#. {3} = height
+msgid "selected_region_format"
+msgstr "{2:0}×{3:0} at ({0:0}, {1:0})"
+
+msgid "capture_shade"
+msgstr "Shade"
+
+msgid "shade_white"
+msgstr "White"
+
+msgid "shade_black"
+msgstr "Black"
+
+msgid "capture_preview_animation"
+msgstr "Preview"
+
+msgid "capture_visual_change_rival"
+msgstr "Rival"
+
+msgid "capture_visual_change_interval"
+msgstr "Interval"
+
+msgid "capture_visual_change_print_version"
+msgstr "Print Version"

@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Tank Configurator\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "module_name"
+msgstr "Tank Configurator"
+
+msgid "module_description"
+msgstr "Configure tank modules, equipment and consumables"
+
+msgid "module_provider"
+msgstr "Smellyriver"
+
+msgid "panel_title"
+msgstr "Configuration"
+
+#. {0}=penetration
+#. {1}=damage
+msgid "gun_description"
+msgstr "Penetration: {0}Damage: {1}"
+
+#. {0}=armor
+msgid "turret_description"
+msgstr "Armor: {0}"
+
+#. {0}=engine power
+#. {1}=fire chance
+msgid "engine_description"
+msgstr "Power: {0} hpChance on Fire: {1}"
+
+#. {0}=signal distance
+msgid "radio_description"
+msgstr "Distance: {0} m"
+
+#. {0}=traverse speed
+#. {1}=max load capacity in tons
+msgid "chassis_description"
+msgstr "Traverse Speed: {0}Max. Load: {1} t"
+
+#. {0}=penetration
+#. {1}=damage
+msgid "shell_description"
+msgstr "Penetration: {0}Damage: {1}"
+
+msgid "stock_button_tooltip"
+msgstr "Load stock configuration"
+
+msgid "stock_button"
+msgstr "Stock"
+
+msgid "elite_button_tooltip"
+msgstr "Load elite configuration"
+
+msgid "elite_button"
+msgstr "Elite"
+
+msgid "lock_gun_button_tooltip"
+msgstr "Disable all modules incompatible with this gun"
+
+msgid "lock_turret_button_tooltip"
+msgstr "Disable all modules incompatible with this turret"
+
+msgid "lock_chassis_button_tooltip"
+msgstr "Disable all modules incompatible with this chassis"
+
+msgid "modules_group_header"
+msgstr "Modules"
+
+msgid "ammunition_group_header"
+msgstr "Ammunition"
+
+msgid "equipment_group_header"
+msgstr "Equipment"
+
+msgid "consumables_group_header"
+msgstr "Consumables"

@@ -1,0 +1,156 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO Main Assembly\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. $migrate: L10N_Hull
+msgid "hull"
+msgstr "Hull"
+
+#. $migrate: L10N_Turret
+msgid "turret"
+msgstr "Turret"
+
+#. $migrate: L10N_Turrets
+msgid "turret_plural"
+msgstr "Turrets"
+
+#. $migrate: L10N_AmmoBay
+msgid "ammorack"
+msgstr "Ammorack"
+
+#. $migrate: L10N_TurretRotator
+msgid "turret_rotator"
+msgstr "Turret Rotator"
+
+#. $migrate: L10N_FuelTank
+msgid "fuel_tank"
+msgstr "Fuel Tank"
+
+msgid "engine"
+msgstr "Engine"
+
+#. $migrate: L10N_Engines
+msgid "engine_plural"
+msgstr "Engines"
+
+msgid "track"
+msgstr "Track"
+
+msgid "track_plural"
+msgstr "Tracks"
+
+#. $migrate: L10N_Gun
+msgid "gun"
+msgstr "Gun"
+
+msgid "gun_plural"
+msgstr "Guns"
+
+#. $migrate: L10N_SurveyingDevice
+msgid "surveying_device"
+msgstr "Surveying Device"
+
+msgid "radio"
+msgstr "Radio"
+
+#. $migrate:  L10N_Radios
+msgid "radio_plural"
+msgstr "Radios"
+
+#. $migrate: L10N_Chassis
+msgid "chassis"
+msgstr "Chassis"
+
+msgid "chassis_plural"
+msgstr "Chassis"
+
+msgid "consumable"
+msgstr "Consumable"
+
+msgid "consumable_plural"
+msgstr "Consumables"
+
+msgid "equipment"
+msgstr "Equipment"
+
+msgid "equipment_plural"
+msgstr "Equipment"
+
+#. $migrate: L10N_Shell
+msgid "shell"
+msgstr "Shell"
+
+#. $migrate: L10N_LightTank
+msgid "class_light_tank"
+msgstr "Light Tank"
+
+#. $migrate: L10N_MediumTank
+msgid "class_medium_tank"
+msgstr "Medium Tank"
+
+#. $migrate: L10N_HeavyTank
+msgid "class_heavy_tank"
+msgstr "Heavy Tank"
+
+#. $migrate: L10N_TankDestroyer
+msgid "class_tank_destroyer"
+msgstr "Tank Destroyer"
+
+#. $migrate: L10N_SelfPropelledGun
+msgid "class_self_propelled_gun"
+msgstr "Self Propelled Gun"
+
+#. $migrate: L10N_LightTankShort
+msgid "class_light_tank_abbrev"
+msgstr "LT"
+
+#. $migrate: L10N_MediumTankShort
+msgid "class_medium_tank_abbrev"
+msgstr "MT"
+
+#. $migrate: L10N_HeavyTankShort
+msgid "class_heavy_tank_abbrev"
+msgstr "HT"
+
+#. $migrate: L10N_TankDestroyerShort
+msgid "class_tank_destroye_abbrevr"
+msgstr "TD"
+
+#. $migrate: L10N_SelfPropelledGunShort
+msgid "class_self_propelled_gun_abbrev"
+msgstr "SPG"
+
+#. $migrate: L10N_AP
+msgid "shell_type_ap"
+msgstr "AP"
+
+#. $migrate: L10N_APCR
+msgid "shell_type_apcr"
+msgstr "APCR"
+
+#. $migrate: L10N_APHE
+msgid "shell_type_aphe"
+msgstr "APHE"
+
+#. $migrate: L10N_HE
+msgid "shell_type_he"
+msgstr "HE"
+
+#. $migrate: L10N_HEAT
+msgid "shell_type_heat"
+msgstr "HEAT"
+
+#. $migrate: L10N_PremiumHE
+msgid "shell_type_premium_he"
+msgstr "Premium HE"

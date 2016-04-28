@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B7B29422-A7EF-4457-9D23-A57C78F1C039}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Smellyriver.TankInspector.Pro.Graphics</RootNamespace>
+    <AssemblyName>Smellyriver.TankInspector.Pro.Graphics</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Binaries\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Binaries\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SharpDX, Version=2.4.2.0, Culture=neutral, PublicKeyToken=627a3d6d1956f55a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D9">
+      <HintPath>..\Libraries\SharpDX.Direct3D9.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CamouflageInfo.cs" />
+    <Compile Include="Controls\InputHandler.xaml.cs">
+      <DependentUpon>InputHandler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ModelView.xaml.cs">
+      <DependentUpon>ModelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ModelView.xaml.Properties.cs" />
+    <Compile Include="Controls\HangarSceneSource.cs" />
+    <Compile Include="Frameworks\BaseCamera.cs" />
+    <Compile Include="Frameworks\IInteractiveDirect3D.cs" />
+    <Compile Include="Frameworks\ModelViewerCamera.cs" />
+    <Compile Include="Frameworks\D3D.cs" />
+    <Compile Include="Frameworks\D3D9.cs" />
+    <Compile Include="Frameworks\D3D9ImageSource.cs" />
+    <Compile Include="Frameworks\DisposeGroup.cs" />
+    <Compile Include="Frameworks\Disposer.cs" />
+    <Compile Include="Frameworks\DrawEventArgs.cs" />
+    <Compile Include="Frameworks\DXElement.cs" />
+    <Compile Include="Frameworks\DXUtils.cs" />
+    <Compile Include="Frameworks\FirstPersonCamera.cs" />
+    <Compile Include="Frameworks\FPS.cs" />
+    <Compile Include="Frameworks\IDirect3D.cs" />
+    <Compile Include="Frameworks\RenderActivityLevel.cs" />
+    <Compile Include="Geometry.cs" />
+    <Compile Include="GraphicsSettings.cs" />
+    <Compile Include="IXQueryableExtensions.cs" />
+    <Compile Include="ModuleExtensions.cs" />
+    <Compile Include="ModuleModel.cs" />
+    <Compile Include="ModelMaterial.cs" />
+    <Compile Include="ModelMaterialProperty.cs" />
+    <Compile Include="ModelPrimitive.cs" />
+    <Compile Include="ModelPrimitiveGroup.cs" />
+    <Compile Include="ModelRenderSet.cs" />
+    <Compile Include="ModelVisual.cs" />
+    <Compile Include="PrimitiveSection.cs" />
+    <Compile Include="Scene\CameraMode.cs" />
+    <Compile Include="Scene\CollisionModelHit.cs" />
+    <Compile Include="Scene\CollisionModelHitTestResult.cs" />
+    <Compile Include="Scene\CollisionModelRenderParameters.cs" />
+    <Compile Include="Scene\HangarScene.cs" />
+    <Compile Include="Scene\HangerScene.HUD.cs" />
+    <Compile Include="Scene\ISnapshotProvider.cs" />
+    <Compile Include="Scene\ModuleModelRenderer.cs" />
+    <Compile Include="Scene\PenetrationState.cs" />
+    <Compile Include="Scene\ProjectileTracer.cs" />
+    <Compile Include="Scene\ProjectileTracerHitTestResult.cs" />
+    <Compile Include="Scene\QuadRender.cs" />
+    <Compile Include="Scene\SnapshotContext.cs" />
+    <Compile Include="Scene\RotationCenter.cs" />
+    <Compile Include="Scene\SceneBase.cs" />
+    <Compile Include="Scene\SceneMeshBase.cs" />
+    <Compile Include="Scene\ShootTestResult.cs" />
+    <Compile Include="Scene\ModuleMesh.cs" />
+    <Compile Include="Scene\MeshGroup.cs" />
+    <Compile Include="Scene\RenderGroup.cs" />
+    <Compile Include="Scene\Triangle.cs" />
+    <Compile Include="Scene\VertexState.cs" />
+    <Compile Include="Scene\TestShellInfo.cs" />
+    <Compile Include="Smaa\SMAA.cs" />
+    <Compile Include="TankModel.cs" />
+    <Compile Include="Trackball.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility .cs" />
+    <Compile Include="Vertex.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Common.Wpf\Smellyriver.TankInspector.Common.Wpf.csproj">
+      <Project>{7098a00e-1f84-48a2-a5b2-adcbee3ba880}</Project>
+      <Name>Smellyriver.TankInspector.Common.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Common\Smellyriver.TankInspector.Common.csproj">
+      <Project>{12fdeefc-91d4-4fa1-8601-4db4a87f99f3}</Project>
+      <Name>Smellyriver.TankInspector.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Core\Smellyriver.TankInspector.Core.csproj">
+      <Project>{4dce28fe-43ff-4e85-915a-1f460d86f881}</Project>
+      <Name>Smellyriver.TankInspector.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.IO\Smellyriver.TankInspector.IO.csproj">
+      <Project>{33c70321-47cb-4a97-a0ec-ca09a7cbf6e9}</Project>
+      <Name>Smellyriver.TankInspector.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Pro\Smellyriver.TankInspector.Pro.csproj">
+      <Project>{81e2be69-6cc3-4eba-8c9f-43d8c1ce254c}</Project>
+      <Name>Smellyriver.TankInspector.Pro</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Graphics\Effect\BuildArmorColor.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Effect\ClearGBuffer.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Effect\HudEffect.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Effect\LightingTank.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Effect\RenderGBuffer.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Effect\ShowGBuffer.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Effect\SMAA.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Effect\SMAA.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Effect\TankMesh.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Texture\AreaTexDX9.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Texture\random-normal.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Texture\random.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Texture\random.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Graphics\Texture\SearchTex.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\InputHandler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ModelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

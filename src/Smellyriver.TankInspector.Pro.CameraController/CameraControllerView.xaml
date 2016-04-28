@@ -1,0 +1,231 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.CameraController.CameraControllerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:metroShared="http://metro.mahapps.com/winfx/xaml/shared"
+             Loc.CatalogName="camera_controller"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/ToolWindow.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="metro:NumericUpDown">
+                <Setter Property="TrackMouseWheelWhenMouseOver" Value="True" />
+                <Setter Property="HideUpDownButtons" Value="True" />
+                <Setter Property="MinWidth" Value="10" />
+                <Setter Property="Margin" Value="2,0" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Background="{DynamicResource AccentColorBrush4}">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" >
+                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="40" Height="40">
+                    <Image Source="pack://application:,,,/stipro;component/Resources/Images/Actions/Copy_16.png" Stretch="None" />
+                </Button>
+                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="40" Height="40">
+                    <Image Source="pack://application:,,,/stipro;component/Resources/Images/Actions/Paste_16.png" Stretch="None" />
+                </Button>
+                <Separator />
+                <ComboBox Width="120" />
+                <Button Style="{DynamicResource MetroCircleButtonStyle}" Width="40" Height="40">
+                    <Image Source="pack://application:,,,/stipro;component/Resources/Images/Actions/Save_16.png" Stretch="None" />
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+
+            <Grid Margin="10" MinWidth="260">
+                <StackPanel Style="{StaticResource ToolWindowStackPanel}">
+                    <Expander Header="{Loc projection, Default=Projection}" IsExpanded="False">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <ToggleButton Grid.ColumnSpan="2"
+                                          Margin="3" 
+                                          IsChecked="{Binding IsOrthographicModeSelected, Mode=TwoWay}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/Smellyriver.TankInspector.Pro.CameraController;component/Resources/Images/Orthographic_16.png" />
+                                    <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" Text="{Loc orthographic, Default=Orthographic}" />
+                                </StackPanel>
+                            </ToggleButton>
+                            <ToggleButton Grid.Column="2" Grid.ColumnSpan="2"
+                                          Margin="3" 
+                                          IsChecked="{Binding IsPerspectiveModeSelected, Mode=TwoWay}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Stretch="None" Source="pack://application:,,,/Smellyriver.TankInspector.Pro.CameraController;component/Resources/Images/Perspective_16.png" />
+                                    <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" Text="{Loc perspective, Default=Perspective}" />
+                                </StackPanel>
+                            </ToggleButton>
+
+                            <TextBlock Grid.Row="1" Margin="3"
+                                       VerticalAlignment="Center"
+                                       Text="{Loc fov, Default=FOV}" />
+                            <metro:NumericUpDown Grid.Row="1" Grid.Column="1" 
+                                                 Margin="3"
+                                                 Minimum="6.9" Maximum="132.1" 
+                                                 IsEnabled="{Binding IsPerspectiveModeSelected}"
+                                                 Value="{Binding FOV, Mode=TwoWay}" 
+                                                 StringFormat="{}{0:0.#}"  />
+                            <TextBlock Grid.Row="1" Grid.Column="2"
+                                       Margin="3"
+                                       VerticalAlignment="Center"
+                                       Text="{Loc f_135, Default=f(135)}" /> 
+                            <metro:NumericUpDown Grid.Row="1" Grid.Column="3" 
+                                                 Margin="3"
+                                                 Minimum="8" Maximum="300" 
+                                                 IsEnabled="{Binding IsPerspectiveModeSelected}"
+                                                 Value="{Binding Equivalent135FocalLength, Mode=TwoWay}" 
+                                                 StringFormat="{}{0:0.#}"  />
+                        </Grid>
+                    </Expander>
+
+                    <Expander Header="{Loc location, Default=Location}" IsExpanded="True">
+                        <StackPanel>
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="ToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+                                        <Setter Property="Margin" Value="2,0,0,0" />
+                                        <Setter Property="Width" Value="28" />
+                                        <Setter Property="Height" Value="28" />
+                                    </Style>
+                                </StackPanel.Resources>
+                                <ToggleButton IsChecked="{Binding IsFrontViewSelected, Mode=TwoWay}"
+                                              ToolTip="{Loc front, Default=Front}">
+                                    <Image Stretch="None" Source="pack://application:,,,/Smellyriver.TankInspector.Pro.CameraController;component/Resources/Images/Front_16.png" />
+                                </ToggleButton>
+                                <ToggleButton IsChecked="{Binding IsTopViewSelected, Mode=TwoWay}"
+                                              ToolTip="{Loc top, Default=Top}">
+                                    <Image Stretch="None" Source="pack://application:,,,/Smellyriver.TankInspector.Pro.CameraController;component/Resources/Images/Top_16.png" />
+                                </ToggleButton>
+                                <ToggleButton IsChecked="{Binding IsLeftViewSelected, Mode=TwoWay}"
+                                              ToolTip="{Loc left, Default=Left}">
+                                    <Image Stretch="None" Source="pack://application:,,,/Smellyriver.TankInspector.Pro.CameraController;component/Resources/Images/Left_16.png" />
+                                </ToggleButton>
+                                <ToggleButton IsChecked="{Binding IsBottomViewSelected, Mode=TwoWay}"
+                                              ToolTip="{Loc bottom, Default=Bottom}">
+                                    <Image Stretch="None" Source="pack://application:,,,/Smellyriver.TankInspector.Pro.CameraController;component/Resources/Images/Bottom_16.png" />
+                                </ToggleButton>
+                                <ToggleButton IsChecked="{Binding IsRightViewSelected, Mode=TwoWay}"
+                                              ToolTip="{Loc right, Default=Right}">
+                                    <Image Stretch="None" Source="pack://application:,,,/Smellyriver.TankInspector.Pro.CameraController;component/Resources/Images/Right_16.png" />
+                                </ToggleButton>
+                                <ToggleButton IsChecked="{Binding IsRearViewSelected, Mode=TwoWay}"
+                                              ToolTip="{Loc back, Default=Back}">
+                                    <Image Stretch="None" Source="pack://application:,,,/Smellyriver.TankInspector.Pro.CameraController;component/Resources/Images/Rear_16.png" />
+                                </ToggleButton>
+                            </StackPanel>
+
+                            <Grid>
+                                <Grid.Resources>
+                                    <Style x:Key="RotationComponentUpDown" 
+                                           TargetType="metro:NumericUpDown" 
+                                           BasedOn="{StaticResource {x:Type metro:NumericUpDown}}">
+                                        <Setter Property="Minimum" Value="-180" />
+                                        <Setter Property="Maximum" Value="180" />
+                                        <Setter Property="Interval" Value="0.1" />
+                                        <Setter Property="StringFormat" Value="{}{0:0.#}" />
+                                    </Style>
+                                    <Style x:Key="CoordinateComponentUpDown" 
+                                           TargetType="metro:NumericUpDown" 
+                                           BasedOn="{StaticResource {x:Type metro:NumericUpDown}}">
+                                        <Setter Property="Minimum" Value="-100" />
+                                        <Setter Property="Maximum" Value="100" />
+                                        <Setter Property="Interval" Value="0.1" />
+                                        <Setter Property="StringFormat" Value="{}{0:0.#}" />
+                                    </Style>
+                                    <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+
+                                </Grid.Resources>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20" />
+                                    <RowDefinition Height="30" />
+                                    <!--<RowDefinition Height="20" />
+                                    <RowDefinition Height="30" />-->
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="1" 
+                                           Text="{Loc yaw, Default=Yaw}"
+                                           HorizontalAlignment="Center" />
+                                <TextBlock Grid.Row="0" Grid.Column="2" 
+                                           Text="{Loc pitch, Default=Pitch}" 
+                                           HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Row="0" Grid.Column="3" 
+                                           Text="{Loc roll, Default=Roll}"  
+                                           HorizontalAlignment="Center"
+                                           IsEnabled="False" />
+                                <TextBlock Grid.Row="1" Grid.Column="0" 
+                                           Text="{Loc rotation, Default=Rotation}" />
+                                <metro:NumericUpDown Grid.Row="1" Grid.Column="1" 
+                                                     Style="{StaticResource RotationComponentUpDown}"
+                                                     Value="{Binding RotationYaw, Mode=TwoWay}" />
+                                <metro:NumericUpDown Grid.Row="1" Grid.Column="2" 
+                                                     Style="{StaticResource RotationComponentUpDown}"
+                                                     Value="{Binding RotationPitch, Mode=TwoWay}" />
+                                <metro:NumericUpDown Grid.Row="1" Grid.Column="3" 
+                                                     IsEnabled="False"
+                                                     Style="{StaticResource RotationComponentUpDown}"
+                                                     Value="{Binding RotationRoll, Mode=TwoWay}" />
+                                <!--<TextBlock Grid.Row="2" Grid.Column="1" 
+                                           Text="{Loc x, Default=X}" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Row="2" Grid.Column="2" 
+                                           Text="{Loc y, Default=Y}" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Row="2" Grid.Column="3" 
+                                           Text="{Loc z, Default=Z}" HorizontalAlignment="Center"/>
+                                <TextBlock Grid.Row="3" Grid.Column="0" 
+                                           Text="{Loc panning, Default=Panning}" />
+                                <metro:NumericUpDown Grid.Row="3" Grid.Column="1" 
+                                                     Style="{StaticResource CoordinateComponentUpDown}"
+                                                     Value="{Binding PanningX, Mode=TwoWay}" />
+                                <metro:NumericUpDown Grid.Row="3" Grid.Column="2" 
+                                                     Style="{StaticResource CoordinateComponentUpDown}"
+                                                     Value="{Binding PanningY, Mode=TwoWay}" />
+                                <metro:NumericUpDown Grid.Row="3" Grid.Column="3" 
+                                                     Style="{StaticResource CoordinateComponentUpDown}"
+                                                     Value="{Binding PanningZ, Mode=TwoWay}" />-->
+
+                                <TextBlock Grid.Row="2" Grid.Column="0"
+                                           Text="{Loc zoom, Default=Zoom}" />
+                                <Slider Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                                        Style="{StaticResource FlatSlider}" 
+                                        Minimum="1" Maximum="100" 
+                                        Value="{Binding LinearZoomValue, Mode=TwoWay}" />
+                                <TextBlock Grid.Row="2" Grid.Column="3"
+                                           HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding ActualZoomValue, StringFormat={}{0:0.#}}" />
+                                    <TextBlock Text="{Loc zoom_unit, Default= x}" />
+                                </TextBlock>
+                            </Grid>
+                        </StackPanel>
+                    </Expander>
+
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

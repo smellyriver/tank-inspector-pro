@@ -1,0 +1,46 @@
+﻿<metro:MetroWindow xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		           xmlns:local="clr-namespace:Smellyriver.TankInspector.Pro.UserInterface"
+                   xmlns:popups="clr-namespace:Smellyriver.TankInspector.Pro.UserInterface.Modularity.Popups"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+		           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:input="clr-namespace:Smellyriver.TankInspector.Pro.Input"
+		           mc:Ignorable="d" 
+		           x:Class="Smellyriver.TankInspector.Pro.UserInterface.Shell"
+                   Loc.CatalogName="shell"
+                   Title="{Loc app_name, Catalog=app, Default={}Tank Inspector PRO}" 
+                   GlowBrush="{DynamicResource AccentColorBrush}"
+		           MinWidth="800"
+                   MinHeight="600"
+                   TextOptions.TextFormattingMode="Display"
+                   SnapsToDevicePixels="True">
+
+    <metro:MetroWindow.InputBindings>
+        <KeyBinding Command="{x:Static ApplicationCommands.SaveAs}"
+                        Key="S"
+                        Modifiers="Control+Shift" />
+        <KeyBinding Command="{x:Static ApplicationCommands.Close}"
+                        Key="F4"
+                        Modifiers="Control" />
+        <KeyBinding Command="{x:Static input:ApplicationCommands.Exit}"
+                        Key="X"
+                        Modifiers="Alt" />
+    </metro:MetroWindow.InputBindings>
+    
+    <metro:MetroWindow.CommandBindings>
+        <CommandBinding Command="input:ApplicationCommands.ShowAboutDialog"
+                        Executed="ShowAboutDialog_Executed" />
+    </metro:MetroWindow.CommandBindings>
+
+    <metro:MetroWindow.Flyouts>
+        <metro:FlyoutsControl ItemsSource="{Binding Flyouts, Source={x:Static popups:InternalFlyoutManager.Instance}}" />
+    </metro:MetroWindow.Flyouts>
+    
+    <DockPanel LastChildFill="True">
+        <local:MainMenu DockPanel.Dock="Top" 
+                        DataContext="{Binding MainMenu}" />
+        <!--<local:MainStatusBar DockPanel.Dock="Bottom" DataContext="{Binding Status}" />-->
+        <local:MainDockingView DataContext="{Binding MainDockingView}" />
+    </DockPanel>
+</metro:MetroWindow>

@@ -1,0 +1,53 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Crew Configurator\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "module_name"
+msgstr "Crew Configurator"
+
+msgid "module_description"
+msgstr "Config and manage crews"
+
+msgid "module_provider"
+msgstr "Smellyriver"
+
+msgid "panel_title"
+msgstr "Crews"
+
+msgid "teach_all"
+msgstr "Teach All"
+
+msgid "teach_all_brother_in_arms_tip"
+msgstr "Teach all the crews the Brother in Arms skill"
+
+msgid "teach_all_camouflage_tip"
+msgstr "Teach all the crews the Camouflage skill"
+
+msgid "teach_all_fire_fighting_tip"
+msgstr "Teach all the crews the Fire Fighting skill"
+
+msgid "teach_all_repair_tip"
+msgstr "Teach all the crews the Repair skill"
+
+msgid "experience_header"
+msgstr "Experience: "
+
+msgid "is_alive_header"
+msgstr "Alive"
+
+msgid "training_level_header"
+msgstr "Training Level:"
+
+msgid "add_skill_or_perk"
+msgstr "Add a skill or perk"

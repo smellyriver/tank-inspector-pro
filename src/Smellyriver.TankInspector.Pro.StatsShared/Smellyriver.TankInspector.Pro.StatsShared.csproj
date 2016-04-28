@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{22CA3224-02A2-4BD0-A727-D67B856935C3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Smellyriver.TankInspector.Pro.StatsShared</RootNamespace>
+    <AssemblyName>Smellyriver.TankInspector.Pro.StatsShared</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Binaries\Debug\Modules\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComparisonIcon.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatValueMode.cs" />
+    <Compile Include="StatValueModeVM.cs" />
+    <Compile Include="StatVMBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Common.Wpf\Smellyriver.TankInspector.Common.Wpf.csproj">
+      <Project>{7098a00e-1f84-48a2-a5b2-adcbee3ba880}</Project>
+      <Name>Smellyriver.TankInspector.Common.Wpf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Common\Smellyriver.TankInspector.Common.csproj">
+      <Project>{12fdeefc-91d4-4fa1-8601-4db4a87f99f3}</Project>
+      <Name>Smellyriver.TankInspector.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Core\Smellyriver.TankInspector.Core.csproj">
+      <Project>{4dce28fe-43ff-4e85-915a-1f460d86f881}</Project>
+      <Name>Smellyriver.TankInspector.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Pro.Globalization\Smellyriver.TankInspector.Pro.Globalization.csproj">
+      <Project>{9890f571-444f-4edb-8ba4-58f1c0921937}</Project>
+      <Name>Smellyriver.TankInspector.Pro.Globalization</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Smellyriver.TankInspector.Pro\Smellyriver.TankInspector.Pro.csproj">
+      <Project>{81e2be69-6cc3-4eba-8c9f-43d8c1ce254c}</Project>
+      <Name>Smellyriver.TankInspector.Pro</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\BaseValue_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\InstanceValue_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ComparisonPlain3_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Comparison-1_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Comparison-2_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Comparison-3_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Comparison0_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Comparison1_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Comparison2_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Comparison3_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ComparisonPlain-1_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ComparisonPlain-2_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ComparisonPlain-3_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ComparisonPlain0_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ComparisonPlain1_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ComparisonPlain2_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Localization\en-US\stats_shared.mo">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Localization\en-US\stats_shared.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

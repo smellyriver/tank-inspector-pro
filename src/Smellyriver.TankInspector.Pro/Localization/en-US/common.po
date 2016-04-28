@@ -1,0 +1,64 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO Main Assembly\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. OK button
+msgid "ok"
+msgstr "OK"
+
+#. cancel button
+msgid "cancel"
+msgstr "Cancel"
+
+#. yes button
+msgid "yes"
+msgstr "Yes"
+
+#. no button
+msgid "no"
+msgstr "No"
+
+#. yes to all button
+msgid "yes_to_all"
+msgstr "Yes to All"
+
+#. no to all button
+msgid "no_to_all"
+msgstr "No to All"
+
+#. error title
+msgid "error"
+msgstr "Error"
+
+#. save button
+msgid "save"
+msgstr "Save"
+
+#. "save as" with ellipsis, usually used in buttons or menus
+msgid "save_as_with_ellipsis"
+msgstr "Save As..."
+
+#. usually used in titles
+msgid "save_as"
+msgstr "Save As"
+
+#. don't save button
+msgid "do_not_save"
+msgstr "Don't Save"
+
+msgid "loading"
+msgstr "Loading"
+
+msgid "all_file_types_filter"
+msgstr "All Files"

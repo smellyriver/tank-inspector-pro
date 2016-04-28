@@ -1,0 +1,371 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Model Inspector\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "module_name"
+msgstr "Patchnote Generator"
+
+msgid "module_description"
+msgstr "Compare two game clients and generate patchnotes automatically"
+
+msgid "module_provider"
+msgstr "Smellyriver"
+
+#. appears in file|new menu
+msgid "new_patchnote_menu_item"
+msgstr "New Patchnote"
+
+#. {0}=game client version
+msgid "new_patchnote_from_client_menu_item"
+msgstr "From {0}"
+
+#. {0}=game client version
+msgid "new_patchnote_to_client_menu_item"
+msgstr "To {0}"
+
+#. appears in game client context menu
+msgid "create_patchnote_menu_item"
+msgstr "Create Patchnote..."
+
+msgid "create_patchnote_flyout_title"
+msgstr "Create Patchnote"
+
+msgid "insufficient_game_clients_message_title"
+msgstr "Insufficient Game Clients"
+
+msgid "insufficient_game_clients_message"
+msgstr "You need at least 2 game clients in order to create a patchnote."
+
+msgid "document_title"
+msgstr "Patchnote"
+
+#. used in exporting patchnote
+#. {0}=game client version
+msgid "default_patchnote_file_name"
+msgstr "{0}-patchnote.ext"
+
+msgid "reference_game_client_title"
+msgstr "Reference: "
+
+msgid "generate_status_preparing"
+msgstr "Preparing..."
+
+msgid "generate_status_analysing"
+msgstr "Analysing..."
+
+msgid "generate_status_creating_document"
+msgstr "Creating document..."
+
+msgid "generate_status_completed"
+msgstr "Completed"
+
+#. {0}=game client version
+msgid "generated_document_title"
+msgstr "{0} Patchnote"
+
+#. {0}=reference game client version
+msgid "generated_document_reference"
+msgstr "Reference: {0}"
+
+msgid "generated_document_new_tanks_title"
+msgstr "New Tanks"
+
+msgid "generated_document_obsolete_tanks_title"
+msgstr "Obsolete Tanks"
+
+msgid "generated_document_stat_changes_title"
+msgstr "Stat Changes"
+
+msgid "generated_document_potential_armor_changes_title"
+msgstr "Potential Armor Changes*"
+
+msgid "generated_document_potential_armor_changes_footnote"
+msgstr "* based on preliminary CRC checksum comparison"
+
+#. {0}=nation
+#. {1}=tier
+#. {2}=class (light tank, SPG etc.)
+msgid "generated_document_tank_type_format"
+msgstr "{0} tier {1} {2}"
+
+#. {0}=stuff been added
+msgid "generated_document_added_action_format"
+msgstr "{0} added"
+
+#. {0}=stuff been removed
+msgid "generated_document_removed_action_format"
+msgstr "{0} removed"
+
+#. {0}=attribute name (e.g. penetration)
+#. {1}=attribute owner (e.g. gun)
+msgid "generated_document_attribute_modifier"
+msgstr "{0} of {1}"
+
+#. {0}=child item name (e.g. gun [8,8cm Kw.K. 43 L/71])
+#. {1}=parent item name (e.g. turret [Pz.Kpwf. Tiger Ausf.E])
+#. => gun [8,8cm Kw.K. 43 L/71] on turret [Pz.Kpwf. Tiger Ausf.E]
+msgid "generated_document_parent_modifier"
+msgstr "{0} on {1}"
+
+#. {0}=stuff been buffed
+msgid "generated_document_buffed_action_format"
+msgstr "{0} buffed"
+
+#. {0}=stuff been nerfed
+msgid "generated_document_nerfed_action_format"
+msgstr "{0} nerfed"
+
+#. {0}=stuff been changed
+msgid "generated_document_changed_action_format"
+msgstr "{0} changed"
+
+#. {0}=stuff been increased
+msgid "generated_document_increased_action_format"
+msgstr "{0} increased"
+
+#. {0}=stuff been decreased
+msgid "generated_document_decreased_action_format"
+msgstr "{0} decreased"
+
+#. {0}=change action (e.g. damage nerfed)
+#. {1}=old value (e.g. 250)
+#. {2}=new value (e.g. 240)
+#. => damage nerfed from 250 to 240
+msgid "generated_document_changed_item_format"
+msgstr "{0} from {1} to {2}"
+
+msgid "field_price"
+msgstr "Price"
+
+msgid "field_tags"
+msgstr "Tags"
+
+msgid "field_tier"
+msgstr "Tier"
+
+msgid "field_matchmaking_weight"
+msgstr "Matchmaking Weight"
+
+msgid "field_maximum_speed"
+msgstr "Maximum Speed"
+
+msgid "field_maximum_reverse_speed"
+msgstr "Maximum Reverse Speed"
+
+msgid "field_repair_cost_factor"
+msgstr "Repair Cost Factor"
+
+msgid "field_crew_experience_factor"
+msgstr "Crew Experience Factor"
+
+msgid "field_hull_weight"
+msgstr "Hull Weight"
+
+msgid "field_hull_health"
+msgstr "Hull Health"
+
+msgid "field_ammorack_health"
+msgstr "Ammorack Health"
+
+msgid "field_ammorack_regenerated_health"
+msgstr "Ammorack Regenerated Health"
+
+msgid "field_ammorack_repair_cost_factor"
+msgstr "Ammorack Repair Cost Factor"
+
+msgid "field_fuel_tank_health"
+msgstr "Fuel Tank Health"
+
+msgid "field_fuel_tank_regenerated_health"
+msgstr "Fuel Tank Regenerated Health"
+
+msgid "field_fuel_tank_repair_cost_factor"
+msgstr "Fuel Tank Repair Cost Factor"
+
+msgid "field_fuel_tank_weight"
+msgstr "Fuel Tank Weight"
+
+msgid "field_fuel_tank_price"
+msgstr "Fuel Tank Price"
+
+msgid "field_chassis"
+msgstr "Chassis"
+
+msgid "field_unlock_experience"
+msgstr "Unlock Experience"
+
+msgid "field_maximum_climb_angle"
+msgstr "Maximum Climb Angle"
+
+msgid "field_weight"
+msgstr "Weight"
+
+msgid "field_maximum_load"
+msgstr "Maximum Load"
+
+msgid "field_hard_terrain_resistance"
+msgstr "Hard Terrain Resistance"
+
+msgid "field_medium_terrain_resistance"
+msgstr "Medium Terrain Resistance"
+
+msgid "field_soft_terrain_resistance"
+msgstr "Soft Terrain Resistance"
+
+msgid "field_brake_force"
+msgstr "Brake Force"
+
+msgid "field_can_traverse"
+msgstr "Can Traverse"
+
+msgid "field_traverse_speed"
+msgstr "Traverse Speed"
+
+msgid "field_aim_circle_dispersion_on_vehicle_movement"
+msgstr "Aim Circle Dispersion on Vehicle Movement"
+
+msgid "field_aim_circle_dispersion_on_vehicle_traversing"
+msgstr "Aim Circle Dispersion on Vehicle Traversing"
+
+msgid "field_track_health"
+msgstr "Track Health"
+
+msgid "field_track_regenerated_health"
+msgstr "Track Regenerated Health"
+
+msgid "field_track_repair_cost_factor"
+msgstr "Track Repair Cost Factor"
+
+msgid "field_turrets"
+msgstr "Turrets"
+
+msgid "field_health"
+msgstr "Health"
+
+msgid "field_view_range"
+msgstr "View Range"
+
+msgid "field_turret_rotator_health"
+msgstr "Turret Rotator Health"
+
+msgid "field_turret_rotator_regenerated_health"
+msgstr "Turret Rotator Regenerated Health"
+
+msgid "field_turret_rotator_repair_cost_factor"
+msgstr "Turret Rotator Repair Cost Factor"
+
+msgid "field_surveying_device_health"
+msgstr "Surveying Device Health"
+
+msgid "field_surveying_device_regenerated_health"
+msgstr "Surveying Device Regenerated Health"
+
+msgid "field_surveying_device_repair_cost_factor"
+msgstr "Surveying Device Repair Cost Factor"
+
+msgid "field_guns"
+msgstr "Guns"
+
+msgid "field_maximum_ammo"
+msgstr "Maximum Ammo"
+
+msgid "field_elevation"
+msgstr "Elevation"
+
+msgid "field_depression"
+msgstr "Depression"
+
+msgid "field_accuracy"
+msgstr "Accuracy"
+
+msgid "field_reload_time"
+msgstr "Reload Time"
+
+msgid "field_aim_circle_dispersion_on_turret_traversing"
+msgstr "Aim Circle Dispersion on Turret Traversing"
+
+msgid "field_aim_circle_dispersion_after_shot"
+msgstr "Aim Circle Dispersion after Shot"
+
+msgid "field_aim_circle_dispersion_while_gun_damaged"
+msgstr "Aim Circle Dispersion while Gun Damaged"
+
+msgid "field_aim_time"
+msgstr "Aim Time"
+
+msgid "field_clip_count"
+msgstr "Clip Count"
+
+msgid "field_clip_rate"
+msgstr "Clip Rate"
+
+msgid "field_clip_reload_time"
+msgstr "Clip Reload Time"
+
+msgid "field_burst_count"
+msgstr "Burst Count"
+
+msgid "field_burst_rate"
+msgstr "Burst Rate"
+
+msgid "field_left_traverse_range"
+msgstr "Left Traverse Range"
+
+msgid "field_right_traverse_range"
+msgstr "Right Traverse Range"
+
+msgid "field_regenerated_health"
+msgstr "Regenerated Health"
+
+msgid "field_ammunition"
+msgstr "Ammunition"
+
+msgid "field_velocity"
+msgstr "Velocity"
+
+msgid "field_gravity"
+msgstr "Gravity"
+
+msgid "field_maximum_distance"
+msgstr "Maximum Distance"
+
+msgid "field_penetration_at_100m"
+msgstr "Penetration at 100m"
+
+msgid "field_penetration_at_400m"
+msgstr "Penetration at 400m"
+
+msgid "field_caliber"
+msgstr "Caliber"
+
+msgid "field_damage"
+msgstr "Damage"
+
+msgid "field_module_damage"
+msgstr "Module Damage"
+
+msgid "field_engines"
+msgstr "Engines"
+
+msgid "field_power"
+msgstr "Power"
+
+msgid "field_chance_on_fire"
+msgstr "Chance on Fire"
+
+msgid "field_radios"
+msgstr "Radios"
+
+msgid "field_signal_distance"
+msgstr "Signal Distance"

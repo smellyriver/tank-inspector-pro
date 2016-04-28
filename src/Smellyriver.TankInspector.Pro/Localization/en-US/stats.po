@@ -1,0 +1,932 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO Main Assembly\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "category_general"
+msgstr "General"
+
+msgid "category_firepower"
+msgstr "Firepower"
+
+msgid "category_ammunition"
+msgstr "Ammunition"
+
+msgid "category_gun"
+msgstr "Gun"
+
+msgid "category_maneuverability"
+msgstr "Maneuverability"
+
+msgid "category_turret"
+msgstr "Turret"
+
+msgid "category_chassis"
+msgstr "Chassis"
+
+msgid "category_mobility"
+msgstr "Mobility"
+
+msgid "category_engine"
+msgstr "Engine"
+
+msgid "category_survivability"
+msgstr "Survivability"
+
+msgid "category_hull"
+msgstr "Hull"
+
+msgid "category_radio"
+msgstr "Radio"
+
+msgid "category_scoutability"
+msgstr "Scoutability"
+
+msgid "category_combat"
+msgstr "Combat"
+
+msgid "category_economy"
+msgstr "Economy"
+
+msgid "category_miscellaneous"
+msgstr "Miscellaneous"
+
+msgid "category_equipment"
+msgstr "Equipment"
+
+msgid "name"
+msgstr "Name"
+
+msgid "name_description"
+msgstr "Name of the tank"
+
+msgid "description"
+msgstr "Description"
+
+msgid "description_description"
+msgstr "Description of the tank"
+
+msgid "tier"
+msgstr "Tier"
+
+msgid "tier_description"
+msgstr "Tier of the tank"
+
+msgid "nation"
+msgstr "Nation"
+
+msgid "nation_description"
+msgstr "Nation of the tank"
+
+msgid "class"
+msgstr "Class"
+
+msgid "class_description"
+msgstr "Class of the tank"
+
+msgid "penetration"
+msgstr "Penetration"
+
+msgid "penetration_description"
+msgstr "Penetration at 100m"
+
+msgid "unit_millimeters"
+msgstr "mm"
+
+msgid "penetration_at_400m"
+msgstr "Penetration at 400m"
+
+msgid "penetration_at_400m_description"
+msgstr "Penetration at 400m"
+
+msgid "damage"
+msgstr "Damage"
+
+msgid "damage_description"
+msgstr "Damage"
+
+msgid "module_damage"
+msgstr "Module Damage"
+
+msgid "module_damage_description"
+msgstr "Module Damage"
+
+msgid "rate_of_fire"
+msgstr "Rate of Fire"
+
+msgid "rate_of_fire_description"
+msgstr "Rate of Fire"
+
+msgid "unit_count_per_minute"
+msgstr "c/min"
+
+msgid "damage_per_minute"
+msgstr "Damage per Minute"
+
+msgid "damage_per_minute_short_name"
+msgstr "DPM"
+
+msgid "damage_per_minute_description"
+msgstr "Damage per Minute"
+
+msgid "reload_time"
+msgstr "Reload Time"
+
+msgid "reload_time_description"
+msgstr "Reload Time"
+
+msgid "unit_seconds"
+msgstr "s"
+
+msgid "maximum_ammo"
+msgstr "Maximum Ammo"
+
+msgid "maximum_ammo_short_name"
+msgstr "Max. Ammo"
+
+msgid "maximum_ammo_description"
+msgstr "Maximum Ammo"
+
+msgid "unit_count"
+msgstr "c"
+
+msgid "caliber"
+msgstr "Caliber"
+
+msgid "caliber_description"
+msgstr "Caliber"
+
+msgid "maximum_shoot_distance"
+msgstr "Maximum Shoot Distance"
+
+msgid "maximum_shoot_distance_short_name"
+msgstr "Max. Distance"
+
+msgid "maximum_shoot_distance_description"
+msgstr "Maximum Distance"
+
+msgid "unit_meters"
+msgstr "m"
+
+msgid "shell_velocity"
+msgstr "Shell Velocity"
+
+msgid "shell_velocity_description"
+msgstr "Shell Velocity"
+
+msgid "unit_meters_per_second"
+msgstr "m/s"
+
+msgid "shell_gravity"
+msgstr "Shell Gravity"
+
+msgid "shell_gravity_description"
+msgstr "Shell Gravity"
+
+msgid "unit_meters_per_square_second"
+msgstr "m/s²"
+
+msgid "clip_count"
+msgstr "Clip Count"
+
+msgid "clip_count_description"
+msgstr "Clip Count"
+
+msgid "clip_rate"
+msgstr "Clip Rate"
+
+msgid "clip_rate_description"
+msgstr "Clip Rate"
+
+msgid "in-clip_reload_time"
+msgstr "In-clip Reload Time"
+
+msgid "in-clip_reload_time_description"
+msgstr "In-clip Reload Time"
+
+msgid "burst_count"
+msgstr "Burst Count"
+
+msgid "burst_count_description"
+msgstr "Burst Count"
+
+msgid "burst_rate"
+msgstr "Burst Rate"
+
+msgid "burst_rate_description"
+msgstr "Burst Rate"
+
+msgid "accuracy"
+msgstr "Accuracy"
+
+msgid "accuracy_description"
+msgstr "Accuracy"
+
+msgid "aim_time"
+msgstr "Aim Time"
+
+msgid "aim_time_description"
+msgstr "Aim Time"
+
+msgid "aim_circle_dispersion_on_turret_rotation"
+msgstr "Aim Circle Dispersion on Turret Rotation"
+
+msgid "aim_circle_dispersion_on_turret_rotation_short_name"
+msgstr "ACD @ Turret Rotation"
+
+msgid "aim_circle_dispersion_on_turret_rotation_description"
+msgstr "Aim circle dispersion on turret rotation"
+
+msgid "aim_circle_dispersion_on_turret_full_speed_rotation"
+msgstr "Aim Circle Dispersion on Turret Full Speed Rotation"
+
+msgid "aim_circle_dispersion_on_turret_full_speed_rotation_short_name"
+msgstr "ACD @ Turret FS. Rotation"
+
+msgid "aim_circle_dispersion_on_turret_full_speed_rotation_description"
+msgstr "Aim circle dispersion on turret full-speed rotation"
+
+msgid "aim_circle_dispersion_after_shot"
+msgstr "Aim Circle Dispersion after Shot"
+
+msgid "aim_circle_dispersion_after_shot_short_name"
+msgstr "ACD @ Shot"
+
+msgid "aim_circle_dispersion_after_shot_description"
+msgstr "Aim circle dispersion after shot"
+
+msgid "aim_circle_dispersion_while_gun_damaged"
+msgstr "Aim Circle Dispersion while Gun Damaged"
+
+msgid "aim_circle_dispersion_while_gun_damaged_short_name"
+msgstr "ACD @ Gun Damaged"
+
+msgid "aim_circle_dispersion_while_gun_damaged_description"
+msgstr "Aim circle dispersion while gun damaged"
+
+msgid "aim_circle_dispersion_on_vehicle_move"
+msgstr "Aim Circle Dispersion on Vehicle Move"
+
+msgid "aim_circle_dispersion_on_vehicle_move_short_name"
+msgstr "ACD @ Vehicle Move"
+
+msgid "aim_circle_dispersion_on_vehicle_move_description"
+msgstr "Aim circle dispersion on vehicle move"
+
+msgid "aim_circle_dispersion_on_vehicle_full_speed_moving"
+msgstr "Aim Circle Dispersion on Vehicle Full Speed Moving"
+
+msgid "aim_circle_dispersion_on_vehicle_full_speed_moving_short_name"
+msgstr "ACD @ Vehicle FS. Moving"
+
+msgid "aim_circle_dispersion_on_vehicle_full_speed_moving_description"
+msgstr "Aim circle dispersion on vehicle full-speed moving"
+
+msgid "aim_circle_dispersion_on_vehicle_traverse"
+msgstr "Aim Circle Dispersion on Vehicle Traverse"
+
+msgid "aim_circle_dispersion_on_vehicle_traverse_short_name"
+msgstr "ACD @ Vehicle Traverse"
+
+msgid "aim_circle_dispersion_on_vehicle_traverse_description"
+msgstr "Aim circle dispersion on vehicle traverse"
+
+msgid "aim_circle_dispersion_on_vehicle_full_speed_traversing"
+msgstr "Aim Circle Dispersion on Vehicle Full Speed Traversing"
+
+msgid "aim_circle_dispersion_on_vehicle_full_speed_traversing_short_name"
+msgstr "ACD @ Vehicle FS. Traverse"
+
+msgid "aim_circle_dispersion_on_vehicle_full_speed_traversing_description"
+msgstr "Aim circle dispersion on vehicle full-speed traverse"
+
+msgid "maximum_elevation"
+msgstr "Maximum Elevation"
+
+msgid "maximum_elevation_description"
+msgstr "Maximum Elevation"
+
+msgid "unit_degrees"
+msgstr "°"
+
+msgid "maximum_depression"
+msgstr "Maximum Depression"
+
+msgid "maximum_depression_description"
+msgstr "Maximum depression"
+
+msgid "gun_left_traverse_range"
+msgstr "Gun Left Traverse Range"
+
+msgid "gun_left_traverse_range_description"
+msgstr "Gun Left Traverse Range"
+
+msgid "gun_traverse_range"
+msgstr "Gun Traverse Range"
+
+msgid "gun_traverse_range_description"
+msgstr "Gun Traverse Range"
+
+msgid "gun_traverse_speed"
+msgstr "Gun Traverse Speed"
+
+msgid "gun_traverse_speed_description"
+msgstr "Gun Traverse Speed"
+
+msgid "unit_degrees_per_second"
+msgstr "°/s"
+
+msgid "turret_traverse_speed"
+msgstr "Turret Traverse Speed"
+
+msgid "turret_traverse_speed_description"
+msgstr "Turret Traverse Speed"
+
+msgid "chassis_traverse_speed"
+msgstr "Chassis Traverse Speed"
+
+msgid "chassis_traverse_speed_description"
+msgstr "Chassis Traverse Speed"
+
+msgid "power"
+msgstr "Power"
+
+msgid "power_description"
+msgstr "Power"
+
+msgid "unit_horsepowers"
+msgstr "hp"
+
+msgid "specific_power"
+msgstr "Specific Power"
+
+msgid "specific_power_description"
+msgstr "Specific Power"
+
+msgid "unit_horsepowers_per_ton"
+msgstr "hp/t"
+
+msgid "maximum_forward_speed"
+msgstr "Maximum Forward Speed"
+
+msgid "maximum_forward_speed_short_name"
+msgstr "Forward Speed"
+
+msgid "maximum_forward_speed_description"
+msgstr "Maximum forward speed"
+
+msgid "unit_kilometers_per_hour"
+msgstr "km/h"
+
+msgid "maximum_backward_speed"
+msgstr "Maximum Backward Speed"
+
+msgid "maximum_backward_speed_short_name"
+msgstr "Backward Speed"
+
+msgid "maximum_backward_speed_description"
+msgstr "Maximum backward speed"
+
+msgid "hard_terrain_resistance"
+msgstr "Hard Terrain Resistance"
+
+msgid "hard_terrain_resistance_description"
+msgstr "Hard Terrain Resistance"
+
+msgid "medium_terrain_resistance"
+msgstr "Medium Terrain Resistance"
+
+msgid "medium_terrain_resistance_description"
+msgstr "Medium Terrain Resistance"
+
+msgid "soft_terrain_resistance"
+msgstr "Soft Terrain Resistance"
+
+msgid "soft_terrain_resistance_description"
+msgstr "Soft Terrain Resistance"
+
+msgid "pivot"
+msgstr "Pivot"
+
+msgid "pivot_description"
+msgstr "Pivot"
+
+msgid "brake_force"
+msgstr "Brake Force"
+
+msgid "brake_force_description"
+msgstr "Brake Force"
+
+msgid "unit_newtons"
+msgstr "N"
+
+msgid "maximum_climb_angle"
+msgstr "Maximum Climb Angle"
+
+msgid "maximum_climb_angle_short_name"
+msgstr "Max. Climb Angle"
+
+msgid "maximum_climb_angle_description"
+msgstr "Maximum Climb Angle"
+
+msgid "engine_chance_on_fire"
+msgstr "Engine Chance on Fire"
+
+msgid "engine_chance_on_fire_description"
+msgstr "Engine chance on fire"
+
+msgid "hull_maximum_hitpoints"
+msgstr "Hull Maximum Hitpoints"
+
+msgid "hull_maximum_hitpoints_short_name"
+msgstr "Hull Max. HP"
+
+msgid "hull_maximum_hitpoints_description"
+msgstr "Hull maximum hitpoints"
+
+msgid "turret_maximum_hitpoints"
+msgstr "Turret Maximum Hitpoints"
+
+msgid "turret_maximum_hitpoints_short_name"
+msgstr "Turret Max. HP"
+
+msgid "turret_maximum_hitpoints_description"
+msgstr "Turret maximum hitpoints"
+
+msgid "maximum_hitpoints"
+msgstr "Maximum Hitpoints"
+
+msgid "maximum_hitpoints_short_name"
+msgstr "Max. HP"
+
+msgid "maximum_hitpoints_description"
+msgstr "Maximum hitpoints"
+
+msgid "hull_front_armor"
+msgstr "Hull Front Armor"
+
+msgid "hull_front_armor_short_name"
+msgstr "Hull Front Armor"
+
+msgid "hull_front_armor_description"
+msgstr "Hull front armor"
+
+msgid "hull_side_armor"
+msgstr "Hull Side Armor"
+
+msgid "hull_side_armor_short_name"
+msgstr "Hull Side Armor"
+
+msgid "hull_side_armor_description"
+msgstr "Hull side armor"
+
+msgid "hull_rear_armor"
+msgstr "Hull Rear Armor"
+
+msgid "hull_rear_armor_short_name"
+msgstr "Hull Rear Armor"
+
+msgid "hull_rear_armor_description"
+msgstr "Hull rear armor"
+
+msgid "turret_front_armor"
+msgstr "Turret Front Armor"
+
+msgid "turret_front_armor_short_name"
+msgstr "Turret Front Armor"
+
+msgid "turret_front_armor_description"
+msgstr "Turret front armor"
+
+msgid "turret_side_armor"
+msgstr "Turret Side Armor"
+
+msgid "turret_side_armor_short_name"
+msgstr "Turret Side Armor"
+
+msgid "turret_side_armor_description"
+msgstr "Turret side armor"
+
+msgid "turret_rear_armor"
+msgstr "Turret Rear Armor"
+
+msgid "turret_rear_armor_short_name"
+msgstr "Turret Rear Armor"
+
+msgid "turret_rear_armor_description"
+msgstr "Turret rear armor"
+
+msgid "gun_armor"
+msgstr "Gun Armor"
+
+msgid "gun_armor_short_name"
+msgstr "Gun Armor"
+
+msgid "gun_armor_description"
+msgstr "Gun armor"
+
+msgid "track_armor"
+msgstr "Track Armor"
+
+msgid "track_armor_short_name"
+msgstr "Track Armor"
+
+msgid "track_armor_description"
+msgstr "Track armor"
+
+msgid "ammorack_maximum_hitpoint"
+msgstr "Ammorack Maximum Hitpoint"
+
+msgid "ammorack_maximum_hitpoint_short_name"
+msgstr "Ammorack Max. HP"
+
+msgid "ammorack_maximum_hitpoint_description"
+msgstr "Ammorack maximum hitpoint"
+
+msgid "ammorack_maximum_regenerated_hitpoint"
+msgstr "Ammorack Maximum Regenerated Hitpoint"
+
+msgid "ammorack_maximum_regenerated_hitpoint_short_name"
+msgstr "Ammorack Max. Regen. HP"
+
+msgid "ammorack_maximum_regenerated_hitpoint_description"
+msgstr "Ammorack maximum regenerated hitpoint"
+
+msgid "turret_rotator_maximum_hitpoint"
+msgstr "Turret Rotator Maximum Hitpoint"
+
+msgid "turret_rotator_maximum_hitpoint_short_name"
+msgstr "Turret Rotator Max. HP"
+
+msgid "turret_rotator_maximum_hitpoint_description"
+msgstr "Turret rotator maximum hitpoint"
+
+msgid "turret_rotator_maximum_regenerated_hitpoint"
+msgstr "Turret Rotator Maximum Regenerated Hitpoint"
+
+msgid "turret_rotator_maximum_regenerated_hitpoint_short_name"
+msgstr "Turret Rotator Max. Regen. HP"
+
+msgid "turret_rotator_maximum_regenerated_hitpoint_description"
+msgstr "Turret Rotator maximum regenerated hitpoint"
+
+msgid "surveying_device_maximum_hitpoint"
+msgstr "Surveying Device Maximum Hitpoint"
+
+msgid "surveying_device_maximum_hitpoint_short_name"
+msgstr "Surveying Device Max. HP"
+
+msgid "surveying_device_maximum_hitpoint_description"
+msgstr "Surveying device maximum hitpoint"
+
+msgid "surveying_device_maximum_regenerated_hitpoint"
+msgstr "Surveying Device Maximum Regenerated Hitpoint"
+
+msgid "surveying_device_maximum_regenerated_hitpoint_short_name"
+msgstr "Surveying Device Max. Regen. HP"
+
+msgid "surveying_device_maximum_regenerated_hitpoint_description"
+msgstr "Surveying Device maximum regenerated hitpoint"
+
+msgid "fuel_tank_maximum_hitpoint"
+msgstr "fuel Tank Maximum Hitpoint"
+
+msgid "fuel_tank_maximum_hitpoint_short_name"
+msgstr "fuel Tank Max. HP"
+
+msgid "fuel_tank_maximum_hitpoint_description"
+msgstr "Fuel Tank maximum hitpoint"
+
+msgid "fuel_tank_maximum_regenerated_hitpoint"
+msgstr "fuel Tank Maximum Regenerated Hitpoint"
+
+msgid "fuel_tank_maximum_regenerated_hitpoint_short_name"
+msgstr "fuel Tank Max. Regen. HP"
+
+msgid "fuel_tank_maximum_regenerated_hitpoint_description"
+msgstr "fuel Tank maximum regenerated hitpoint"
+
+msgid "engine_maximum_hitpoint"
+msgstr "Engine Maximum Hitpoint"
+
+msgid "engine_maximum_hitpoint_short_name"
+msgstr "Engine Max. HP"
+
+msgid "engine_maximum_hitpoint_description"
+msgstr "Engine maximum hitpoint"
+
+msgid "engine_maximum_regenerated_hitpoint"
+msgstr "Engine Maximum Regenerated Hitpoint"
+
+msgid "engine_maximum_regenerated_hitpoint_short_name"
+msgstr "Engine Max. Regen. HP"
+
+msgid "engine_maximum_regenerated_hitpoint_description"
+msgstr "Engine maximum regenerated hitpoint"
+
+msgid "track_maximum_hitpoint"
+msgstr "Track Maximum Hitpoint"
+
+msgid "track_maximum_hitpoint_short_name"
+msgstr "Track Max. HP"
+
+msgid "track_maximum_hitpoint_description"
+msgstr "Track maximum hitpoint"
+
+msgid "track_maximum_regenerated_hitpoint"
+msgstr "Track Maximum Regenerated Hitpoint"
+
+msgid "track_maximum_regenerated_hitpoint_short_name"
+msgstr "Track Max. Regen. HP"
+
+msgid "track_maximum_regenerated_hitpoint_description"
+msgstr "Track maximum regenerated hitpoint"
+
+msgid "gun_maximum_hitpoint"
+msgstr "Gun Maximum Hitpoint"
+
+msgid "gun_maximum_hitpoint_short_name"
+msgstr "Gun Max. HP"
+
+msgid "gun_maximum_hitpoint_description"
+msgstr "Gun maximum hitpoint"
+
+msgid "gun_maximum_regenerated_hitpoint"
+msgstr "Gun Maximum Regenerated Hitpoint"
+
+msgid "gun_maximum_regenerated_hitpoint_short_name"
+msgstr "Gun Max. Regen. HP"
+
+msgid "gun_maximum_regenerated_hitpoint_description"
+msgstr "Gun maximum regenerated hitpoint"
+
+msgid "radio_maximum_hitpoint"
+msgstr "Radio Maximum Hitpoint"
+
+msgid "radio_maximum_hitpoint_short_name"
+msgstr "Radio Max. HP"
+
+msgid "radio_maximum_hitpoint_description"
+msgstr "Radio maximum hitpoint"
+
+msgid "radio_maximum_regenerated_hitpoint"
+msgstr "Radio Maximum Regenerated Hitpoint"
+
+msgid "radio_maximum_regenerated_hitpoint_short_name"
+msgstr "Radio Max. Regen. HP"
+
+msgid "radio_maximum_regenerated_hitpoint_description"
+msgstr "Radio maximum regenerated hitpoint"
+
+msgid "view_range"
+msgstr "View Range"
+
+msgid "view_range_description"
+msgstr "View Range"
+
+msgid "view_range_(still_for_3_seconds)"
+msgstr "View Range (Still for 3 Seconds)"
+
+msgid "view_range_(still_for_3_seconds)_description"
+msgstr "View Range after still for 3 seconds"
+
+msgid "radio_distance"
+msgstr "Radio Distance"
+
+msgid "radio_distance_description"
+msgstr "Radio distance"
+
+msgid "match_making_weight"
+msgstr "Match Making Weight"
+
+msgid "match_making_weight_short_name"
+msgstr "MM Weight"
+
+msgid "match_making_weight_description"
+msgstr "Match making weight"
+
+msgid "price"
+msgstr "Price"
+
+msgid "price_description"
+msgstr "Tank Price"
+
+msgid "price_currency"
+msgstr "Price Currency"
+
+msgid "price_currency_description"
+msgstr "Tank Price Currency"
+
+msgid "shell_price"
+msgstr "Shell Price"
+
+msgid "shell_price_description"
+msgstr "Shell Price"
+
+msgid "shell_price_currency"
+msgstr "Shell Price Currency"
+
+msgid "shell_price_currency_description"
+msgstr "Shell Price Currency"
+
+msgid "shell_price_per_damage"
+msgstr "Shell Price per Damage"
+
+msgid "shell_price_per_damage_description"
+msgstr "Shell Price per Damage"
+
+msgid "maximum_repair_cost"
+msgstr "Maximum Repair Cost"
+
+msgid "maximum_repair_cost_short_name"
+msgstr "Max. Repair Cost"
+
+msgid "maximum_repair_cost_description"
+msgstr "Maximum repair cost"
+
+msgid "unit_credits"
+msgstr "cr"
+
+msgid "hull_maximum_repair_cost"
+msgstr "Hull Maximum Repair Cost"
+
+msgid "hull_maximum_repair_cost_short_name"
+msgstr "Hull Max. Repair Cost"
+
+msgid "hull_maximum_repair_cost_description"
+msgstr "Hull maximum repair cost"
+
+msgid "turret_maximum_repair_cost"
+msgstr "Turret Maximum Repair Cost"
+
+msgid "turret_maximum_repair_cost_short_name"
+msgstr "Turret Max. Repair Cost"
+
+msgid "turret_maximum_repair_cost_description"
+msgstr "Turret maximum repair cost"
+
+msgid "ammorack_maximum_repair_cost"
+msgstr "Ammorack Maximum Repair Cost"
+
+msgid "ammorack_maximum_repair_cost_short_name"
+msgstr "Ammorack Max. Repair Cost"
+
+msgid "ammorack_maximum_repair_cost_description"
+msgstr "Ammorack maximum repair cost"
+
+msgid "track_maximum_repair_cost"
+msgstr "Track Maximum Repair Cost"
+
+msgid "track_maximum_repair_cost_short_name"
+msgstr "Track Max. Repair Cost"
+
+msgid "track_maximum_repair_cost_description"
+msgstr "Track maximum repair cost"
+
+msgid "turret_rotator_maximum_repair_cost"
+msgstr "Turret Rotator Maximum Repair Cost"
+
+msgid "turret_rotator_maximum_repair_cost_short_name"
+msgstr "Turret Rotator Max. Repair Cost"
+
+msgid "turret_rotator_maximum_repair_cost_description"
+msgstr "Turret Rotator maximum repair cost"
+
+msgid "surveying_device_maximum_repair_cost"
+msgstr "Surveying Device Maximum Repair Cost"
+
+msgid "surveying_device_maximum_repair_cost_short_name"
+msgstr "Surveying Device Max. Repair Cost"
+
+msgid "surveying_device_maximum_repair_cost_description"
+msgstr "Surveying Device maximum repair cost"
+
+msgid "fuel_tank_maximum_repair_cost"
+msgstr "fuel Tank Maximum Repair Cost"
+
+msgid "fuel_tank_maximum_repair_cost_short_name"
+msgstr "fuel Tank Max. Repair Cost"
+
+msgid "fuel_tank_maximum_repair_cost_description"
+msgstr "fuel Tank maximum repair cost"
+
+msgid "gun_maximum_repair_cost"
+msgstr "Gun Maximum Repair Cost"
+
+msgid "gun_maximum_repair_cost_short_name"
+msgstr "Gun Max. Repair Cost"
+
+msgid "gun_maximum_repair_cost_description"
+msgstr "Gun maximum repair cost"
+
+msgid "radio_maximum_repair_cost"
+msgstr "Radio Maximum Repair Cost"
+
+msgid "radio_maximum_repair_cost_short_name"
+msgstr "Radio Max. Repair Cost"
+
+msgid "radio_maximum_repair_cost_description"
+msgstr "Radio maximum repair cost"
+
+msgid "engine_maximum_repair_cost"
+msgstr "Engine Maximum Repair Cost"
+
+msgid "engine_maximum_repair_cost_short_name"
+msgstr "Engine Max. Repair Cost"
+
+msgid "engine_maximum_repair_cost_description"
+msgstr "Engine maximum repair cost"
+
+msgid "hull_weight"
+msgstr "Hull Weight"
+
+msgid "hull_weight_short_name"
+msgstr "Hull Weight"
+
+msgid "hull_weight_description"
+msgstr "Hull weight"
+
+msgid "unit_tons"
+msgstr "t"
+
+msgid "gun_weight"
+msgstr "Gun Weight"
+
+msgid "gun_weight_short_name"
+msgstr "Gun Weight"
+
+msgid "gun_weight_description"
+msgstr "Gun weight"
+
+msgid "turret_weight"
+msgstr "Turret Weight"
+
+msgid "turret_weight_short_name"
+msgstr "Turret Weight"
+
+msgid "turret_weight_description"
+msgstr "Turret weight"
+
+msgid "engine_weight"
+msgstr "Engine Weight"
+
+msgid "engine_weight_short_name"
+msgstr "Engine Weight"
+
+msgid "engine_weight_description"
+msgstr "Engine weight"
+
+msgid "chassis_weight"
+msgstr "Chassis Weight"
+
+msgid "chassis_weight_short_name"
+msgstr "Chassis Weight"
+
+msgid "chassis_weight_description"
+msgstr "Chassis weight"
+
+msgid "radio_weight"
+msgstr "Radio Weight"
+
+msgid "radio_weight_short_name"
+msgstr "Radio Weight"
+
+msgid "radio_weight_description"
+msgstr "Radio weight"
+
+msgid "equipments_weight"
+msgstr "Equipments Weight"
+
+msgid "equipments_weight_short_name"
+msgstr "Equipments Weight"
+
+msgid "equipments_weight_description"
+msgstr "Equipments weight"
+
+msgid "total_weight"
+msgstr "Total Weight"
+
+msgid "total_weight_short_name"
+msgstr "Total Weight"
+
+msgid "total_weight_description"
+msgstr "Total weight"
+
+msgid "maximum_load"
+msgstr "Maximum Load"
+
+msgid "maximum_load_short_name"
+msgstr "Max. Load"
+
+msgid "maximum_load_description"
+msgstr "Chassis Maximum Load"

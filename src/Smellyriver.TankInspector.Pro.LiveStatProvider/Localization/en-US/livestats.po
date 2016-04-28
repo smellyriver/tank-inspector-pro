@@ -1,0 +1,456 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Livestat Provider\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "category_livestat"
+msgstr "Livestat"
+
+#. $migrate: L10N_AverageDamageDealtFullName
+msgid "damage_dealt"
+msgstr "Average Damage Dealt"
+
+#. $migrate: L10N_AverageDamageDealt
+msgid "damage_dealt_short_name"
+msgstr "Avg. Damage Dealt"
+
+#. $migrate: L10N_AverageDamageDealtDescription
+msgid "damage_dealt_description"
+msgstr ""
+"Average damage dealt per battle. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AveragePotentialDamageReceivedFullName
+msgid "potential_damage_received"
+msgstr "Average Potential Damage Received"
+
+#. $migrate: L10N_AveragePotentialDamageReceived
+msgid "potential_damage_received_short_name"
+msgstr "Avg. Potential Damage Received"
+
+#. $migrate: L10N_AveragePotentialDamageReceivedDescription
+msgid "potential_damage_received_description"
+msgstr ""
+"Average potential damage (from penetrated, non-penetrated and ricochet "
+"shoot) received per battle. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageDamageReceivedFullName
+msgid "damage_received"
+msgstr "Average Damage Received"
+
+#. $migrate: L10N_AverageDamageReceived
+msgid "damage_received_short_name"
+msgstr "Avg. Damage Received"
+
+#. $migrate: L10N_AverageDamageReceivedDescription
+msgid "damage_received_description"
+msgstr ""
+"Average damage received per battle. This is a LiveStat which is based on "
+"random battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageSpotAssistFullName
+msgid "damage_assisted_radio"
+msgstr "Average Assist by Spotting"
+
+msgid "damage_assisted_radio_short_name"
+msgstr "Avg. Assist by Spotting"
+
+#. $migrate: L10N_AverageSpotAssistDescription
+msgid "damage_assisted_radio_description"
+msgstr ""
+"Average damage assisted per battle, by spotting enemy. This is a LiveStat "
+"which is based on random battles in the last 30 days. Data provided by "
+"vBAddict.net."
+
+#. $migrate: L10N_AverageDetrackAssistFullName
+msgid "damage_assisted_track"
+msgstr "Average Assist by Detrack"
+
+msgid "damage_assisted_track_short_name"
+msgstr "Avg. Assist by Detrack"
+
+#. $migrate: L10N_AverageDetrackAssistDescription
+msgid "damage_assisted_track_description"
+msgstr ""
+"Average damage assisted per battle, by destroying enemy tank's track. This "
+"is a LiveStat which is based on random battles in the last 30 days. Data "
+"provided by vBAddict.net."
+
+#. $migrate: L10N_HitRateFullName
+msgid "accuracy"
+msgstr "Hit Rate"
+
+#. $migrate: L10N_HitRate
+msgid "accuracy_short_name"
+msgstr "Hit Rate"
+
+#. $migrate: L10N_HitRateDescription
+msgid "accuracy_description"
+msgstr ""
+"Hit rate of this tank, with ricochets and unpenetrated shoots included. This "
+"is a LiveStat which is based on random battles in the last 30 days. Data "
+"provided by vBAddict.net."
+
+#. $migrate: L10N_AverageExperienceFullName
+msgid "experience"
+msgstr "Average Experience"
+
+#. $migrate: L10N_AverageExperience
+msgid "experience_short_name"
+msgstr "Avg. XP."
+
+#. $migrate: L10N_AverageExperienceDescription
+msgid "experience_description"
+msgstr ""
+"Average experience gained per battle. This is a LiveStat which is based on "
+"random battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageGrossIncomeFullName
+msgid "credits_bulk"
+msgstr "Average Gross Income"
+
+msgid "credits_bulk_short_name"
+msgstr "Avg. Gross Income"
+
+#. $migrate: L10N_AverageGrossIncomeDescription
+msgid "credits_bulk_description"
+msgstr ""
+"Average gross income per battle. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageOperationCostFullName
+msgid "operating_costs"
+msgstr "Average Operation Cost"
+
+#. $migrate: L10N_TankOperationCost
+msgid "operating_costs_short_name"
+msgstr "Avg. Operation Cost"
+
+#. $migrate: L10N_AverageOperationCostDescription
+msgid "operating_costs_description"
+msgstr ""
+"Average operation cost per battle. This is a LiveStat which is based on "
+"random battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageConsumableCostFullName
+msgid "equipment_costs"
+msgstr "Average Consumable Cost"
+
+msgid "equipment_costs_short_name"
+msgstr "Avg. Consumable Cost"
+
+#. $migrate: L10N_AverageConsumableCostDescription
+msgid "equipment_costs_description"
+msgstr ""
+"Average consumable cost per battle. This is a LiveStat which is based on "
+"random battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageAmmunitionCostFullName
+msgid "ammunition_costs"
+msgstr "Average Ammunition Cost"
+
+msgid "ammunition_costs_short_name"
+msgstr "Avg. Ammunition Cost"
+
+#. $migrate: L10N_AverageAmmunitionCostDescription
+msgid "ammunition_costs_description"
+msgstr ""
+"Average ammunition cost per battle. This is a LiveStat which is based on "
+"random battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageRepairCostFullName
+msgid "repair_costs"
+msgstr "Average Repair Cost"
+
+msgid "repair_costs_short_name"
+msgstr "Avg. Repair Cost"
+
+#. $migrate: L10N_AverageRepairCostDescription
+msgid "repair_costs_description"
+msgstr ""
+"Average repair cost per battle. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageNetIncomeFullName
+msgid "credits_net"
+msgstr "Average Net Income"
+
+msgid "credits_net_short_name"
+msgstr "Avg. Net Income"
+
+#. $migrate: L10N_AverageNetIncomeDescription
+msgid "credits_net_description"
+msgstr ""
+"Average net income per battle. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageMileageFullName
+msgid "mileage"
+msgstr "Average Mileage"
+
+#. $migrate: L10N_AverageMileage
+msgid "mileage_short_name"
+msgstr "Avg. Mileage"
+
+#. $migrate: L10N_AverageMileageDescription
+msgid "mileage_description"
+msgstr ""
+"Average mileage per battle. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageSpottedFullName
+msgid "spotted"
+msgstr "Average Spotted"
+
+#. $migrate: L10N_AverageSpotted
+msgid "spotted_short_name"
+msgstr "Avg. Spotted"
+
+#. $migrate: L10N_AverageSpottedDescription
+msgid "spotted_description"
+msgstr ""
+"Average enemy spotted (for the first time) per battle. This is a LiveStat "
+"which is based on random battles in the last 30 days. Data provided by "
+"vBAddict.net."
+
+#. $migrate: L10N_WinRateFullName
+msgid "winrate"
+msgstr "Win Rate"
+
+#. $migrate: L10N_WinRate
+msgid "winrate_short_name"
+msgstr "Win Rate"
+
+#. $migrate: L10N_WinRateDescription
+msgid "winrate_description"
+msgstr ""
+"Win rate of this tank. This is a LiveStat which is based on random battles "
+"in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageDamagedFullName
+msgid "damaged"
+msgstr "Average Damaged"
+
+#. $migrate: L10N_AverageDamaged
+msgid "damaged_short_name"
+msgstr "Avg. Damaged"
+
+#. $migrate: L10N_AverageDamagedDescription
+msgid "damaged_description"
+msgstr ""
+"Average enemy damaged per battle. This is a LiveStat which is based on "
+"random battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageWNXEfficiencyFullName
+msgid "efficiency_wnx"
+msgstr "Average PA Efficiency"
+
+msgid "efficiency_wnx_short_name"
+msgstr "Avg. PA Efficiency"
+
+#. $migrate: L10N_AverageWNXEfficiencyDescription
+msgid "efficiency_wnx_description"
+msgstr ""
+"PA efficiency of this tank. PA efficiency is a modified version of the wot-"
+"news efficiency, used by vBAddict.net. This is a LiveStat which is based on "
+"random battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageWN7EfficiencyFullName
+msgid "efficiency_wn7"
+msgstr "Average WN7 Efficiency"
+
+msgid "efficiency_wn7_short_name"
+msgstr "Avg. WN7 Efficiency"
+
+#. $migrate: L10N_AverageWN7EfficiencyDescription
+msgid "efficiency_wn7_description"
+msgstr ""
+"WN7 efficiency of this tank. WN7 is generally considered the standard "
+"efficiency system. This is a LiveStat which is based on random battles in "
+"the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageWN8EfficiencyFullName
+msgid "efficiency_wn8"
+msgstr "Average WN8 Efficiency"
+
+msgid "efficiency_wn8_short_name"
+msgstr "Avg. WN8 Efficiency"
+
+#. $migrate: L10N_AverageWN8EfficiencyDescription
+msgid "efficiency_wn8_description"
+msgstr ""
+"WN8(D) efficiency of this tank. WN8 is a next generation efficiency system "
+"which is still in development. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageBoxEfficiencyFullName
+msgid "efficiency_box"
+msgstr "Average Battle Capacity"
+
+msgid "efficiency_box_short_name"
+msgstr "Avg. Battle Capacity"
+
+#. $migrate: L10N_AverageBoxEfficiencyDescription
+msgid "efficiency_box_description"
+msgstr ""
+"The battle capacity of this tank. Battle capacity is a variant of the XVM "
+"efficiency. This is a LiveStat which is based on random battles in the last "
+"30 days. Based on data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageKilledFullName
+msgid "killed"
+msgstr "Average Killed"
+
+#. $migrate: L10N_AverageKilled
+msgid "killed_short_name"
+msgstr "Avg. Killed"
+
+#. $migrate: L10N_AverageKilledDescription
+msgid "killed_description"
+msgstr ""
+"Average enemy killed per battle. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_AverageBattleTimeFullName
+msgid "battle_time"
+msgstr "Average Battle Time"
+
+#. $migrate: L10N_AverageBattleTime
+msgid "battle_time_short_name"
+msgstr "Avg. Battle Time"
+
+#. $migrate: L10N_AverageBattleTimeDescription
+msgid "battle_time_description"
+msgstr ""
+"Average battle time of this tank. This is a LiveStat which is based on "
+"random battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_SurviveRateFullName
+msgid "survived"
+msgstr "Survive Rate"
+
+#. $migrate: L10N_SurviveRate
+msgid "survived_short_name"
+msgstr "Survive Rate"
+
+#. $migrate: L10N_SurviveRateDescription
+msgid "survived_description"
+msgstr ""
+"Survive rate of this tank. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_VBAddictSampleSizeFullName
+msgid "frequency_of_occurrence"
+msgstr "vBAddict Sample Size"
+
+#. $migrate: L10N_VBAddictSampleSize
+msgid "frequency_of_occurrence_short_name"
+msgstr "vBAddict Sample Size"
+
+#. $migrate: L10N_VBAddictSampleSizeDescription
+msgid "frequency_of_occurrence_description"
+msgstr ""
+"Sample size of this tank. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_ExperiencePerMinuteFullName
+msgid "experience_per_minute"
+msgstr "Experience per Minute"
+
+#. $migrate: L10N_ExperiencePerMinute
+msgid "experience_per_minute_short_name"
+msgstr "XP per min."
+
+#. $migrate: L10N_ExperiencePerMinuteDescription
+msgid "experience_per_minute_description"
+msgstr ""
+"Experience gained per minute. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+msgid "unit_xp_per_minute"
+msgstr "xp/min"
+
+msgid "unit_minutes"
+msgstr "min"
+
+#. $migrate: L10N_PenetrationRateFullName
+msgid "penetration_rate"
+msgstr "Penetration Rate"
+
+#. $migrate: L10N_PenetrationRate
+msgid "penetration_rate_short_name"
+msgstr "Penetration Rate"
+
+#. $migrate: L10N_PenetrationRateDescription
+msgid "penetration_rate_description"
+msgstr ""
+"Penetration rate of this tank. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_DamagelessShotsRateFullName
+msgid "no_damage_shots_ratio"
+msgstr "Damageless Shot Rate"
+
+#. $migrate: L10N_DamagelessShotsRate
+msgid "no_damage_shots_ratio_short_name"
+msgstr "Damageless Shot Rate"
+
+#. $migrate: L10N_DamagelessShotsRateDescription
+msgid "no_damage_shots_ratio_description"
+msgstr ""
+"Ricochet and unpenetration rate. This is a LiveStat which is based on random "
+"battles in the last 30 days. Data provided by vBAddict.net."
+
+#. $migrate: L10N_KamikazeRatioFullName
+msgid "kamikaze"
+msgstr "Kamikaze Ratio"
+
+#. $migrate: L10N_KamikazeRatio
+msgid "kamikaze_short_name"
+msgstr "Kamikaze Ratio"
+
+#. $migrate: L10N_KamikazeRatioDescription
+msgid "kamikaze_description"
+msgstr ""
+"Percentage the tank was destroyed in the first minute and spotted any tanks. "
+"This is a LiveStat which is based on random battles in the last 30 days. "
+"Data provided by vBAddict.net."
+
+#. $migrate: L10N_SleepingRatioFullName
+msgid "sleeping"
+msgstr "Sleeping Ratio"
+
+#. $migrate: L10N_SleepingRatio
+msgid "sleeping_short_name"
+msgstr "Sleeping Ratio"
+
+#. $migrate: L10N_SleepingRatioDescription
+msgid "sleeping_description"
+msgstr ""
+"Percentage the tank was not moved and did not dealt any damage. This is a "
+"LiveStat which is based on random battles in the last 30 days. Data provided "
+"by vBAddict.net."
+
+#. $migrate: L10N_AverageMatchmakingTierWeightFullName
+msgid "mm_tier_weight"
+msgstr "Average Matchmaking Tier Weight"
+
+msgid "mm_tier_weight_short_name"
+msgstr "Avg. MM Weight"
+
+#. $migrate: L10N_AverageMatchmakingTierWeightDescription
+msgid "mm_tier_weight_description"
+msgstr ""
+"Average battle tier encountered by this tank. This is a LiveStat which is "
+"based on random battles in the last 30 days. Data provided by vBAddict.net."

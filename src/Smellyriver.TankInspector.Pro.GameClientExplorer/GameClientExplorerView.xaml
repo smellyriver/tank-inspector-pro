@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.GameClientExplorer.GameClientExplorerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Smellyriver.TankInspector.Pro.GameClientExplorer"
+             xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:swpf="http://schemas.smellyriver.com/common/wpf/"
+             Loc.CatalogName="game_client_explorer"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" 
+             PreviewKeyUp="UserControl_PreviewKeyUp" 
+             PreviewKeyDown="UserControl_PreviewKeyDown">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/ToolWindow.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/Generic.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.Buttons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Background="{DynamicResource AccentColorBrush4}">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Right"
+                        Margin="5"
+                        DockPanel.Dock="Top">
+
+                <Button Command="{Binding ManageRepositoriesCommand}"
+                        Style="{DynamicResource MetroCircleButtonStyle}"
+                        Width="40" 
+                        Height="40"
+                        ToolTip="{Loc manage_game_clients_button_tip, Default=Manage game clients}">
+                    <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.GameClientExplorer;component/Resources/Images/Actions/Manage_16.png"
+                           Stretch="None" />
+                </Button>
+
+                <!--<Image Stretch="None">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="pack://application:,,,/Smellyriver.TankInspector.Pro.GameClientExplorer;component/Resources/Images/Control_Up_16.png" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsControlKeyPressed}" Value="True">
+                                    <Setter Property="Source" Value="pack://application:,,,/Smellyriver.TankInspector.Pro.GameClientExplorer;component/Resources/Images/Control_Down_16.png" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>-->
+            </StackPanel>
+        </Grid>
+
+        <TreeView x:Name="FileTree" 
+                  ItemsSource="{Binding GameClients}" 
+                  PreviewMouseRightButtonDown="FileTree_PreviewMouseRightButtonDown"
+                  MouseDoubleClick="FileTree_MouseDoubleClick"
+                  swpf:DragDrop.IsDragSource="True"
+                  swpf:DragDrop.DragHandler="{Binding ExplorerTreeDragHandler}">
+            <TreeView.Resources>
+
+                <DataTemplate DataType="{x:Type swpf:LoadingChildrenTreeNodeVM}">
+                    <metro:MetroProgressBar IsIndeterminate="True" Width="120" />
+                </DataTemplate>
+
+                <HierarchicalDataTemplate DataType="{x:Type local:ExplorerTreeNodeVM}" ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal" Margin="2">
+                        <Grid>
+                            <Image Stretch="None" Source="{Binding IconSource}" />
+                            <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.GameClientExplorer;component/Resources/Images/NodeIcons/Package_Decorator_16.png" 
+                                   Stretch="None"
+                                   Visibility="{Binding IsInPackage, Converter={swpf:BoolToVisibilityConverter}}"/>
+                        </Grid>
+                        <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Text="{Binding Name}" ToolTip="{Binding Description}" />
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.Resources>
+
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                    <EventSetter Event="MouseDoubleClick"  Handler="FileTreeItem_MouseDoubleClick" />
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu DataContext="{Binding PlacementTarget.DataContext.ContextMenu, RelativeSource={RelativeSource Self}}" 
+                                         ItemsSource="{Binding MenuItems}"
+                                         Visibility="{Binding Visibility}">
+                                <ContextMenu.Resources>
+                                    <!-- workaround to show all the icons -->
+                                    <Image Source="{Binding Icon}" x:Shared="false" x:Key="MenuIcon" />
+                                </ContextMenu.Resources>
+                                <ContextMenu.ItemContainerStyle>
+                                    <Style TargetType="MenuItem" BasedOn="{StaticResource {x:Type MenuItem}}">
+                                        <Setter Property="Icon" Value="{StaticResource MenuIcon}" />
+                                        <Setter Property="IsCheckable" Value="{Binding IsCheckable}" />
+                                        <Setter Property="IsChecked" Value="{Binding IsChecked}" />
+                                        <Setter Property="Header" Value="{Binding Name}" />
+                                        <!-- CAUTION: CommandParameter MUST appear BEFORE Command -->
+                                        <Setter Property="CommandParameter" Value="{Binding CommandParameter}" />
+                                        <Setter Property="Command" Value="{Binding Command}" />
+                                        <Setter Property="ItemsSource" Value="{Binding MenuItems}" />
+                                        <Setter Property="FontWeight" Value="{Binding IsDefault, Converter={local:BoolToFontWeightConverter}}" />
+                                    </Style>
+                                </ContextMenu.ItemContainerStyle>
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TreeView.ItemContainerStyle>
+
+        </TreeView>
+    </DockPanel>
+</UserControl>

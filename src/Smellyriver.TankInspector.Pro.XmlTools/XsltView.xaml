@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.XmlTools.XsltView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             Loc.CatalogName="xml_tools"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/ToolWindow.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <Style TargetType="Image" x:Key="OpenIcon">
+                <Setter Property="Source" Value="pack://application:,,,/Smellyriver.TankInspector.Pro.XmlTools;component/Resources/Images/Open_16.png" />
+                <Setter Property="Stretch" Value="None" />
+            </Style>
+        </ResourceDictionary>
+        
+    </UserControl.Resources>
+    <StackPanel Margin="5" Style="{StaticResource ToolWindowStackPanel}">
+        <TextBlock Text="{Loc xsl_file_header, Default=XSL File:}" />
+        <TextBox Text="{Binding XslFilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 metro:TextboxHelper.ButtonCommand="{Binding BrowseXslFileCommand}"
+                 Style="{DynamicResource MetroButtonTextBox}">
+            <metro:TextboxHelper.ButtonContent>
+                <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.XmlTools;component/Resources/Images/Open_16.png" Stretch="None" />
+            </metro:TextboxHelper.ButtonContent>
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding BrowseXslFileCommand}" />
+            </TextBox.InputBindings>
+        </TextBox>
+        <TextBlock Text="{Loc output_file_header, Default=Output:}" />
+        <TextBox Text="{Binding OutputFilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 metro:TextboxHelper.ButtonCommand="{Binding BrowseOutputFileCommand}"
+                 Style="{DynamicResource MetroButtonTextBox}">
+            <metro:TextboxHelper.ButtonContent>
+                <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.XmlTools;component/Resources/Images/Save_16.png" Stretch="None" />
+            </metro:TextboxHelper.ButtonContent>
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding BrowseOutputFileCommand}" />
+            </TextBox.InputBindings>
+        </TextBox>
+        <CheckBox IsChecked="{Binding OpenOutputFileAfterTransform, Mode=TwoWay}"
+                  Content="{Loc open_output_file_after_transform_header, Default=Open output file after transform}" />
+        <Button Content="Transform" Command="{Binding TransformCommand}" />
+    </StackPanel>
+</UserControl>

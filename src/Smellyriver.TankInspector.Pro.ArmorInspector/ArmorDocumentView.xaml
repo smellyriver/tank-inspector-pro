@@ -1,0 +1,501 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.ArmorInspector.ArmorDocumentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:local="clr-namespace:Smellyriver.TankInspector.Pro.ArmorInspector"
+             xmlns:shared="clr-namespace:Smellyriver.TankInspector.Pro.ModelShared;assembly=Smellyriver.TankInspector.Pro.ModelShared"
+             xmlns:gfx="http://schemas.smellyriver.com/tankinspector/pro/graphics"
+             xmlns:swpf="http://schemas.smellyriver.com/common/wpf/"
+             Loc.CatalogName="armor_inspector"
+             mc:Ignorable="d"
+             d:DesignHeight="500" d:DesignWidth="500">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/ToolWindow.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Grid
+            Visibility="{Binding IsInitializing, ElementName=ModelView, Converter={swpf:BoolToVisibilityConverter DesignTime=Hidden}}">
+            <metro:ProgressRing IsActive="True"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Width="32"
+                                Height="32" />
+        </Grid>
+
+        <Grid
+            swpf:ShowHideAnimation.Visibility="{Binding IsInitializing, 
+                                                                 ElementName=ModelView, 
+                                                                 Converter={swpf:BoolToVisibilityConverter TrueValue=Hidden, 
+                                                                                                                  FalseValue=Visible, 
+                                                                                                                  DesignTime=Visible}}">
+
+            <swpf:ShowHideAnimation.ShowStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.3" />
+                </Storyboard>
+            </swpf:ShowHideAnimation.ShowStoryboard>
+            <DockPanel>
+                <WrapPanel DockPanel.Dock="Top">
+                    <WrapPanel.Resources>
+                        <Style TargetType="ToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+                            <Setter Property="Margin" Value="2" />
+                        </Style>
+                    </WrapPanel.Resources>
+
+                    <ComboBox ItemsSource="{Binding RotationCenters}"
+                              SelectedItem="{Binding RotationCenter, Mode=TwoWay}"
+                              Margin="0,2">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal"
+                                            ToolTip="{Binding Description}">
+                                    <Image
+                                        Source="pack://application:,,,/Smellyriver.TankInspector.Pro.ModelShared;component/Resources/Images/Rotate_16.png"
+                                        Stretch="None" />
+                                    <TextBlock Margin="3,0,0,0" Text="{Binding Name}" />
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Separator Margin="3,0" />
+
+                    <ToggleButton ToolTip="{Loc solid_mode, Default=Solid, Catalog=model_shared}"
+                                  IsChecked="{Binding UseSolidMode, Mode=OneWay}"
+                                  Command="{x:Static shared:Commands.SwitchToSolidMode}">
+                        <Image
+                            Source="pack://application:,,,/Smellyriver.TankInspector.Pro.ModelShared;component/Resources/Images/Solid_16.png"
+                            Stretch="None" />
+                    </ToggleButton>
+
+                    <ToggleButton ToolTip="{Loc wireframe_mode, Default=Wireframe, Catalog=model_shared}"
+                                  IsChecked="{Binding UseWireframeMode, Mode=OneWay}"
+                                  Command="{x:Static shared:Commands.SwitchToWireframeMode}">
+                        <Image
+                            Source="pack://application:,,,/Smellyriver.TankInspector.Pro.ModelShared;component/Resources/Images/Wireframe_16.png"
+                            Stretch="None" />
+                    </ToggleButton>
+                    <Separator Margin="3,0" />
+
+                    <ToggleButton ToolTip="{Loc toggle_show_gun_menu_item, Default=Gun, Catalog=model_shared}"
+                                  IsChecked="{Binding ShowGun, Mode=OneWay}"
+                                  Command="{x:Static shared:Commands.ToggleShowGun}">
+                        <Image
+                            Source="pack://application:,,,/Smellyriver.TankInspector.Pro.ModelShared;component/Resources/Images/Gun_16.png"
+                            Stretch="None" />
+                    </ToggleButton>
+                    <ToggleButton ToolTip="{Loc toggle_show_turret_menu_item, Default=Turret, Catalog=model_shared}"
+                                  IsChecked="{Binding ShowTurret, Mode=OneWay}"
+                                  Command="{x:Static shared:Commands.ToggleShowTurret}">
+                        <Image
+                            Source="pack://application:,,,/Smellyriver.TankInspector.Pro.ModelShared;component/Resources/Images/Turret_16.png"
+                            Stretch="None" />
+                    </ToggleButton>
+                    <ToggleButton ToolTip="{Loc toggle_show_hull_menu_item, Default=Hull, Catalog=model_shared}"
+                                  IsChecked="{Binding ShowHull, Mode=OneWay}"
+                                  Command="{x:Static shared:Commands.ToggleShowHull}">
+                        <Image
+                            Source="pack://application:,,,/Smellyriver.TankInspector.Pro.ModelShared;component/Resources/Images/Hull_16.png"
+                            Stretch="None" />
+                    </ToggleButton>
+                    <ToggleButton ToolTip="{Loc toggle_show_chassis_menu_item, Default=Chassis, Catalog=model_shared}"
+                                  IsChecked="{Binding ShowChassis, Mode=OneWay}"
+                                  Command="{x:Static shared:Commands.ToggleShowChassis}">
+                        <Image
+                            Source="pack://application:,,,/Smellyriver.TankInspector.Pro.ModelShared;component/Resources/Images/Chassis_16.png"
+                            Stretch="None" />
+                    </ToggleButton>
+
+                    <Separator Margin="3,0" />
+                    <ToggleButton x:Name="CaptureButton"
+                                  IsChecked="{Binding Capture.IsCapturing, Mode=TwoWay}">
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+                            <Image
+                                Source="pack://application:,,,/Smellyriver.TankInspector.Pro.ModelShared;component/Resources/Images/Camera_16.png"
+                                Stretch="None" />
+                            <TextBlock Margin="5,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Text="{Loc capture, Default=Capture, Catalog=model_shared}" />
+                        </StackPanel>
+                    </ToggleButton>
+                </WrapPanel>
+
+                <DockPanel>
+
+                    <ScrollViewer DockPanel.Dock="Bottom"
+                                  MinHeight="150"
+                                  Visibility="{Binding Capture.IsCapturing, Converter={swpf:BoolToVisibilityConverter}}">
+
+                        <Grid Grid.IsSharedSizeScope="True">
+                            <Grid Margin="10"
+                                  VerticalAlignment="Top">
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                        <Setter Property="FontSize" Value="14" />
+                                    </Style>
+                                </Grid.Resources>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"
+                                                      MinWidth="50"
+                                                      SharedSizeGroup="NameColumn" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock
+                                    Text="{Loc capture_selected_region, Default=Selected Region, Catalog=model_shared}"
+                                    VerticalAlignment="Center" />
+
+                                <TextBlock Grid.Column="1"
+                                           VerticalAlignment="Center"
+                                           Margin="10,0,0,0"
+                                           Text="{Binding Capture.ClippingRectangleDisplay}" />
+
+                                <TextBlock Text="{Loc capture_size, Default=Output Size, Catalog=model_shared}"
+                                           Grid.Row="1"
+                                           VerticalAlignment="Center" />
+
+                                <StackPanel Orientation="Horizontal"
+                                            VerticalAlignment="Center"
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Margin="10,0,0,0">
+
+                                    <StackPanel x:Name="OutputSizeContentPanel"
+                                                Orientation="Horizontal">
+
+                                        <Slider x:Name="SampleFactorSlider"
+                                                Value="{Binding Capture.SampleFactor, Mode=TwoWay}"
+                                                Maximum="{Binding Capture.MaximumSampleFactor}"
+                                                Minimum="{Binding Capture.MinimumSampleFactor}"
+                                                Width="160" />
+                                    </StackPanel>
+
+                                </StackPanel>
+
+                                <Grid Grid.Row="2"
+                                      Grid.Column="1"
+                                      Margin="10,0,0,0"
+                                      Width="{Binding ActualWidth, ElementName=SampleFactorSlider}"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Top">
+
+                                    <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding Capture.OutputWidth}" />
+
+                                        <TextBlock Text="{Loc size_multiply, Default=x, Catalog=model_shared}"
+                                                   Margin="3,0" />
+
+                                        <TextBlock Text="{Binding Capture.OutputHeight}" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <TextBlock Text="{Loc capture_mode, Default=Mode, Catalog=model_shared}"
+                                           Grid.Row="3"
+                                           VerticalAlignment="Center" />
+
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Row="3" Grid.Column="1"
+                                            Margin="10,0,0,0"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left">
+
+                                    <ComboBox ItemsSource="{Binding Capture.Capturers}"
+                                              SelectedItem="{Binding Capture.SelectedCapturer, Mode=TwoWay}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Name}"
+                                                           ToolTip="{Binding Description}" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                        <ComboBox.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ComboBoxItem}">
+                                                <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+                                            </Style>
+                                        </ComboBox.ItemContainerStyle>
+                                    </ComboBox>
+
+                                    <CheckBox Margin="10,0,0,0"
+                                              Visibility="{Binding Capture.SelectedCapturer.AllowPreview, Converter={swpf:BoolToVisibilityConverter}}"
+                                              IsChecked="{Binding Capture.IsPreviewEnabled, Mode=TwoWay}"
+                                              Content="{Loc capture_preview_animation, Default=Preview, Catalog=model_shared}" />
+
+                                </StackPanel>
+
+                                <StackPanel Grid.Row="4"
+                                            Grid.ColumnSpan="2">
+
+                                    <Grid
+                                        Visibility="{Binding Capture.IsVisualModelComparerCapturerSelected, Converter={swpf:BoolToVisibilityConverter}}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"
+                                                              MinWidth="50"
+                                                              SharedSizeGroup="NameColumn" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="30" />
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock
+                                            Text="{Loc capture_visual_change_rival, Default=Rival, Catalog=model_shared}"
+                                            Margin="15,0,0,0"
+                                            Grid.Row="0"
+                                            VerticalAlignment="Center" />
+
+                                        <ComboBox Grid.Row="0"
+                                                  Grid.Column="1"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Left"
+                                                  Margin="10,0,0,0"
+                                                  MinWidth="200"
+                                                  MaxWidth="440"
+                                                  ItemsSource="{Binding Capture.SelectedCapturer.Rivals}"
+                                                  SelectedItem="{Binding Capture.SelectedCapturer.SelectedRival, Mode=TwoWay}">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Image Source="{Binding Icon}"
+                                                               Stretch="None" />
+                                                        <TextBlock Margin="5,0,0,0"
+                                                                   Text="{Binding Name}"
+                                                                   VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+
+                                        <TextBlock
+                                            Text="{Loc capture_visual_change_interval, Default=Interval, Catalog=model_shared}"
+                                            Margin="15,0,0,0"
+                                            Grid.Row="1"
+                                            VerticalAlignment="Center" />
+                                        <StackPanel Orientation="Horizontal"
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Center"
+                                                    Margin="10,0,0,0">
+
+                                            <metro:NumericUpDown
+                                                Minimum="{Binding Capture.SelectedCapturer.MinimumInterval}"
+                                                Maximum="{Binding Capture.SelectedCapturer.MaximumInterval}"
+                                                Value="{Binding Capture.SelectedCapturer.Interval, Mode=TwoWay}" />
+
+                                            <TextBlock Text="{Loc unit_seconds, Catalog=stats, Default=s}"
+                                                       VerticalAlignment="Center"
+                                                       Margin="3,0" />
+                                        </StackPanel>
+
+                                        <TextBlock
+                                            Text="{Loc capture_visual_change_print_version, Default=Print Version, Catalog=model_shared}"
+                                            Margin="15,0,0,0"
+                                            Grid.Row="2"
+                                            VerticalAlignment="Center" />
+
+                                        <CheckBox Grid.Row="2"
+                                                  Grid.Column="1"
+                                                  IsChecked="{Binding Capture.SelectedCapturer.PrintVersion, Mode=TwoWay}"
+                                                  HorizontalAlignment="Left"
+                                                  VerticalAlignment="Center"
+                                                  Margin="10,0,0,0" />
+                                    </Grid>
+                                </StackPanel>
+
+                                <TextBlock Text="{Loc capture_shade, Default=Shade, Catalog=model_shared}"
+                                           Grid.Row="5"
+                                           VerticalAlignment="Center" />
+
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Row="5"
+                                            Grid.Column="1"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Margin="10,0,0,0">
+
+                                    <RadioButton Content="{Loc shade_white, Default=White, Catalog=model_shared}"
+                                                 IsChecked="{Binding Capture.IsWhiteShadeSelected, Mode=TwoWay}" />
+                                    <RadioButton Margin="10,0,0,0"
+                                                 Content="{Loc shade_black, Default=Black, Catalog=model_shared}"
+                                                 IsChecked="{Binding Capture.IsBlackShadeSelected, Mode=TwoWay}" />
+
+                                </StackPanel>
+
+
+                                <TextBlock Text="{Loc capture_output_filename, Default=Output, Catalog=model_shared}"
+                                           Grid.Row="6"
+                                           VerticalAlignment="Center" />
+
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Row="6"
+                                            Grid.Column="1"
+                                            Margin="10,0,0,0"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left">
+                                    <TextBox MinWidth="200"
+                                             MaxWidth="440"
+                                             Text="{Binding Capture.OutputFilename, 
+                                                            Mode=TwoWay,
+                                                            NotifyOnValidationError=True,
+                                                            ValidatesOnDataErrors=True}" />
+
+                                    <Button Command="{Binding Capture.BrowseOutputFileCommand, Mode=OneWay}"
+                                            Margin="5,0,0,0">
+                                        <Image
+                                            Source="pack://application:,,,/stipro;component/Resources/Images/General/Open_16.png"
+                                            Stretch="None" />
+                                    </Button>
+                                </StackPanel>
+
+
+                                <Button Grid.Row="7"
+                                        Grid.ColumnSpan="2"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Content="{Loc capture_export, Default=Export, Catalog=model_shared}"
+                                        Command="{Binding Capture.ExportCommand}" />
+                            </Grid>
+                        </Grid>
+
+                    </ScrollViewer>
+                    <swpf:DockPanelSplitter DockPanel.Dock="Bottom"
+                                            Background="{DynamicResource GrayBrush7}"
+                                            Visibility="{Binding Capture.IsCapturing, Converter={swpf:BoolToVisibilityConverter}}" />
+
+                    <Grid>
+
+                        <DockPanel>
+
+                            <!--<Grid DockPanel.Dock="Bottom">
+                                <ItemsControl ItemsSource="{Binding ArmorView.Legends}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderThickness="1"
+                                                    BorderBrush="{Binding ArmorBrush}"
+                                                    Background="{Binding ArmorBrush}">
+                                                <TextBlock Text="{Binding ArmorValue}"
+                                                           Foreground="{Binding TextBrush}"
+                                                           Margin="3" />
+                                                <Border.Style>
+                                                    <Style TargetType="{x:Type Border}">
+                                                        <Setter Property="BorderBrush" Value="{Binding ArmorBrush}" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsMouseOver}"
+                                                                         Value="True">
+                                                                <Setter Property="BorderBrush" Value="Black" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>-->
+
+                            <gfx:ModelView x:Name="ModelView"
+                                           TankInstance="{Binding ArmorView.TankInstance}"
+                                           ModelType="Collision"
+                                           CameraTransform="{Binding Transform, ElementName=InputHandler}"
+                                           LookDirection="{Binding LookDirection, ElementName=InputHandler}"
+                                           Zoom="{Binding Zoom, ElementName=InputHandler}"
+                                           ShowGun="{Binding ShowGun}"
+                                           ShowHull="{Binding ShowHull}"
+                                           ShowChassis="{Binding ShowChassis}"
+                                           ShowTurret="{Binding ShowTurret}"
+                                           GraphicsSettings="{Binding ArmorView.GraphicsSettings}"
+                                           Fov="{Binding Camera.FOV}"
+                                           ProjectionMode="{Binding Camera.ProjectionMode}"
+                                           ShowCamouflage="{Binding ShowCamouflage}"
+                                           FileSource="{Binding FileSource}"
+                                           RotationCenter="{Binding RotationCenter.Model}"
+                                           HangarSceneSource="{Binding HangarSceneSource}"
+                                           AlternativeTankInstance="{Binding AlternativeTankInstance}"
+                                           AlternativeHangarSceneChanged="ModelView_AlternativeHangarSceneChanged"
+                                           CollisionModelRenderParameters="{Binding ArmorView.CollisionModelRenderParameters}" />
+
+                        </DockPanel>
+
+                        <Viewbox StretchDirection="DownOnly" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                 Margin="0,10,70,10">
+                            <StackPanel>
+                                <Grid VerticalAlignment="Bottom" Margin="0,0,0,10">
+                                    <local:ArmorIndicator Ticks="{Binding ArmorView.RegularArmorValues}"
+                                                          HorizontalAlignment="Left"
+                                                          SelectionBegin="{Binding ArmorView.CollisionModelRenderParameters.RegularArmorValueSelectionBegin, Mode=OneWayToSource}"
+                                                          SelectionEnd="{Binding ArmorView.CollisionModelRenderParameters.RegularArmorValueSelectionEnd, Mode=OneWayToSource}"
+                                                          HintValue="{Binding ArmorView.CollisionModelRenderParameters.RegularArmorHintValue, Mode=TwoWay}"
+                                                          HasHintValue="{Binding ArmorView.CollisionModelRenderParameters.HasRegularArmorHintValue, Mode=TwoWay}"
+                                                          SpectrumStops="{Binding ArmorView.CollisionModelRenderParameters.RegularArmorSpectrumStops, Mode=OneTime}">
+                                        <local:ArmorIndicator.ToolTip>
+                                            <ToolTip x:Uid="RegularArmorIndicatorToolTip">Regular armor thicknesses</ToolTip>
+                                        </local:ArmorIndicator.ToolTip>
+                                    </local:ArmorIndicator>
+
+                                    <local:ArmorIndicator Ticks="{Binding ArmorView.SpacedArmorValues}"
+                                                          HorizontalAlignment="Left" TickPosition="0" Margin="70,0,0,0"
+                                                          SelectionBegin="{Binding ArmorView.CollisionModelRenderParameters.SpacingArmorValueSelectionBegin, Mode=OneWayToSource}"
+                                                          SelectionEnd="{Binding ArmorView.CollisionModelRenderParameters.SpacingArmorValueSelectionEnd, Mode=OneWayToSource}"
+                                                          HintValue="{Binding ArmorView.CollisionModelRenderParameters.SpacingArmorHintValue, Mode=TwoWay}"
+                                                          HasHintValue="{Binding ArmorView.CollisionModelRenderParameters.HasSpacingArmorHintValue, Mode=TwoWay}"
+                                                          SpectrumStops="{Binding ArmorView.CollisionModelRenderParameters.SpacingArmorSpectrumStops, Mode=OneTime}">
+                                        <local:ArmorIndicator.ToolTip>
+                                            <ToolTip x:Uid="SpacingArmorIndicatorToolTip">Spaced armor thicknesses</ToolTip>
+                                        </local:ArmorIndicator.ToolTip>
+                                    </local:ArmorIndicator>
+
+                                </Grid>
+                            </StackPanel>
+                        </Viewbox>
+
+                        <Canvas
+                            Visibility="{Binding Capture.IsVisualModelComparerCapturerSelected, Converter={swpf:BoolToVisibilityConverter}}">
+                            <shared:VersionTag
+                                Visibility="{Binding Capture.SelectedCapturer.ShouldPreviewPrintVersion, Converter={swpf:BoolToVisibilityConverter}}"
+                                Width="{Binding Capture.SelectedCapturer.VersionTagWidth}"
+                                Height="{Binding Capture.SelectedCapturer.VersionTagHeight}"
+                                Canvas.Left="{Binding Capture.SelectedCapturer.VersionTagLeft}"
+                                Canvas.Top="{Binding Capture.SelectedCapturer.VersionTagTop}"
+                                TankInstance="{Binding Capture.SelectedCapturer.CurrentTankInstance}" />
+                        </Canvas>
+
+                        <gfx:InputHandler x:Name="InputHandler"
+                                          Cursor="ScrollAll"
+                                          Yaw="{Binding Camera.RotationYaw, Mode=TwoWay}"
+                                          Pitch="{Binding Camera.RotationPitch, Mode=TwoWay}"
+                                          Zoom="{Binding Camera.Zoom, Mode=TwoWay}" />
+                    </Grid>
+                </DockPanel>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</UserControl>

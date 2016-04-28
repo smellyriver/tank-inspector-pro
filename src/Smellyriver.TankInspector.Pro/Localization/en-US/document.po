@@ -1,0 +1,56 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO Main Assembly\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "missing_viewer_module_message_title"
+msgstr "Missing Viewer Module"
+
+#. {0}=extension name
+msgid "missing_viewer_module_message"
+msgstr ""
+"The required file viewer module for '{0}' file is not installed or missing."
+
+msgid "export_to_xps_document_menu_item"
+msgstr "Export to XPS Document..."
+
+msgid "export_to_rtf_document_menu_item"
+msgstr "Export to RTF Document..."
+
+msgid "export_to_text_file_menu_item"
+msgstr "Export to Text File..."
+
+msgid "file_type_xps"
+msgstr "XPS Document"
+
+msgid "file_type_rtf"
+msgstr "Rich Text File"
+
+msgid "file_type_txt"
+msgstr "Plain Text File"
+
+msgid "missing_document_service_module_message_title"
+msgstr "Missing Document Serivce Module"
+
+#. {0}=scheme name
+msgid "missing_document_service_module_message"
+msgstr ""
+"The required document service module for '{0}' scheme is not installed or "
+"missing."
+
+#. {0}=document uri
+msgid "status_opening_document"
+msgstr "Opening document {0}"
+
+msgid "status_loading_documents"
+msgstr "Loading documents..."

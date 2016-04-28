@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="Smellyriver.TankInspector.Pro.TurretController.TurretControllerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Smellyriver.TankInspector.Pro.TurretController"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             Loc.CatalogName="turret_controller"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/ToolWindow.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/stipro;component/Themes/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="metro:NumericUpDown">
+                <Setter Property="TrackMouseWheelWhenMouseOver" Value="True" />
+                <Setter Property="HideUpDownButtons" Value="True" />
+                <Setter Property="MinWidth" Value="10" />
+                <Setter Property="Margin" Value="2,0" />
+            </Style>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Grid.Row="0" 
+                        Margin="3"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="{Loc turret_yaw, Default=Turret Yaw}" />
+            <metro:NumericUpDown Grid.Row="1" Grid.Column="0" 
+                                    Margin="3"
+                                    Minimum="{Binding MinimumTurretYaw}"
+                                    Maximum="{Binding MaximumTurretYaw}"
+                                    Value="{Binding TurretYaw, Mode=TwoWay}" 
+                                    StringFormat="{}{0:0.#}"  />
+            <TextBlock Grid.Row="0" Grid.Column="1"
+                        Margin="3"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="{Loc gun_pitch, Default=Gun Pitch}" />
+            <metro:NumericUpDown Grid.Row="1" 
+                                    Grid.Column="1" 
+                                    Margin="3"
+                                    Minimum="{Binding MinimumGunPitch}" 
+                                    Maximum="{Binding MaximumGunPitch}" 
+                                    Value="{Binding GunPitch, Mode=TwoWay}" 
+                                    StringFormat="{}{0:0.#}"  />
+
+            <Button Command="{Binding ResetCommand}"
+                    Margin="3"
+                    Grid.Row="1"
+                    Grid.Column="2">
+                <StackPanel Orientation="Horizontal"
+                            Margin="3,0">
+                    <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.TurretController;component/Resources/Images/Reset_16.png"
+                           Stretch="None" />
+                    <TextBlock Margin="5,0,0,0" 
+                               VerticalAlignment="Center"
+                               Text="{Loc reset_button, Default=Reset}" />
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <Grid Margin="5"
+                MinWidth="200"
+                MinHeight="200"
+                MaxWidth="400"
+                MaxHeight="400">
+            <local:TurretControl ElevationLimits="{Binding ElevationLimits}"
+                                    DepressionLimits="{Binding DepressionLimits}"
+                                    TurretYawLimits="{Binding TurretYawLimits}"
+                                    TurretYaw="{Binding TurretYaw, Mode=TwoWay}"
+                                    GunPitch="{Binding GunPitch, Mode=TwoWay}"
+                                    VehicleYaw="{Binding VehicleYaw}"
+                                    UseRealTraverseMode="False" />
+        </Grid>
+    </DockPanel>
+
+</UserControl>
