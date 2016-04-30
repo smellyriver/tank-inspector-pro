@@ -1,5 +1,4 @@
 ﻿using Smellyriver.TankInspector.Common.Utilities;
-using Smellyriver.TankInspector.Common.Utilities;
 
 namespace Smellyriver.TankInspector.Pro.ModelShared
 {

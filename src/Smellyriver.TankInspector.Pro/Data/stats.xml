@@ -835,6 +835,69 @@
     <Maximum>500</Maximum>
   </Stat>
   <Stat i:type="Number">
+    <BaseValueXPath>invisibility/moving</BaseValueXPath>
+    <Categories>#stats:category_scoutability</Categories>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <Description>#stats:invisibility_moving_description</Description>
+    <Key>invisibility_moving</Key>
+    <Name>#stats:invisibility_moving</Name>
+    <XPath>#base * states/camouflage/camouflageFactor + states/camouflage/camouflagePaintFactor * #stat(invisibility_camouflage_bonus)</XPath>
+    <FormatString>{0:#,0.###%}</FormatString>
+  </Stat>
+  <Stat i:type="Number">
+    <BaseValueXPath>invisibility/still</BaseValueXPath>
+    <Categories>#stats:category_scoutability</Categories>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <Description>#stats:invisibility_still_description</Description>
+    <Key>invisibility_still</Key>
+    <Name>#stats:invisibility_still</Name>
+    <XPath>#base * states/camouflage/camouflageFactor + states/camouflage/camouflagePaintFactor * #stat(invisibility_camouflage_bonus)</XPath>
+    <FormatString>{0:#,0.###%}</FormatString>
+  </Stat>
+  <Stat i:type="Number">
+    <BaseValueXPath>invisibility/camouflageBonus</BaseValueXPath>
+    <Categories>#stats:category_scoutability</Categories>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <Description>#stats:invisibility_camouflage_bonus_description</Description>
+    <Key>invisibility_camouflage_bonus</Key>
+    <Name>#stats:invisibility_camouflage_bonus</Name>
+    <ShortName>#stats:invisibility_camouflage_bonus_short_name</ShortName>
+    <XPath>#base</XPath>
+    <FormatString>{0:#,0.###%}</FormatString>
+  </Stat>
+   <Stat i:type="Number">
+    <BaseValueXPath>invisibility/camouflageNetBonus</BaseValueXPath>
+    <Categories>#stats:category_scoutability</Categories>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <Description>#stats:invisibility_camouflage_net_bonus_description</Description>
+    <Key>invisibility_camouflage_net_bonus</Key>
+    <Name>#stats:invisibility_camouflage_net_bonus</Name>
+    <ShortName>#stats:invisibility_camouflage_net_bonus_short_name</ShortName>
+    <XPath>#base</XPath>
+    <FormatString>{0:#,0.###%}</FormatString>
+  </Stat>
+  <Stat i:type="Number">
+    <BaseValueXPath>invisibility/firePenalty</BaseValueXPath>
+    <Categories>#stats:category_scoutability</Categories>
+    <CompareStrategy>LowerBetter</CompareStrategy>
+    <Description>#stats:invisibility_fire_penalty_description</Description>
+    <Key>invisibility_fire_penalty</Key>
+    <Name>#stats:invisibility_fire_penalty</Name>
+    <XPath>#base</XPath>
+    <FormatString>{0:#,0.###%}</FormatString>
+  </Stat>
+  <Stat i:type="Number">
+    <BaseValueXPath>invisibility/still</BaseValueXPath>
+    <Categories>#stats:category_scoutability</Categories>
+    <CompareStrategy>HigherBetter</CompareStrategy>
+    <Description>#stats:invisibility_still_after_3secs_description</Description>
+    <Key>invisibility_still_after_3_seconds</Key>
+    <Name>#stats:invisibility_still_after_3secs</Name>
+    <ShortName>#stats:invisibility_still_after_3secs_short_name</ShortName>
+    <XPath>#base * states/camouflage/camouflageFactor + states/CamouflageNet/invisibilityIncrementFactor * #stat(invisibility_camouflage_net_bonus) + states/camouflage/camouflagePaintFactor * #stat(invisibility_camouflage_bonus)</XPath>
+    <FormatString>{0:#,0.###%}</FormatString>
+  </Stat>
+  <Stat i:type="Number">
     <BaseValueXPath>radio/distance</BaseValueXPath>
     <Categories>#stats:category_scoutability, #stats:category_radio</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
@@ -852,6 +915,7 @@
     <Description>#stats:match_making_weight_description</Description>
     <Key>mmweight</Key>
     <Name>#stats:match_making_weight</Name>
+    <ShowCondition>#value != -1</ShowCondition>
     <ShortName>#stats:match_making_weight_short_name</ShortName>
     <XPath>mmweight</XPath>
     <FormatString>{0:#,0.#}</FormatString>

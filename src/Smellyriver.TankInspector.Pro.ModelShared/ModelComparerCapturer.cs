@@ -13,7 +13,6 @@ using Smellyriver.TankInspector.Pro.Graphics.Controls;
 using Smellyriver.TankInspector.Pro.Graphics.Scene;
 using Smellyriver.TankInspector.Pro.Modularity.Tasks;
 using Smellyriver.TankInspector.Pro.Repository;
-using Smellyriver.TankInspector.Common.Utilities;
 
 namespace Smellyriver.TankInspector.Pro.ModelShared
 {

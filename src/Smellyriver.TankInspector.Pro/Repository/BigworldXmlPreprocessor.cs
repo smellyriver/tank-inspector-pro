@@ -574,21 +574,21 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
                         var tankFile = ProcessTankFile(nation, tankKey);
 
-                        var mmWeightElement = this.CommonVehicleData.Element("balance")
-                                                                    .Element("byVehicleModule")
-                                                                    .Elements()
-                                                                    .FirstOrDefault(e => e.Attribute("key").Value == tankKey);
+                        var mmWeightElement = this.CommonVehicleData.Element("balance")?
+                                                  .Element("byVehicleModule")?
+                                                  .Elements()
+                                                  .FirstOrDefault(e => e.Attribute("key").Value == tankKey);
 
                         if (mmWeightElement == null)
                         {
                             var tankTier = int.Parse(tank.Element("level").Value.Trim(), CultureInfo.InvariantCulture);
-                            mmWeightElement = this.CommonVehicleData.Element("balance")
-                                                                    .Element("byComponentLevels")
-                                                                    .Elements()
-                                                                    .ElementAt(tankTier - 1);
+                            mmWeightElement = this.CommonVehicleData.Element("balance")?
+                                                  .Element("byComponentLevels")?
+                                                  .Elements()
+                                                  .ElementAt(tankTier - 1);
                         }
 
-                        tankElement.Add(new XElement("mmweight", mmWeightElement.Value));
+                        tankElement.Add(new XElement("mmweight", mmWeightElement?.Value ?? "-1"));    // this value no long exists in (and maybe after) 9.15
 
                         foreach (var element in tankFile.Elements())
                         {

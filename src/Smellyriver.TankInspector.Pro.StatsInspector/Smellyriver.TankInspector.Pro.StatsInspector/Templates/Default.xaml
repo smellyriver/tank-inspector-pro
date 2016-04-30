@@ -603,6 +603,48 @@
             </TableRow>
         </TableRowGroup>
 
+
+        <TableRowGroup Resources="{StaticResource StatGroupResources}">
+
+            <TableRow>
+                <TableCell Style="{StaticResource StatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc invisibility}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="invisibility_still">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc invisibility_still}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+
+            <TableRow Stat.Key="invisibility_still_after_3_seconds">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc invisibility_still_after_3_seconds}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="invisibility_moving">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc invisibility_moving}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+            <TableRow Stat.Key="invisibility_fire_penalty">
+                <TableCell Style="{StaticResource GroupedStatNameCell}">
+                    <Paragraph>
+                        <Run Text="{Loc invisibility_fire_penalty}" />
+                    </Paragraph>
+                </TableCell>
+            </TableRow>
+        </TableRowGroup>
+
         <TableRowGroup Stat.Key="radioDistance" />
     </Table>
 

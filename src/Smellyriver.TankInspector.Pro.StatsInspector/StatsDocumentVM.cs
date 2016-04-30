@@ -16,7 +16,7 @@ using StatBehaviors = Smellyriver.TankInspector.Pro.StatsInspector.Document.Stat
 
 namespace Smellyriver.TankInspector.Pro.StatsInspector
 {
-    class StatsDocumentVM : FlowDocumentVMBase, ITankConfigurable, ICrewConfigurable
+    class StatsDocumentVM : FlowDocumentVMBase, ITankConfigurable, ICrewConfigurable, ICustomizationConfigurable
     {
 
 
@@ -32,6 +32,10 @@ namespace Smellyriver.TankInspector.Pro.StatsInspector
             get { return this.Tank.CrewConfiguration; }
         }
 
+        CustomizationConfiguration ICustomizationConfigurable.CustomizationConfiguration
+        {
+            get { return this.Tank.CustomizationConfiguration; }
+        }
 
         IRepository ITankConfigurable.Repository
         {
@@ -43,8 +47,14 @@ namespace Smellyriver.TankInspector.Pro.StatsInspector
             get { return this.Tank.Repository; }
         }
 
+        IRepository ICustomizationConfigurable.Repository
+        {
+            get { return this.Tank.Repository; }
+        }
+
         event EventHandler ICrewConfigurable.CrewConfigurationChanged { add { } remove { } }
         event EventHandler ITankConfigurable.TankConfigurationChanged { add { } remove { } }
+        event EventHandler ICustomizationConfigurable.CustomizationConfigurationChanged { add { } remove { } }
 
         public IEnumerable<StatTemplate> Templates { get { return TemplateManager.Instance.Templates; } }
 

@@ -3,6 +3,7 @@ using System.Xml.Linq;
 
 using Smellyriver.TankInspector.Pro.Data.Entities;
 using Smellyriver.TankInspector.Pro.Data.Tank.Scripting;
+using Smellyriver.TankInspector.Pro.Gameplay;
 using Smellyriver.TankInspector.Pro.Repository;
 using TankEntity = Smellyriver.TankInspector.Pro.Data.Entities.Tank;
 
@@ -67,13 +68,28 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             get { return _camouflage; }
             set
             {
-                _camouflage = value;
-                _customizationConfigurationInfo.CamouflageId = _camouflage == null
-                                                             ? CustomizationConfigurationInfo.NoCamouflage
-                                                             : _camouflage.Id;
+                if (
+                    this.SetCamouflage(value))
 
-                this.CamouflageElement = this.CreateVehicleSpecifiedCamouflageElement();
+                {
+                    _camouflage = value;
+                    _customizationConfigurationInfo.CamouflageId = _camouflage == null
+                                                                       ? CustomizationConfigurationInfo.NoCamouflage
+                                                                       : _camouflage.Id;
+
+                    this.CamouflageElement = this.CreateVehicleSpecifiedCamouflageElement();
+                }
             }
+        }
+
+        private bool SetCamouflage(Camouflage value)
+        {
+            if (TankHelper.KeyEqualityComparer.Equals(_camouflage, value))
+                return false;
+
+            this.ScriptHost.SetScript("camouflage", CamouflageScript.Create(value));
+
+            return true;
         }
 
         private XElement CreateVehicleSpecifiedCamouflageElement()
@@ -93,6 +109,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
         private void HandleVehicleSpecificCamouflageColor(XElement element, string elementName)
         {
             var colorsElement = element.Element(elementName);
+            if (colorsElement == null)
+                return;
             var tankColorElement = colorsElement.Element(this.Tank.Key)
                                 ?? colorsElement.Element(XName.Get(this.Tank.Key, this.Tank.NationKey));
             if (tankColorElement == null)

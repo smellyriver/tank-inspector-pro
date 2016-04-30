@@ -62,6 +62,10 @@
     <activateWhenStillSec>3</activateWhenStillSec>
     <circularVisionRadiusFactor>1</circularVisionRadiusFactor>
   </stereoscope>
+  <CamouflageNet>
+    <activateWhenStillSec>3</activateWhenStillSec>
+    <invisibilityIncrementFactor>0</invisibilityIncrementFactor>
+  </CamouflageNet>
   <removedRpmLimiter>
     <enginePowerFactor>1</enginePowerFactor>
   </removedRpmLimiter>
@@ -81,4 +85,8 @@
   <inventor>
     <radioDistanceFactor>0</radioDistanceFactor>
   </inventor>
+  <camouflage>
+    <camouflagePaintFactor>0</camouflagePaintFactor>
+    <camouflageFactor>1</camouflageFactor>
+  </camouflage>
 </states>

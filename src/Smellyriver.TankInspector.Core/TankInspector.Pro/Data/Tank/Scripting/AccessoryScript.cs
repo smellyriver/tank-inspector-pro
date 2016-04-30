@@ -13,8 +13,11 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank.Scripting
         {
             if (accessory == null)
                 return null;
-            else
-                return new AccessoryScript(accessory);
+
+            if (accessory["script/@name"] == "CamouflageNet")
+                return new CamouflageNetScript(accessory);
+
+            return new AccessoryScript(accessory);
         }
 
         public IXQueryable Accessory { get; }

@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Smellyriver.Common\Collections\ProjectionComparer.cs" />
     <Compile Include="Smellyriver.Common\Collections\ProjectionEqualityComparer.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\CamouflageNetScript.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\Scripting\CamouflageScript.cs" />
     <Compile Include="TankInspector.Pro\Repository\Versioning\AvailableFromVersionAttribute.cs" />
     <Compile Include="TankInspector.Pro\Repository\Versioning\ObsoleteOnVersionAttribute.cs" />
     <Compile Include="TankInspector\CoreNotificationObject.cs" />

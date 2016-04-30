@@ -700,6 +700,51 @@ msgstr "View Range (Still for 3 Seconds)"
 msgid "view_range_(still_for_3_seconds)_description"
 msgstr "View Range after still for 3 seconds"
 
+msgid "invisibility_moving"
+msgstr "Moving Invisibility"
+
+msgid "invisibility_moving_description"
+msgstr "Moving Invisibility"
+
+msgid "invisibility_still"
+msgstr "Still Invisibility"
+
+msgid "invisibility_still_description"
+msgstr "Still Invisibility"
+
+msgid "invisibility_still_after_3secs"
+msgstr "Still Invisibility (after 3 Seconds)"
+
+msgid "invisibility_still_after_3secs_short_name"
+msgstr "Still Invisibility (3s)"
+
+msgid "invisibility_still_after_3secs_description"
+msgstr "Still Invisibility (after 3 seconds)"
+
+msgid "invisibility_camouflage_bonus"
+msgstr "Camouflage Invisibility Bonus"
+
+msgid "invisibility_camouflage_bonus_short_name"
+msgstr "Camo. Invisibility Bonus"
+
+msgid "invisibility_camouflage_bonus_description"
+msgstr "Camouflage Invisibility Bonus"
+
+msgid "invisibility_camouflage_net_bonus"
+msgstr "Camouflage Net Invisibility Bonus"
+
+msgid "invisibility_camouflage_net_bonus_short_name"
+msgstr "CamoNet. Invisibility Bonus"
+
+msgid "invisibility_camouflage_net_bonus_description"
+msgstr "Camouflage Net Invisibility Bonus"
+
+msgid "invisibility_fire_penalty"
+msgstr "Firing Invisibility Penalty"
+
+msgid "invisibility_fire_penalty_description"
+msgstr "Firing Invisibility Penalty"
+
 msgid "radio_distance"
 msgstr "Radio Distance"
 

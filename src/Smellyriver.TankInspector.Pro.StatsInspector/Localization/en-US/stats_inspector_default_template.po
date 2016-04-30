@@ -94,6 +94,25 @@ msgstr "View Range"
 msgid "view_range_still_after_3_seconds"
 msgstr "Still after 3 Seconds"
 
+msgid "invisibility"
+msgstr "Invisibility"
+
+#. grouped under "Invisibility"
+msgid "invisibility_moving"
+msgstr "Moving"
+
+#. grouped under "Invisibility"
+msgid "invisibility_still"
+msgstr "Still"
+
+#. grouped under "Invisibility"
+msgid "invisibility_still_after_3_seconds"
+msgstr "Still after 3 Seconds"
+
+#. grouped under "Invisibility"
+msgid "invisibility_fire_penalty"
+msgstr "Firing Penalty"
+
 #. {0}=battle count
 msgid "livestats_info"
 msgstr ""
