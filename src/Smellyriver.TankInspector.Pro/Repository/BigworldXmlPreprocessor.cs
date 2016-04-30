@@ -82,25 +82,51 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
         public XElement ProcessTankFile(string nation, string key)
         {
-            var element = BigworldXmlPreprocessor.LoadFile(_paths.GetTankFile(nation, key))
-                .TrimNameTail()
-                .NameToAttribute("tank")
-                .RenameElement("crew", "crews")
-                .RenameElement("camouflage", "camouflageInfo")
-                .ProcessElements("crews", e => e.NameToAttribute("crew", "role")
-                                                .TextToElement("secondaryRoles")
-                                                .Select("secondaryRoles", s => s.TextToElementList("secondaryRole")))
-                .Select("hull", e => e.ProcessArmorList(this.CommonVehicleData))
-                .ProcessTankModuleListNode("chassis", "chassis", _localization,
-                    e => e.ProcessArmorList(this.CommonVehicleData)
-                          .Select("terrainResistance", t => t.TextToElements("hard", "medium", "soft")))
-                .RenameElement("turrets0", "turrets")
-                .ProcessTankModuleListNode("turrets", "turret", _localization,
-                    e => e.ProcessArmorList(this.CommonVehicleData)
-                          .ProcessTankModuleListNode("guns", "gun", _localization, g => BigworldXmlPreprocessor.ProcessGunNode(g, this.CommonVehicleData)))
-                .ProcessTankModuleListNode("engines", "engine", _localization, BigworldXmlPreprocessor.ProcessEngineNode)
-                .ProcessTankModuleListNode("fuelTanks", "fuelTank", _localization)
-                .ProcessTankModuleListNode("radios", "radio", _localization);
+            var element = BigworldXmlPreprocessor.LoadFile(_paths.GetTankFile(nation, key));
+            element.TrimNameTail()
+                   .NameToAttribute("tank")
+                   .RenameElement("crew", "crews")
+                   .RenameElement("camouflage", "camouflageInfo")
+                   .ProcessElements("crews",
+                                    e => e.NameToAttribute("crew", "role")
+                                          .TextToElement("secondaryRoles")
+                                          .Select("secondaryRoles",
+                                                  s =>
+                                                  s.TextToElementList("secondaryRole")))
+                   .Select("hull", e => e.ProcessArmorList(this.CommonVehicleData))
+                   .ProcessTankModuleListNode("chassis",
+                                              "chassis",
+                                              _localization,
+                                              e =>
+                                              {
+                                                  e.ProcessArmorList(this.CommonVehicleData)
+                                                   .Select("terrainResistance",
+                                                           t => t.TextToElements("hard", "medium", "soft"));
+
+                                                  BigworldXmlPreprocessor.ProcessHitTester(e);
+                                              })
+                   .RenameElement("turrets0", "turrets")
+                   .ProcessTankModuleListNode("turrets",
+                                              "turret",
+                                              _localization,
+                                              e =>
+                                              {
+                                                  e.ProcessArmorList(this.CommonVehicleData)
+                                                   .ProcessTankModuleListNode("guns",
+                                                                              "gun",
+                                                                              _localization,
+                                                                              g =>BigworldXmlPreprocessor.ProcessGunNode(g, this.CommonVehicleData));
+
+
+                                                  BigworldXmlPreprocessor.ProcessHitTester(e);
+                                              })
+                   .ProcessTankModuleListNode("engines",
+                                              "engine",
+                                              _localization,
+                                              BigworldXmlPreprocessor.ProcessEngineNode)
+                   .ProcessTankModuleListNode("fuelTanks", "fuelTank", _localization)
+                   .ProcessTankModuleListNode("radios", "radio", _localization)
+                   .Select("hull", BigworldXmlPreprocessor.ProcessHitTester);
 
             var unlockNodes = element.XPathSelectElements("(chassis/chassis|turrets/turret|turrets/turret/guns/gun|engines/engine|radios/radio)/unlocks/*");
             foreach (var unlockNode in unlockNodes)
@@ -140,6 +166,17 @@ namespace Smellyriver.TankInspector.Pro.Repository
             }
 
             return element;
+        }
+
+        private static void ProcessHitTester(XElement node)
+        {
+            node.Select("hitTester",
+                        h =>
+                        {
+                            var collisionModelClient = h.Element("collisionModelClient");
+                            if (collisionModelClient != null)
+                                collisionModelClient.Name = "collisionModel";
+                        });
         }
 
         private static void ProcessEngineNode(XElement engine)
@@ -223,7 +260,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                     gun.Add(BigworldXmlPreprocessor.CreatePitchLimitComponentElement("depression",
                                                                                      maxPitchElement,
                                                                                      defaultDepression));
-                    
+
                 }
                 else
                     throw new NotSupportedException("pre-9.9 format of gun pitch limitation is not supported any more");
@@ -252,6 +289,9 @@ namespace Smellyriver.TankInspector.Pro.Repository
                 burst.SetElementValue("count", 1);
                 burst.SetElementValue("rate", 0);
             }
+
+
+            BigworldXmlPreprocessor.ProcessHitTester(gun);
         }
 
 
