@@ -425,7 +425,7 @@ namespace Smellyriver.TankInspector.Pro.TankMuseum
         {
             _xpathQueryResult = RepositoryManager.Instance.Repositories.ToDictionary(
                 r => r,
-                r => new HashSet<IXQueryable>(this.FilterRepository(r), TankHelper.KeyEqualityComparer));
+                r => new HashSet<IXQueryable>(this.FilterRepository(r), KeyEqualityComparer<IXQueryable>.Instance));
         }
 
         private IEnumerable<IXQueryable> FilterRepository(IRepository repository)

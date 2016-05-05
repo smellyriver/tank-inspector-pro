@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using IOPath = System.IO.Path;
 
 namespace Smellyriver.TankInspector.IO
 {
+    [SuppressMessage("ReSharper", "UseNameofExpression")]
     public static class UnifiedPath
     {
-        private static readonly char[] s_extensionNameSearchChars = new[] { '.', IOPath.DirectorySeparatorChar, IOPath.AltDirectorySeparatorChar, PackageBoundarySeparator };
-        private static readonly char[] s_fileNameSearchChars = new[] { IOPath.DirectorySeparatorChar, IOPath.AltDirectorySeparatorChar, PackageBoundarySeparator };
+        private static readonly char[] s_extensionNameSearchChars = { '.', IOPath.DirectorySeparatorChar, IOPath.AltDirectorySeparatorChar, PackageBoundarySeparator };
+        private static readonly char[] s_fileNameSearchChars = { IOPath.DirectorySeparatorChar, IOPath.AltDirectorySeparatorChar, PackageBoundarySeparator };
 
 
         public const char PackageBoundarySeparator = '>';
@@ -14,7 +16,7 @@ namespace Smellyriver.TankInspector.IO
         public static string GetPackageFile(string path)
         {
             if (path == null)
-                throw new ArgumentNullException(nameof(path));
+                throw new ArgumentNullException("path");
 
             var separatorIndex = path.LastIndexOf(PackageBoundarySeparator);
             if (separatorIndex == -1)
@@ -26,7 +28,7 @@ namespace Smellyriver.TankInspector.IO
         public static string GetLocalPath(string path)
         {
             if (path == null)
-                throw new ArgumentNullException(nameof(path));
+                throw new ArgumentNullException("path");
 
             var separatorIndex = path.LastIndexOf(PackageBoundarySeparator);
             if (separatorIndex == -1)
@@ -43,7 +45,7 @@ namespace Smellyriver.TankInspector.IO
         public static void ParsePath(string path, out string packagePath, out string localPath)
         {
             if (path == null)
-                throw new ArgumentNullException(nameof(path));
+                throw new ArgumentNullException("path");
 
             var separatorIndex = path.LastIndexOf(PackageBoundarySeparator);
             if (separatorIndex == -1)

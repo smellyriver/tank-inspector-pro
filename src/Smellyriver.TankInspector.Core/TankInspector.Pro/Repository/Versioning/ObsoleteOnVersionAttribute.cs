@@ -4,11 +4,16 @@ namespace Smellyriver.TankInspector.Pro.Repository.Versioning
 {
     public sealed class ObsoleteOnVersionAttribute : Attribute
     {
-        public string Version { get; }
+        private readonly string _version;
+
+        public string Version
+        {
+            get { return _version; }
+        }
 
         public ObsoleteOnVersionAttribute(string version)
         {
-            this.Version = version;
+            this._version = version;
         }
     }
 }

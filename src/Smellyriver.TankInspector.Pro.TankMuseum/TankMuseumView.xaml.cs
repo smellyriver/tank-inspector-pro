@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Smellyriver.TankInspector.Pro.TankMuseum
 {
@@ -17,10 +18,11 @@ namespace Smellyriver.TankInspector.Pro.TankMuseum
             this.ViewModel = new TankMuseumVM();
         }
 
-        private void DataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        private void TankList_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             var dataGrid = (DataGrid)sender;
             this.ViewModel.SelectedTanks = dataGrid.SelectedItems.OfType<TankVM>().ToArray();
         }
+
     }
 }

@@ -3,7 +3,12 @@
     public sealed class ArmorGroup : CachedXQueryable
     {
         // this value is freqently used, cache to optimize it
-        public double VehicleDamageFactor { get; }
+        private readonly double _vehicleDamageFactor;
+
+        public double VehicleDamageFactor
+        {
+            get { return _vehicleDamageFactor; }
+        }
 
         public bool IsSpacedArmor
         {
@@ -60,7 +65,7 @@
         public ArmorGroup(IXQueryable data)
             : base(data)
         {
-            this.VehicleDamageFactor = this.QueryDouble("vehicleDamageFactor");
+            _vehicleDamageFactor = this.QueryDouble("vehicleDamageFactor");
             this.Thickness = this.QueryDouble("thickness");
         }
     }

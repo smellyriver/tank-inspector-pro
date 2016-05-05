@@ -21,11 +21,16 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank.Scripting
             return new CamouflageScript(camouflage);
         }
 
-        public IXQueryable Camouflage { get; }
+        private readonly IXQueryable _camouflage;
+
+        public IXQueryable Camouflage
+        {
+            get { return _camouflage; }
+        }
 
         public CamouflageScript(IXQueryable camouflage)
         {
-            this.Camouflage = camouflage;
+            _camouflage = camouflage;
         }
 
         public override void Execute(ScriptingContext context)

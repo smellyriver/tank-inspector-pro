@@ -21,9 +21,9 @@
     <DockPanel>
         <TextBox DockPanel.Dock="Top" 
                  Text="{Binding XPathQueryText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 metro:TextboxHelper.Watermark="{Loc xpath_query_watermark, Default=Input XPath query...}"
-                 metro:TextboxHelper.ButtonContent="4"
-                 metro:TextboxHelper.ButtonCommand="{Binding ExecuteXPathQueryCommand}"
+                 metro:TextBoxHelper.Watermark="{Loc xpath_query_watermark, Default=Input XPath query...}"
+                 metro:TextBoxHelper.ButtonContent="4"
+                 metro:TextBoxHelper.ButtonCommand="{Binding ExecuteXPathQueryCommand}"
                  Style="{DynamicResource MetroButtonTextBox}">
             <TextBox.InputBindings>
                 <KeyBinding Key="Enter" Command="{Binding ExecuteXPathQueryCommand}" />
@@ -44,9 +44,9 @@
                 <DockPanel>
                     <TextBox DockPanel.Dock="Top" 
                                      Text="{Binding ColumnHeadersText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                     metro:TextboxHelper.Watermark="{Loc specify_column_header_watermark, Default=Specify column headers (XPath splitting with |)}"
-                                     metro:TextboxHelper.ButtonContent="4"
-                                     metro:TextboxHelper.ButtonCommand="{Binding UpdateColumnHeadersCommand}"
+                                     metro:TextBoxHelper.Watermark="{Loc specify_column_header_watermark, Default=Specify column headers (XPath splitting with |)}"
+                                     metro:TextBoxHelper.ButtonContent="4"
+                                     metro:TextBoxHelper.ButtonCommand="{Binding UpdateColumnHeadersCommand}"
                                      Style="{DynamicResource MetroButtonTextBox}">
                         <TextBox.InputBindings>
                             <KeyBinding Key="Enter" Command="{Binding UpdateColumnHeadersCommand}" />

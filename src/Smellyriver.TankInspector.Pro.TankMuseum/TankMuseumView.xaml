@@ -56,8 +56,8 @@
                                       ItemsSource="{Binding FilterModes}"
                                       SelectedItem="{Binding SelectedFilterMode, Mode=TwoWay}" />
 
-                            <TextBox metro:TextboxHelper.Watermark="{Binding FilterTextBoxWatermark}" 
-                                     metro:TextboxHelper.ClearTextButton="True"
+                            <TextBox metro:TextBoxHelper.Watermark="{Binding FilterTextBoxWatermark}" 
+                                     metro:TextBoxHelper.ClearTextButton="True"
                                      Text="{Binding FilterText, Mode=TwoWay, 
                                                                 UpdateSourceTrigger=PropertyChanged,
                                                                 NotifyOnValidationError=True,
@@ -189,12 +189,14 @@
                         </Grid>
                     </Expander>
 
-                    <DataGrid AutoGenerateColumns="False"
+                    <DataGrid x:Name="TankList" 
+                              AutoGenerateColumns="False"
                               ItemsSource="{Binding ListedTanks}"
-                              SelectedCellsChanged="DataGrid_SelectedCellsChanged"
+                              SelectedCellsChanged="TankList_SelectedCellsChanged"
                               RowHeight="31" 
                               CanUserAddRows="False"
                               SelectionUnit="FullRow"
+                              SelectionMode="Extended"
                               swpf:DragDrop.IsDragSource="True"
                               swpf:DragDrop.DragHandler="{Binding TankListDragHandler}">
 

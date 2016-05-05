@@ -48,7 +48,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
                 var unlockedModules = tank.QueryMany(string.Format("{0}[@key='{1}']",
                                                                    searchRootPath,
                                                                    unlock["@key"]))
-                                          .Distinct(TankHelper.KeyEqualityComparer);
+                                          .Distinct(KeyEqualityComparer<IXQueryable>.Instance);
 
                 foreach (var unlockedModule in unlockedModules)
                     yield return new UnlockInfo(Module.Create(unlockedModule), unlock.QueryDouble("cost"));

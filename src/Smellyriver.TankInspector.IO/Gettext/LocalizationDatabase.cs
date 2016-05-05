@@ -5,7 +5,12 @@ namespace Smellyriver.TankInspector.IO.Gettext
 {
     public class LocalizationDatabase
     {
-        public string TextFolder { get; }
+        private readonly string _textFolder;
+
+        public string TextFolder
+        {
+            get { return _textFolder; }
+        }
 
         private readonly Dictionary<string, Catalog> _moDatum = new Dictionary<string, Catalog>();
 
@@ -13,7 +18,7 @@ namespace Smellyriver.TankInspector.IO.Gettext
 
         public LocalizationDatabase(string textFolder)
         {
-            this.TextFolder = textFolder;
+            _textFolder = textFolder;
         }
 
         public string GetText(string key)

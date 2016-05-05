@@ -87,7 +87,9 @@ namespace Smellyriver.TankInspector.IO
 
         public static bool IsFileExisted(IPackageIndexer indexer, string path)
         {
-            return indexer?.GetPackagePath(path) != null;
+            if (indexer == null)
+                return false;
+            return indexer.GetPackagePath(path) != null;
         }
 
         public static string[] GetFileEntries(string packageFile)
@@ -101,7 +103,10 @@ namespace Smellyriver.TankInspector.IO
 
         public static string NormalizePath(string path)
         {
-            return path?.Replace('\\', '/').ToLower();
+            if (path == null)
+                return null;
+
+            return path.Replace('\\', '/').ToLower();
         }
 
         public PackageStream(IPackageIndexer indexer, string path)

@@ -6,18 +6,23 @@ namespace Smellyriver.TankInspector.IO.Gettext
 {
     unsafe class FastBinaryReader : IDisposable
     {
-        private static byte[] buffer = new byte[256];
-        //private Stream baseStream;
-        public Stream BaseStream { get; }
+        private static readonly byte[] s_buffer = new byte[256];
+        private readonly Stream _baseStream;
+
+        public Stream BaseStream
+        {
+            get { return _baseStream; }
+        }
+
         public FastBinaryReader(Stream input)
         {
-            BaseStream = input;
+            _baseStream = input;
         }
 
         public int ReadInt32()
         {
-            BaseStream.Read(buffer, 0, 4);
-            fixed (byte* numRef = &(buffer[0]))
+            BaseStream.Read(s_buffer, 0, 4);
+            fixed (byte* numRef = &(s_buffer[0]))
             {
                 return *(((int*)numRef));
             }
@@ -25,8 +30,8 @@ namespace Smellyriver.TankInspector.IO.Gettext
 
         public uint ReadUint32()
         {
-            BaseStream.Read(buffer, 0, 4);
-            fixed (byte* numRef = &(buffer[0]))
+            BaseStream.Read(s_buffer, 0, 4);
+            fixed (byte* numRef = &(s_buffer[0]))
             {
                 return *(((uint*)numRef));
             }

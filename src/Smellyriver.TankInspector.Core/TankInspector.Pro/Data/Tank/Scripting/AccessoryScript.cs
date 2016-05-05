@@ -20,11 +20,16 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank.Scripting
             return new AccessoryScript(accessory);
         }
 
-        public IXQueryable Accessory { get; }
+        private readonly IXQueryable _accessory;
+
+        public IXQueryable Accessory
+        {
+            get { return _accessory; }
+        }
 
         public AccessoryScript(IXQueryable accessory)
         {
-            this.Accessory = accessory;
+            _accessory = accessory;
         }
 
         public override void Execute(ScriptingContext context)

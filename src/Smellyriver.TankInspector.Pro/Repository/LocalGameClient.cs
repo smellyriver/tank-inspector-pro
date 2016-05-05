@@ -133,7 +133,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
             string packagePath, localPath;
             UnifiedPath.ParsePath(unifiedPath, out packagePath, out localPath);
             if (string.IsNullOrEmpty(packagePath))
-                throw new ArgumentException("this is not a package path", "unifiedPath");
+                throw new ArgumentException("this is not a package path", nameof(unifiedPath));
 
             packagePath = PathEx.NormalizeDirectorySeparators(packagePath);
 
@@ -141,7 +141,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
             var resPackagePath = Path.Combine("res", "packages");
 
             if (!pathDirectory.ToLower().EndsWith(resPackagePath))
-                throw new ArgumentException("package is located in an invalid localtion", "unifiedPath");
+                throw new ArgumentException("package is located in an invalid localtion", nameof(unifiedPath));
 
             return Path.Combine(this.ModDirectory, localPath);
         }

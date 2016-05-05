@@ -84,7 +84,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
         private bool SetCamouflage(Camouflage value)
         {
-            if (TankHelper.KeyEqualityComparer.Equals(_camouflage, value))
+            if (_camouflage.KeyEquals(value))
                 return false;
 
             this.ScriptHost.SetScript("camouflage", CamouflageScript.Create(value));

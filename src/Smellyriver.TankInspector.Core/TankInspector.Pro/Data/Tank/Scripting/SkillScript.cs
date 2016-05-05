@@ -72,9 +72,19 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank.Scripting
             get { return _domain; }
         }
 
-        public IXQueryable Skill { get; }
+        private readonly IXQueryable _skill;
 
-        protected Dictionary<string, double> Parameters { get; }
+        public IXQueryable Skill
+        {
+            get { return _skill; }
+        }
+
+        private readonly Dictionary<string, double> _parameters;
+
+        protected Dictionary<string, double> Parameters
+        {
+            get { return _parameters; }
+        }
 
         private readonly string _role;
         protected override string Role
@@ -85,14 +95,14 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank.Scripting
         public SkillScript(IXQueryable skill, SkillType skillType, string role, Func<double> levelGetter, DuplicatedSkillPolicy duplicatedSkillPolicy, int priority)
             : base(levelGetter)
         {
-            this.Skill = skill;
+            this._skill = skill;
             _role = role;
 
             var skillKey = this.Skill["@key"];
             _domain = skillKey.Substring(0, 1).ToLower() + skillKey.Substring(1);
 
             double dummy;
-            this.Parameters = this.Skill.Where(i => i.Name != "userString"
+            this._parameters = this.Skill.Where(i => i.Name != "userString"
                                                && i.Name != "description"
                                                && i.Name != "icon"
                                                && double.TryParse(i.Value, 

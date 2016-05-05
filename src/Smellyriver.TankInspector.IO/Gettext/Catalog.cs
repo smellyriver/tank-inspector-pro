@@ -79,7 +79,7 @@ namespace Smellyriver.TankInspector.IO.Gettext
 
     public class Catalog
     {
-        public Dictionary<string, string> StringTable { get; }
+        public Dictionary<string, string> StringTable { get; private set; }
 
         protected Catalog(List<string> originalStrings, List<string> translationStrings)
         {

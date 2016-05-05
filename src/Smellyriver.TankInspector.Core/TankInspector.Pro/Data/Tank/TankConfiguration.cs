@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml.Linq;
 using Smellyriver.TankInspector.Pro.Data.Entities;
@@ -10,6 +11,9 @@ using TankEntity = Smellyriver.TankInspector.Pro.Data.Entities.Tank;
 
 namespace Smellyriver.TankInspector.Pro.Data.Tank
 {
+    [SuppressMessage("ReSharper", "UseNullPropagation")]
+    [SuppressMessage("ReSharper", "MergeConditionalExpression")]
+    [SuppressMessage("ReSharper", "UseNameofExpression")]
     public class TankConfiguration : ConfigurationBase
     {
 
@@ -27,8 +31,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 this.BeginInitialize();
 
                 this.Turret = this.Tank.Turrets.FirstOrDefault(t => t.Key == _tankConfigurationInfo.TurretKey);
-                this.Gun = this.Turret == null ? null : this.Turret.Guns.FirstOrDefault(g => g.Key == _tankConfigurationInfo.GunKey);
-                this.Ammunition = this.Gun == null ? null : this.Gun.Ammunition.First(s => s.Key == _tankConfigurationInfo.AmmunitionKey);
+                this.Gun = this.Turret != null ? this.Turret.Guns.FirstOrDefault(g => g.Key == _tankConfigurationInfo.GunKey) : null;
+                this.Ammunition = this.Gun != null ? this.Gun.Ammunition.First(s => s.Key == _tankConfigurationInfo.AmmunitionKey) : null;
                 this.Chassis = this.Tank.Chassis.FirstOrDefault(c => c.Key == _tankConfigurationInfo.ChassisKey);
                 this.Engine = this.Tank.Engines.FirstOrDefault(e => e.Key == _tankConfigurationInfo.EngineKey);
                 this.Radio = this.Tank.Radios.FirstOrDefault(r => r.Key == _tankConfigurationInfo.RadioKey);
@@ -72,26 +76,34 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
         public Gun Gun
         {
             get { return _gun; }
-            set
+            set { this.SetGun(value, true); }
+        }
+
+        private void SetGun(Gun value, bool validateTurret)
+        {
+            if (value == null)
+                throw new ArgumentNullException("value");
+
+            _gun = value;
+
+            var gunElement = _gun.ToElement();
+            gunElement.ExistedElement("shots").Remove();
+            this.GunElement = gunElement;
+
+            _tankConfigurationInfo.GunKey = _gun.Key;
+
+            if (validateTurret && !this.Turret.Guns.Contains(_gun, KeyEqualityComparer<Gun>.Instance))
             {
-                if (value == null)
-                    throw new ArgumentNullException("value");
-
-                _gun = value;
-
-                var gunElement = _gun.ToElement();
-                gunElement.Element("shots").Remove();
-                this.GunElement = gunElement;
-
-                _tankConfigurationInfo.GunKey = _gun.Key;
-
-                this.UpdateModulesTotalWeight();
-
-                if (this.GunChanged != null)
-                    this.GunChanged(this, EventArgs.Empty);
-
-                this.RaisePropertyChanged("Gun");
+                var turret = this.Tank.Turrets.First(t => t.Guns.Contains(_gun, KeyEqualityComparer<Gun>.Instance));
+                this.SetTurret(turret, false);
             }
+
+            this.UpdateModulesTotalWeight();
+
+            if (this.GunChanged != null)
+                this.GunChanged.Invoke(this, EventArgs.Empty);
+
+            this.RaisePropertyChanged("Gun");
         }
 
         private XElement _turretElement;
@@ -110,29 +122,37 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
         public Turret Turret
         {
             get { return _turret; }
-            set
+            set { this.SetTurret(value, true); }
+        }
+
+        private void SetTurret(Turret value, bool validateGun)
+        {
+            if (value == null)
+                throw new ArgumentNullException("value");
+
+            if (_turret.KeyEquals(value))
+                return;
+
+            _turret = value;
+
+            var turretElement = _turret.ToElement();
+            turretElement.ExistedElement("guns").Remove();
+            this.TurretElement = turretElement;
+
+            _tankConfigurationInfo.TurretKey = _turret["@key"];
+
+            if (validateGun && !_turret.Guns.Contains(this.Gun, KeyEqualityComparer<Gun>.Instance))
             {
-                if (value == null)
-                    throw new ArgumentNullException("value");
-
-                if (TankHelper.KeyEqualityComparer.Equals(_turret, value))
-                    return;
-
-                _turret = value;
-
-                var turretElement = _turret.ToElement();
-                turretElement.Element("guns").Remove();
-                this.TurretElement = turretElement;
-
-                _tankConfigurationInfo.TurretKey = _turret["@key"];
-
-                this.UpdateModulesTotalWeight();
-
-                if (this.TurretChanged != null)
-                    this.TurretChanged(this, EventArgs.Empty);
-
-                this.RaisePropertyChanged("Turret");
+                var gun = _turret.Guns.First();
+                this.SetGun(gun, false);
             }
+
+            this.UpdateModulesTotalWeight();
+
+            if (this.TurretChanged != null)
+                this.TurretChanged.Invoke(this, EventArgs.Empty);
+
+            this.RaisePropertyChanged("Turret");
         }
 
         private XElement _chassisElement;
@@ -155,7 +175,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 if (value == null)
                     throw new ArgumentNullException("value");
 
-                if (TankHelper.KeyEqualityComparer.Equals(_chassis, value))
+                if (_chassis.KeyEquals(value))
                     return;
 
                 _chassis = value;
@@ -167,7 +187,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 this.UpdateModulesTotalWeight();
 
                 if (this.ChassisChanged != null)
-                    this.ChassisChanged(this, EventArgs.Empty);
+                    this.ChassisChanged.Invoke(this, EventArgs.Empty);
 
                 this.RaisePropertyChanged("Chassis");
             }
@@ -193,7 +213,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 if (value == null)
                     throw new ArgumentNullException("value");
 
-                if (TankHelper.KeyEqualityComparer.Equals(_radio, value))
+                if (_radio.KeyEquals(value))
                     return;
 
                 _radio = value;
@@ -205,7 +225,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 this.UpdateModulesTotalWeight();
 
                 if (this.RadioChanged != null)
-                    this.RadioChanged(this, EventArgs.Empty);
+                    this.RadioChanged.Invoke(this, EventArgs.Empty);
 
                 this.RaisePropertyChanged("Radio");
             }
@@ -231,7 +251,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 if (value == null)
                     throw new ArgumentNullException("value");
 
-                if (TankHelper.KeyEqualityComparer.Equals(_engine, value))
+                if (_engine.KeyEquals(value))
                     return;
 
                 _engine = value;
@@ -243,7 +263,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 this.UpdateModulesTotalWeight();
 
                 if (this.EngineChanged != null)
-                    this.EngineChanged(this, EventArgs.Empty);
+                    this.EngineChanged.Invoke(this, EventArgs.Empty);
 
                 this.RaisePropertyChanged("Engine");
             }
@@ -270,7 +290,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 if (value == null)
                     throw new ArgumentNullException("value");
 
-                if (TankHelper.KeyEqualityComparer.Equals(_ammunition, value))
+                if (_ammunition.KeyEquals(value))
                     return;
 
                 _ammunition = value;
@@ -280,7 +300,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 _tankConfigurationInfo.AmmunitionKey = _ammunition.Key;
 
                 if (this.AmmunitionChanged != null)
-                    this.AmmunitionChanged(this, EventArgs.Empty);
+                    this.AmmunitionChanged.Invoke(this, EventArgs.Empty);
 
                 this.RaisePropertyChanged("Ammunition");
             }
@@ -298,7 +318,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 if (this.SetEquipment(0, value))
                 {
                     if (this.EquipmentChanged != null)
-                        this.EquipmentChanged(this, new EquipmentChangedEventArgs(0));
+                        this.EquipmentChanged.Invoke(this, new EquipmentChangedEventArgs(0));
 
                     this.RaisePropertyChanged("Equipment1");
                 }
@@ -312,7 +332,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 if (this.SetEquipment(1, value))
                 {
                     if (this.EquipmentChanged != null)
-                        this.EquipmentChanged(this, new EquipmentChangedEventArgs(1));
+                        this.EquipmentChanged.Invoke(this, new EquipmentChangedEventArgs(1));
 
                     this.RaisePropertyChanged("Equipment2");
                 }
@@ -326,7 +346,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 if (this.SetEquipment(2, value))
                 {
                     if (this.EquipmentChanged != null)
-                        this.EquipmentChanged(this, new EquipmentChangedEventArgs(2));
+                        this.EquipmentChanged.Invoke(this, new EquipmentChangedEventArgs(2));
 
                     this.RaisePropertyChanged("Equipment3");
                 }
@@ -345,7 +365,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 if (this.SetConsumable(0, value))
                 {
                     if (this.ConsumableChanged != null)
-                        this.ConsumableChanged(this, new ConsumableChangedEventArgs(0));
+                        this.ConsumableChanged.Invoke(this, new ConsumableChangedEventArgs(0));
 
                     this.RaisePropertyChanged("Consumable1");
                 }
@@ -360,7 +380,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 if (this.SetConsumable(1, value))
                 {
                     if (this.ConsumableChanged != null)
-                        this.ConsumableChanged(this, new ConsumableChangedEventArgs(0));
+                        this.ConsumableChanged.Invoke(this, new ConsumableChangedEventArgs(0));
 
                     this.RaisePropertyChanged("Consumable2");
                 }
@@ -374,7 +394,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 if (this.SetConsumable(2, value))
                 {
                     if (this.ConsumableChanged != null)
-                        this.ConsumableChanged(this, new ConsumableChangedEventArgs(0));
+                        this.ConsumableChanged.Invoke(this, new ConsumableChangedEventArgs(0));
 
                     this.RaisePropertyChanged("Consumable3");
                 }
@@ -445,6 +465,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 element = equipment.ToElement();
                 element.SetElementValue("weight", equipment.GetWeight(this.ModulesTotalWeight));
             }
+            // ReSharper disable once CoVariantArrayConversion
             var result = this.SetAccessory(_equipments, _tankConfigurationInfo.EquipmentKeys, _equipmentsElement, index, equipment, element, "equipment");
 
             this.OnEquipmentElementChanged(element);
@@ -454,8 +475,9 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
         private bool SetConsumable(int index, Consumable consumable)
         {
-            var element = consumable == null ? null : consumable.ToElement();
+            var element = consumable != null ? consumable.ToElement() : null;
 
+            // ReSharper disable once CoVariantArrayConversion
             var result = this.SetAccessory(_consumables, _tankConfigurationInfo.ConsumableKeys, _consumablesElement, index, consumable, element, "consumable");
 
             this.OnConsumableElementChanged(element);
@@ -465,14 +487,14 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
         private bool SetAccessory(IXQueryable[] accessoryArray, string[] keyArray, XElement elements, int index, IXQueryable value, XElement valueElement, string prefix)
         {
-            if (TankHelper.KeyEqualityComparer.Equals(accessoryArray[index], value))
+            if (accessoryArray[index].KeyEquals(value))
                 return false;
 
             var oldAccessory = accessoryArray[index];
 
             accessoryArray[index] = value;
             this.ScriptHost.SetScript(prefix + (index + 1).ToString(), AccessoryScript.Create(value));
-            keyArray[index] = value == null ? null : value["@key"];
+            keyArray[index] = value != null ? value["@key"] : null;
 
             if (oldAccessory == null && value != null)
             {
@@ -480,7 +502,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             }
             else if (oldAccessory != null)
             {
-                var oldElement = elements.Elements().FirstOrDefault(e => e.Attribute("key").Value == oldAccessory["@key"]);
+                var oldElement = elements.Elements().First(e => e.ExistedAttribute("key").Value == oldAccessory["@key"]);
 
                 if (value == null)
                     oldElement.Remove();
@@ -536,7 +558,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 {
                     if (_equipments[i] != null)
                     {
-                        var element = _equipmentsElement.Elements().FirstOrDefault(e => e.Attribute("key").Value == _equipments[i].Key);
+                        var element = _equipmentsElement.Elements().First(e => e.ExistedAttribute("key").Value == _equipments[i].Key);
                         element.SetElementValue("weight", _equipments[i].GetWeight(this.ModulesTotalWeight));
                         this.OnEquipmentElementChanged(element);
                     }
@@ -568,7 +590,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             this.Turret = this.Tank.Turrets.Last();
             this.Radio = this.Tank.Radios.Last();
             var maxTier = this.Turret.Guns.Max(g => g.Tier);
-            this.Gun = this.Turret.Guns.Where(g => g.Tier == maxTier).Last();
+            this.Gun = this.Turret.Guns.Last(g => g.Tier == maxTier);
             this.Ammunition = this.Gun.Ammunition.First();
 
             this.EndInitialize();

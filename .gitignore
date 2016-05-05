@@ -234,3 +234,8 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/src/Smellyriver.TankInspector.Mobile.Support
+/src/Smellyriver.TankInspector.Pro.MobileDataPackageExporter
+/src/Smellyriver.TankInspector.Pro.Internal.sln
+/src/Smellyriver.TankInspector.IO/Smellyriver.TankInspector.IO.Mobile.csproj
+/src/Smellyriver.TankInspector.Core/Smellyriver.TankInspector.Core.Mobile.csproj

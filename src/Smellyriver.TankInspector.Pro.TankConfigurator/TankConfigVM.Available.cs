@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Smellyriver.TankInspector.Pro.Data;
 using Smellyriver.TankInspector.Pro.Data.Entities;
 using Smellyriver.TankInspector.Pro.Gameplay;
 
@@ -146,7 +147,7 @@ namespace Smellyriver.TankInspector.Pro.TankConfigurator
                                        .Where(c => c.CanBeUsedBy(_configuration.Tank))
                                        .Select(CreateEquipmentVM)
                                        .ToArray();
-            
+
             this.SelectedEquipment1 = _configuration.Equipment1 == null ? null : (ComponentVM)_moduleVmLookup[_configuration.Equipment1];
             this.SelectedEquipment2 = _configuration.Equipment2 == null ? null : (ComponentVM)_moduleVmLookup[_configuration.Equipment2];
             this.SelectedEquipment3 = _configuration.Equipment3 == null ? null : (ComponentVM)_moduleVmLookup[_configuration.Equipment3];
@@ -195,14 +196,14 @@ namespace Smellyriver.TankInspector.Pro.TankConfigurator
             else
             {
                 var selectedAmmunition = this.AvailableAmmunition.FirstOrDefault(
-                    a => TankHelper.KeyEqualityComparer.Equals(a.Model, _configuration.Ammunition));
+                    a => a.Model.KeyEquals(_configuration.Ammunition));
                 this.SelectedAmmunition = selectedAmmunition ?? this.AvailableAmmunition[0];
             }
         }
 
         private ComponentVM[] CreateModuleVMs(IEnumerable<Component> components)
         {
-            var vms = components.Select(r => new ComponentVM(r, r == components.Last())).ToArray();
+            var vms = components.Select(r => new ComponentVM(r, object.Equals(r, components.Last()))).ToArray();
             foreach (var vm in vms)
                 _moduleVmLookup[vm.Model] = vm;
 
@@ -257,7 +258,7 @@ namespace Smellyriver.TankInspector.Pro.TankConfigurator
                 _moduleVmLookup[gun.Model] = gun;
 
             var selectedGun = this.AvailableGuns.FirstOrDefault(
-                g => TankHelper.KeyEqualityComparer.Equals(g.Model, _configuration.Gun));
+                g => g.Model.KeyEquals(_configuration.Gun));
             this.SelectedGun = selectedGun ?? this.AvailableGuns[0];
 
             this.UpdateModuleAvailabilities();

@@ -24,22 +24,22 @@
     <StackPanel Margin="5" Style="{StaticResource ToolWindowStackPanel}">
         <TextBlock Text="{Loc xsl_file_header, Default=XSL File:}" />
         <TextBox Text="{Binding XslFilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 metro:TextboxHelper.ButtonCommand="{Binding BrowseXslFileCommand}"
+                 metro:TextBoxHelper.ButtonCommand="{Binding BrowseXslFileCommand}"
                  Style="{DynamicResource MetroButtonTextBox}">
-            <metro:TextboxHelper.ButtonContent>
+            <metro:TextBoxHelper.ButtonContent>
                 <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.XmlTools;component/Resources/Images/Open_16.png" Stretch="None" />
-            </metro:TextboxHelper.ButtonContent>
+            </metro:TextBoxHelper.ButtonContent>
             <TextBox.InputBindings>
                 <KeyBinding Key="Enter" Command="{Binding BrowseXslFileCommand}" />
             </TextBox.InputBindings>
         </TextBox>
         <TextBlock Text="{Loc output_file_header, Default=Output:}" />
         <TextBox Text="{Binding OutputFilePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 metro:TextboxHelper.ButtonCommand="{Binding BrowseOutputFileCommand}"
+                 metro:TextBoxHelper.ButtonCommand="{Binding BrowseOutputFileCommand}"
                  Style="{DynamicResource MetroButtonTextBox}">
-            <metro:TextboxHelper.ButtonContent>
+            <metro:TextBoxHelper.ButtonContent>
                 <Image Source="pack://application:,,,/Smellyriver.TankInspector.Pro.XmlTools;component/Resources/Images/Save_16.png" Stretch="None" />
-            </metro:TextboxHelper.ButtonContent>
+            </metro:TextBoxHelper.ButtonContent>
             <TextBox.InputBindings>
                 <KeyBinding Key="Enter" Command="{Binding BrowseOutputFileCommand}" />
             </TextBox.InputBindings>

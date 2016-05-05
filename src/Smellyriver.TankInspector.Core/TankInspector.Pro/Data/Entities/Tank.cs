@@ -81,10 +81,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
         {
             get
             {
-                if (_turrets == null)
-                    _turrets = this.QueryMany("turrets/turret").Select(t => new Turret(t)).ToArray();
-
-                return _turrets;
+                return _turrets ?? (_turrets = this.QueryMany("turrets/turret").Select(t => new Turret(t)).ToArray());
             }
         }
 
@@ -93,23 +90,14 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
         {
             get
             {
-                if (_engines == null)
-                    _engines = this.QueryMany("engines/engine").Select(t => new Engine(t)).ToArray();
-
-                return _engines;
+                return _engines ?? (_engines = this.QueryMany("engines/engine").Select(t => new Engine(t)).ToArray());
             }
         }
 
         private Radio[] _radios;
         public IEnumerable<Radio> Radios
         {
-            get
-            {
-                if (_radios == null)
-                    _radios = this.QueryMany("radios/radio").Select(t => new Radio(t)).ToArray();
-
-                return _radios;
-            }
+            get { return _radios ?? (_radios = this.QueryMany("radios/radio").Select(t => new Radio(t)).ToArray()); }
         }
 
         private Chassis[] _chassis;
@@ -117,36 +105,21 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
         {
             get
             {
-                if (_chassis == null)
-                    _chassis = this.QueryMany("chassis/chassis").Select(t => new Chassis(t)).ToArray();
-
-                return _chassis;
+                return _chassis ?? (_chassis = this.QueryMany("chassis/chassis").Select(t => new Chassis(t)).ToArray());
             }
         }
 
         private Gun[] _guns;
         public IEnumerable<Gun> Guns
         {
-            get
-            {
-                if (_guns == null)
-                    _guns = this.Turrets.SelectMany(t => t.Guns).Distinct().ToArray();
-
-                return _guns;
-            }
+            get { return _guns ?? (_guns = this.Turrets.SelectMany(t => t.Guns).Distinct().ToArray()); }
         }
 
         private Hull _hull;
 
         public Hull Hull
         {
-            get
-            {
-                if (_hull == null)
-                    _hull = new Hull(this.Query("hull"));
-
-                return _hull;
-            }
+            get { return _hull ?? (_hull = new Hull(this.Query("hull"))); }
         }
 
         public Tank(IXQueryable tankData)

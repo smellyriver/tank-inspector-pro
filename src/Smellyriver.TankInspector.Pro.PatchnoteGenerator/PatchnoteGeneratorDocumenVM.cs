@@ -232,7 +232,7 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator
             var oldTanks = this.ReferenceRepository.TankDatabase.QueryMany("tank");
             var newTanks = this.TargetRepository.TankDatabase.QueryMany("tank");
 
-            var diffResult = oldTanks.Diff(newTanks, TankHelper.KeyEqualityComparer);
+            var diffResult = oldTanks.Diff(newTanks, KeyEqualityComparer<IXQueryable>.Instance);
 
             _tankTaskCount = diffResult.Added.Length + diffResult.Removed.Length + diffResult.Shared.Length;
             _processedTankTaskCount = 0;
@@ -409,9 +409,9 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator
 
         private IEnumerable<ItemName> AnalyseModuleCollectionCollisionChanges(IXQueryable oldTank, IXQueryable newTank, string xpath, string moduleName)
         {
-            var oldModules = oldTank.QueryMany(xpath).Distinct(TankHelper.KeyEqualityComparer);
-            var newModules = newTank.QueryMany(xpath).Distinct(TankHelper.KeyEqualityComparer);
-            foreach (var sharedItem in oldModules.Diff(newModules, TankHelper.KeyEqualityComparer).Shared)
+            var oldModules = oldTank.QueryMany(xpath).Distinct(KeyEqualityComparer<IXQueryable>.Instance);
+            var newModules = newTank.QueryMany(xpath).Distinct(KeyEqualityComparer<IXQueryable>.Instance);
+            foreach (var sharedItem in oldModules.Diff(newModules, KeyEqualityComparer<IXQueryable>.Instance).Shared)
             {
                 if (!this.ModelFileEquals(sharedItem.Source, sharedItem.Target, "hitTester/collisionModel"))
                 {

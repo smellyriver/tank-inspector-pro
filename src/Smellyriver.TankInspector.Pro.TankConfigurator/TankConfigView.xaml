@@ -216,17 +216,17 @@
                     <ComboBox Grid.Row="0" Grid.Column="0"
                               ItemsSource="{Binding AvailableEquipments}" 
                               SelectedItem="{Binding SelectedEquipment1, Mode=TwoWay}"
-                              metro:TextboxHelper.ClearTextButton="True" />
+                              metro:TextBoxHelper.ClearTextButton="True" />
 
                     <ComboBox Grid.Row="1" Grid.Column="0"
                               ItemsSource="{Binding AvailableEquipments}" 
                               SelectedItem="{Binding SelectedEquipment2, Mode=TwoWay}" 
-                              metro:TextboxHelper.ClearTextButton="True" />
+                              metro:TextBoxHelper.ClearTextButton="True" />
 
                     <ComboBox Grid.Row="2" Grid.Column="0"
                               ItemsSource="{Binding AvailableEquipments}" 
                               SelectedItem="{Binding SelectedEquipment3, Mode=TwoWay}" 
-                              metro:TextboxHelper.ClearTextButton="True" />
+                              metro:TextBoxHelper.ClearTextButton="True" />
                 </Grid>
             </Expander>
 
@@ -246,17 +246,17 @@
                     <ComboBox Grid.Row="0" Grid.Column="0"
                               ItemsSource="{Binding AvailableConsumables}" 
                               SelectedItem="{Binding SelectedConsumable1, Mode=TwoWay}"
-                              metro:TextboxHelper.ClearTextButton="True" />
+                              metro:TextBoxHelper.ClearTextButton="True" />
 
                     <ComboBox Grid.Row="1" Grid.Column="0"
                               ItemsSource="{Binding AvailableConsumables}" 
                               SelectedItem="{Binding SelectedConsumable2, Mode=TwoWay}"
-                              metro:TextboxHelper.ClearTextButton="True" />
+                              metro:TextBoxHelper.ClearTextButton="True" />
 
                     <ComboBox Grid.Row="2" Grid.Column="0"
                               ItemsSource="{Binding AvailableConsumables}" 
                               SelectedItem="{Binding SelectedConsumable3, Mode=TwoWay}"
-                              metro:TextboxHelper.ClearTextButton="True" />
+                              metro:TextBoxHelper.ClearTextButton="True" />
                 </Grid>
             </Expander>
 

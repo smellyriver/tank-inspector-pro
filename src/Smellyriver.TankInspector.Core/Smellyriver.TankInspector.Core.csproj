@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>6</LangVersion>
+    <LangVersion>5</LangVersion>
     <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -47,6 +47,7 @@
     <Compile Include="Smellyriver.Common\Collections\ProjectionEqualityComparer.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\Scripting\CamouflageNetScript.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\Scripting\CamouflageScript.cs" />
+    <Compile Include="TankInspector.Pro\Gameplay\KeyEqualityComparer.cs" />
     <Compile Include="TankInspector.Pro\Repository\Versioning\AvailableFromVersionAttribute.cs" />
     <Compile Include="TankInspector.Pro\Repository\Versioning\ObsoleteOnVersionAttribute.cs" />
     <Compile Include="TankInspector\CoreNotificationObject.cs" />
@@ -152,7 +153,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TankInspector.Pro\Gameplay\CrewHelper.cs" />
     <Compile Include="TankInspector.Pro\Gameplay\SkillHelper.cs" />
-    <Compile Include="TankInspector.Pro\Gameplay\TankHelper.cs" />
     <Compile Include="TankInspector.Pro\Repository\GameVersion.cs" />
     <Compile Include="TankInspector.Pro\Repository\IRepository.cs" />
     <Compile Include="TankInspector.Pro\Repository\IRepositoryLocalization.cs" />

@@ -207,6 +207,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                 element.Save(cacheFile);
             }
             catch (Exception ex)
+
             {
                 this.LogError("failed to save xml cache for '{0}': {1}", cacheFilename, ex.Message);
             }

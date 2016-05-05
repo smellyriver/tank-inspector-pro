@@ -106,7 +106,7 @@ namespace Smellyriver.TankInspector.Pro.TechTree
 
             var nodeTankMap = new Dictionary<TechTreeLayoutNode, TankEntity>();
 
-            var tanksInTechTree = new HashSet<TankEntity>(TankHelper.KeyEqualityComparer);
+            var tanksInTechTree = new HashSet<TankEntity>(KeyEqualityComparer<IXQueryable>.Instance);
 
             var rowMap = new Dictionary<int, int>();
 

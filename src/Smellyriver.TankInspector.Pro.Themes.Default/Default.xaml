@@ -11,5 +11,4 @@
         <ResourceDictionary Source="pack://application:,,,/Smellyriver.TankInspector.Pro.Themes.Default;component/Colors.xaml" />
         <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatSlider.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-
 </ResourceDictionary>

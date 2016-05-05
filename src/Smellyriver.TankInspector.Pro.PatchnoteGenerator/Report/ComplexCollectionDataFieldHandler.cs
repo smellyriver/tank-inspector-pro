@@ -17,7 +17,7 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator.Report
             var oldItems = oldItem.QueryMany(field.XPath);
             var newItems = newItem.QueryMany(field.XPath);
 
-            var diffResult = oldItems.Diff(newItems, TankHelper.KeyEqualityComparer);
+            var diffResult = oldItems.Diff(newItems, KeyEqualityComparer<IXQueryable>.Instance);
             var children = new List<PatchnoteReportItem>();
 
             foreach (var addedItem in diffResult.Added)

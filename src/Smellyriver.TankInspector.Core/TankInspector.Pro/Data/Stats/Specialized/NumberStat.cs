@@ -9,10 +9,19 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats.Specialized
     [DataContract(Name = "Number", Namespace = Stat.Xmlns)]
     public class NumberStat : XPathStat<double>
     {
+        private readonly double? _maximum;
 
+        public double? Maximum
+        {
+            get { return _maximum; }
+        }
 
-        public double? Maximum { get; }
-        public double? Minimum { get; }
+        private readonly double? _minimum;
+
+        public double? Minimum
+        {
+            get { return _minimum; }
+        }
 
         public NumberStat(string key,
                           string name,
@@ -28,8 +37,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats.Specialized
                           string formatString)
             : base(key, name, shortName, description, unit, xpath, baseValueXPath, showCondition, compareStrategy, formatString)
         {
-            this.Maximum = maximum;
-            this.Minimum = minimum;
+            this._maximum = maximum;
+            this._minimum = minimum;
         }
 
         protected override string GetValue(IXQueryable queryable, IRepository repository, string xpath)

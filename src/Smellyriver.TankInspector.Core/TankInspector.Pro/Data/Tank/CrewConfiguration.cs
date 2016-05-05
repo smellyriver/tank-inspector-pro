@@ -45,7 +45,12 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             get { return this.Tank["nation/@key"]; }
         }
 
-        internal XElement Element { get; }
+        private readonly XElement _element;
+
+        internal XElement Element
+        {
+            get { return _element; }
+        }
 
         internal CrewConfiguration(IRepository repository, TankEntity tank, ScriptHost scriptHost, CrewConfigurationInfo configInfo)
             : base(repository, tank, scriptHost)
@@ -53,7 +58,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             if (configInfo == null)
                 _crewConfigurationInfo = new CrewConfigurationInfo();
 
-            this.Element = new XElement("crews");
+            _element = new XElement("crews");
 
             var crewDatum = tank.QueryMany("crews/crew");
 

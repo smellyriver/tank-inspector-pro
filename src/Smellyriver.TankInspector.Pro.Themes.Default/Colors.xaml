@@ -97,6 +97,7 @@
     <SolidColorBrush x:Key="MenuBackgroundBrush" Color="#D6DBE9" />
     <SolidColorBrush x:Key="ContextMenuBackgroundBrush" Color="#D6DBE9" />
     <SolidColorBrush x:Key="SubMenuBackgroundBrush" Color="#D6DBE9" />
+    <SolidColorBrush x:Key="MenuItemBackgroundBrush" Color="#D6DBE9" />
 
     <SolidColorBrush x:Key="ContextMenuBorderBrush" Color="#9BA7B7" />
     <SolidColorBrush x:Key="SubMenuBorderBrush" Color="#9BA7B7" />
