@@ -6,13 +6,12 @@ using Smellyriver.TankInspector.IO;
 using Smellyriver.TankInspector.Pro.Data;
 using Smellyriver.TankInspector.Pro.Modularity.Tasks;
 using Smellyriver.TankInspector.Common.Utilities;
+using Smellyriver.TankInspector.IO.XmlDecoding;
 
 namespace Smellyriver.TankInspector.Pro.Repository
 {
     public class LocalGameClient : IRepository
     {
-
-
         public string ID
         {
             get { return this.RootPath; }
@@ -27,6 +26,8 @@ namespace Smellyriver.TankInspector.Pro.Repository
         {
             get { return this.L("game_client_manager", "game_client_description", this.Version, this.RootPath); }
         }
+
+        public string Language { get; }
 
         string IRepository.Path
         {
@@ -69,8 +70,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
         private LocalGameClientConfiguration _configuration;
 
-        private readonly LocalGameClientCacheManager _cacheManager;
-        public LocalGameClientCacheManager CacheManager { get { return _cacheManager; } }
+        public LocalGameClientCacheManager CacheManager { get; }
 
         public ObservableCollection<string> ClientPaths { get; private set; }
 
@@ -80,9 +80,10 @@ namespace Smellyriver.TankInspector.Pro.Repository
             _paths = new LocalGameClientPath(this);
             this.ClientPaths = _paths.ClientPaths;
 
-            _cacheManager = new LocalGameClientCacheManager(this);
+            this.CacheManager = new LocalGameClientCacheManager(this);
 
-            this.Localization = new LocalGameClientLocalization(_paths.TextFolder);
+            this.Localization = new LocalGameClientLocalization(_paths.TextSettingsFile, _paths.TextFolder);
+            this.Language = this.Localization.Language;
 
             this.PackageIndexer = new LocalGameClientPackageIndexer(this);
             this.PackageImages = new LocalGameClientPackageImage(_paths);

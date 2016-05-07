@@ -20,6 +20,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
         private const string c_packageFolder = @"res\packages";
         private const string c_versionFile = @"version.xml";
         private const string c_textFolder = @"res\text\LC_MESSAGES";
+        private const string c_textSettingsFile = @"res\text\settings.xml";
         private const string c_commonVehicleDataFile = @"res\scripts\item_defs\vehicles\common\vehicle.xml";
         private const string c_equipmentDataFile = @"res\scripts\item_defs\vehicles\common\optional_devices.xml";
         private const string c_consumableDataFile = @"res\scripts\item_defs\vehicles\common\equipments.xml";
@@ -91,6 +92,11 @@ namespace Smellyriver.TankInspector.Pro.Repository
             get { return Path.Combine(this.RootPath, c_textFolder); }
         }
 
+        public string TextSettingsFile
+        {
+            get { return Path.Combine(this.RootPath, c_textSettingsFile); }
+        }
+
         public string VersionFile
         {
             get { return Path.Combine(this.RootPath, c_versionFile); }
@@ -145,8 +151,8 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
             this.LoadClientPaths();
 
-            _nationFolders = Directory.GetDirectories(this.VehiclesFolder).Where(d => LocalGameClientPath.IsNationFolder(d)).ToArray();
-            _nations = _nationFolders.Select(n => Path.GetFileName(n)).ToArray();
+            _nationFolders = Directory.GetDirectories(this.VehiclesFolder).Where(LocalGameClientPath.IsNationFolder).ToArray();
+            _nations = _nationFolders.Select(Path.GetFileName).ToArray();
         }
 
         private void LoadClientPaths()

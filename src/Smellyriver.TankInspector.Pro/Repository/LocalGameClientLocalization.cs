@@ -1,5 +1,6 @@
 ﻿using Smellyriver.TankInspector.Common.Text;
 using Smellyriver.TankInspector.IO.Gettext;
+using Smellyriver.TankInspector.IO.XmlDecoding;
 
 namespace Smellyriver.TankInspector.Pro.Repository
 {
@@ -8,9 +9,19 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
         private readonly LocalizationDatabase _localizationDatabase;
 
-        public LocalGameClientLocalization(string textFolder)
+        public string Language { get; }
+
+        public LocalGameClientLocalization(string textSettingsFile, string textFolder)
         {
             _localizationDatabase = new LocalizationDatabase(textFolder);
+
+            using (var reader = new BigworldXmlReader(textSettingsFile))
+            {
+                reader.ReadStartElement();
+                reader.ReadToNextSibling("clientLangID");
+                reader.ReadStartElement("clientLangID");
+                this.Language = reader.Value;
+            }
         }
 
         public string GetLocalizedString(string key)

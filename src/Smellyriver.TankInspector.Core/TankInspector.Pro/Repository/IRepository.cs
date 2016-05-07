@@ -9,6 +9,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
         string Path { get; }
         string Description { get; }
         GameVersion Version { get; }
+        string Language { get; }
         string[] Nations { get; }
         IRepositoryLocalization Localization { get; }
 
