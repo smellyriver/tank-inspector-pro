@@ -247,7 +247,7 @@ namespace Smellyriver.TankInspector.Pro.TankConfigurator
         private void UpdateAvailableGuns()
         {
             var maxTier = this.Configuration.Tank.Guns.Max(g => g.Tier);
-            var eliteGun = this.Configuration.Tank.Guns.Where(g => g.Tier == maxTier).Last();
+            var eliteGun = this.Configuration.Tank.Guns.Last(g => g.Tier == maxTier);
 
             _eliteGunVM = new ComponentVM(eliteGun, true);
 
