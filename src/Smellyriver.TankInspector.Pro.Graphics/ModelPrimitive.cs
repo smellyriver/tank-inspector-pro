@@ -102,7 +102,7 @@ namespace Smellyriver.TankInspector.Pro.Graphics
             Indices = new Dictionary<string, IList<int>>();
         }
 
-        internal static ModelPrimitive ReadFrom(Stream stream, ModelVisual visual, bool recalculateNormals)
+        public static ModelPrimitive ReadFrom(Stream stream, ModelVisual visual, bool recalculateNormals)
         {
             var primitive = new ModelPrimitive();
             var sections = ReadSections(stream);

@@ -14,7 +14,7 @@ using Smellyriver.TankInspector.Pro.Repository;
 
 namespace Smellyriver.TankInspector.Pro.Graphics
 {
-    internal class ModuleModel : NotificationObject, IDisposable
+    public class ModuleModel : NotificationObject, IDisposable
     {
         public Task LoadingTask { get; set; }
 
@@ -24,7 +24,7 @@ namespace Smellyriver.TankInspector.Pro.Graphics
 
         private ModuleMesh _mesh;
 
-        public ModuleMesh Mesh
+        internal ModuleMesh Mesh
         {
             get { return _mesh; }
             private set { _mesh = value; }
@@ -73,7 +73,7 @@ namespace Smellyriver.TankInspector.Pro.Graphics
         }
 
 
-        private Stream OpenVisualFile(string modelFile, IFileLocator fileLocator)
+        public static Stream OpenVisualFile(string modelFile, IFileLocator fileLocator)
         {
             var visualFile = Path.ChangeExtension(modelFile, ".visual");    // pre 10.0
             Stream stream;
@@ -84,7 +84,7 @@ namespace Smellyriver.TankInspector.Pro.Graphics
             return fileLocator.OpenRead(visualFile);
         }
 
-        private Stream OpenPrimitiveFile(string modelFile, IFileLocator fileLocator)
+        public static Stream OpenPrimitiveFile(string modelFile, IFileLocator fileLocator)
         {
             var primitiveFile = Path.ChangeExtension(modelFile, ".primitives"); // pre 10.0
 
@@ -114,7 +114,7 @@ namespace Smellyriver.TankInspector.Pro.Graphics
                 {
                     using (Diagnostics.PotentialExceptionRegion)
                     {
-                        using (var visualStream = this.OpenVisualFile(modelPath, fileLocator))
+                        using (var visualStream = OpenVisualFile(modelPath, fileLocator))
                         {
                             this.Visual = ModelVisual.ReadFrom(visualStream);
                             foreach (var rendetSet in Visual.RenderSets)
@@ -141,7 +141,7 @@ namespace Smellyriver.TankInspector.Pro.Graphics
                                        {
                                            using (Diagnostics.PotentialExceptionRegion)
                                            {
-                                               using (var primitivesStream = this.OpenPrimitiveFile(modelPath, fileLocator))
+                                               using (var primitivesStream = OpenPrimitiveFile(modelPath, fileLocator))
                                                {
                                                    this.Primitives = ModelPrimitive.ReadFrom(primitivesStream,
                                                                                              Visual,
