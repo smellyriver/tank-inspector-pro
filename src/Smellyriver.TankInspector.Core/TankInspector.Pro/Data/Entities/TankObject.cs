@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Smellyriver.TankInspector.Pro.Data.Entities
 {
+    [DebuggerDisplay("{Name} ({ElementName})")]
     public abstract class TankObject : XQueryableWrapper, IEquatable<TankObject>
     {
 
