@@ -81,6 +81,9 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats
         [DataMember(IsRequired = false)]
         public BenchmarkThreshold BenchmarkThreshold { get; private set; }
 
+        [DataMember(IsRequired = false)]
+        public bool IsBenchmarkable { get; set; }
+
 
         [DataMember(IsRequired = false)]
         public string Unit { get; private set; }
@@ -121,6 +124,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats
 
 
         public abstract string GetValue(IXQueryable queryable, IRepository repository, bool isBaseValue);
+        public abstract double? GetBenchmarkValue(IXQueryable queryable, IRepository repository, bool isBaseValue);
         public abstract string FormatValue(string value);
         public abstract double? GetDifferenceRatio(string value1, string value2);
         public abstract double? GetDifference(string value1, string value2);

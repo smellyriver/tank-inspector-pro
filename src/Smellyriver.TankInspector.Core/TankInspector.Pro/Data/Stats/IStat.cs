@@ -14,8 +14,10 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats
         string[] Categories { get; }
         CompareStrategy CompareStrategy { get; }
         IComparer Comparer { get; }
+        bool IsBenchmarkable { get; }
         BenchmarkThreshold BenchmarkThreshold { get; }
         string GetValue(IXQueryable queryable, IRepository repository, bool isBaseValue);
+        double? GetBenchmarkValue(IXQueryable queryable, IRepository repository, bool isBaseValue);
         string FormatValue(string value);
         bool ShouldShowFor(IXQueryable queryable, IRepository repository);
         double? GetDifferenceRatio(string value1, string value2);

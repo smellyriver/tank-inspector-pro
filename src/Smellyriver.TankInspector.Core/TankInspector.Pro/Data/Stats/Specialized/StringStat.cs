@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
+using Smellyriver.TankInspector.Pro.Repository;
 
 namespace Smellyriver.TankInspector.Pro.Data.Stats.Specialized
 {
@@ -18,6 +20,11 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats.Specialized
             : base(key, name, shortName, description, unit, xpath, baseValueXPath, showCondition, compareStrategy, formatString)
         {
 
+        }
+
+        protected override double? GetBenchmarkValue(IXQueryable queryable, IRepository repository, string xpath)
+        {
+            return null;
         }
 
         protected override string Convert(string value)

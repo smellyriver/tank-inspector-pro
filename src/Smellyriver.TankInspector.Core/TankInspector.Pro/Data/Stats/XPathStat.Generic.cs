@@ -70,7 +70,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats
 
         }
 
-        public override string GetValue(IXQueryable queryable, IRepository repository, bool isBaseValue)
+        public sealed override string GetValue(IXQueryable queryable, IRepository repository, bool isBaseValue)
         {
 
             var xpath = isBaseValue ? this.BaseValueXPath : this.XPath;
@@ -81,11 +81,11 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats
             catch (Exception ex)
             {
                 Core.Support.LogError(this,
-                                                          string.Format(
-                                                                        "error evaluating stat xpath(key='{0}', xpath='{1}'): {2}",
-                                                                        this.Key,
-                                                                        xpath,
-                                                                        ex.Message));
+                                      string.Format(
+                                                    "error evaluating stat xpath(key='{0}', xpath='{1}'): {2}",
+                                                    this.Key,
+                                                    xpath,
+                                                    ex.Message));
                 var defaultValue = default(TStat);
                 return defaultValue == null ? null : defaultValue.ToString();
             }
@@ -96,6 +96,28 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats
         {
             return queryable.QueryValue(xpath);
         }
+
+        public sealed override double? GetBenchmarkValue(IXQueryable queryable, IRepository repository, bool isBaseValue)
+        {
+            var xpath = isBaseValue ? this.BaseValueXPath : this.XPath;
+            try
+            {
+                return this.GetBenchmarkValue(queryable, repository, xpath);
+            }
+            catch (Exception ex)
+            {
+                Core.Support.LogError(this,
+                                      string.Format(
+                                                    "error evaluating stat xpath(key='{0}', xpath='{1}'): {2}",
+                                                    this.Key,
+                                                    xpath,
+                                                    ex.Message));
+
+                return null;
+            }
+        }
+
+        protected abstract double? GetBenchmarkValue(IXQueryable queryable, IRepository repository, string xpath);
 
         public override string FormatValue(string value)
         {

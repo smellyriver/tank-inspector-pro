@@ -39,9 +39,9 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats
 
             using (var stream = Core.Support.GetStatsXmlStream())
             {
-                this._stats = (XPathStat[])s_serializer.ReadObject(stream);
+                _stats = (XPathStat[])s_serializer.ReadObject(stream);
             }
-
+            
             _preprocessSet = new HashSet<XPathStat>();
             _preprocessedSet = new HashSet<XPathStat>();
             _statsLookup = new Dictionary<string, XPathStat>();
