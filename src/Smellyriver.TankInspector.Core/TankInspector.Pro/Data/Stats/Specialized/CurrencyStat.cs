@@ -20,30 +20,29 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats.Specialized
 
         protected override string Convert(string value)
         {
-            if (value == "credit")
-                return "cr";
-            else
-                return "g";
+            return value == "credit" ? "cr" : "g";
         }
 
         protected override double? InternalGetDifferenceRatio(string value1, string value2)
         {
             if (value1 == value2)
                 return 0.0;
-            else if (value1 == "g")
+
+            if (value1 == "g")
                 return 1.0;
-            else
-                return -1.0;
+
+            return -1.0;
         }
 
         protected override double? InternalGetDifference(string value1, string value2)
         {
             if (value1 == value2)
                 return 0.0;
-            else if (value1 == "g")
+
+            if (value1 == "g")
                 return 1.0;
-            else
-                return -1.0;
+
+            return -1.0;
         }
     }
 }

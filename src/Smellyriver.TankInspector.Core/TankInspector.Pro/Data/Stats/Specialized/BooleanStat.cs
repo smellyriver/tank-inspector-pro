@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 using Smellyriver.TankInspector.Pro.Repository;
 
@@ -31,15 +32,16 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats.Specialized
             if (string.IsNullOrEmpty(result))
             {
                 Core.Support.LogError(this,
-                                                          string.Format(
-                                                                        "error getting boolean stat value (key='{0}', xpath='{1}')",
-                                                                        this.Key,
-                                                                        xpath));
+                                      string.Format("error getting boolean stat value (key='{0}', xpath='{1}')",
+                                                    this.Key,
+                                                    xpath));
                 return "false";
             }
 
             return result;
         }
+
+        
 
         protected override bool Convert(string value)
         {
@@ -65,5 +67,6 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats.Specialized
             else
                 return -1.0;
         }
+
     }
 }
