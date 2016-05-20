@@ -65,7 +65,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
             get { return this["class/@key"]; }
         }
 
-        public string Class
+        public string ClassName
         {
             get { return this["class"]; }
         }
@@ -74,6 +74,22 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
         {
             get { return this.QueryInt("level"); }
         }
+
+        public TankClass Type
+        {
+            get { return TankClassHelper.FromClassKey(this["class"]); }
+        }
+
+        public IEnumerable<string> PredecessorKeys
+        {
+            get { return this.QueryManyValues("predecessors/predecessor/@key"); }
+        }
+
+        public IEnumerable<string> SuccessorKeys
+        {
+            get { return this.QueryManyValues("successors/successor/@key"); }
+        }
+
 
         private Turret[] _turrets;
 

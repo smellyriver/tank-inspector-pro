@@ -2,27 +2,26 @@
 
 namespace Smellyriver.TankInspector.Pro.Data.Entities
 {
-    public sealed class TankClassComparer : IComparer<string>
+    public sealed class TankClassComparer : IComparer<string>, IComparer<TankClass>
     {
-        private static readonly Dictionary<string, int> s_classSortIndices
+        private static readonly Dictionary<string, int> s_classKeySortIndices
             = new Dictionary<string, int>
             {
-                { "lightTank", 0 },
-                { "mediumTank", 1 },
-                { "heavyTank", 2 },
-                { "AT-SPG", 3 },
-                { "SPG", 4 },
+                {TankClassHelper.ObserverClassKey, 0},
+                {TankClassHelper.LightTankClassKey, 1},
+                {TankClassHelper.MediumTankClassKey, 2},
+                {TankClassHelper.HeavyTankClassKey, 3},
+                {TankClassHelper.ATSPGClassKey, 4},
+                {TankClassHelper.SPGClassKey, 5},
             };
 
-        private const int c_unknownValue = 5;
+
+        private const int c_unknownValue = 6;
 
         public static int GetClassSortIndex(string classKey)
         {
             int value;
-            if (s_classSortIndices.TryGetValue(classKey, out value))
-                return value;
-
-            return c_unknownValue;
+            return s_classKeySortIndices.TryGetValue(classKey, out value) ? value : c_unknownValue;
         }
 
         public int Compare(string x, string y)
@@ -34,6 +33,11 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
                 return string.Compare(x, y);
 
             return xValue - yValue;
+        }
+
+        public int Compare(TankClass x, TankClass y)
+        {
+            return (int)x - (int)y;
         }
     }
 }
