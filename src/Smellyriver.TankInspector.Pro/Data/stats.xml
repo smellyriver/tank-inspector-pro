@@ -15,7 +15,7 @@
     <Name>#stats:description</Name>
     <XPath>description</XPath>
   </Stat>
-  <Stat i:type="String">
+  <Stat i:type="Number">
     <Categories>#stats:category_general</Categories>
     <CompareStrategy>Plain</CompareStrategy>
     <Description>#stats:tier_description</Description>
@@ -44,6 +44,7 @@
     <Categories>#stats:category_firepower, #stats:category_ammunition, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:penetration_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>penetration_100m</Key>
     <Name>#stats:penetration</Name>
     <Unit>#stats:unit_millimeters</Unit>
@@ -54,6 +55,7 @@
     <Categories>#stats:category_firepower, #stats:category_ammunition, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:penetration_at_400m_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>penetration_400m</Key>
     <Name>#stats:penetration_at_400m</Name>
     <ShowCondition>#value != #stat(penetration_100m)</ShowCondition>
@@ -65,6 +67,7 @@
     <Categories>#stats:category_firepower, #stats:category_ammunition, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:damage_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>damage_armor</Key>
     <Name>#stats:damage</Name>
     <XPath>shell/damage/armor</XPath>
@@ -74,6 +77,7 @@
     <Categories>#stats:category_firepower, #stats:category_ammunition, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:module_damage_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>damage_module</Key>
     <Name>#stats:module_damage</Name>
     <XPath>shell/damage/devices</XPath>
@@ -84,6 +88,7 @@
     <Categories>#stats:category_firepower, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:rate_of_fire_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>rateOfFire</Key>
     <Name>#stats:rate_of_fire</Name>
     <Unit>#stats:unit_count_per_minute</Unit>
@@ -95,8 +100,10 @@
     <Categories>#stats:category_firepower, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:damage_per_minute_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>damagePerMinute</Key>
     <Name>#stats:damage_per_minute</Name>
+    
     <ShortName>#stats:damage_per_minute_short_name</ShortName>
     <XPath>shell/damage/armor * #stat(rateOfFire)</XPath>
     <FormatString>{0:#,0.#}</FormatString>
@@ -106,8 +113,10 @@
     <Categories>#stats:category_firepower, #stats:category_gun</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:reload_time_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>reloadTime</Key>
     <Name>#stats:reload_time</Name>
+    
     <Unit>#stats:unit_seconds</Unit>
     <XPath>#base * states/loader/loadTimeFactor * states/staticFactorDevice/miscAttrs_gunReloadTimeFactor</XPath>
     <FormatString>{0:#,0.##}</FormatString>
@@ -116,9 +125,11 @@
     <Categories>#stats:category_firepower, #stats:category_ammunition, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:maximum_ammo_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>maxAmmo</Key>
     <Name>#stats:maximum_ammo</Name>
     <ShortName>#stats:maximum_ammo_short_name</ShortName>
+    
     <Unit>#stats:unit_count</Unit>
     <XPath>gun/maxAmmo</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -127,8 +138,10 @@
     <Categories>#stats:category_firepower, #stats:category_ammunition, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:caliber_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>caliber</Key>
     <Name>#stats:caliber</Name>
+    
     <Unit>#stats:unit_millimeters</Unit>
     <XPath>shell/caliber</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -137,8 +150,10 @@
     <Categories>#stats:category_firepower, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:maximum_shoot_distance_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>shellMaxDistance</Key>
     <Name>#stats:maximum_shoot_distance</Name>
+    
     <ShortName>#stats:maximum_shoot_distance_short_name</ShortName>
     <Unit>#stats:unit_meters</Unit>
     <XPath>shell/maxDistance</XPath>
@@ -148,8 +163,10 @@
     <Categories>#stats:category_firepower, #stats:category_ammunition</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:shell_velocity_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>shellVelocity</Key>
     <Name>#stats:shell_velocity</Name>
+    
     <Unit>#stats:unit_meters_per_second</Unit>
     <XPath>shell/speed</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -158,8 +175,10 @@
     <Categories>#stats:category_firepower, #stats:category_ammunition</Categories>
     <CompareStrategy>Plain</CompareStrategy>
     <Description>#stats:shell_gravity_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>shellGravity</Key>
     <Name>#stats:shell_gravity</Name>
+    
     <Unit>#stats:unit_meters_per_square_second</Unit>
     <XPath>shell/gravity</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -168,9 +187,11 @@
     <Categories>#stats:category_firepower, #stats:category_gun</Categories>
     <CompareStrategy>Plain</CompareStrategy>
     <Description>#stats:clip_count_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>clipCount</Key>
     <Name>#stats:clip_count</Name>
     <ShowCondition>#value &gt; 1</ShowCondition>
+    
     <Unit>#stats:unit_count</Unit>
     <XPath>gun/clip/count</XPath>
     <FormatString>{0:0}</FormatString>
@@ -179,9 +200,11 @@
     <Categories>#stats:category_firepower, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:clip_rate_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>clipRate</Key>
     <Name>#stats:clip_rate</Name>
     <ShowCondition>#stat(clipCount) &gt; 1</ShowCondition>
+    
     <Unit>#stats:unit_count_per_minute</Unit>
     <XPath>gun/clip/rate</XPath>
     <FormatString>{0:#,0.#}</FormatString>
@@ -190,9 +213,11 @@
     <Categories>#stats:category_firepower, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:in-clip_reload_time_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>clipReloadTime</Key>
     <Name>#stats:in-clip_reload_time</Name>
     <ShowCondition>#stat(clipCount) &gt; 1</ShowCondition>
+    
     <Unit>#stats:unit_seconds</Unit>
     <XPath>gun/clip/reloadTime</XPath>
     <FormatString>{0:#,0.##}</FormatString>
@@ -201,9 +226,11 @@
     <Categories>#stats:category_firepower, #stats:category_gun</Categories>
     <CompareStrategy>Plain</CompareStrategy>
     <Description>#stats:burst_count_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>burstCount</Key>
     <Name>#stats:burst_count</Name>
     <ShowCondition>#value &gt; 1</ShowCondition>
+    
     <Unit>#stats:unit_count</Unit>
     <XPath>gun/burst/count</XPath>
     <FormatString>{0:0}</FormatString>
@@ -212,9 +239,11 @@
     <Categories>#stats:category_firepower, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:burst_rate_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>burstRate</Key>
     <Name>#stats:burst_rate</Name>
     <ShowCondition>#stat(burstCount) &gt; 1</ShowCondition>
+    
     <Unit>#stats:unit_count_per_minute</Unit>
     <XPath>gun/burst/rate</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -225,8 +254,10 @@
     <Categories>#stats:category_maneuverability, #stats:category_gun</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:accuracy_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunAccuracy</Key>
     <Name>#stats:accuracy</Name>
+    
     <XPath>#base * states/gunner/accuracyFactor</XPath>
     <FormatString>{0:#,0.##}</FormatString>
   </Stat>
@@ -235,8 +266,10 @@
     <Categories>#stats:category_maneuverability, #stats:category_gun</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:aim_time_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunAimTime</Key>
     <Name>#stats:aim_time</Name>
+    
     <Unit>#stats:unit_seconds</Unit>
     <XPath>#base * states/gunner/aimingTimeFactor * states/staticFactorDevice/miscAttrs_gunAimingTimeFactor</XPath>
     <FormatString>{0:#,0.#}</FormatString>
@@ -246,9 +279,11 @@
     <Categories>#stats:category_maneuverability, #stats:category_turret</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:aim_circle_dispersion_on_turret_rotation_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>aimCircleDispersion_turretRotation</Key>
     <Name>#stats:aim_circle_dispersion_on_turret_rotation</Name>
     <ShortName>#stats:aim_circle_dispersion_on_turret_rotation_short_name</ShortName>
+    
     <XPath>#base * states/gunner/shotDispersionFactor * (states/staticFactorDevice/miscAttrs_additiveShotDispersionFactor - states/smoothTurret/shotDispersionFactor)</XPath>
     <FormatString>{0:#,0.00}</FormatString>
   </Stat>
@@ -257,9 +292,11 @@
     <Categories>#stats:category_maneuverability, #stats:category_turret</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:aim_circle_dispersion_on_turret_full_speed_rotation_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>aimCircleDispersion_turretFullSpeedRotation</Key>
     <Name>#stats:aim_circle_dispersion_on_turret_full_speed_rotation</Name>
     <ShortName>#stats:aim_circle_dispersion_on_turret_full_speed_rotation_short_name</ShortName>
+    
     <XPath>#stat(aimCircleDispersion_turretRotation) * #stat(turretRotationSpeed)</XPath>
     <FormatString>{0:#,0.00}</FormatString>
   </Stat>
@@ -268,9 +305,11 @@
     <Categories>#stats:category_maneuverability, #stats:category_gun</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:aim_circle_dispersion_after_shot_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>aimCircleDispersion_afterShot</Key>
     <Name>#stats:aim_circle_dispersion_after_shot</Name>
     <ShortName>#stats:aim_circle_dispersion_after_shot_short_name</ShortName>
+    
     <XPath>#base * states/gunner/shotDispersionFactor * states/staticFactorDevice/miscAttrs_additiveShotDispersionFactor</XPath>
     <FormatString>{0:#,0.00}</FormatString>
   </Stat>
@@ -279,9 +318,11 @@
     <Categories>#stats:category_maneuverability, #stats:category_gun</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:aim_circle_dispersion_while_gun_damaged_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>aimCircleDispersion_whileGunDamaged</Key>
     <Name>#stats:aim_circle_dispersion_while_gun_damaged</Name>
     <ShortName>#stats:aim_circle_dispersion_while_gun_damaged_short_name</ShortName>
+    
     <XPath>#base * (1 - states/gunsmith/shotDispersionFactor)</XPath>
     <FormatString>{0:#,0.00}</FormatString>
   </Stat>
@@ -290,9 +331,11 @@
     <Categories>#stats:category_maneuverability, #stats:category_chassis</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:aim_circle_dispersion_on_vehicle_move_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>aimCircleDispersion_vehicleMovement</Key>
     <Name>#stats:aim_circle_dispersion_on_vehicle_move</Name>
     <ShortName>#stats:aim_circle_dispersion_on_vehicle_move_short_name</ShortName>
+    
     <XPath>#base * states/gunner/shotDispersionFactor * (states/staticFactorDevice/miscAttrs_additiveShotDispersionFactor - states/smoothDriving/shotDispersionFactor)</XPath>
     <FormatString>{0:#,0.00}</FormatString>
   </Stat>
@@ -301,9 +344,11 @@
     <Categories>#stats:category_maneuverability, #stats:category_chassis</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:aim_circle_dispersion_on_vehicle_full_speed_moving_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>aimCircleDispersion_vehicleFullSpeedMovement</Key>
     <Name>#stats:aim_circle_dispersion_on_vehicle_full_speed_moving</Name>
     <ShortName>#stats:aim_circle_dispersion_on_vehicle_full_speed_moving_short_name</ShortName>
+    
     <XPath>#stat(aimCircleDispersion_vehicleMovement) * #stat(speedLimits_forward)</XPath>
     <FormatString>{0:#,0.00}</FormatString>
   </Stat>
@@ -312,9 +357,11 @@
     <Categories>#stats:category_maneuverability, #stats:category_chassis</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:aim_circle_dispersion_on_vehicle_traverse_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>aimCircleDispersion_vehicleRotation</Key>
     <Name>#stats:aim_circle_dispersion_on_vehicle_traverse</Name>
     <ShortName>#stats:aim_circle_dispersion_on_vehicle_traverse_short_name</ShortName>
+    
     <XPath>#base * states/gunner/shotDispersionFactor * states/staticFactorDevice/miscAttrs_additiveShotDispersionFactor</XPath>
     <FormatString>{0:#,0.00}</FormatString>
   </Stat>
@@ -323,9 +370,11 @@
     <Categories>#stats:category_maneuverability, #stats:category_chassis</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:aim_circle_dispersion_on_vehicle_full_speed_traversing_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>aimCircleDispersion_vehicleFullSpeedRotation</Key>
     <Name>#stats:aim_circle_dispersion_on_vehicle_full_speed_traversing</Name>
     <ShortName>#stats:aim_circle_dispersion_on_vehicle_full_speed_traversing_short_name</ShortName>
+    
     <XPath>#stat(aimCircleDispersion_vehicleRotation) * #stat(chassisRotationSpeed)</XPath>
     <FormatString>{0:#,0.00}</FormatString>
   </Stat>
@@ -333,8 +382,10 @@
     <Categories>#stats:category_maneuverability, #stats:category_gun</Categories>
     <CompareStrategy>Plain</CompareStrategy>
     <Description>#stats:maximum_elevation_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunMaximumElevation</Key>
     <Name>#stats:maximum_elevation</Name>
+    
     <Unit>#stats:unit_degrees</Unit>
     <XPath>gun/elevation/@maximum</XPath>
     <FormatString>{0:#,0.#}</FormatString>
@@ -343,8 +394,10 @@
     <Categories>#stats:category_maneuverability, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:maximum_depression_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunMaximumDepression</Key>
     <Name>#stats:maximum_depression</Name>
+    
     <Unit>#stats:unit_degrees</Unit>
     <XPath>gun/depression/@maximum</XPath>
     <FormatString>{0:#,0.#}</FormatString>
@@ -353,8 +406,10 @@
     <Categories>#stats:category_maneuverability, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:gun_left_traverse_range_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunLeftTraverseRange</Key>
     <Name>#stats:gun_left_traverse_range</Name>
+    
     <Unit>#stats:unit_degrees</Unit>
     <XPath>gun/turretYawLimits/left</XPath>
     <FormatString>{0:0.#}</FormatString>
@@ -363,8 +418,10 @@
     <Categories>#stats:category_maneuverability, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:gun_traverse_range_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunRightTraverseRange</Key>
     <Name>#stats:gun_traverse_range</Name>
+    
     <Unit>#stats:unit_degrees</Unit>
     <XPath>gun/turretYawLimits/right</XPath>
     <FormatString>{0:0.#}</FormatString>
@@ -373,9 +430,11 @@
     <Categories>#stats:category_maneuverability, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:gun_traverse_range_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunTraverseRange</Key>
     <Name>#stats:gun_traverse_range</Name>
     <ShowCondition>#value &lt; 360</ShowCondition>
+    
     <Unit>#stats:unit_degrees</Unit>
     <XPath>#stat(gunRightTraverseRange) - #stat(gunLeftTraverseRange)</XPath>
     <FormatString>{0:0.#}</FormatString>
@@ -384,8 +443,10 @@
     <Categories>#stats:category_maneuverability, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:gun_traverse_speed_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunRotationSpeed</Key>
     <Name>#stats:gun_traverse_speed</Name>
+    
     <Unit>#stats:unit_degrees_per_second</Unit>
     <XPath>gun/rotationSpeed</XPath>
     <FormatString>{0:#,0.##}</FormatString>
@@ -395,8 +456,10 @@
     <Categories>#stats:category_maneuverability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:turret_traverse_speed_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>turretRotationSpeed</Key>
     <Name>#stats:turret_traverse_speed</Name>
+    
     <Unit>#stats:unit_degrees_per_second</Unit>
     <XPath>#base * states/gunner/turretRotationSpeed * states/fuel/turretRotationSpeedFactor</XPath>
     <FormatString>{0:#,0.##}</FormatString>
@@ -406,8 +469,10 @@
     <Categories>#stats:category_maneuverability, #stats:category_mobility, #stats:category_chassis</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:chassis_traverse_speed_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>chassisRotationSpeed</Key>
     <Name>#stats:chassis_traverse_speed</Name>
+    
     <Unit>#stats:unit_degrees_per_second</Unit>
     <XPath>#base * (1 + states/virtuoso/rotationSpeedFactor)</XPath>
     <FormatString>{0:#,0.##}</FormatString>
@@ -418,8 +483,10 @@
     <Categories>#stats:category_mobility, #stats:category_engine</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:power_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>enginePower</Key>
     <Name>#stats:power</Name>
+    
     <Unit>#stats:unit_horsepowers</Unit>
     <XPath>#base * states/fuel/enginePowerFactor * states/removedRpmLimiter/enginePowerFactor</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -429,8 +496,10 @@
     <Categories>#stats:category_mobility, #stats:category_engine</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:specific_power_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>specificPower</Key>
     <Name>#stats:specific_power</Name>
+    
     <Unit>#stats:unit_horsepowers_per_ton</Unit>
     <XPath>#stat(enginePower) div #stat(totalWeight)</XPath>
     <FormatString>{0:#,0.##}</FormatString>
@@ -439,8 +508,10 @@
     <Categories>#stats:category_mobility, #stats:category_general</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:maximum_forward_speed_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>speedLimits_forward</Key>
     <Name>#stats:maximum_forward_speed</Name>
+    
     <ShortName>#stats:maximum_forward_speed_short_name</ShortName>
     <Unit>#stats:unit_kilometers_per_hour</Unit>
     <XPath>speedLimits/forward</XPath>
@@ -450,8 +521,10 @@
     <Categories>#stats:category_mobility, #stats:category_general</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:maximum_backward_speed_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>speedLimits_backward</Key>
     <Name>#stats:maximum_backward_speed</Name>
+    
     <ShortName>#stats:maximum_backward_speed_short_name</ShortName>
     <Unit>#stats:unit_kilometers_per_hour</Unit>
     <XPath>speedLimits/backward</XPath>
@@ -462,8 +535,10 @@
     <Categories>#stats:category_mobility, #stats:category_chassis</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:hard_terrain_resistance_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>terrainResistance_hard</Key>
     <Name>#stats:hard_terrain_resistance</Name>
+    
     <Unit>#stats:unit_meters_per_square_second</Unit>
     <XPath>#base * states/driver/terrainResistanceFactor</XPath>
     <FormatString>{0:#,0.###}</FormatString>
@@ -473,8 +548,10 @@
     <Categories>#stats:category_mobility, #stats:category_chassis</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:medium_terrain_resistance_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>terrainResistance_medium</Key>
     <Name>#stats:medium_terrain_resistance</Name>
+    
     <Unit>#stats:unit_meters_per_square_second</Unit>
     <XPath>#base * states/driver/terrainResistanceFactor * (states/grousers/mediumGroundResistanceFactor - states/badRoadsKing/mediumGroundResistanceFactor)</XPath>
     <FormatString>{0:#,0.###}</FormatString>
@@ -484,8 +561,10 @@
     <Categories>#stats:category_mobility, #stats:category_chassis</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:soft_terrain_resistance_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>terrainResistance_soft</Key>
     <Name>#stats:soft_terrain_resistance</Name>
+    
     <Unit>#stats:unit_meters_per_square_second</Unit>
     <XPath>#base * states/driver/terrainResistanceFactor * (states/grousers/softGroundResistanceFactor - states/badRoadsKing/softGroundResistanceFactor)</XPath>
     <FormatString>{0:#,0.###}</FormatString>
@@ -494,16 +573,20 @@
     <Categories>#stats:category_mobility, #stats:category_chassis</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:pivot_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>pivot</Key>
     <Name>#stats:pivot</Name>
+    
     <XPath>chassis/rotationIsAroundCenter</XPath>
   </Stat>
   <Stat i:type="Number">
     <Categories>#stats:category_mobility, #stats:category_general</Categories>
     <CompareStrategy>Plain</CompareStrategy>
     <Description>#stats:brake_force_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>brakeForce</Key>
     <Name>#stats:brake_force</Name>
+    
     <Unit>#stats:unit_newtons</Unit>
     <XPath>chassis/brakeForce</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -512,9 +595,11 @@
     <Categories>#stats:category_mobility, #stats:category_general</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:maximum_climb_angle_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>maxClimbAngle</Key>
     <Name>#stats:maximum_climb_angle</Name>
     <ShortName>#stats:maximum_climb_angle_short_name</ShortName>
+    
     <Unit>#stats:unit_degrees</Unit>
     <XPath>chassis/maxClimbAngle</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -525,8 +610,10 @@
     <Categories>#stats:category_survivability, #stats:category_engine</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:engine_chance_on_fire_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>engineChanceOnFire</Key>
     <Name>#stats:engine_chance_on_fire</Name>
+    
     <XPath>#base * states/extinguisher/fireStartingChanceFactor * states/tidyPerson/fireStartingChanceFactor</XPath>
     <FormatString>{0:#,0.##%}</FormatString>
   </Stat>
@@ -534,9 +621,11 @@
     <Categories>#stats:category_survivability, #stats:category_hull</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:hull_maximum_hitpoints_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>hullMaxHealth</Key>
     <Name>#stats:hull_maximum_hitpoints</Name>
     <ShortName>#stats:hull_maximum_hitpoints_short_name</ShortName>
+    
     <XPath>hull/maxHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -544,9 +633,11 @@
     <Categories>#stats:category_survivability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:turret_maximum_hitpoints_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>turretMaxHealth</Key>
     <Name>#stats:turret_maximum_hitpoints</Name>
     <ShortName>#stats:turret_maximum_hitpoints_short_name</ShortName>
+    
     <XPath>turret/maxHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -554,9 +645,11 @@
     <Categories>#stats:category_survivability, #stats:category_general</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:maximum_hitpoints_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>maxHealth</Key>
     <Name>#stats:maximum_hitpoints</Name>
     <ShortName>#stats:maximum_hitpoints_short_name</ShortName>
+    
     <XPath>#stat(hullMaxHealth) + #stat(turretMaxHealth)</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -564,9 +657,11 @@
     <Categories>#stats:category_survivability, #stats:category_hull</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:hull_front_armor_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>hullArmor_front</Key>
     <Name>#stats:hull_front_armor</Name>
     <ShortName>#stats:hull_front_armor_short_name</ShortName>
+    
     <Unit>#stats:unit_millimeters</Unit>
     <XPath>hull/primaryArmor/front</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -575,9 +670,11 @@
     <Categories>#stats:category_survivability, #stats:category_hull</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:hull_side_armor_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>hullArmor_side</Key>
     <Name>#stats:hull_side_armor</Name>
     <ShortName>#stats:hull_side_armor_short_name</ShortName>
+    
     <Unit>#stats:unit_millimeters</Unit>
     <XPath>hull/primaryArmor/side</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -586,9 +683,11 @@
     <Categories>#stats:category_survivability, #stats:category_hull</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:hull_rear_armor_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>hullArmor_rear</Key>
     <Name>#stats:hull_rear_armor</Name>
     <ShortName>#stats:hull_rear_armor_short_name</ShortName>
+    
     <Unit>#stats:unit_millimeters</Unit>
     <XPath>hull/primaryArmor/rear</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -597,9 +696,11 @@
     <Categories>#stats:category_survivability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:turret_front_armor_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>turretArmor_front</Key>
     <Name>#stats:turret_front_armor</Name>
     <ShortName>#stats:turret_front_armor_short_name</ShortName>
+    
     <Unit>#stats:unit_millimeters</Unit>
     <XPath>turret/primaryArmor/front</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -608,9 +709,11 @@
     <Categories>#stats:category_survivability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:turret_side_armor_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>turretArmor_side</Key>
     <Name>#stats:turret_side_armor</Name>
     <ShortName>#stats:turret_side_armor_short_name</ShortName>
+    
     <Unit>#stats:unit_millimeters</Unit>
     <XPath>turret/primaryArmor/side</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -619,9 +722,11 @@
     <Categories>#stats:category_survivability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:turret_rear_armor_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>turretArmor_rear</Key>
     <Name>#stats:turret_rear_armor</Name>
     <ShortName>#stats:turret_rear_armor_short_name</ShortName>
+    
     <Unit>#stats:unit_millimeters</Unit>
     <XPath>turret/primaryArmor/rear</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -630,9 +735,11 @@
     <Categories>#stats:category_survivability, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:gun_armor_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunArmor</Key>
     <Name>#stats:gun_armor</Name>
     <ShortName>#stats:gun_armor_short_name</ShortName>
+    
     <Unit>#stats:unit_millimeters</Unit>
     <XPath>gun/armor/armor[@key='gun']/thickness</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -641,9 +748,11 @@
     <Categories>#stats:category_survivability, #stats:category_chassis</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:track_armor_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>trackArmor</Key>
     <Name>#stats:track_armor</Name>
     <ShortName>#stats:track_armor_short_name</ShortName>
+    
     <Unit>#stats:unit_millimeters</Unit>
     <XPath>chassis/armor/armor[@key='leftTrack']/thickness</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -653,9 +762,11 @@
     <Categories>#stats:category_survivability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:ammorack_maximum_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>ammoBayMaxHealth</Key>
     <Name>#stats:ammorack_maximum_hitpoint</Name>
     <ShortName>#stats:ammorack_maximum_hitpoint_short_name</ShortName>
+    
     <XPath>hull/ammoBayHealth/maxHealth * states/pedant/ammoBayHealthFactor</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -663,9 +774,11 @@
     <Categories>#stats:category_survivability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:ammorack_maximum_regenerated_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>ammoBayMaxRegenHealth</Key>
     <Name>#stats:ammorack_maximum_regenerated_hitpoint</Name>
     <ShortName>#stats:ammorack_maximum_regenerated_hitpoint_short_name</ShortName>
+    
     <XPath>hull/ammoBayHealth/maxRegenHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -673,9 +786,11 @@
     <Categories>#stats:category_survivability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:turret_rotator_maximum_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>turretRotatorMaxHealth</Key>
     <Name>#stats:turret_rotator_maximum_hitpoint</Name>
     <ShortName>#stats:turret_rotator_maximum_hitpoint_short_name</ShortName>
+    
     <XPath>turret/turretRotatorHealth/maxHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -683,9 +798,11 @@
     <Categories>#stats:category_survivability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:turret_rotator_maximum_regenerated_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>turretRotatorMaxRegenHealth</Key>
     <Name>#stats:turret_rotator_maximum_regenerated_hitpoint</Name>
     <ShortName>#stats:turret_rotator_maximum_regenerated_hitpoint_short_name</ShortName>
+    
     <XPath>turret/turretRotatorHealth/maxRegenHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -693,9 +810,11 @@
     <Categories>#stats:category_survivability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:surveying_device_maximum_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>surveyingDeviceMaxHealth</Key>
     <Name>#stats:surveying_device_maximum_hitpoint</Name>
     <ShortName>#stats:surveying_device_maximum_hitpoint_short_name</ShortName>
+    
     <XPath>turret/surveyingDeviceHealth/maxHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -703,9 +822,11 @@
     <Categories>#stats:category_survivability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:surveying_device_maximum_regenerated_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>surveyingDeviceMaxRegenHealth</Key>
     <Name>#stats:surveying_device_maximum_regenerated_hitpoint</Name>
     <ShortName>#stats:surveying_device_maximum_regenerated_hitpoint_short_name</ShortName>
+    
     <XPath>turret/surveyingDeviceHealth/maxRegenHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -713,9 +834,11 @@
     <Categories>#stats:category_survivability, #stats:category_hull</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:fuel_tank_maximum_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>fuelTankMaxHealth</Key>
     <Name>#stats:fuel_tank_maximum_hitpoint</Name>
     <ShortName>#stats:fuel_tank_maximum_hitpoint_short_name</ShortName>
+    
     <XPath>fuelTank/maxHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -723,9 +846,11 @@
     <Categories>#stats:category_survivability, #stats:category_hull</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:fuel_tank_maximum_regenerated_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>fuelTankMaxRegenHealth</Key>
     <Name>#stats:fuel_tank_maximum_regenerated_hitpoint</Name>
     <ShortName>#stats:fuel_tank_maximum_regenerated_hitpoint_short_name</ShortName>
+    
     <XPath>fuelTank/maxRegenHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -733,9 +858,11 @@
     <Categories>#stats:category_survivability, #stats:category_engine</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:engine_maximum_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>engineMaxHealth</Key>
     <Name>#stats:engine_maximum_hitpoint</Name>
     <ShortName>#stats:engine_maximum_hitpoint_short_name</ShortName>
+    
     <XPath>engine/maxHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -743,9 +870,11 @@
     <Categories>#stats:category_survivability, #stats:category_engine</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:engine_maximum_regenerated_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>engineMaxRegenHealth</Key>
     <Name>#stats:engine_maximum_regenerated_hitpoint</Name>
     <ShortName>#stats:engine_maximum_regenerated_hitpoint_short_name</ShortName>
+    
     <XPath>engine/maxRegenHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -753,9 +882,11 @@
     <Categories>#stats:category_survivability, #stats:category_chassis</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:track_maximum_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>chassisMaxHealth</Key>
     <Name>#stats:track_maximum_hitpoint</Name>
     <ShortName>#stats:track_maximum_hitpoint_short_name</ShortName>
+    
     <XPath>chassis/maxHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -763,9 +894,11 @@
     <Categories>#stats:category_survivability, #stats:category_chassis</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:track_maximum_regenerated_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>chassisMaxRegenHealth</Key>
     <Name>#stats:track_maximum_regenerated_hitpoint</Name>
     <ShortName>#stats:track_maximum_regenerated_hitpoint_short_name</ShortName>
+    
     <XPath>chassis/maxRegenHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -773,9 +906,11 @@
     <Categories>#stats:category_survivability, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:gun_maximum_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunMaxHealth</Key>
     <Name>#stats:gun_maximum_hitpoint</Name>
     <ShortName>#stats:gun_maximum_hitpoint_short_name</ShortName>
+    
     <XPath>gun/maxHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -783,9 +918,11 @@
     <Categories>#stats:category_survivability, #stats:category_gun</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:gun_maximum_regenerated_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunMaxRegenHealth</Key>
     <Name>#stats:gun_maximum_regenerated_hitpoint</Name>
     <ShortName>#stats:gun_maximum_regenerated_hitpoint_short_name</ShortName>
+    
     <XPath>gun/maxRegenHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -793,9 +930,11 @@
     <Categories>#stats:category_survivability, #stats:category_radio</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:radio_maximum_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>radioMaxHealth</Key>
     <Name>#stats:radio_maximum_hitpoint</Name>
     <ShortName>#stats:radio_maximum_hitpoint_short_name</ShortName>
+    
     <XPath>radio/maxHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -803,9 +942,11 @@
     <Categories>#stats:category_survivability, #stats:category_radio</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:radio_maximum_regenerated_hitpoint_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>radioMaxRegenHealth</Key>
     <Name>#stats:radio_maximum_regenerated_hitpoint</Name>
     <ShortName>#stats:radio_maximum_regenerated_hitpoint_short_name</ShortName>
+    
     <XPath>radio/maxRegenHealth</XPath>
     <FormatString>{0:#,0}</FormatString>
   </Stat>
@@ -815,8 +956,10 @@
     <Categories>#stats:category_scoutability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:view_range_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>viewRange</Key>
     <Name>#stats:view_range</Name>
+    
     <Unit>#stats:unit_meters</Unit>
     <XPath>#base * states/commander/viewRangeFactor * (states/staticFactorDevice/miscAttrs_circularVisionRadiusFactor + states/eagleEye/distanceFactorWhenDeviceWorking + states/finder/visionRadiusFactor)</XPath>
     <FormatString>{0:#,0.#}</FormatString>
@@ -827,8 +970,10 @@
     <Categories>#stats:category_scoutability, #stats:category_turret</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:view_range_(still_for_3_seconds)_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>viewRange_still3s</Key>
     <Name>#stats:view_range_(still_for_3_seconds)</Name>
+    
     <Unit>#stats:unit_meters</Unit>
     <XPath>#base * states/commander/viewRangeFactor * (states/stereoscope/circularVisionRadiusFactor + states/eagleEye/distanceFactorWhenDeviceWorking + states/finder/visionRadiusFactor)</XPath>
     <FormatString>{0:#,0.#}</FormatString>
@@ -839,8 +984,10 @@
     <Categories>#stats:category_scoutability</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:invisibility_moving_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>invisibility_moving</Key>
     <Name>#stats:invisibility_moving</Name>
+    
     <XPath>#base * states/camouflage/camouflageFactor + states/camouflage/camouflagePaintFactor * #stat(invisibility_camouflage_bonus)</XPath>
     <FormatString>{0:#,0.###%}</FormatString>
   </Stat>
@@ -849,8 +996,10 @@
     <Categories>#stats:category_scoutability</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:invisibility_still_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>invisibility_still</Key>
     <Name>#stats:invisibility_still</Name>
+    
     <XPath>#base * states/camouflage/camouflageFactor + states/camouflage/camouflagePaintFactor * #stat(invisibility_camouflage_bonus)</XPath>
     <FormatString>{0:#,0.###%}</FormatString>
   </Stat>
@@ -859,8 +1008,10 @@
     <Categories>#stats:category_scoutability</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:invisibility_camouflage_bonus_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>invisibility_camouflage_bonus</Key>
     <Name>#stats:invisibility_camouflage_bonus</Name>
+    
     <ShortName>#stats:invisibility_camouflage_bonus_short_name</ShortName>
     <XPath>#base</XPath>
     <FormatString>{0:#,0.###%}</FormatString>
@@ -870,8 +1021,10 @@
     <Categories>#stats:category_scoutability</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:invisibility_camouflage_net_bonus_description</Description>
+     <IsBenchmarkable>true</IsBenchmarkable>
     <Key>invisibility_camouflage_net_bonus</Key>
     <Name>#stats:invisibility_camouflage_net_bonus</Name>
+     
     <ShortName>#stats:invisibility_camouflage_net_bonus_short_name</ShortName>
     <XPath>#base</XPath>
     <FormatString>{0:#,0.###%}</FormatString>
@@ -881,8 +1034,10 @@
     <Categories>#stats:category_scoutability</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:invisibility_fire_penalty_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>invisibility_fire_penalty</Key>
     <Name>#stats:invisibility_fire_penalty</Name>
+    
     <XPath>#base</XPath>
     <FormatString>{0:#,0.###%}</FormatString>
   </Stat>
@@ -891,9 +1046,11 @@
     <Categories>#stats:category_scoutability</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:invisibility_still_after_3secs_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>invisibility_still_after_3_seconds</Key>
     <Name>#stats:invisibility_still_after_3secs</Name>
     <ShortName>#stats:invisibility_still_after_3secs_short_name</ShortName>
+    
     <XPath>#base * states/camouflage/camouflageFactor + states/CamouflageNet/invisibilityIncrementFactor * #stat(invisibility_camouflage_net_bonus) + states/camouflage/camouflagePaintFactor * #stat(invisibility_camouflage_bonus)</XPath>
     <FormatString>{0:#,0.###%}</FormatString>
   </Stat>
@@ -902,8 +1059,10 @@
     <Categories>#stats:category_scoutability, #stats:category_radio</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:radio_distance_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>radioDistance</Key>
     <Name>#stats:radio_distance</Name>
+    
     <Unit>#stats:unit_meters</Unit>
     <XPath>#base * (states/radioman/signalRangeFactor + states/inventor/radioDistanceFactor)</XPath>
     <FormatString>{0:#,0.#}</FormatString>
@@ -913,8 +1072,10 @@
     <Categories>#stats:category_combat, #stats:category_general</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:match_making_weight_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>mmweight</Key>
     <Name>#stats:match_making_weight</Name>
+    
     <ShowCondition>#value != -1</ShowCondition>
     <ShortName>#stats:match_making_weight_short_name</ShortName>
     <XPath>mmweight</XPath>
@@ -923,7 +1084,7 @@
   <!-- ECONOMY -->
   <Stat i:type="Number">
     <Categories>#stats:category_economy, #stats:category_general</Categories>
-    <CompareStrategy>LowerBetter</CompareStrategy>
+    <CompareStrategy>NotComparable</CompareStrategy>
     <Description>#stats:price_description</Description>
     <Key>price</Key>
     <Name>#stats:price</Name>
@@ -940,7 +1101,7 @@
   </Stat>
   <Stat i:type="Number">
     <Categories>#stats:category_economy, #stats:category_ammunition</Categories>
-    <CompareStrategy>LowerBetter</CompareStrategy>
+    <CompareStrategy>NotComparable</CompareStrategy>
     <Description>#stats:shell_price_description</Description>
     <Key>shellPrice</Key>
     <Name>#stats:shell_price</Name>
@@ -957,7 +1118,7 @@
   </Stat>
   <Stat i:type="Number">
     <Categories>#stats:category_economy, #stats:category_ammunition</Categories>
-    <CompareStrategy>LowerBetter</CompareStrategy>
+    <CompareStrategy>NotComparable</CompareStrategy>
     <Description>#stats:shell_price_per_damage_description</Description>
     <Key>shellPricePerDamage</Key>
     <Name>#stats:shell_price_per_damage</Name>
@@ -968,9 +1129,11 @@
     <Categories>#stats:category_economy</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:maximum_repair_cost_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>maxRepairCost</Key>
     <Name>#stats:maximum_repair_cost</Name>
     <ShortName>#stats:maximum_repair_cost_short_name</ShortName>
+    
     <Unit>#stats:unit_credits</Unit>
     <XPath>#stat(hullMaxRepairCost) + #stat(turretMaxRepairCost) + #stat(ammoBayMaxRepairCost) + #stat(turretRotatorMaxRepairCost) + #stat(surveyingDeviceMaxRepairCost) + #stat(engineMaxRepairCost) + #stat(fuelTankMaxRepairCost) + #stat(chassisMaxRepairCost) + #stat(gunMaxRepairCost) + #stat(radioMaxRepairCost)</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -979,9 +1142,11 @@
     <Categories>#stats:category_economy, #stats:category_hull</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:hull_maximum_repair_cost_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>hullMaxRepairCost</Key>
     <Name>#stats:hull_maximum_repair_cost</Name>
     <ShortName>#stats:hull_maximum_repair_cost_short_name</ShortName>
+    
     <Unit>#stats:unit_credits</Unit>
     <XPath>repairCost * #stat(hullMaxHealth)</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -990,9 +1155,11 @@
     <Categories>#stats:category_economy, #stats:category_turret</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:turret_maximum_repair_cost_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>turretMaxRepairCost</Key>
     <Name>#stats:turret_maximum_repair_cost</Name>
     <ShortName>#stats:turret_maximum_repair_cost_short_name</ShortName>
+    
     <Unit>#stats:unit_credits</Unit>
     <XPath>repairCost * #stat(turretMaxHealth)</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -1001,9 +1168,11 @@
     <Categories>#stats:category_economy, #stats:category_turret</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:ammorack_maximum_repair_cost_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>ammoBayMaxRepairCost</Key>
     <Name>#stats:ammorack_maximum_repair_cost</Name>
     <ShortName>#stats:ammorack_maximum_repair_cost_short_name</ShortName>
+    
     <Unit>#stats:unit_credits</Unit>
     <XPath>hull/ammoBayHealth/repairCost * #stat(ammoBayMaxHealth)</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -1012,9 +1181,11 @@
     <Categories>#stats:category_economy, #stats:category_chassis</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:track_maximum_repair_cost_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>chassisMaxRepairCost</Key>
     <Name>#stats:track_maximum_repair_cost</Name>
     <ShortName>#stats:track_maximum_repair_cost_short_name</ShortName>
+    
     <Unit>#stats:unit_credits</Unit>
     <XPath>chassis/repairCost * #stat(chassisMaxHealth)</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -1023,9 +1194,11 @@
     <Categories>#stats:category_economy, #stats:category_turret</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:turret_rotator_maximum_repair_cost_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>turretRotatorMaxRepairCost</Key>
     <Name>#stats:turret_rotator_maximum_repair_cost</Name>
     <ShortName>#stats:turret_rotator_maximum_repair_cost_short_name</ShortName>
+    
     <Unit>#stats:unit_credits</Unit>
     <XPath>turret/turretRotatorHealth/repairCost * #stat(turretRotatorMaxHealth)</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -1034,9 +1207,11 @@
     <Categories>#stats:category_economy, #stats:category_turret</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:surveying_device_maximum_repair_cost_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>surveyingDeviceMaxRepairCost</Key>
     <Name>#stats:surveying_device_maximum_repair_cost</Name>
     <ShortName>#stats:surveying_device_maximum_repair_cost_short_name</ShortName>
+    
     <Unit>#stats:unit_credits</Unit>
     <XPath>turret/surveyingDeviceHealth/repairCost * #stat(surveyingDeviceMaxHealth)</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -1045,9 +1220,11 @@
     <Categories>#stats:category_economy, #stats:category_hull</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:fuel_tank_maximum_repair_cost_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>fuelTankMaxRepairCost</Key>
     <Name>#stats:fuel_tank_maximum_repair_cost</Name>
     <ShortName>#stats:fuel_tank_maximum_repair_cost_short_name</ShortName>
+    
     <Unit>#stats:unit_credits</Unit>
     <XPath>fuelTank/repairCost * #stat(fuelTankMaxHealth)</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -1056,9 +1233,11 @@
     <Categories>#stats:category_economy, #stats:category_gun</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:gun_maximum_repair_cost_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>gunMaxRepairCost</Key>
     <Name>#stats:gun_maximum_repair_cost</Name>
     <ShortName>#stats:gun_maximum_repair_cost_short_name</ShortName>
+    
     <Unit>#stats:unit_credits</Unit>
     <XPath>gun/repairCost * #stat(gunMaxHealth)</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -1067,9 +1246,11 @@
     <Categories>#stats:category_economy, #stats:category_radio</Categories>
     <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:radio_maximum_repair_cost_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>radioMaxRepairCost</Key>
     <Name>#stats:radio_maximum_repair_cost</Name>
     <ShortName>#stats:radio_maximum_repair_cost_short_name</ShortName>
+    
     <Unit>#stats:unit_credits</Unit>
     <XPath>radio/repairCost * #stat(radioMaxHealth)</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -1078,9 +1259,11 @@
     <Categories>#stats:category_economy, #stats:category_engine</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:engine_maximum_repair_cost_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>engineMaxRepairCost</Key>
     <Name>#stats:engine_maximum_repair_cost</Name>
     <ShortName>#stats:engine_maximum_repair_cost_short_name</ShortName>
+    
     <Unit>#stats:unit_credits</Unit>
     <XPath>engine/repairCost * #stat(engineMaxHealth)</XPath>
     <FormatString>{0:#,0}</FormatString>
@@ -1179,9 +1362,11 @@
     <Categories>#stats:category_miscellaneous, #stats:category_chassis</Categories>
     <CompareStrategy>HigherBetter</CompareStrategy>
     <Description>#stats:maximum_load_description</Description>
+    <IsBenchmarkable>true</IsBenchmarkable>
     <Key>maxLoad</Key>
     <Name>#stats:maximum_load</Name>
     <ShortName>#stats:maximum_load_short_name</ShortName>
+    
     <Unit>#stats:unit_tons</Unit>
     <XPath>#base * states/enhancedSuspension/chassisMaxLoadFactor</XPath>
     <FormatString>{0:#,0.000}</FormatString>
