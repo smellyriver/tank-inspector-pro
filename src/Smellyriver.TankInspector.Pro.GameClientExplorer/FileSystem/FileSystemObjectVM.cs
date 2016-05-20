@@ -18,22 +18,32 @@ namespace Smellyriver.TankInspector.Pro.GameClientExplorer.FileSystem
             get { return this.Path; }
         }
 
-        public FileSystemObjectVM(ExplorerTreeNodeVM parent, string path, string name, LoadChildenStrategy loadChildenStrategy)
+        protected RelayCommand ShowInExplorerCommand { get; private set; }
+
+        protected FileSystemObjectVM(ExplorerTreeNodeVM parent, string path, string name, LoadChildenStrategy loadChildenStrategy)
             : base(parent, name, loadChildenStrategy)
         {
             this.Path = path == null ? null : PathEx.NormalizeDirectorySeparators(path);
+
+            this.InitializeCommands();
         }
+
+        private void InitializeCommands()
+        {
+            this.ShowInExplorerCommand = new RelayCommand(this.ShowInExplorer);
+            this.DefaultCommand = this.ShowInExplorerCommand;
+        }
+
+
         protected override List<ExplorerTreeContextMenuItemVM> CreateContextMenuItems()
         {
             var list = base.CreateContextMenuItems();
 
-            var showInExplorerCommand = new RelayCommand(this.ShowInExplorer);
-            this.DefaultCommand = showInExplorerCommand;
 
             if (!this.IsInPackage)
-                list.Add(new ExplorerTreeContextMenuItemVM(0, 
-                                                           this.L("game_client_explorer", "show_in_explorer_menu_item"), 
-                                                           showInExplorerCommand,
+                list.Add(new ExplorerTreeContextMenuItemVM(0,
+                                                           this.L("game_client_explorer", "show_in_explorer_menu_item"),
+                                                           this.ShowInExplorerCommand,
                                                            BitmapImageEx.LoadAsFrozen("Resources/Images/Actions/Explorer_16.png")));
 
             return list;

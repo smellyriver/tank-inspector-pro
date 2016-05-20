@@ -65,7 +65,7 @@ namespace Smellyriver.TankInspector.Pro.StatComparer
                         tasks.Add(new AxisBuildingTask(this.L("stat_comparer", 
                                                               "add_same_tier_and_class_tanks_shortcut", 
                                                               tier,
-                                                              this.TanksManager.SelectedTanks[0].Model.Class),
+                                                              this.TanksManager.SelectedTanks[0].Model.ClassName),
                                                        () => this.TanksManager.AddSameTierAndClassTanks(repository, 
                                                                                                         tier,
                                                                                                         this.TanksManager.SelectedTanks[0].Model.ClassKey)));
