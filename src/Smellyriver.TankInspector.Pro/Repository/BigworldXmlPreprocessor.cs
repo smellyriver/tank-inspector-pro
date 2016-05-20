@@ -93,7 +93,16 @@ namespace Smellyriver.TankInspector.Pro.Repository
                                           .Select("secondaryRoles",
                                                   s =>
                                                   s.TextToElementList("secondaryRole")))
-                   .Select("hull", e => e.ProcessArmorList(this.CommonVehicleData))
+                   .Select("hull",
+                           e =>
+                           {
+                               e.ProcessArmorList(this.CommonVehicleData)
+                                .Select("armor",
+                                        a => a.AppendCommonArmorGroup(this.CommonVehicleData, "surveyingDevice")
+                                              .AppendCommonArmorGroup(this.CommonVehicleData, "turretRotator"));
+
+                               BigworldXmlPreprocessor.ProcessHitTester(e);
+                           })
                    .ProcessTankModuleListNode("chassis",
                                               "chassis",
                                               _localization,
@@ -112,10 +121,11 @@ namespace Smellyriver.TankInspector.Pro.Repository
                                               e =>
                                               {
                                                   e.ProcessArmorList(this.CommonVehicleData)
+                                                   .Select("armor", a => a.AppendCommonArmorGroup(this.CommonVehicleData, "surveyingDevice"))
                                                    .ProcessTankModuleListNode("guns",
                                                                               "gun",
                                                                               _localization,
-                                                                              g =>BigworldXmlPreprocessor.ProcessGunNode(g, this.CommonVehicleData));
+                                                                              g => BigworldXmlPreprocessor.ProcessGunNode(g, this.CommonVehicleData));
 
 
                                                   BigworldXmlPreprocessor.ProcessHitTester(e);
@@ -125,8 +135,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                                               _localization,
                                               BigworldXmlPreprocessor.ProcessEngineNode)
                    .ProcessTankModuleListNode("fuelTanks", "fuelTank", _localization)
-                   .ProcessTankModuleListNode("radios", "radio", _localization)
-                   .Select("hull", BigworldXmlPreprocessor.ProcessHitTester);
+                   .ProcessTankModuleListNode("radios", "radio", _localization);
 
             var unlockNodes = element.XPathSelectElements("(chassis/chassis|turrets/turret|turrets/turret/guns/gun|engines/engine|radios/radio)/unlocks/*");
             foreach (var unlockNode in unlockNodes)
@@ -224,7 +233,8 @@ namespace Smellyriver.TankInspector.Pro.Repository
         {
             gun.ProcessArmorList(commonVehicleData)
                .ProcessShellList()
-               .Select("turretYawLimits", t => t.TextToElements("left", "right"));
+               .Select("turretYawLimits", t => t.TextToElements("left", "right"))
+               .Select("armor", a => a.AppendCommonArmorGroup(commonVehicleData, "gunBreech"));
 
             if (gun.Element("turretYawLimits") == null)
             {
@@ -289,7 +299,6 @@ namespace Smellyriver.TankInspector.Pro.Repository
                 burst.SetElementValue("count", 1);
                 burst.SetElementValue("rate", 0);
             }
-
 
             BigworldXmlPreprocessor.ProcessHitTester(gun);
         }

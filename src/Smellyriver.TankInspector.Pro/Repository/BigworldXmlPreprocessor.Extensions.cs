@@ -238,6 +238,26 @@ namespace Smellyriver.TankInspector.Pro.Repository.XmlProcessing
             return element.Select(priceElementName, e => e.ElementToBooleanAttribute("gold", "currency", "gold", "credit"));
         }
 
+        public static XElement AppendCommonArmorGroup(this XElement element,
+                                                      XElement commonVehicleData,
+                                                      string armorGroupName)
+        {
+            var material = commonVehicleData.Element("materials")
+                                            .Elements()
+                                            .FirstOrDefault(m => m.Attribute("key").Value == armorGroupName);
+
+            if (material == null)
+                return element;
+
+            var armorNode = new XElement(material);
+            armorNode.Name = "armor";
+            armorNode.SetAttributeValue("key", armorGroupName);
+
+            element.Add(armorNode);
+
+            return element;
+        }
+
         public static XElement ProcessArmorList(this XElement element,
                                                 XElement commonVehicleData,
                                                 string armorElementName = "armor",
