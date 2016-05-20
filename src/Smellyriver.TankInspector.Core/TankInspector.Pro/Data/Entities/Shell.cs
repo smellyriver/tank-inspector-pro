@@ -49,26 +49,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
 
         public ShellType Type
         {
-            get
-            {
-                switch (this["kind"])
-                {
-                    case "HIGH_EXPLOSIVE":
-                        return ShellType.HE;
-                    case "HIGH_EXPLOSIVE_PREMIUM":
-                        return ShellType.PremiumHE;
-                    case "HOLLOW_CHARGE":
-                        return ShellType.HEAT;
-                    case "ARMOR_PIERCING":
-                        return ShellType.AP;
-                    case "ARMOR_PIERCING_HE":
-                        return ShellType.APHE;
-                    case "ARMOR_PIERCING_CR":
-                        return ShellType.APCR;
-                    default:
-                        throw new NotSupportedException();
-                }
-            }
+            get { return ShellTypeHelper.FromXmlValue(this["kind"]); }
         }
 
         public Shell(IXQueryable shellData)

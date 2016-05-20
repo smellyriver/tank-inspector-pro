@@ -5,6 +5,27 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
 
     public static class ShellTypeExtensions
     {
+        public static string ToXmlValue(this ShellType type)
+        {
+            switch (type)
+            {
+                case ShellType.HE:
+                    return ShellTypeHelper.HEXmlName;
+                case ShellType.PremiumHE:
+                    return ShellTypeHelper.PremiumHEXmlName;
+                case ShellType.HEAT:
+                    return ShellTypeHelper.HEATXmlName;
+                case ShellType.AP:
+                    return ShellTypeHelper.APXmlName;
+                case ShellType.APHE:
+                    return ShellTypeHelper.APHEXmlName;
+                case ShellType.APCR:
+                    return ShellTypeHelper.APCRXmlName;
+                default:
+                    throw new NotSupportedException();
+            }
+        }
+
         public static bool IsKineticShellType(this ShellType type)
         {
             switch (type)
