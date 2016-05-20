@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 using Smellyriver.TankInspector.Pro.Repository;
@@ -31,17 +32,24 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats.Specialized
 
             if (string.IsNullOrEmpty(result))
             {
-                Core.Support.LogError(this,
-                                      string.Format("error getting boolean stat value (key='{0}', xpath='{1}')",
-                                                    this.Key,
-                                                    xpath));
+                Core.Support.LogWarning(this,
+                                        string.Format("error getting boolean stat value (key='{0}', xpath='{1}')",
+                                                      this.Key,
+                                                      xpath));
                 return "false";
             }
 
             return result;
         }
 
-        
+        protected override double? GetBenchmarkValue(IXQueryable queryable, IRepository repository, string xpath)
+        {
+            var value = queryable.QueryValue(xpath);
+            if (string.IsNullOrEmpty(value))
+                return null;
+            else
+                return bool.Parse(value) ? 1 : 0;
+        }
 
         protected override bool Convert(string value)
         {
