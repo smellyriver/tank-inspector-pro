@@ -1,4 +1,5 @@
-﻿using Smellyriver.TankInspector.Common.Text;
+﻿using System.IO;
+using Smellyriver.TankInspector.Common.Text;
 using Smellyriver.TankInspector.IO.Gettext;
 using Smellyriver.TankInspector.IO.XmlDecoding;
 
@@ -15,12 +16,19 @@ namespace Smellyriver.TankInspector.Pro.Repository
         {
             _localizationDatabase = new LocalizationDatabase(textFolder);
 
-            using (var reader = new BigworldXmlReader(textSettingsFile))
+            if (File.Exists(textSettingsFile))  // this file might not be existed on some game clients
             {
-                reader.ReadStartElement();
-                reader.ReadToNextSibling("clientLangID");
-                reader.ReadStartElement("clientLangID");
-                this.Language = reader.Value;
+                using (var reader = new BigworldXmlReader(textSettingsFile))
+                {
+                    reader.ReadStartElement();
+                    reader.ReadToNextSibling("clientLangID");
+                    reader.ReadStartElement("clientLangID");
+                    this.Language = reader.Value;
+                }
+            }
+            else
+            {
+                this.Language = "en-us";
             }
         }
 
