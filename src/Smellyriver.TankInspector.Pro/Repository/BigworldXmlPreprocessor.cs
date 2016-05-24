@@ -12,10 +12,11 @@ using Smellyriver.TankInspector.IO.XmlDecoding;
 using Smellyriver.TankInspector.Pro.Repository.Versioning;
 using Smellyriver.TankInspector.Pro.Repository.XmlProcessing;
 using Smellyriver.TankInspector.Common.Utilities;
+using Smellyriver.TankInspector.Pro.Data;
 
 namespace Smellyriver.TankInspector.Pro.Repository
 {
-    internal partial class BigworldXmlPreprocessor
+    internal class BigworldXmlPreprocessor
     {
         private static XElement LoadFile(string file)
         {
@@ -64,10 +65,9 @@ namespace Smellyriver.TankInspector.Pro.Repository
                             e.Add(new XElement(userStringElement) { Name = "shortUserString" });
                         }
 
-                        var tagsElement = e.Element("tags");
-                        Debug.Assert(tagsElement != null, "tagsElement!=null");
+                        var tankTags = e.ExistedElement("tags").Elements().ToArray();
 
-                        var classTag = tagsElement.Elements().First();
+                        var classTag = tankTags.First();
                         var classKey = classTag.Value;
                         var className = _localization.GetLocalizedClassName(classKey);
                         var classElement = new XElement("class", className);
@@ -77,6 +77,30 @@ namespace Smellyriver.TankInspector.Pro.Repository
                         var nationElement = new XElement("nation", _localization.GetLocalizedNationName(nation));
                         nationElement.SetAttributeValue("key", nation);
                         e.Add(nationElement);
+
+                        var secretTags = new XElement("secretTags");
+
+                        var isSecret = tankTags.Any(t => t.Value == "secret");
+
+                        if (isSecret)
+                        {
+
+                            var key = e.Attribute("key").Value;
+                            if (key.EndsWith("_training"))
+                                secretTags.Add(new XElement("tag", "training"));
+
+                            if (key.EndsWith("_bot"))
+                                secretTags.Add(new XElement("tag", "bot"));
+
+                            if (tankTags.Any(t => t.Value == "premiumIGR"))
+                                secretTags.Add(new XElement("tag", "igr"));
+
+                            if (tankTags.Any(t => t.Value == "fallout"))
+                                secretTags.Add(new XElement("tag", "fallout"));
+
+                        }
+
+                        e.Add(secretTags);
                     });
         }
 
@@ -234,7 +258,9 @@ namespace Smellyriver.TankInspector.Pro.Repository
             gun.ProcessArmorList(commonVehicleData)
                .ProcessShellList()
                .Select("turretYawLimits", t => t.TextToElements("left", "right"))
-               .Select("armor", a => a.AppendCommonArmorGroup(commonVehicleData, "gunBreech"));
+               .Select("armor",
+                       a => a.AppendCommonArmorGroup(commonVehicleData, "gunBreech")
+                             .AppendCommonArmorGroup(commonVehicleData, "surveyingDevice"));    //surveyingDevice exists for guns on oscillating turret
 
             if (gun.Element("turretYawLimits") == null)
             {
@@ -458,7 +484,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                 .NameToAttribute("crewDefinition", "nation")
                 .ProcessElements("ranks", r => r.LocalizeValue("userString", _localization));
 
-            var ranks = file.Element("ranks");
+            var ranks = file.ExistedElement("ranks");
 
             file.ProcessElements("roleRanks", r => r.NameToAttribute("ranks", "role")
                                                     .TextToElementList("rank")
@@ -466,17 +492,17 @@ namespace Smellyriver.TankInspector.Pro.Repository
                                                                      {
                                                                          var rank = e.Value.Trim();
                                                                          e.SetAttributeValue("key", rank);
-                                                                         e.Value = ranks.Element(rank).Element("userString").Value;
+                                                                         e.Value = ranks.ExistedElement(rank).ExistedElement("userString").Value;
                                                                      }));
 
             var men1 = file.XPathSelectElement("normalGroups/men1");
-            file.Add(new XElement(men1.Element("firstNames"))
+            file.Add(new XElement(men1.ExistedElement("firstNames"))
                          .ProcessElements(e => e.Rename("name")
                                                 .LocalizeValue(_localization)));
-            file.Add(new XElement(men1.Element("lastNames"))
+            file.Add(new XElement(men1.ExistedElement("lastNames"))
                          .ProcessElements(e => e.Rename("name")
                                                 .LocalizeValue(_localization)));
-            file.Add(new XElement(men1.Element("icons"))
+            file.Add(new XElement(men1.ExistedElement("icons"))
                          .Rename("portraits")
                          .ProcessElements(e => e.Rename("portrait")));
 
@@ -493,7 +519,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                 var file = BigworldXmlPreprocessor.LoadFile(_paths.GetNationalTechTreeLayoutFile(nation))
                     .TrimNameTail()
                     .Select("grid", g => g.TextToAttribute("style"))
-                    .ProcessElements("nodes", n => n.NameToAttribute("node", "key")
+                    .ProcessElements("nodes", n => n.NameToAttribute("node")
                                                     .ProcessElements("lines", l => l.NameToAttribute("line", "target")));
 
                 file.Name = file.Name.LocalName.Substring(0, file.Name.LocalName.Length - "-tree".Length);
@@ -526,7 +552,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                 .Rename("customization");
             element.SetAttributeValue("nation", nation);
 
-            var inscriptionsElement = element.Element("inscriptions");
+            var inscriptionsElement = element.ExistedElement("inscriptions");
             var firstInscriptionElement = inscriptionsElement.Elements().First();
             firstInscriptionElement.Rename("inscription");
 
@@ -592,8 +618,6 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
             Parallel.ForEach(_paths.Nations, nation =>
                 {
-                    var nationFolder = _paths.GetNationFolder(nation);
-
                     var chassisFile = ProcessChassisListFile(nation);
                     var enginesFile = ProcessEngineListFile(nation);
                     var fuelTanksFile = ProcessFuelTankListFile(nation);
@@ -630,7 +654,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
                         if (mmWeightElement == null)
                         {
-                            var tankTier = int.Parse(tank.Element("level").Value.Trim(), CultureInfo.InvariantCulture);
+                            var tankTier = int.Parse(tank.ExistedElement("level").Value.Trim(), CultureInfo.InvariantCulture);
                             mmWeightElement = this.CommonVehicleData.Element("balance")?
                                                   .Element("byComponentLevels")?
                                                   .Elements()
@@ -644,17 +668,17 @@ namespace Smellyriver.TankInspector.Pro.Repository
                             tankElement.Add(new XElement(element));
                         }
 
-                        LinkTankModules(tankElement.Element("chassis"), chassisFile);
-                        LinkTankModules(tankElement.Element("engines"), enginesFile);
-                        LinkTankModules(tankElement.Element("fuelTanks"), fuelTanksFile);
-                        LinkTankModules(tankElement.Element("radios"), radiosFile);
-                        LinkTankModules(tankElement.Element("turrets"), turretsFile);
-                        foreach (var turretElement in tankElement.Element("turrets").Elements())
+                        this.LinkTankModules(tankElement.Element("chassis"), chassisFile);
+                        this.LinkTankModules(tankElement.Element("engines"), enginesFile);
+                        this.LinkTankModules(tankElement.Element("fuelTanks"), fuelTanksFile);
+                        this.LinkTankModules(tankElement.Element("radios"), radiosFile);
+                        this.LinkTankModules(tankElement.Element("turrets"), turretsFile);
+                        foreach (var turretElement in tankElement.ExistedElement("turrets").Elements())
                         {
-                            LinkTankModules(turretElement.Element("guns"), gunsFile);
-                            foreach (var gunElement in turretElement.Element("guns").Elements())
+                            this.LinkTankModules(turretElement.Element("guns"), gunsFile);
+                            foreach (var gunElement in turretElement.ExistedElement("guns").Elements())
                             {
-                                LinkShell(gunElement.Element("shots"), shellFile);
+                                this.LinkShell(gunElement.Element("shots"), shellFile);
                             }
                         }
 
@@ -719,8 +743,8 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
         private void LinkTankModules(XElement list, XElement lookup)
         {
-            var idsElement = lookup.Element("ids");
-            var sharedElement = lookup.Element("shared");
+            var idsElement = lookup.ExistedElement("ids");
+            var sharedElement = lookup.ExistedElement("shared");
             foreach (var elementVar in list.Elements().ToArray())
             {
                 var element = elementVar;
@@ -730,7 +754,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                 var sharedAttribute = element.Attribute("shared");
                 if (sharedAttribute != null && sharedAttribute.Value == "true")
                 {
-                    var sharedItemElement = sharedElement.Elements().Where(e => e.Attribute("key").Value == key).FirstOrDefault();
+                    var sharedItemElement = sharedElement.Elements().FirstOrDefault(e => e.ExistedAttribute("key").Value == key);
                     if (sharedItemElement != null)
                     {
                         var newElement = new XElement(sharedItemElement);
@@ -746,7 +770,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                     }
                 }
 
-                var idElement = idsElement.Elements().Where(e => e.Attribute("key").Value == key).FirstOrDefault();
+                var idElement = idsElement.Elements().FirstOrDefault(e => e.ExistedAttribute("key").Value == key);
                 if (idElement != null)
                     element.Add(new XElement("id", idElement.Attribute("id").Value));
 
