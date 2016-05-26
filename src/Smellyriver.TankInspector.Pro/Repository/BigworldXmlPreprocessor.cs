@@ -149,7 +149,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                                                    .ProcessTankModuleListNode("guns",
                                                                               "gun",
                                                                               _localization,
-                                                                              g => BigworldXmlPreprocessor.ProcessGunNode(g, this.CommonVehicleData));
+                                                                              g => BigworldXmlPreprocessor.ProcessGunNode(g, this.CommonVehicleData, false));
 
 
                                                   BigworldXmlPreprocessor.ProcessHitTester(e);
@@ -253,7 +253,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
             return element;
         }
 
-        private static void ProcessGunNode(XElement gun, XElement commonVehicleData)
+        private static void ProcessGunNode(XElement gun, XElement commonVehicleData, bool assignDefaultValues)
         {
             gun.ProcessArmorList(commonVehicleData)
                .ProcessShellList()
@@ -264,10 +264,13 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
             if (gun.Element("turretYawLimits") == null)
             {
-                var turretYawLimitsElement = new XElement("turretYawLimits");
-                turretYawLimitsElement.SetElementValue("left", -180);
-                turretYawLimitsElement.SetElementValue("right", 180);
-                gun.Add(turretYawLimitsElement);
+                if (assignDefaultValues)
+                {
+                    var turretYawLimitsElement = new XElement("turretYawLimits");
+                    turretYawLimitsElement.SetElementValue("left", -180);
+                    turretYawLimitsElement.SetElementValue("right", 180);
+                    gun.Add(turretYawLimitsElement);
+                }
             }
 
             var pitchLimitsElement = gun.Element("pitchLimits");
@@ -278,24 +281,13 @@ namespace Smellyriver.TankInspector.Pro.Repository
                 var maxPitchElement = pitchLimitsElement.Element("maxPitch");
                 if (minPitchElement != null || maxPitchElement != null) // post 9.9
                 {
-                    var defaultElevation = 0.0;
-                    var defaultDepression = 0.0;
-                    var commonValueText = pitchLimitsElement.FirstNode as XText;
-                    if (commonValueText != null)
-                    {
-                        var commonValues = commonValueText.Value.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                        Debug.Assert(commonValues.Length == 2);
-                        defaultElevation = double.Parse(commonValues[0]);
-                        defaultDepression = double.Parse(commonValues[1]);
-                    }
-
                     gun.Add(BigworldXmlPreprocessor.CreatePitchLimitComponentElement("elevation",
                                                                                      minPitchElement,
-                                                                                     defaultElevation));
+                                                                                     0.0));
 
                     gun.Add(BigworldXmlPreprocessor.CreatePitchLimitComponentElement("depression",
                                                                                      maxPitchElement,
-                                                                                     defaultDepression));
+                                                                                     0.0));
 
                 }
                 else
@@ -305,10 +297,13 @@ namespace Smellyriver.TankInspector.Pro.Repository
             var clip = gun.Element("clip");
             if (clip == null)
             {
-                gun.Add(clip = new XElement("clip"));
-                clip.SetElementValue("count", 1);
-                clip.SetElementValue("rate", 0);
-                clip.SetElementValue("reloadTime", 0);
+                if (assignDefaultValues)
+                {
+                    gun.Add(clip = new XElement("clip"));
+                    clip.SetElementValue("count", 1);
+                    clip.SetElementValue("rate", 0);
+                    clip.SetElementValue("reloadTime", 0);
+                }
             }
             else
             {
@@ -321,9 +316,12 @@ namespace Smellyriver.TankInspector.Pro.Repository
             var burst = gun.Element("burst");
             if (burst == null)
             {
-                gun.Add(burst = new XElement("burst"));
-                burst.SetElementValue("count", 1);
-                burst.SetElementValue("rate", 0);
+                if (assignDefaultValues)
+                {
+                    gun.Add(burst = new XElement("burst"));
+                    burst.SetElementValue("count", 1);
+                    burst.SetElementValue("rate", 0);
+                }
             }
 
             BigworldXmlPreprocessor.ProcessHitTester(gun);
@@ -348,7 +346,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
         public XElement ProcessGunListFile(string nation)
         {
-            return ProcessModuleListFile(_paths.GetGunListFile(nation), "gun", g => BigworldXmlPreprocessor.ProcessGunNode(g, this.CommonVehicleData));
+            return ProcessModuleListFile(_paths.GetGunListFile(nation), "gun", g => BigworldXmlPreprocessor.ProcessGunNode(g, this.CommonVehicleData, true));
         }
 
         public XElement ProcessTurretListFile(string nation)
@@ -796,7 +794,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
             {
                 var key = element.Attribute("key").Value;
 
-                var sharedItemElement = lookup.Elements().Where(e => e.Attribute("key").Value == key).FirstOrDefault();
+                var sharedItemElement = lookup.Elements().FirstOrDefault(e => e.Attribute("key").Value == key);
                 if (sharedItemElement != null)
                 {
                     foreach (var childElement in sharedItemElement.Elements())
