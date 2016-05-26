@@ -211,7 +211,7 @@
   </Stat>
   <Stat i:type="Number">
     <Categories>#stats:category_firepower, #stats:category_gun</Categories>
-    <CompareStrategy>HigherBetter</CompareStrategy>
+    <CompareStrategy>LowerBetter</CompareStrategy>
     <Description>#stats:in-clip_reload_time_description</Description>
     <IsBenchmarkable>true</IsBenchmarkable>
     <Key>clipReloadTime</Key>
