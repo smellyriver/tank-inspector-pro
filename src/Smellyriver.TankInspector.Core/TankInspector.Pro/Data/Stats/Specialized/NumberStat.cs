@@ -83,7 +83,15 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats.Specialized
 
         protected override double? InternalGetDifferenceRatio(double value1, double value2)
         {
-            return (value1 - value2) / value2;
+            var difference = this.InternalGetDifference(value1, value2);
+            if (difference == null)
+                return null;
+
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (difference.Value == 0)
+                return 0;
+
+            return difference / value2;
         }
 
         protected override double? InternalGetDifference(double value1, double value2)
