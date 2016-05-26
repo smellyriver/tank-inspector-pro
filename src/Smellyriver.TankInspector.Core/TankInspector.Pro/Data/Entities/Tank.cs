@@ -75,6 +75,11 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
             get { return this.QueryInt("level"); }
         }
 
+        public IEnumerable<string> SecretTags
+        {
+            get { return this.QueryManyValues("secretTags/tag"); }
+        }
+
         public TankClass Type
         {
             get { return TankClassHelper.FromClassKey(this["class"]); }
