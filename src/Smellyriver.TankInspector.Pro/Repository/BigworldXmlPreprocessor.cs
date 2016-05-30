@@ -60,8 +60,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
                         if (e.Element("shortUserString") == null)
                         {
-                            var userStringElement = e.Element("userString");
-                            Debug.Assert(userStringElement != null, "userStringElement!=null");
+                            var userStringElement = e.ExistedElement("userString");
                             e.Add(new XElement(userStringElement) { Name = "shortUserString" });
                         }
 
@@ -707,6 +706,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                     {
                         var tankKey = tank.Attribute("key").Value;
                         var tankElement = tankElements[tankKey];
+                        var maybeObsolete = tankElement.ExistedElement("price").ExistedAttribute("currency").Value != "gold";
 
                         var successorsElement = new XElement("successors");
                         string[] successors;
@@ -717,6 +717,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                                 var successorElement = new XElement("successor");
                                 successorElement.SetAttributeValue("key", successor);
                                 successorsElement.Add(successorElement);
+                                maybeObsolete = false;
                             }
                         }
                         tankElement.Add(successorsElement);
@@ -730,9 +731,19 @@ namespace Smellyriver.TankInspector.Pro.Repository
                                 var predecessorElement = new XElement("predecessor");
                                 predecessorElement.SetAttributeValue("key", predecessor);
                                 predecessorsElement.Add(predecessorElement);
+                                maybeObsolete = false;
                             }
                         }
                         tankElement.Add(predecessorsElement);
+
+                        if (maybeObsolete)
+                        {
+                            var secretTags = tankElement.ExistedElement("secretTags");
+                            if (!secretTags.Elements().Any())
+                            {
+                                secretTags.Add(new XElement("tag", "obsolete"));
+                            }
+                        }
                     });
                 });
 
