@@ -13,9 +13,9 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 {
     public class TankInstance : XQueryable, ICloneable
     {
-       
 
-        public event EventHandler<BasicConfigurationChangedEventArgs> BasicConfigurationChanged;
+
+        public event EventHandler<ConfigurationChangedEventArgs> BasicConfigurationChanged;
 
 
         private readonly IRepository _repository;
@@ -88,13 +88,13 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             this._tank = tank;
 
             this.Element.Name = "data";
-            this.Element.Element("crews").Remove();
-            this.Element.Element("chassis").Remove();
-            this.Element.Element("turrets").Remove();
-            this.Element.Element("engines").Remove();
-            this.Element.Element("radios").Remove();
-            var fuelTank = new XElement(this.Element.Element("fuelTanks").Element("fuelTank"));
-            this.Element.Element("fuelTanks").ReplaceWith(fuelTank);
+            this.Element.ExistedElement("crews").Remove();
+            this.Element.ExistedElement("chassis").Remove();
+            this.Element.ExistedElement("turrets").Remove();
+            this.Element.ExistedElement("engines").Remove();
+            this.Element.ExistedElement("radios").Remove();
+            var fuelTank = new XElement(this.Element.ExistedElement("fuelTanks").ExistedElement("fuelTank"));
+            this.Element.ExistedElement("fuelTanks").ReplaceWith(fuelTank);
 
             _scriptHost = new ScriptHost();
             this.TankConfiguration = new TankConfiguration(repository,
@@ -120,10 +120,12 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
             if (configInfo == null)
             {
-                _tankInstanceConfigurationInfo = new TankInstanceConfigurationInfo();
-                _tankInstanceConfigurationInfo.TankConfigurationInfo = this.TankConfiguration.TankConfigurationInfo;
-                _tankInstanceConfigurationInfo.CrewConfigurationInfo = this.CrewConfiguration.CrewConfigurationInfo;
-                _tankInstanceConfigurationInfo.CustomizationConfigurationInfo = this.CustomizationConfiguration.CustomizationConfigurationInfo;
+                _tankInstanceConfigurationInfo = new TankInstanceConfigurationInfo
+                {
+                    TankConfigurationInfo = this.TankConfiguration.TankConfigurationInfo,
+                    CrewConfigurationInfo = this.CrewConfiguration.CrewConfigurationInfo,
+                    CustomizationConfigurationInfo = this.CustomizationConfiguration.CustomizationConfigurationInfo
+                };
             }
             else
             {
@@ -137,13 +139,27 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             if (oldConfiguration != null)
             {
                 oldConfiguration.ModuleElementChanged -= OnSubElementChanged;
-                oldConfiguration.EquipmentElementChanged -= OnAccessoryElementChanged;
-                oldConfiguration.ConsumableElementChanged -= OnAccessoryElementChanged;
+
+                oldConfiguration.GunChanged -= this.OnGunChanged;
+                oldConfiguration.TurretChanged -= this.OnTurretChanged;
+                oldConfiguration.EngineChanged -= this.OnEngineChanged;
+                oldConfiguration.ChassisChanged -= this.OnChassisChanged;
+                oldConfiguration.RadioChanged -= this.OnRadioChanged;
+                oldConfiguration.AmmunitionChanged -= this.OnAmmunitionChanged;
+                oldConfiguration.EquipmentChanged -= this.OnEquipmentChanged;
+                oldConfiguration.ConsumableChanged -= this.OnConsumableChanged;
             }
 
             newConfiguration.ModuleElementChanged += OnSubElementChanged;
-            newConfiguration.EquipmentElementChanged += OnAccessoryElementChanged;
-            newConfiguration.ConsumableElementChanged += OnAccessoryElementChanged;
+
+            newConfiguration.GunChanged += this.OnGunChanged;
+            newConfiguration.TurretChanged += this.OnTurretChanged;
+            newConfiguration.EngineChanged += this.OnEngineChanged;
+            newConfiguration.ChassisChanged += this.OnChassisChanged;
+            newConfiguration.RadioChanged += this.OnRadioChanged;
+            newConfiguration.AmmunitionChanged += this.OnAmmunitionChanged;
+            newConfiguration.EquipmentChanged += this.OnEquipmentChanged;
+            newConfiguration.ConsumableChanged += this.OnConsumableChanged;
 
             if (oldConfiguration == null)
             {
@@ -167,6 +183,46 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 oldConfiguration.EquipmentsElement.ReplaceWith(newConfiguration.EquipmentsElement);
                 oldConfiguration.ConsumablesElement.ReplaceWith(newConfiguration.ConsumablesElement);
             }
+        }
+
+        private void OnConsumableChanged(object sender, ConsumableChangedEventArgs e)
+        {
+            this.OnTankConfigurationChanged(ConfigurationAspect.Consumable, e.OldValue, e.NewValue);
+        }
+
+        private void OnEquipmentChanged(object sender, EquipmentChangedEventArgs e)
+        {
+            this.OnTankConfigurationChanged(ConfigurationAspect.Equipment, e.OldValue, e.NewValue);
+        }
+
+        private void OnAmmunitionChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        {
+            this.OnTankConfigurationChanged(ConfigurationAspect.Ammunition, e.OldValue, e.NewValue);
+        }
+
+        private void OnRadioChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        {
+            this.OnTankConfigurationChanged(ConfigurationAspect.Radio, e.OldValue, e.NewValue);
+        }
+
+        private void OnChassisChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        {
+            this.OnTankConfigurationChanged(ConfigurationAspect.Chassis, e.OldValue, e.NewValue);
+        }
+
+        private void OnEngineChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        {
+            this.OnTankConfigurationChanged(ConfigurationAspect.Engine, e.OldValue, e.NewValue);
+        }
+
+        private void OnTurretChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        {
+            this.OnTankConfigurationChanged(ConfigurationAspect.Turret, e.OldValue, e.NewValue);
+        }
+
+        private void OnGunChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        {
+            this.OnTankConfigurationChanged(ConfigurationAspect.Gun, e.OldValue, e.NewValue);
         }
 
         private void MigrateCrewConfiguration(CrewConfiguration oldConfiguration, CrewConfiguration newConfiguration)
@@ -218,7 +274,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             }
             else
             {
-                var camouflageElement = new XElement(this.Element.Element("camouflageInfo"));
+                var camouflageElement = new XElement(this.Element.ExistedElement("camouflageInfo"));
                 foreach (var element in this.CustomizationConfiguration.CamouflageElement.Elements())
                     camouflageElement.AddOrReplace(element);
                 foreach (var attribute in this.CustomizationConfiguration.CamouflageElement.Attributes())
@@ -237,19 +293,12 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                     existedElement.Remove();
             }
             else
-            this.Element.AddOrReplace(this.CustomizationConfiguration.InscriptionElement);
-        }
-
-
-        void OnAccessoryElementChanged(object sender, ElementChangedEventArgs e)
-        {
-            this.OnBasicConfigurationChanged();
+                this.Element.AddOrReplace(this.CustomizationConfiguration.InscriptionElement);
         }
 
         void OnSubElementChanged(object sender, ElementChangedEventArgs e)
         {
             this.ReplaceSubElement(e.Element);
-            this.OnBasicConfigurationChanged();
         }
 
         private void ReplaceSubElement(XElement element)
@@ -261,10 +310,10 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 this.Element.Add(element);
         }
 
-        private void OnBasicConfigurationChanged()
+        private void OnTankConfigurationChanged(ConfigurationAspect aspect, IXQueryable oldValue, IXQueryable newValue)
         {
             if (this.BasicConfigurationChanged != null)
-                this.BasicConfigurationChanged(this, new BasicConfigurationChangedEventArgs(BasicConfigurationAspect.Dummy));
+                this.BasicConfigurationChanged(this, new ConfigurationChangedEventArgs(aspect, oldValue, newValue));
         }
 
         public double GetThinnestArmor(bool spaced)

@@ -51,6 +51,7 @@
     <Compile Include="TankInspector.Pro\Data\Entities\TankClassHelper.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\Scripting\CamouflageNetScript.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\Scripting\CamouflageScript.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\TankConfigurationItemChangedEventArgs.cs" />
     <Compile Include="TankInspector.Pro\Gameplay\KeyEqualityComparer.cs" />
     <Compile Include="TankInspector.Pro\Repository\Versioning\AvailableFromVersionAttribute.cs" />
     <Compile Include="TankInspector.Pro\Repository\Versioning\ObsoleteOnVersionAttribute.cs" />
@@ -115,8 +116,8 @@
     <Compile Include="TankInspector.Pro\Data\Stats\XPathStat.cs" />
     <Compile Include="TankInspector.Pro\Data\Stats\XPathStat.Generic.cs" />
     <Compile Include="TankInspector.Pro\Data\Stats\XPathStatsProvider.cs" />
-    <Compile Include="TankInspector.Pro\Data\Tank\BasicConfigurationAspect.cs" />
-    <Compile Include="TankInspector.Pro\Data\Tank\BasicConfigurationChangedEventArgs.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\ConfigurationAspect.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\ConfigurationChangedEventArgs.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\ConfigurationBase.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\ConsumableChangedEventArgs.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\CrewConfiguration.cs" />

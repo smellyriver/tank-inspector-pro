@@ -1,13 +1,14 @@
 ﻿namespace Smellyriver.TankInspector.Pro.Data.Tank
 {
-    public enum BasicConfigurationAspect
+    public enum ConfigurationAspect
     {
-        Dummy,
         Gun,
         Turret,
         Chassis,
         Engine,
         Radio,
         Ammunition,
+        Equipment,
+        Consumable
     }
 }

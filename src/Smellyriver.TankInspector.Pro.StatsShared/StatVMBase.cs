@@ -113,7 +113,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats
             this.Tank.BasicConfigurationChanged += Tank_BasicConfigurationChanged;
         }
 
-        void Tank_BasicConfigurationChanged(object sender, BasicConfigurationChangedEventArgs e)
+        void Tank_BasicConfigurationChanged(object sender, ConfigurationChangedEventArgs e)
         {
             this.UpdateValue();
         }
