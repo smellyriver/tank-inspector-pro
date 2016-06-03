@@ -110,10 +110,10 @@ namespace Smellyriver.TankInspector.Pro.Data.Stats
             Dispatcher.CurrentDispatcher.BeginInvoke(new Action(this.UpdateValue), DispatcherPriority.Normal);
             //this.UpdateValue();
 
-            this.Tank.BasicConfigurationChanged += Tank_BasicConfigurationChanged;
+            this.Tank.TankConfigurationChanged += this.Tank_TankConfigurationChanged;
         }
 
-        void Tank_BasicConfigurationChanged(object sender, ConfigurationChangedEventArgs e)
+        void Tank_TankConfigurationChanged(object sender, ConfigurationChangedEventArgs e)
         {
             this.UpdateValue();
         }

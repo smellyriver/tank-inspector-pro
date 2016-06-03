@@ -15,7 +15,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
     {
 
 
-        public event EventHandler<ConfigurationChangedEventArgs> BasicConfigurationChanged;
+        public event EventHandler<ConfigurationChangedEventArgs> TankConfigurationChanged;
 
 
         private readonly IRepository _repository;
@@ -312,8 +312,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
         private void OnTankConfigurationChanged(ConfigurationAspect aspect, IXQueryable oldValue, IXQueryable newValue)
         {
-            if (this.BasicConfigurationChanged != null)
-                this.BasicConfigurationChanged(this, new ConfigurationChangedEventArgs(aspect, oldValue, newValue));
+            if (this.TankConfigurationChanged != null)
+                this.TankConfigurationChanged(this, new ConfigurationChangedEventArgs(aspect, oldValue, newValue));
         }
 
         public double GetThinnestArmor(bool spaced)
