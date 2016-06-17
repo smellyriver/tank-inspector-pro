@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define SHOW_TANK_KEY
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,8 +24,17 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator
 {
     class PatchnoteGeneratorDocumenVM : FlowDocumentVMBase
     {
-
         private static readonly string s_documentStyleFile = Path.Combine(ApplicationPath.GetModuleDirectory(Assembly.GetCallingAssembly()), "DocumentStyle.xaml");
+        private static string GetTankName(IXQueryable tank)
+        {
+#if SHOW_TANK_KEY
+            return string.Format("{0} ({1})", tank["userString"], tank["@fullKey"]);
+#else
+            return tank["userString"];
+#endif
+        }
+
+
 
         public PatchnoteGeneratorDocumentPersistentInfo PersistentInfo { get; }
 
@@ -350,7 +361,7 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator
         {
             foreach (var tank in addedTanks)
             {
-                var item = new AddedItem(tank["userString"], tank);
+                var item = new AddedItem(PatchnoteGeneratorDocumenVM.GetTankName(tank), tank);
                 item.ItemName.AddModifier(this.GetTankTypeModifier(tank));
                 _addedTanks.Add(item);
 
@@ -359,11 +370,12 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator
             }
         }
 
+
         private void HandleRemovedTanks(IXQueryable[] removedTanks)
         {
             foreach (var tank in removedTanks)
             {
-                var item = new RemovedItem(tank["userString"], tank);
+                var item = new RemovedItem(PatchnoteGeneratorDocumenVM.GetTankName(tank), tank);
                 item.ItemName.AddModifier(this.GetTankTypeModifier(tank));
                 _removedTanks.Add(item);
 
@@ -376,7 +388,7 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator
         {
             foreach (var sharedTank in sharedTanks)
             {
-                _statChanges.AddIfNotNull(TankDataItemHandler.Instance.CreateReportItem(sharedTank.Source["userString"],
+                _statChanges.AddIfNotNull(TankDataItemHandler.Instance.CreateReportItem(PatchnoteGeneratorDocumenVM.GetTankName(sharedTank.Source),
                                                                                         sharedTank.Source,
                                                                                         sharedTank.Target,
                                                                                         false,
@@ -403,7 +415,7 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator
 
             if (changedParts.Count > 0)
             {
-                _potentialCollisionChanges.Add(new PotentialModelChangedItem(oldTank["userString"], changedParts.ToArray()));
+                _potentialCollisionChanges.Add(new PotentialModelChangedItem(PatchnoteGeneratorDocumenVM.GetTankName(oldTank), changedParts.ToArray()));
             }
         }
 
@@ -415,7 +427,7 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator
             {
                 if (!this.ModelFileEquals(sharedItem.Source, sharedItem.Target, "hitTester/collisionModel"))
                 {
-                    var name = new ItemName(sharedItem.Source["userString"]);
+                    var name = new ItemName(PatchnoteGeneratorDocumenVM.GetTankName(sharedItem.Source));
                     name.AddModifier(new TypeModifier(moduleName));
                     yield return name;
                 }
