@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
+using Smellyriver.TankInspector.Pro.Data.Entities;
 using Smellyriver.TankInspector.Pro.Data.Tank.Scripting;
 using Smellyriver.TankInspector.Pro.Repository;
 using Smellyriver.Utilities;
@@ -195,32 +196,32 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             this.OnTankConfigurationChanged(ConfigurationAspect.Equipment, e.OldValue, e.NewValue);
         }
 
-        private void OnAmmunitionChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        private void OnAmmunitionChanged(object sender, ComponentChangedEventArgs e)
         {
             this.OnTankConfigurationChanged(ConfigurationAspect.Ammunition, e.OldValue, e.NewValue);
         }
 
-        private void OnRadioChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        private void OnRadioChanged(object sender, ComponentChangedEventArgs e)
         {
             this.OnTankConfigurationChanged(ConfigurationAspect.Radio, e.OldValue, e.NewValue);
         }
 
-        private void OnChassisChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        private void OnChassisChanged(object sender, ComponentChangedEventArgs e)
         {
             this.OnTankConfigurationChanged(ConfigurationAspect.Chassis, e.OldValue, e.NewValue);
         }
 
-        private void OnEngineChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        private void OnEngineChanged(object sender, ComponentChangedEventArgs e)
         {
             this.OnTankConfigurationChanged(ConfigurationAspect.Engine, e.OldValue, e.NewValue);
         }
 
-        private void OnTurretChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        private void OnTurretChanged(object sender, ComponentChangedEventArgs e)
         {
             this.OnTankConfigurationChanged(ConfigurationAspect.Turret, e.OldValue, e.NewValue);
         }
 
-        private void OnGunChanged(object sender, TankConfigurationItemChangedEventArgs e)
+        private void OnGunChanged(object sender, ComponentChangedEventArgs e)
         {
             this.OnTankConfigurationChanged(ConfigurationAspect.Gun, e.OldValue, e.NewValue);
         }
@@ -310,7 +311,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 this.Element.Add(element);
         }
 
-        private void OnTankConfigurationChanged(ConfigurationAspect aspect, IXQueryable oldValue, IXQueryable newValue)
+        private void OnTankConfigurationChanged(ConfigurationAspect aspect, Component oldValue, Component newValue)
         {
             if (this.TankConfigurationChanged != null)
                 this.TankConfigurationChanged(this, new ConfigurationChangedEventArgs(aspect, oldValue, newValue));

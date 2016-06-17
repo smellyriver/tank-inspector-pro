@@ -51,12 +51,12 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
         internal event EventHandler<ElementChangedEventArgs> EquipmentElementChanged;
         internal event EventHandler<ElementChangedEventArgs> ConsumableElementChanged;
 
-        public event EventHandler<TankConfigurationItemChangedEventArgs> GunChanged;
-        public event EventHandler<TankConfigurationItemChangedEventArgs> TurretChanged;
-        public event EventHandler<TankConfigurationItemChangedEventArgs> EngineChanged;
-        public event EventHandler<TankConfigurationItemChangedEventArgs> ChassisChanged;
-        public event EventHandler<TankConfigurationItemChangedEventArgs> RadioChanged;
-        public event EventHandler<TankConfigurationItemChangedEventArgs> AmmunitionChanged;
+        public event EventHandler<ComponentChangedEventArgs> GunChanged;
+        public event EventHandler<ComponentChangedEventArgs> TurretChanged;
+        public event EventHandler<ComponentChangedEventArgs> EngineChanged;
+        public event EventHandler<ComponentChangedEventArgs> ChassisChanged;
+        public event EventHandler<ComponentChangedEventArgs> RadioChanged;
+        public event EventHandler<ComponentChangedEventArgs> AmmunitionChanged;
         public event EventHandler<EquipmentChangedEventArgs> EquipmentChanged;
         public event EventHandler<ConsumableChangedEventArgs> ConsumableChanged;
 
@@ -102,7 +102,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             this.UpdateModulesTotalWeight();
 
             if (this.GunChanged != null)
-                this.GunChanged.Invoke(this, new TankConfigurationItemChangedEventArgs(oldValue, value));
+                this.GunChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
 
             this.RaisePropertyChanged("Gun");
         }
@@ -152,7 +152,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             this.UpdateModulesTotalWeight();
 
             if (this.TurretChanged != null)
-                this.TurretChanged.Invoke(this, new TankConfigurationItemChangedEventArgs(oldValue, value));
+                this.TurretChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
 
             this.RaisePropertyChanged("Turret");
         }
@@ -190,7 +190,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 this.UpdateModulesTotalWeight();
 
                 if (this.ChassisChanged != null)
-                    this.ChassisChanged.Invoke(this, new TankConfigurationItemChangedEventArgs(oldValue, value));
+                    this.ChassisChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
 
                 this.RaisePropertyChanged("Chassis");
             }
@@ -229,7 +229,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 this.UpdateModulesTotalWeight();
 
                 if (this.RadioChanged != null)
-                    this.RadioChanged.Invoke(this, new TankConfigurationItemChangedEventArgs(oldValue, value));
+                    this.RadioChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
 
                 this.RaisePropertyChanged("Radio");
             }
@@ -268,7 +268,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 this.UpdateModulesTotalWeight();
 
                 if (this.EngineChanged != null)
-                    this.EngineChanged.Invoke(this, new TankConfigurationItemChangedEventArgs(oldValue, value));
+                    this.EngineChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
 
                 this.RaisePropertyChanged("Engine");
             }
@@ -306,7 +306,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 _tankConfigurationInfo.AmmunitionKey = _ammunition.Key;
 
                 if (this.AmmunitionChanged != null)
-                    this.AmmunitionChanged.Invoke(this, new TankConfigurationItemChangedEventArgs(oldValue, value));
+                    this.AmmunitionChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
 
                 this.RaisePropertyChanged("Ammunition");
             }

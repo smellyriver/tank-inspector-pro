@@ -3,7 +3,7 @@ using Smellyriver.TankInspector.Pro.Data.Entities;
 
 namespace Smellyriver.TankInspector.Pro.Data.Tank
 {
-    public class ConsumableChangedEventArgs : TankConfigurationItemChangedEventArgs
+    public class ConsumableChangedEventArgs : ComponentChangedEventArgs
     {
         public int SlotIndex { get; private set; }
 
