@@ -27,7 +27,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
                 s_serializer.WriteObject(file, config);
         }
 
-        [DataMember(Name="Alias")]
+        [DataMember(Name = "Alias")]
         private string _alias;
         public string Alias
         {
@@ -36,6 +36,20 @@ namespace Smellyriver.TankInspector.Pro.Repository
             {
                 _alias = value;
                 this.RaisePropertyChanged(() => this.Alias);
+            }
+        }
+
+
+        [DataMember(Name = "Language")]
+        private string _language;
+
+        public string Language
+        {
+            get { return _language; }
+            set
+            {
+                _language = value;
+                this.RaisePropertyChanged(() => this.Language);
             }
         }
 
@@ -56,6 +70,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
         public RepositoryConfiguration(IRepository repository)
         {
             this.Alias = repository.Name;
+            this.Language = repository.Language;
         }
     }
 }

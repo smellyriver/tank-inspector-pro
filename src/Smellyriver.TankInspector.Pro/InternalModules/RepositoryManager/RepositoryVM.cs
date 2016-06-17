@@ -30,6 +30,16 @@ namespace Smellyriver.TankInspector.Pro.InternalModules.RepositoryManager
             }
         }
 
+        public string Language
+        {
+            get { return this.Configuration.Language; }
+            set
+            {
+                this.Configuration.Language = value;
+                this.RaisePropertyChanged(() => this.Language);
+            }
+        }
+
         public string Path { get { return this.Repository.Path; } }
 
         public ImageSource Marker { get { return this.Repository.GetMarker(); } }

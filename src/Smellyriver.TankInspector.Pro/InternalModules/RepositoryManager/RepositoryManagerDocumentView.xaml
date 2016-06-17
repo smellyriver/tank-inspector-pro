@@ -61,6 +61,7 @@
                                 </GridViewColumn>
                                 <GridViewColumn Header="{Loc game_client_alias_header, Default=Alias}" Width="150" DisplayMemberBinding="{Binding Alias}" />
                                 <GridViewColumn Header="{Loc game_client_version_header, Default=Version}" Width="80" DisplayMemberBinding="{Binding Version}" />
+                                <GridViewColumn Header="{Loc game_client_language_header, Default=Language}" Width="250" DisplayMemberBinding="{Binding Language}" />
                                 <GridViewColumn Header="{Loc game_client_location_header, Default=Location}" Width="250" DisplayMemberBinding="{Binding Path}" />
                             </GridView.Columns>
                         </GridView>
@@ -99,6 +100,7 @@
                 <RowDefinition Height="30" />
                 <RowDefinition Height="30" />
                 <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -114,15 +116,19 @@
                        Text="{Binding SelectedItem.Version, ElementName=RepositoryList}" />
 
             <TextBlock Grid.Row="2" Grid.Column="0" 
-                       Text="{Loc game_client_location_header, Default=Location}" />
-
-            <TextBlock Grid.Row="2" Grid.Column="1" 
-                       Text="{Binding SelectedItem.Path, ElementName=RepositoryList}" />
+                       Text="{Loc game_client_language_header, Default=Language}" />
+            <TextBox Grid.Row="2" Grid.Column="1" 
+                     MinWidth="200"
+                     Text="{Binding SelectedItem.Language, ElementName=RepositoryList, Mode=TwoWay}" />
 
             <TextBlock Grid.Row="3" Grid.Column="0" 
-                       Text="{Loc game_client_marker_color_header, Default=Marker Color}" />
+                       Text="{Loc game_client_location_header, Default=Location}" />
+            <TextBlock Grid.Row="3" Grid.Column="1" 
+                       Text="{Binding SelectedItem.Path, ElementName=RepositoryList}" />
 
-            <ComboBox Grid.Row="3" Grid.Column="1"
+            <TextBlock Grid.Row="4" Grid.Column="0" 
+                       Text="{Loc game_client_marker_color_header, Default=Marker Color}" />
+            <ComboBox Grid.Row="4" Grid.Column="1"
                       ItemsSource="{Binding SelectedItem.AvailableMarkerColors, ElementName=RepositoryList}"
                       SelectedItem="{Binding SelectedItem.MarkerColor, ElementName=RepositoryList, Mode=TwoWay}">
                 <ComboBox.ItemTemplate>
@@ -144,10 +150,9 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
 
-            <TextBlock Grid.Row="4" Grid.Column="0" 
+            <TextBlock Grid.Row="5" Grid.Column="0" 
                        Text="{Loc game_client_paths_header, Default=Paths}" />
-
-            <DockPanel Grid.Row="4" Grid.RowSpan="2" Grid.Column="1"
+            <DockPanel Grid.Row="5" Grid.RowSpan="2" Grid.Column="1"
                        Margin="0,5">
                 <Grid DockPanel.Dock="Bottom">
                     <TextBlock HorizontalAlignment="Right"

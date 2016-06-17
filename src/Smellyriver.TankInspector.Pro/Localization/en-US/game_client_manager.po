@@ -46,6 +46,9 @@ msgstr "Alias"
 msgid "game_client_version_header"
 msgstr "Version"
 
+msgid "game_client_language_header"
+msgstr "Language"
+
 msgid "game_client_location_header"
 msgstr "Location"
 
