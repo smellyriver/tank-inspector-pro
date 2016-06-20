@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Smellyriver.Utilities;
 using Smellyriver.TankInspector.Pro.Repository.Versioning;
 
 namespace Smellyriver.TankInspector.Pro.Data.Entities
@@ -72,13 +73,13 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
         public double GetMaxValue()
         {
             var sign = Math.Sign(this.Data[0].Limit);
-            return this.Data.Max(d => d.Limit * sign) * sign;
+            return this.Data.AotSafeMax(d => d.Limit * sign) * sign;
         }
 
         public double GetMinValue()
         {
             var sign = Math.Sign(this.Data[0].Limit);
-            return this.Data.Min(d => d.Limit * sign) * sign;
+            return this.Data.AotSafeMin(d => d.Limit * sign) * sign;
         }
     }
 }

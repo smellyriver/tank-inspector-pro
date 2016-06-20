@@ -53,7 +53,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
             if (values.Length == 0)
                 return 0;
             else
-                return values.Max();
+                return values.AotSafeMax();
         }
 
         public static double GetThinnestArmor<T>(T armoredObject, bool spaced)
@@ -64,7 +64,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Entities
             if (values.Length == 0)
                 return double.MaxValue;
             else
-                return values.Min();
+                return values.AotSafeMin();
         }
 
         public static double[] GetArmorValues<T>(T armoredObject, bool spaced)

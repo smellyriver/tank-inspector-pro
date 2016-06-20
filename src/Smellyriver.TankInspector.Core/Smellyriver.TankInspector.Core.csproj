@@ -45,10 +45,15 @@
   <ItemGroup>
     <Compile Include="Smellyriver.Common\Collections\ProjectionComparer.cs" />
     <Compile Include="Smellyriver.Common\Collections\ProjectionEqualityComparer.cs" />
+    <Compile Include="Smellyriver.Common\Utilities\AOTSafeLinqExtensions.cs" />
     <Compile Include="TankInspector.Pro\Data\Entities\ShellTypeHelper.cs" />
     <Compile Include="TankInspector.Pro\Data\Entities\TankClass.cs" />
     <Compile Include="TankInspector.Pro\Data\Entities\TankClassExtensions.cs" />
     <Compile Include="TankInspector.Pro\Data\Entities\TankClassHelper.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\ComponentChangedEventHandler.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\ConsumableChangedEventHandler.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\ElementChangedEventHandler.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\EquipmentChangedEventHandler.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\Scripting\CamouflageNetScript.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\Scripting\CamouflageScript.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\ComponentChangedEventArgs.cs" />

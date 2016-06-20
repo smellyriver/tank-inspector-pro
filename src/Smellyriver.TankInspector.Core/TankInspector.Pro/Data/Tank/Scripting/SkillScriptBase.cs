@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Smellyriver.Utilities;
 
 namespace Smellyriver.TankInspector.Pro.Data.Tank.Scripting
 {
@@ -53,13 +54,13 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank.Scripting
             switch (this.DuplicatedSkillPolicy)
             {
                 case DuplicatedSkillPolicy.Average:
-                    actualValue = levels.Average();
+                    actualValue = levels.AotSafeAverage();
                     break;
                 case DuplicatedSkillPolicy.Highest:
-                    actualValue = levels.Max();
+                    actualValue = levels.AotSafeMax();
                     break;
                 case DuplicatedSkillPolicy.Lowest:
-                    actualValue = levels.Min();
+                    actualValue = levels.AotSafeMin();
                     break;
                 default:
                     throw new NotSupportedException();
