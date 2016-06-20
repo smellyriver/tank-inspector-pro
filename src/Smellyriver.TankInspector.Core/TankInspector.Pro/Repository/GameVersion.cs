@@ -21,11 +21,16 @@ namespace Smellyriver.TankInspector.Pro.Repository
             return uint.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
         }
 
+        private static bool TryParseInt(string value, out int result)
+        {
+            return int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+        }
+
         public static GameVersion Parse(string versionString)
         {
             var match = Regex.Match(versionString, @"^\s*v\.(?<major>\d+)\.(?<minor>\d+)\.(?<build>\d+)(\.(?<subbuild>\d+))* (?<ct>Common Test )?\#(?<revision>\d+)\s*$");
             uint major, minor, build, revision;
-            uint? subbuild = null;
+            var subbuild = -1;
             bool isCommonTest;
             if (match.Success)
             {
@@ -35,8 +40,8 @@ namespace Smellyriver.TankInspector.Pro.Repository
                         {
                             if (match.Groups["subbuild"] != null)
                             {
-                                uint subbuildValue;
-                                if (GameVersion.TryParseUInt(match.Groups["subbuild"].Value, out subbuildValue))
+                                int subbuildValue;
+                                if (GameVersion.TryParseInt(match.Groups["subbuild"].Value, out subbuildValue))
                                     subbuild = subbuildValue;
                             }
 
@@ -68,7 +73,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
         {
             get
             {
-                if (this.SubBuild == null)
+                if (this.SubBuild < 0)
                     return string.Format("{0}.{1}.{2}.{3}{4}",
                                          this.Major,
                                          this.Minor,
@@ -105,7 +110,7 @@ namespace Smellyriver.TankInspector.Pro.Repository
         [DataMember]
         public uint Build { get; set; }
         [DataMember]
-        public uint? SubBuild { get; set; }
+        public int SubBuild { get; set; }
         [DataMember]
         public uint Revision { get; set; }
         [DataMember]
@@ -144,15 +149,15 @@ namespace Smellyriver.TankInspector.Pro.Repository
             if (result != 0) return result;
             result = this.Build.CompareTo(other.Build);
             if (result != 0) return result;
-            if (this.SubBuild != null && other.SubBuild == null)
+            if (this.SubBuild >= 0 && other.SubBuild < 0)
                 return 1;
 
-            if (this.SubBuild == null && other.SubBuild != null)
+            if (this.SubBuild < 0 && other.SubBuild >= 0)
                 return -1;
 
-            if (this.SubBuild != null && other.SubBuild != null)
+            if (this.SubBuild >= 0 && other.SubBuild >= 0)
             {
-                result = this.SubBuild.Value.CompareTo(other.SubBuild.Value);
+                result = this.SubBuild.CompareTo(other.SubBuild);
                 if (result != 0) return result;
             }
             return this.Revision.CompareTo(other.Revision);
