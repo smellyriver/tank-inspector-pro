@@ -7,6 +7,7 @@ using Smellyriver.TankInspector.Pro.Data.Entities;
 using Smellyriver.TankInspector.Pro.Data.Tank.Scripting;
 using Smellyriver.TankInspector.Pro.Gameplay;
 using Smellyriver.TankInspector.Pro.Repository;
+using Smellyriver.Utilities;
 using TankEntity = Smellyriver.TankInspector.Pro.Data.Entities.Tank;
 
 namespace Smellyriver.TankInspector.Pro.Data.Tank
@@ -47,18 +48,18 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             }
         }
 
-        internal event EventHandler<ElementChangedEventArgs> ModuleElementChanged;
-        internal event EventHandler<ElementChangedEventArgs> EquipmentElementChanged;
-        internal event EventHandler<ElementChangedEventArgs> ConsumableElementChanged;
+        internal event ElementChangedEventHandler ModuleElementChanged;
+        internal event ElementChangedEventHandler EquipmentElementChanged;
+        internal event ElementChangedEventHandler ConsumableElementChanged;
 
-        public event EventHandler<ComponentChangedEventArgs> GunChanged;
-        public event EventHandler<ComponentChangedEventArgs> TurretChanged;
-        public event EventHandler<ComponentChangedEventArgs> EngineChanged;
-        public event EventHandler<ComponentChangedEventArgs> ChassisChanged;
-        public event EventHandler<ComponentChangedEventArgs> RadioChanged;
-        public event EventHandler<ComponentChangedEventArgs> AmmunitionChanged;
-        public event EventHandler<EquipmentChangedEventArgs> EquipmentChanged;
-        public event EventHandler<ConsumableChangedEventArgs> ConsumableChanged;
+        public event ComponentChangedEventHandler GunChanged;
+        public event ComponentChangedEventHandler TurretChanged;
+        public event ComponentChangedEventHandler EngineChanged;
+        public event ComponentChangedEventHandler ChassisChanged;
+        public event ComponentChangedEventHandler RadioChanged;
+        public event ComponentChangedEventHandler AmmunitionChanged;
+        public event EquipmentChangedEventHandler EquipmentChanged;
+        public event ConsumableChangedEventHandler ConsumableChanged;
 
         private XElement _gunElement;
         internal XElement GunElement
@@ -601,7 +602,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             this.Engine = this.Tank.Engines.Last();
             this.Turret = this.Tank.Turrets.Last();
             this.Radio = this.Tank.Radios.Last();
-            var maxTier = this.Turret.Guns.Max(g => g.Tier);
+            var maxTier = this.Turret.Guns.AotSafeMax(g => g.Tier);
             this.Gun = this.Turret.Guns.Last(g => g.Tier == maxTier);
             this.Ammunition = this.Gun.Ammunition.First();
 
