@@ -84,6 +84,8 @@ namespace Smellyriver.TankInspector.Pro.Repository
                         if (isSecret)
                         {
 
+                            e.Add(new XElement("secret", true));
+
                             var key = e.Attribute("key").Value;
                             if (key.EndsWith("_training"))
                                 secretTags.Add(new XElement("tag", "training"));
@@ -97,6 +99,8 @@ namespace Smellyriver.TankInspector.Pro.Repository
                             if (tankTags.Any(t => t.Value == "fallout"))
                                 secretTags.Add(new XElement("tag", "fallout"));
 
+                            if (tankTags.Any(t => t.Value == "event_battles"))
+                                secretTags.Add(new XElement("tag", "event_battles"));
                         }
 
                         e.Add(secretTags);
