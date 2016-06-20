@@ -239,3 +239,6 @@ _Pvt_Extensions
 /src/Smellyriver.TankInspector.Pro.Internal.sln
 /src/Smellyriver.TankInspector.IO/Smellyriver.TankInspector.IO.Mobile.csproj
 /src/Smellyriver.TankInspector.Core/Smellyriver.TankInspector.Core.Mobile.csproj
+/src/Smellyriver.TankInspector.Pro.Networking
+/src/Smellyriver.TankInspector.Pro.LiveStatProvider
+/src/Utils/Build
