@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Xml.Linq;
 using Smellyriver.TankInspector.Common.Utilities;
+using Smellyriver.TankInspector.Pro.Data;
 
 namespace Smellyriver.TankInspector.Pro.Repository.XmlProcessing
 {
@@ -39,7 +40,7 @@ namespace Smellyriver.TankInspector.Pro.Repository.XmlProcessing
 
         public static XElement RemoveElement(this XElement element, string name)
         {
-            element.Element(name).Remove();
+            element.ExistedElement(name).Remove();
             return element;
         }
 
@@ -242,7 +243,7 @@ namespace Smellyriver.TankInspector.Pro.Repository.XmlProcessing
                                                       XElement commonVehicleData,
                                                       string armorGroupName)
         {
-            var material = commonVehicleData.Element("materials")
+            var material = commonVehicleData.ExistedElement("materials")
                                             .Elements()
                                             .FirstOrDefault(m => m.Attribute("key").Value == armorGroupName);
 
@@ -263,15 +264,17 @@ namespace Smellyriver.TankInspector.Pro.Repository.XmlProcessing
                                                 string armorElementName = "armor",
                                                 string primaryArmorElementName = "primaryArmor")
         {
-            var armorElement = element.Element(armorElementName);
+            var armorElement = element.ExistedElement(armorElementName);
             return element.Select(armorElementName,
                                   a => a.ProcessElementsStable(e =>
                                                                {
-                                                                   var material = commonVehicleData.Element("materials")
+                                                                   var material = commonVehicleData.ExistedElement("materials")
                                                                                                    .Elements()
-                                                                                                   .FirstOrDefault(m => m.Attribute("key").Value == e.Name);
-                                                                   var armorNode = new XElement(material);
-                                                                   armorNode.Name = "armor";
+                                                                                                   .First(m => m.Attribute("key").Value == e.Name);
+                                                                   var armorNode = new XElement(material)
+                                                                   {
+                                                                       Name = "armor"
+                                                                   };
                                                                    foreach (var el in e.TextToElement("thickness").Elements())
                                                                        armorNode.AddOrReplace(new XElement(el));
 
@@ -285,7 +288,7 @@ namespace Smellyriver.TankInspector.Pro.Repository.XmlProcessing
                                                a.TextToAttribute("key");
                                                var armorElementReference = armorElement.Elements().FirstOrDefault(e => e.Attribute("key").Value == key);
                                                if (armorElementReference != null)
-                                                   a.Value = armorElementReference.Element("thickness").Value;
+                                                   a.Value = armorElementReference.ExistedElement("thickness").Value;
                                            });
         }
 
@@ -309,14 +312,21 @@ namespace Smellyriver.TankInspector.Pro.Repository.XmlProcessing
             });
         }
 
-        public static XElement LocalizeValue(this XElement element, string name, LocalGameClientLocalization localization)
+        public static XElement LocalizeValue(this XElement element, string name, LocalGameClientLocalization localization, bool writeKey = false)
         {
-            return element.Select(name, e => e.Value = localization.GetLocalizedString(e.Value));
+            return element.Select(name,
+                                  e =>
+                                  {
+                                      if (writeKey)
+                                          e.SetAttributeValue("key", e.Value);
+
+                                      e.Value = localization.GetLocalizedString(e.Value);
+                                  });
         }
 
         public static XElement LocalizeValue(this XElement element, LocalGameClientLocalization localization)
         {
-            return XElementExtensions.LocalizeValue(element, null, localization);
+            return element.LocalizeValue(null, localization);
         }
     }
 
