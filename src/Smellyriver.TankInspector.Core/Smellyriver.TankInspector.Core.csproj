@@ -51,6 +51,7 @@
     <Compile Include="TankInspector.Pro\Data\Entities\TankClassExtensions.cs" />
     <Compile Include="TankInspector.Pro\Data\Entities\TankClassHelper.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\ComponentChangedEventHandler.cs" />
+    <Compile Include="TankInspector.Pro\Data\Tank\ConfigurationChangedEventHandler.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\ConsumableChangedEventHandler.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\ElementChangedEventHandler.cs" />
     <Compile Include="TankInspector.Pro\Data\Tank\EquipmentChangedEventHandler.cs" />

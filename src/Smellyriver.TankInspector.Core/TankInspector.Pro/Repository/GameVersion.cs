@@ -28,10 +28,10 @@ namespace Smellyriver.TankInspector.Pro.Repository
 
         public static GameVersion Parse(string versionString)
         {
-            var match = Regex.Match(versionString, @"^\s*v\.(?<major>\d+)\.(?<minor>\d+)\.(?<build>\d+)(\.(?<subbuild>\d+))* (?<ct>Common Test )?\#(?<revision>\d+)\s*$");
+            var match = Regex.Match(versionString, @"^\s*v\.(?<major>\d+)\.(?<minor>\d+)\.(?<build>\d+)(\.(?<subbuild>\d+))* (?<ct>Common Test )?(?<sb>Sandbox )?\#(?<revision>\d+)\s*$");
             uint major, minor, build, revision;
             var subbuild = -1;
-            bool isCommonTest;
+            bool isCommonTest, isSandbox;
             if (match.Success)
             {
                 if (GameVersion.TryParseUInt(match.Groups["major"].Value, out major))
@@ -52,6 +52,10 @@ namespace Smellyriver.TankInspector.Pro.Repository
                                 else
                                     isCommonTest = true;
 
+                                if (string.IsNullOrEmpty(match.Groups["sb"].Value))
+                                    isSandbox = false;
+                                else
+                                    isSandbox = true;
 
                                 return new GameVersion
                                 {
@@ -60,7 +64,8 @@ namespace Smellyriver.TankInspector.Pro.Repository
                                     Build = build,
                                     SubBuild = subbuild,
                                     Revision = revision,
-                                    IsCommonTest = isCommonTest
+                                    IsCommonTest = isCommonTest,
+                                    IsSandbox = isSandbox
                                 };
                             }
                         }
@@ -73,13 +78,18 @@ namespace Smellyriver.TankInspector.Pro.Repository
         {
             get
             {
+                var postfix = this.IsCommonTest
+                                  ? " " + Core.Support.Localize("game_client_manager", "common_test")
+                                  : this.IsSandbox
+                                        ? " " + Core.Support.Localize("game_client_manager", "sandbox")
+                                        : null;
                 if (this.SubBuild < 0)
                     return string.Format("{0}.{1}.{2}.{3}{4}",
                                          this.Major,
                                          this.Minor,
                                          this.Build,
                                          this.Revision,
-                                         this.IsCommonTest ? " " + Core.Support.Localize("game_client_manager", "common_test") : null);
+                                         postfix);
                 else
                     return string.Format("{0}.{1}.{2}.{3}.{4}{5}",
                                          this.Major,
@@ -87,19 +97,24 @@ namespace Smellyriver.TankInspector.Pro.Repository
                                          this.Build,
                                          this.SubBuild,
                                          this.Revision,
-                                         this.IsCommonTest ? " " + Core.Support.Localize("game_client_manager", "common_test") : null);
-
+                                         postfix);
             }
         }
+
 
         public string ShortVersionString
         {
             get
             {
+                var postfix = this.IsCommonTest
+                                  ? " " + Core.Support.Localize("game_client_manager", "common_test_abbrev")
+                                  : this.IsSandbox
+                                        ? " " + Core.Support.Localize("game_client_manager", "sandbox_abbrev")
+                                        : null;
                 return string.Format("{0}.{1}{2}",
                                      this.Minor,
                                      this.Build,
-                                     this.IsCommonTest ? " " + Core.Support.Localize("game_client_manager", "common_test_abbrev") : null);
+                                     postfix);
             }
         }
 
@@ -115,6 +130,9 @@ namespace Smellyriver.TankInspector.Pro.Repository
         public uint Revision { get; set; }
         [DataMember]
         public bool IsCommonTest { get; set; }
+        [DataMember]
+        public bool IsSandbox { get; set; }
+
 
         public override string ToString()
         {
@@ -132,7 +150,8 @@ namespace Smellyriver.TankInspector.Pro.Repository
                 && this.Build == other.Build
                 && this.SubBuild == other.SubBuild
                 && this.Revision == other.Revision
-                && this.IsCommonTest == other.IsCommonTest;
+                && this.IsCommonTest == other.IsCommonTest
+                && this.IsSandbox == other.IsSandbox;
         }
 
         public override int GetHashCode()
