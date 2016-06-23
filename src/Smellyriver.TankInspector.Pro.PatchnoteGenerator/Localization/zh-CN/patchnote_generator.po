@@ -1,0 +1,371 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Tank Inspector PRO: Model Inspector\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"Language-Team: Smellyriver <smellyriver.tankinspector@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+msgid "module_name"
+msgstr "Patchnote Generator"
+
+msgid "module_description"
+msgstr "Compare two game clients and generate patchnotes automatically"
+
+msgid "module_provider"
+msgstr "Smellyriver"
+
+#. appears in file|new menu
+msgid "new_patchnote_menu_item"
+msgstr "New Patchnote"
+
+#. {0}=game client version
+msgid "new_patchnote_from_client_menu_item"
+msgstr "From {0}"
+
+#. {0}=game client version
+msgid "new_patchnote_to_client_menu_item"
+msgstr "To {0}"
+
+#. appears in game client context menu
+msgid "create_patchnote_menu_item"
+msgstr "Create Patchnote..."
+
+msgid "create_patchnote_flyout_title"
+msgstr "Create Patchnote"
+
+msgid "insufficient_game_clients_message_title"
+msgstr "Insufficient Game Clients"
+
+msgid "insufficient_game_clients_message"
+msgstr "You need at least 2 game clients in order to create a patchnote."
+
+msgid "document_title"
+msgstr "Patchnote"
+
+#. used in exporting patchnote
+#. {0}=game client version
+msgid "default_patchnote_file_name"
+msgstr "{0}-patchnote.ext"
+
+msgid "reference_game_client_title"
+msgstr "Reference: "
+
+msgid "generate_status_preparing"
+msgstr "Preparing..."
+
+msgid "generate_status_analysing"
+msgstr "Analysing..."
+
+msgid "generate_status_creating_document"
+msgstr "Creating document..."
+
+msgid "generate_status_completed"
+msgstr "Completed"
+
+#. {0}=game client version
+msgid "generated_document_title"
+msgstr "{0} 更新日志"
+
+#. {0}=reference game client version
+msgid "generated_document_reference"
+msgstr "参考版本：{0}"
+
+msgid "generated_document_new_tanks_title"
+msgstr "新增坦克"
+
+msgid "generated_document_obsolete_tanks_title"
+msgstr "移除坦克"
+
+msgid "generated_document_stat_changes_title"
+msgstr "参数调整"
+
+msgid "generated_document_potential_armor_changes_title"
+msgstr "潜在的装甲变化*"
+
+msgid "generated_document_potential_armor_changes_footnote"
+msgstr "* 基于简单的CRC求和校验"
+
+#. {0}=nation
+#. {1}=tier
+#. {2}=class (light tank, SPG etc.)
+msgid "generated_document_tank_type_format"
+msgstr "{0} {1}级 {2}"
+
+#. {0}=stuff been added
+msgid "generated_document_added_action_format"
+msgstr "新增 {0}"
+
+#. {0}=stuff been removed
+msgid "generated_document_removed_action_format"
+msgstr "移除 {0}"
+
+#. {0}=attribute name (e.g. penetration)
+#. {1}=attribute owner (e.g. gun)
+msgid "generated_document_attribute_modifier"
+msgstr "{1}-{0}"
+
+#. {0}=child item name (e.g. gun [8,8cm Kw.K. 43 L/71])
+#. {1}=parent item name (e.g. turret [Pz.Kpwf. Tiger Ausf.E])
+#. => gun [8,8cm Kw.K. 43 L/71] on turret [Pz.Kpwf. Tiger Ausf.E]
+msgid "generated_document_parent_modifier"
+msgstr "{1}-{0}"
+
+#. {0}=stuff been buffed
+msgid "generated_document_buffed_action_format"
+msgstr "{0} 增强"
+
+#. {0}=stuff been nerfed
+msgid "generated_document_nerfed_action_format"
+msgstr "{0} 削弱"
+
+#. {0}=stuff been changed
+msgid "generated_document_changed_action_format"
+msgstr "{0} 调整"
+
+#. {0}=stuff been increased
+msgid "generated_document_increased_action_format"
+msgstr "{0} 增加"
+
+#. {0}=stuff been decreased
+msgid "generated_document_decreased_action_format"
+msgstr "{0} 减少"
+
+#. {0}=change action (e.g. damage nerfed)
+#. {1}=old value (e.g. 250)
+#. {2}=new value (e.g. 240)
+#. => damage nerfed from 250 to 240
+msgid "generated_document_changed_item_format"
+msgstr "{0} 从 {1} 到 {2}"
+
+msgid "field_price"
+msgstr "价格"
+
+msgid "field_tags"
+msgstr "标签"
+
+msgid "field_tier"
+msgstr "等级"
+
+msgid "field_matchmaking_weight"
+msgstr "分房权重"
+
+msgid "field_maximum_speed"
+msgstr "最大速度"
+
+msgid "field_maximum_reverse_speed"
+msgstr "最大后退速度"
+
+msgid "field_repair_cost_factor"
+msgstr "修理费用系数"
+
+msgid "field_crew_experience_factor"
+msgstr "乘员经验系数"
+
+msgid "field_hull_weight"
+msgstr "车体重量"
+
+msgid "field_hull_health"
+msgstr "车体生命值"
+
+msgid "field_ammorack_health"
+msgstr "弹药架生命值"
+
+msgid "field_ammorack_regenerated_health"
+msgstr "弹药架恢复生命值"
+
+msgid "field_ammorack_repair_cost_factor"
+msgstr "弹药架修理费用系数"
+
+msgid "field_fuel_tank_health"
+msgstr "油箱生命值"
+
+msgid "field_fuel_tank_regenerated_health"
+msgstr "油箱恢复生命值"
+
+msgid "field_fuel_tank_repair_cost_factor"
+msgstr "油箱修理费用系数"
+
+msgid "field_fuel_tank_weight"
+msgstr "油箱重量"
+
+msgid "field_fuel_tank_price"
+msgstr "油箱价格"
+
+msgid "field_chassis"
+msgstr "车体"
+
+msgid "field_unlock_experience"
+msgstr "解锁经验"
+
+msgid "field_maximum_climb_angle"
+msgstr "最大攀爬角度"
+
+msgid "field_weight"
+msgstr "重量"
+
+msgid "field_maximum_load"
+msgstr "最大载重"
+
+msgid "field_hard_terrain_resistance"
+msgstr "硬地阻力"
+
+msgid "field_medium_terrain_resistance"
+msgstr "中等地形阻力"
+
+msgid "field_soft_terrain_resistance"
+msgstr "软地阻力"
+
+msgid "field_brake_force"
+msgstr "制动力"
+
+msgid "field_can_traverse"
+msgstr "原地转向能力"
+
+msgid "field_traverse_speed"
+msgstr "旋转速度"
+
+msgid "field_aim_circle_dispersion_on_vehicle_movement"
+msgstr "车辆移动时的瞄准圈扩散"
+
+msgid "field_aim_circle_dispersion_on_vehicle_traversing"
+msgstr "车体旋转时的瞄准圈扩散"
+
+msgid "field_track_health"
+msgstr "履带生命值"
+
+msgid "field_track_regenerated_health"
+msgstr "履带恢复生命值"
+
+msgid "field_track_repair_cost_factor"
+msgstr "履带修理费用系数"
+
+msgid "field_turrets"
+msgstr "炮塔"
+
+msgid "field_health"
+msgstr "生命值"
+
+msgid "field_view_range"
+msgstr "观察范围"
+
+msgid "field_turret_rotator_health"
+msgstr "炮塔座圈生命值"
+
+msgid "field_turret_rotator_regenerated_health"
+msgstr "炮塔座圈恢复生命值"
+
+msgid "field_turret_rotator_repair_cost_factor"
+msgstr "炮塔座圈修理费用系数"
+
+msgid "field_surveying_device_health"
+msgstr "观察设备生命值"
+
+msgid "field_surveying_device_regenerated_health"
+msgstr "观察设备恢复生命值"
+
+msgid "field_surveying_device_repair_cost_factor"
+msgstr "观察设备修理费用系数"
+
+msgid "field_guns"
+msgstr "火炮"
+
+msgid "field_maximum_ammo"
+msgstr "最大载弹量"
+
+msgid "field_elevation"
+msgstr "仰角"
+
+msgid "field_depression"
+msgstr "俯角"
+
+msgid "field_accuracy"
+msgstr "精度"
+
+msgid "field_reload_time"
+msgstr "装填时间"
+
+msgid "field_aim_circle_dispersion_on_turret_traversing"
+msgstr "炮塔旋转时的瞄准圈扩散"
+
+msgid "field_aim_circle_dispersion_after_shot"
+msgstr "射击后的瞄准圈扩散"
+
+msgid "field_aim_circle_dispersion_while_gun_damaged"
+msgstr "火炮损坏时的瞄准圈扩散"
+
+msgid "field_aim_time"
+msgstr "瞄准时间"
+
+msgid "field_clip_count"
+msgstr "弹夹数量"
+
+msgid "field_clip_rate"
+msgstr "弹夹内射速"
+
+msgid "field_clip_reload_time"
+msgstr "弹夹内装填时间"
+
+msgid "field_burst_count"
+msgstr "连发数量"
+
+msgid "field_burst_rate"
+msgstr "连发射速"
+
+msgid "field_left_traverse_range"
+msgstr "左侧射界范围"
+
+msgid "field_right_traverse_range"
+msgstr "右侧射界范围"
+
+msgid "field_regenerated_health"
+msgstr "恢复生命值"
+
+msgid "field_ammunition"
+msgstr "弹药"
+
+msgid "field_velocity"
+msgstr "速度"
+
+msgid "field_gravity"
+msgstr "重力加速度"
+
+msgid "field_maximum_distance"
+msgstr "最大距离"
+
+msgid "field_penetration_at_100m"
+msgstr "100m处穿透力"
+
+msgid "field_penetration_at_400m"
+msgstr "400m处穿透力"
+
+msgid "field_caliber"
+msgstr "口径"
+
+msgid "field_damage"
+msgstr "伤害"
+
+msgid "field_module_damage"
+msgstr "模块伤害"
+
+msgid "field_engines"
+msgstr "引擎"
+
+msgid "field_power"
+msgstr "功率"
+
+msgid "field_chance_on_fire"
+msgstr "着火几率"
+
+msgid "field_radios"
+msgstr "电台"
+
+msgid "field_signal_distance"
+msgstr "信号距离"

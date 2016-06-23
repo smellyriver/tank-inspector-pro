@@ -64,14 +64,14 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator
 
             var flyoutVm = new CreatePatchnoteFlyoutVM(id);
             var flyout = new Flyout
-                {
-                    Header = this.L("patchnote_generator", "create_patchnote_flyout_title"),
-                    IsModal = true,
-                    Content = new CreatePatchnoteFlyoutView { ViewModel = flyoutVm },
-                    CloseCommand = new RelayCommand(() => this.OnCreatePatchnoteFlyoutClosed(flyoutVm)),
-                    Position = FlyoutPosition.Left,
-                    MinWidth = 200
-                };
+            {
+                Header = this.L("patchnote_generator", "create_patchnote_flyout_title"),
+                IsModal = true,
+                Content = new CreatePatchnoteFlyoutView { ViewModel = flyoutVm },
+                CloseCommand = new RelayCommand(() => this.OnCreatePatchnoteFlyoutClosed(flyoutVm)),
+                Position = FlyoutPosition.Left,
+                MinWidth = 200
+            };
             FlyoutManager.Instance.Open(flyout);
 
             flyoutVm.Closed += (o, e) =>
@@ -121,17 +121,27 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator
                     if (repository == repository2)
                         continue;
 
-                    var format = this.L("patchnote_generator",
-                                        repository.Version > repository2.Version
-                                        ? "new_patchnote_from_client_menu_item"
-                                        : "new_patchnote_to_client_menu_item");
+                    var createPatchnoteMenuVm = new MenuItemVM(this.L("patchnote_generator", "new_patchnote_from_client_menu_item", RepositoryHelper.GetRepositoryDisplayName(repository2)),
+                                                               new RelayCommand<IRepository[]>(this.CreatePatchnote),
+                                                               new[] { repository2, repository })
+                    {
+                        Icon = repository2.GetMarker()
+                    };
 
-                    var createPatchnoteMenuVm = new MenuItemVM(string.Format(format, RepositoryHelper.GetRepositoryDisplayName(repository2)),
+                    repositoryMenuVm.MenuItems.Add(createPatchnoteMenuVm);
+                }
+
+                foreach (var repository2 in RepositoryManager.Instance.Repositories)
+                {
+                    if (repository == repository2)
+                        continue;
+
+                    var createPatchnoteMenuVm = new MenuItemVM(this.L("patchnote_generator", "new_patchnote_to_client_menu_item", RepositoryHelper.GetRepositoryDisplayName(repository2)),
                                                                new RelayCommand<IRepository[]>(this.CreatePatchnote),
                                                                new[] { repository, repository2 })
-                                                               {
-                                                                   Icon = repository2.GetMarker()
-                                                               };
+                    {
+                        Icon = repository2.GetMarker()
+                    };
 
                     repositoryMenuVm.MenuItems.Add(createPatchnoteMenuVm);
                 }
@@ -143,19 +153,7 @@ namespace Smellyriver.TankInspector.Pro.PatchnoteGenerator
 
         private void CreatePatchnote(IRepository[] repositories)
         {
-            IRepository target, reference;
-            if (repositories[0].Version > repositories[1].Version)
-            {
-                target = repositories[0];
-                reference = repositories[1];
-            }
-            else
-            {
-                target = repositories[1];
-                reference = repositories[0];
-            }
-
-            this.CreatePatchnote(target, reference);
+            this.CreatePatchnote(repositories[1], repositories[0]);
         }
 
         private void CreatePatchnote(IRepository target, IRepository reference)

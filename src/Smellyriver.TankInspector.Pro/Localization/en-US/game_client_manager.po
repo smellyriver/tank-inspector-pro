@@ -82,6 +82,12 @@ msgstr "Common Test"
 msgid "common_test_abbrev"
 msgstr "CT"
 
+msgid "sandbox"
+msgstr "Sandbox"
+
+msgid "sandbox_abbrev"
+msgstr "SB"
+
 #. {0}=version
 #. {1}=location
 msgid "game_client_description"
