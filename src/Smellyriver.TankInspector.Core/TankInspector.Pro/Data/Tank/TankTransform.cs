@@ -6,7 +6,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
     [DataContract]
     public class TankTransform : ICloneable
     {
-        [DataMember(Name="TurretYaw")]
+        [DataMember(Name = "TurretYaw")]
         private double _turretYaw;
 
         public double TurretYaw
@@ -18,8 +18,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                     return;
 
                 _turretYaw = value;
-                if (this.TurretYawChanged != null)
-                    this.TurretYawChanged(this, EventArgs.Empty);
+                if (_turretYawChanged != null)
+                    _turretYawChanged(this, EventArgs.Empty);
             }
         }
 
@@ -35,8 +35,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                     return;
 
                 _gunPitch = value;
-                if (this.GunPitchChanged != null)
-                    this.GunPitchChanged(this, EventArgs.Empty);
+                if (_gunPitchChanged != null)
+                    _gunPitchChanged(this, EventArgs.Empty);
             }
         }
 
@@ -53,14 +53,20 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                     return;
 
                 _vehicleYaw = value;
-                if (this.VehicleYawChanged != null)
-                    this.VehicleYawChanged(this, EventArgs.Empty);
+                if (_vehicleYawChanged != null)
+                    _vehicleYawChanged(this, EventArgs.Empty);
             }
         }
-        
-        public event EventHandler TurretYawChanged;
-        public event EventHandler GunPitchChanged;
-        public event EventHandler VehicleYawChanged;
+
+        private EventHandler _turretYawChanged;
+        public event EventHandler TurretYawChanged { add { _turretYawChanged += value; } remove { _turretYawChanged -= value; } }
+
+        private EventHandler _gunPitchChanged;
+        public event EventHandler GunPitchChanged { add { _gunPitchChanged += value; } remove { _gunPitchChanged -= value; } }
+
+        private EventHandler _vehicleYawChanged;
+        public event EventHandler VehicleYawChanged { add { _vehicleYawChanged += value; } remove { _vehicleYawChanged -= value; } }
+
 
         internal TankTransform Clone()
         {

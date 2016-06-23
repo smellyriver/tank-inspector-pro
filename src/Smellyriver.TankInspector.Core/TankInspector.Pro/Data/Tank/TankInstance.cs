@@ -15,8 +15,12 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
     public class TankInstance : XQueryable, ICloneable
     {
 
-
-        public event EventHandler<ConfigurationChangedEventArgs> TankConfigurationChanged;
+        private ConfigurationChangedEventHandler _tankConfigurationChanged;
+        public event ConfigurationChangedEventHandler TankConfigurationChanged
+        {
+            add { this._tankConfigurationChanged += value; }
+            remove { this._tankConfigurationChanged -= value; }
+        }
 
 
         private readonly IRepository _repository;
@@ -313,8 +317,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
         private void OnTankConfigurationChanged(ConfigurationAspect aspect, Component oldValue, Component newValue)
         {
-            if (this.TankConfigurationChanged != null)
-                this.TankConfigurationChanged(this, new ConfigurationChangedEventArgs(aspect, oldValue, newValue));
+            if (_tankConfigurationChanged != null)
+                _tankConfigurationChanged(this, new ConfigurationChangedEventArgs(aspect, oldValue, newValue));
         }
 
         public double GetThinnestArmor(bool spaced)

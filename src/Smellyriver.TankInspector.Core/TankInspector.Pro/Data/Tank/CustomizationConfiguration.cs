@@ -45,7 +45,12 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             }
         }
 
-        public event EventHandler CamouflageElementChanged;
+        private EventHandler _camouflageElementChanged;
+        public event EventHandler CamouflageElementChanged
+        {
+            add { _camouflageElementChanged += value; }
+            remove { _camouflageElementChanged -= value; }
+        }
 
         private XElement _camouflageElement;
 
@@ -56,8 +61,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             {
                 _camouflageElement = value;
 
-                if (this.CamouflageElementChanged != null)
-                    this.CamouflageElementChanged(this, EventArgs.Empty);
+                if (_camouflageElementChanged != null)
+                    _camouflageElementChanged(this, EventArgs.Empty);
             }
         }
 
@@ -122,7 +127,12 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             }
         }
 
-        public event EventHandler InscriptionElementChanged;
+        private EventHandler _inscriptionElementChanged;
+        public event EventHandler InscriptionElementChanged
+        {
+            add { _inscriptionElementChanged += value; }
+            remove { _inscriptionElementChanged -= value; }
+        }
 
         private XElement _inscriptionElement;
 
@@ -132,8 +142,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             private set
             {
                 _inscriptionElement = value;
-                if (this.InscriptionElementChanged != null)
-                    this.InscriptionElementChanged(this, EventArgs.Empty);
+                if (_inscriptionElementChanged != null)
+                    _inscriptionElementChanged(this, EventArgs.Empty);
             }
         }
 

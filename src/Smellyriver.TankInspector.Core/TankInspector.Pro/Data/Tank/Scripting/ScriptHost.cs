@@ -13,7 +13,12 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank.Scripting
 
         private bool _isInvalidated;
 
-        public event EventHandler<ElementChangedEventArgs> ElementChanged;
+        private ElementChangedEventHandler _elementChanged;
+        public event ElementChangedEventHandler ElementChanged
+        {
+            add { _elementChanged += value; }
+            remove { _elementChanged -= value; }
+        }
 
         internal XElement Element
         {
@@ -55,8 +60,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank.Scripting
         {
             _isInvalidated = true;
 
-            if(this.ElementChanged != null)
-                this.ElementChanged(this, new ElementChangedEventArgs(this.Element));
+            if (_elementChanged != null)
+                _elementChanged(this, new ElementChangedEventArgs(this.Element));
         }
 
         private void Update()

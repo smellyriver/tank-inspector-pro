@@ -15,6 +15,7 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
     [SuppressMessage("ReSharper", "UseNullPropagation")]
     [SuppressMessage("ReSharper", "MergeConditionalExpression")]
     [SuppressMessage("ReSharper", "UseNameofExpression")]
+    [SuppressMessage("ReSharper", "DelegateSubtraction")]
     public class TankConfiguration : ConfigurationBase
     {
 
@@ -48,18 +49,92 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
             }
         }
 
-        internal event ElementChangedEventHandler ModuleElementChanged;
-        internal event ElementChangedEventHandler EquipmentElementChanged;
-        internal event ElementChangedEventHandler ConsumableElementChanged;
+        private ElementChangedEventHandler _moduleElementChanged;
+        internal event ElementChangedEventHandler ModuleElementChanged
+        {
+            add { _moduleElementChanged += value; }
+            remove { _moduleElementChanged -= value; }
+        }
 
-        public event ComponentChangedEventHandler GunChanged;
-        public event ComponentChangedEventHandler TurretChanged;
-        public event ComponentChangedEventHandler EngineChanged;
-        public event ComponentChangedEventHandler ChassisChanged;
-        public event ComponentChangedEventHandler RadioChanged;
-        public event ComponentChangedEventHandler AmmunitionChanged;
-        public event EquipmentChangedEventHandler EquipmentChanged;
-        public event ConsumableChangedEventHandler ConsumableChanged;
+
+        private ElementChangedEventHandler _equipmentElementChanged;
+        internal event ElementChangedEventHandler EquipmentElementChanged
+        {
+            add { _equipmentElementChanged += value; }
+            remove { _equipmentElementChanged -= value; }
+        }
+
+        private ElementChangedEventHandler _consumableElementChanged;
+        internal event ElementChangedEventHandler ConsumableElementChanged
+        {
+            add { _consumableElementChanged += value; }
+            remove { _consumableElementChanged -= value; }
+        }
+
+        private ComponentChangedEventHandler _gunChanged;
+
+        public event ComponentChangedEventHandler GunChanged
+        {
+            add { _gunChanged += value; }
+            remove { _gunChanged -= value; }
+        }
+
+        private ComponentChangedEventHandler _turretChanged;
+
+        public event ComponentChangedEventHandler TurretChanged
+        {
+            add { _turretChanged += value; }
+            remove { _turretChanged -= value; }
+        }
+
+        private ComponentChangedEventHandler _engineChanged;
+
+        public event ComponentChangedEventHandler EngineChanged
+        {
+            add { _engineChanged += value; }
+            remove { _engineChanged -= value; }
+        }
+
+        private ComponentChangedEventHandler _chassisChanged;
+
+        public event ComponentChangedEventHandler ChassisChanged
+        {
+            add { _chassisChanged += value; }
+            remove { _chassisChanged -= value; }
+        }
+
+        private ComponentChangedEventHandler _radioChanged;
+
+        public event ComponentChangedEventHandler RadioChanged
+        {
+            add { _radioChanged += value; }
+            remove { _radioChanged -= value; }
+        }
+
+        private ComponentChangedEventHandler _ammunitionChanged;
+
+        public event ComponentChangedEventHandler AmmunitionChanged
+        {
+            add { _ammunitionChanged += value; }
+            remove { _ammunitionChanged -= value; }
+        }
+
+        private EquipmentChangedEventHandler _equipmentChanged;
+
+        public event EquipmentChangedEventHandler EquipmentChanged
+        {
+            add { _equipmentChanged += value; }
+            remove { _equipmentChanged -= value; }
+        }
+
+        private ConsumableChangedEventHandler _consumableChanged;
+
+        public event ConsumableChangedEventHandler ConsumableChanged
+        {
+            add { _consumableChanged += value; }
+            remove { _consumableChanged -= value; }
+        }
+
 
         private XElement _gunElement;
         internal XElement GunElement
@@ -102,8 +177,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
             this.UpdateModulesTotalWeight();
 
-            if (this.GunChanged != null)
-                this.GunChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
+            if (_gunChanged != null)
+                _gunChanged(this, new ComponentChangedEventArgs(oldValue, value));
 
             this.RaisePropertyChanged("Gun");
         }
@@ -152,8 +227,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
             this.UpdateModulesTotalWeight();
 
-            if (this.TurretChanged != null)
-                this.TurretChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
+            if (_turretChanged != null)
+                _turretChanged(this, new ComponentChangedEventArgs(oldValue, value));
 
             this.RaisePropertyChanged("Turret");
         }
@@ -190,8 +265,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
                 this.UpdateModulesTotalWeight();
 
-                if (this.ChassisChanged != null)
-                    this.ChassisChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
+                if (_chassisChanged != null)
+                    _chassisChanged(this, new ComponentChangedEventArgs(oldValue, value));
 
                 this.RaisePropertyChanged("Chassis");
             }
@@ -229,8 +304,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
                 this.UpdateModulesTotalWeight();
 
-                if (this.RadioChanged != null)
-                    this.RadioChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
+                if (_radioChanged != null)
+                    _radioChanged(this, new ComponentChangedEventArgs(oldValue, value));
 
                 this.RaisePropertyChanged("Radio");
             }
@@ -268,8 +343,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
                 this.UpdateModulesTotalWeight();
 
-                if (this.EngineChanged != null)
-                    this.EngineChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
+                if (_engineChanged != null)
+                    _engineChanged(this, new ComponentChangedEventArgs(oldValue, value));
 
                 this.RaisePropertyChanged("Engine");
             }
@@ -306,8 +381,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
                 _tankConfigurationInfo.AmmunitionKey = _ammunition.Key;
 
-                if (this.AmmunitionChanged != null)
-                    this.AmmunitionChanged.Invoke(this, new ComponentChangedEventArgs(oldValue, value));
+                if (_ammunitionChanged != null)
+                    _ammunitionChanged(this, new ComponentChangedEventArgs(oldValue, value));
 
                 this.RaisePropertyChanged("Ammunition");
             }
@@ -325,8 +400,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 var oldValue = _equipments[0];
                 if (this.SetEquipment(0, value))
                 {
-                    if (this.EquipmentChanged != null)
-                        this.EquipmentChanged(this, new EquipmentChangedEventArgs(0, oldValue, value));
+                    if (_equipmentChanged != null)
+                        _equipmentChanged(this, new EquipmentChangedEventArgs(0, oldValue, value));
 
                     this.RaisePropertyChanged("Equipment1");
                 }
@@ -340,8 +415,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 var oldValue = _equipments[1];
                 if (this.SetEquipment(1, value))
                 {
-                    if (this.EquipmentChanged != null)
-                        this.EquipmentChanged(this, new EquipmentChangedEventArgs(1, oldValue, value));
+                    if (_equipmentChanged != null)
+                        _equipmentChanged(this, new EquipmentChangedEventArgs(1, oldValue, value));
 
                     this.RaisePropertyChanged("Equipment2");
                 }
@@ -355,8 +430,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 var oldValue = _equipments[2];
                 if (this.SetEquipment(2, value))
                 {
-                    if (this.EquipmentChanged != null)
-                        this.EquipmentChanged(this, new EquipmentChangedEventArgs(2, oldValue, value));
+                    if (_equipmentChanged != null)
+                        _equipmentChanged(this, new EquipmentChangedEventArgs(2, oldValue, value));
 
                     this.RaisePropertyChanged("Equipment3");
                 }
@@ -375,8 +450,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 var oldValue = _consumables[0];
                 if (this.SetConsumable(0, value))
                 {
-                    if (this.ConsumableChanged != null)
-                        this.ConsumableChanged(this, new ConsumableChangedEventArgs(0, oldValue, value));
+                    if (_consumableChanged != null)
+                        _consumableChanged(this, new ConsumableChangedEventArgs(0, oldValue, value));
 
                     this.RaisePropertyChanged("Consumable1");
                 }
@@ -391,8 +466,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 var oldValue = _consumables[1];
                 if (this.SetConsumable(1, value))
                 {
-                    if (this.ConsumableChanged != null)
-                        this.ConsumableChanged(this, new ConsumableChangedEventArgs(1, oldValue, value));
+                    if (_consumableChanged != null)
+                        _consumableChanged(this, new ConsumableChangedEventArgs(1, oldValue, value));
 
                     this.RaisePropertyChanged("Consumable2");
                 }
@@ -406,8 +481,8 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
                 var oldValue = _consumables[2];
                 if (this.SetConsumable(2, value))
                 {
-                    if (this.ConsumableChanged != null)
-                        this.ConsumableChanged(this, new ConsumableChangedEventArgs(2, oldValue, value));
+                    if (_consumableChanged != null)
+                        _consumableChanged(this, new ConsumableChangedEventArgs(2, oldValue, value));
 
                     this.RaisePropertyChanged("Consumable3");
                 }
@@ -528,20 +603,20 @@ namespace Smellyriver.TankInspector.Pro.Data.Tank
 
         private void OnModuleElementChanged(XElement element)
         {
-            if (this.ModuleElementChanged != null)
-                this.ModuleElementChanged(this, new ElementChangedEventArgs(element));
+            if (_moduleElementChanged != null)
+                _moduleElementChanged(this, new ElementChangedEventArgs(element));
         }
 
         private void OnEquipmentElementChanged(XElement element)
         {
-            if (this.EquipmentElementChanged != null)
-                this.EquipmentElementChanged(this, new ElementChangedEventArgs(element));
+            if (_equipmentElementChanged != null)
+                _equipmentElementChanged(this, new ElementChangedEventArgs(element));
         }
 
         private void OnConsumableElementChanged(XElement element)
         {
-            if (this.ConsumableElementChanged != null)
-                this.ConsumableElementChanged(this, new ElementChangedEventArgs(element));
+            if (_consumableElementChanged != null)
+                _consumableElementChanged(this, new ElementChangedEventArgs(element));
         }
 
         private void UpdateModulesTotalWeight()
